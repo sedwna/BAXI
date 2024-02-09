@@ -1,5 +1,5 @@
 Data Base project
-bu-Alisina uni
+buali-sina uni
 Dr.Sanati
 
 #Navid
