@@ -1,4 +1,4 @@
- Form implementation generated from reading ui file 'untitled.ui'
+# Form implementation generated from reading ui file 'untitled.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -25,7 +25,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.label.setText(_translate("Form", "sedwna"))
+        self.label.setText(_translate("Form", "sajaaaaaad"))
 
 
 if __name__ == "__main__":
