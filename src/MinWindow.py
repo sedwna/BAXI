@@ -2,13 +2,13 @@ import sys
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtWidgets import QMainWindow
 
-from BAXI import Ui_MainWindow
+from BAXI import Ui_BAXI
 
 
 class MainWindow:
     def __init__(self):
         self.main_win = QMainWindow()
-        self.ui = Ui_MainWindow()
+        self.ui = Ui_BAXI()
         self.ui.setupUi(self.main_win)
         # waiting page -------------------------------------------------------------------
         self.show_loading()
@@ -47,6 +47,13 @@ class MainWindow:
         self.ui.pushButt_edit_number_sign_up.clicked.connect(self.show_sign_up)
         self.ui.pushButt_edit_number_sign_in.clicked.connect(self.show_sign_in)
         # --------------------------------------------------------------------------------------
+        # go to get_sex_birth_meli page ------------------------------------------------------
+        self.ui.pushButt_next_get_flname_driver.clicked.connect(self.show_get_sex_birth_meli)
+        # --------------------------------------------------------------------------------------
+        # go back page from get_sex_birth_meli  --------------------------------------------
+        self.ui.pushButt_back_get_sex_birth_meli.clicked.connect(self.show_get_flname_driver)
+        # --------------------------------------------------------------------------------------
+
     def show(self):
         self.main_win.show()
 
@@ -81,10 +88,13 @@ class MainWindow:
         print(self.ui.lname.toPlainText())
         # -----------------------------------------------------
 
+    def show_get_sex_birth_meli(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.get_sex_birth_meli)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     main_win = MainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_BAXI()
     main_win.show()
     sys.exit(app.exec())
