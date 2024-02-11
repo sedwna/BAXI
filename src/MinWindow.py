@@ -1,5 +1,4 @@
 import sys
-import time
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtWidgets import QMainWindow
 
@@ -41,7 +40,13 @@ class MainWindow:
         # go back page from fl name driver page -----------------------------------------------
         self.ui.pushButt_back_get_flname_driver.clicked.connect(self.show_select_driver_user)
         # --------------------------------------------------------------------------------------
-
+        # go back page from select_driver_user page --------------------------------------------
+        self.ui.pushButt_back_select_driver_user.clicked.connect(self.show_accept_code_sign_up)
+        # --------------------------------------------------------------------------------------
+        # go back page from accept code to edit number --------------------------------------------
+        self.ui.pushButt_edit_number_sign_up.clicked.connect(self.show_sign_up)
+        self.ui.pushButt_edit_number_sign_in.clicked.connect(self.show_sign_in)
+        # --------------------------------------------------------------------------------------
     def show(self):
         self.main_win.show()
 

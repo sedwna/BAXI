@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>BAXI</class>
+ <widget class="QMainWindow" name="BAXI">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -64,7 +64,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>image/loading/Android Small - 1.png</pixmap>
+       <pixmap>../image/loading/Android Small - 1.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_logo">
@@ -93,10 +93,6 @@
       </property>
       <property name="text">
        <string/>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>image/login/Group 4.png</normaloff>image/login/Group 4.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -141,7 +137,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>image/login/Android Small - 11.png</pixmap>
+       <pixmap>../image/sign_in/Android Small - 11.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_enter_sign_in">
@@ -246,7 +242,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>image/flname_driver/Android Small -.png</pixmap>
+       <pixmap>../image/flname_driver/Android Small -.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_back_get_flname_driver">
@@ -285,14 +281,14 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>image/select_driver_user/Android Small - 7.png</pixmap>
+       <pixmap>../image/select_driver_user/Android Small - 7.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_select_user">
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>310</y>
+        <y>270</y>
         <width>281</width>
         <height>61</height>
        </rect>
@@ -308,9 +304,25 @@
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>420</y>
+        <y>370</y>
         <width>281</width>
         <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_back_select_driver_user">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>480</y>
+        <width>281</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
@@ -335,14 +347,30 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>image/send_code/Android Small - 5.png</pixmap>
+       <pixmap>../image/send_code/Android Small - 5.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_accept_sign_up_code">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>330</y>
+        <y>300</y>
+        <width>291</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_edit_number_sign_up">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>360</y>
         <width>291</width>
         <height>41</height>
        </rect>
@@ -369,14 +397,30 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>image/send_code/Android Small - 5.png</pixmap>
+       <pixmap>../image/send_code/Android Small - 5.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_accept_sign_in_code">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>330</y>
+        <y>300</y>
+        <width>291</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_edit_number_sign_in">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>360</y>
         <width>291</width>
         <height>41</height>
        </rect>
@@ -403,7 +447,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>image/signin/Android Small - 8.png</pixmap>
+       <pixmap>../image/sign_up/Android Small - 8.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_enter_sign_up">
