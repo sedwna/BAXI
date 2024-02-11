@@ -15,19 +15,19 @@ class MainWindow:
         self.show_loading()
         # --------------------------------------------------------------------------------
         # go to sign in page--------------------------------------------------------------
-        self.ui.pushButt_logo.clicked.connect(self.show_sign_in)
+        self.ui.pushButt_logo.clicked.connect(self.show_sign_up)
         # --------------------------------------------------------------------------------
         # switch between login and signin page--------------------------------------------
-        self.ui.pushButt_log_in.clicked.connect(self.show_log_in)
         self.ui.pushButt_sign_in.clicked.connect(self.show_sign_in)
+        self.ui.pushButt_sign_up.clicked.connect(self.show_sign_up)
         # --------------------------------------------------------------------------------
         # go to code certified page ------------------------------------------------------
-        self.ui.pushButt_enter_signin.clicked.connect(self.show_accept_code_signin)
-        self.ui.pushButt_enter_login.clicked.connect(self.show_accept_code_login)
+        self.ui.pushButt_enter_sign_up.clicked.connect(self.show_accept_code_sign_up)
+        self.ui.pushButt_enter_sign_in.clicked.connect(self.show_accept_code_sign_in)
         # --------------------------------------------------------------------------------
         # self.ui.pushButt_accept_login_code.clicked.connect()
         # go to select driver user page---------------------------------------------------
-        self.ui.pushButt_accept_signin_code.clicked.connect(self.show_select_driver_user)
+        self.ui.pushButt_accept_sign_up_code.clicked.connect(self.show_select_driver_user)
         # ---------------------------------------------------------------------------------
         # log in as user-------------------------------------------------------------------
         # self.ui.pushButt_select_user.clicked.connect()
@@ -48,23 +48,23 @@ class MainWindow:
     def show_loading(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.loading)
 
+    def show_sign_up(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.sign_up)
+
     def show_sign_in(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.sign_in)
 
-    def show_log_in(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.log_in)
-
-    def show_accept_code_login(self):
+    def show_accept_code_sign_in(self):
         # get number and show in terminal:
-        print(self.ui.enter_number_login.toPlainText())
+        print(self.ui.enter_number_sign_in.toPlainText())
         # -----------------------------------------------------
-        self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_login)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
 
-    def show_accept_code_signin(self):
+    def show_accept_code_sign_up(self):
         # get number and show in terminal:
-        print(self.ui.enter_number_signin.toPlainText())
+        print(self.ui.enter_number_sign_up.toPlainText())
         # -----------------------------------------------------
-        self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_signin)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
 
     def show_select_driver_user(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
