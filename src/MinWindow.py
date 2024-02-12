@@ -71,6 +71,9 @@ class MainWindow:
         # go to get_machine_baxi_info page ------------------------------------------------------------
         self.ui.pushButt_baxi_select_service.clicked.connect(self.show_get_machine_baxi_info)
         # --------------------------------------------------------------------------------------
+        # go back page from get_machine_baxi_info page -------------------------------------------
+        self.ui.pushButt_back_get_machine_baxi_info.clicked.connect(self.show_select_service)
+        # --------------------------------------------------------------------------------------
 
 
     def show(self):
