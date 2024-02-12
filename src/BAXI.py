@@ -522,7 +522,7 @@ class Ui_BAXI(object):
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(13)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):
