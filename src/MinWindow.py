@@ -66,6 +66,13 @@ class MainWindow:
         # go to brows and select meli card ------------------------------------------------------
         self.ui.meli_get_photo_meli_certificate_obviously.clicked.connect(self.brows_select_meli_card)
         # --------------------------------------------------------------------------------------
+        # go to get_shaba page ------------------------------------------------------
+        self.ui.pushButt_next_get_photo_meli_certificate_obviously.clicked.connect(self.show_get_shaba)
+        # --------------------------------------------------------------------------------------
+        # go back page from get_shaba ------------------------------------------------------
+        self.ui.pushButt_back_get_shaba.clicked.connect(self.show_get_photo_meli_pcertificate_obviously)
+        # --------------------------------------------------------------------------------------
+
 
     def show(self):
         self.main_win.show()
@@ -111,6 +118,8 @@ class MainWindow:
         dialog = QFileDialog(filter="Images *.png ", caption="select a file")
         print(dialog.getOpenFileName())
 
+    def show_get_shaba(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.get_shaba)
 
 
 if __name__ == "__main__":
