@@ -150,7 +150,7 @@ class MainWindow:
         print(self.ui.fname.toPlainText())
         print(self.ui.lname.toPlainText())
         # -----------------------------------------------------
-        print(self.ui.sex_get_sex_birth_meli.show())
+        print(self.ui.sex_get_sex_birth_meli.showNormal())
         print(self.ui.meli_get_sex_birth_meli.toPlainText())
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
