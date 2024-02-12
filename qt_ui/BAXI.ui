@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -736,6 +736,72 @@
       </property>
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="get_shaba">
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/get_shaba/get_shaba.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit">
+      <property name="geometry">
+       <rect>
+        <x>65</x>
+        <y>275</y>
+        <width>251</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_next_get_shaba">
+      <property name="geometry">
+       <rect>
+        <x>38</x>
+        <y>353</y>
+        <width>281</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_back_get_shaba">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>410</y>
+        <width>281</width>
+        <height>29</height>
+       </rect>
       </property>
       <property name="text">
        <string/>
