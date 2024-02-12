@@ -84,6 +84,9 @@ class MainWindow:
         self.ui.pushButt_next_get_machine_baxi_info.clicked.connect(self.show_registration_successful)
         self.ui.pushButt_next_get_machine_baxi_woman_info.clicked.connect(self.show_registration_successful)
         # --------------------------------------------------------------------------------------
+        # go back to sign in page from registration_successful page ------------------------------------------------------------
+        self.ui.pushButt_back_to_sign_in_registration_successful.clicked.connect(self.show_sign_in)
+        # --------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
