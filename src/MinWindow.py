@@ -75,6 +75,9 @@ class MainWindow:
         # go to select_service page ------------------------------------------------------
         self.ui.pushButt_next_get_shaba.clicked.connect(self.show_select_service)
         # --------------------------------------------------------------------------------------
+        # go back page select_service ------------------------------------------------------
+        self.ui.pushButt_back_select_service.clicked.connect(self.show_get_shaba)
+        # --------------------------------------------------------------------------------------
 
 
     def show(self):
