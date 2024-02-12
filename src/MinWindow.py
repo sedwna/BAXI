@@ -72,6 +72,9 @@ class MainWindow:
         # go back page from get_shaba ------------------------------------------------------
         self.ui.pushButt_back_get_shaba.clicked.connect(self.show_get_photo_meli_pcertificate_obviously)
         # --------------------------------------------------------------------------------------
+        # go to select_service page ------------------------------------------------------
+        self.ui.pushButt_next_get_shaba.clicked.connect(self.show_select_service)
+        # --------------------------------------------------------------------------------------
 
 
     def show(self):
@@ -120,6 +123,9 @@ class MainWindow:
 
     def show_get_shaba(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_shaba)
+
+    def show_select_service(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.select_service)
 
 
 if __name__ == "__main__":
