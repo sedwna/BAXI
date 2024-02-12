@@ -25,19 +25,12 @@ class MainWindow:
         self.ui.pushButt_enter_sign_up.clicked.connect(self.show_accept_code_sign_up)
         self.ui.pushButt_enter_sign_in.clicked.connect(self.show_accept_code_sign_in)
         # --------------------------------------------------------------------------------
-        # self.ui.pushButt_accept_login_code.clicked.connect()
         # go to select driver user page---------------------------------------------------
         self.ui.pushButt_accept_sign_up_code.clicked.connect(self.show_select_driver_user)
         # ---------------------------------------------------------------------------------
-        # log in as user-------------------------------------------------------------------
-        # self.ui.pushButt_select_user.clicked.connect()
-        # ----------------------------------------------------------------------------------
         # log in as driver -----------------------------------------------------------------
         self.ui.pushButt_select_driver.clicked.connect(self.show_get_flname_driver)
         # ---------------------------------------------------------------------------------
-        # go to    ----------------------------------------------------
-        # self.ui.pushButt_next_get_flname_driver.clicked.connect()
-        # --------------------------------------------------------------------------------
         # go back page from fl name driver page -----------------------------------------------
         self.ui.pushButt_back_get_flname_driver.clicked.connect(self.show_select_driver_user)
         # --------------------------------------------------------------------------------------
@@ -54,9 +47,6 @@ class MainWindow:
         # go back page from get_sex_birth_meli  --------------------------------------------
         self.ui.pushButt_back_get_sex_birth_meli.clicked.connect(self.show_get_flname_driver)
         # --------------------------------------------------------------------------------------
-        # go to get_shaba page ------------------------------------------------------
-        # self.ui.pushButt_next_get_photo_meli_certificate_obviously.clicked.connect()
-        # --------------------------------------------------------------------------------------
         # go to get_photo_meli_pcertificate_obviously page ------------------------------------------------------
         self.ui.pushButt_next_get_sex_birth_meli.clicked.connect(self.show_get_photo_meli_pcertificate_obviously)
         # --------------------------------------------------------------------------------------
@@ -66,16 +56,16 @@ class MainWindow:
         # go to brows and select meli card ------------------------------------------------------
         self.ui.meli_get_photo_meli_certificate_obviously.clicked.connect(self.brows_select_meli_card)
         # --------------------------------------------------------------------------------------
-        # go to get_shaba page ------------------------------------------------------
+        # go to get_shaba page -----------------------------------------------------------------
         self.ui.pushButt_next_get_photo_meli_certificate_obviously.clicked.connect(self.show_get_shaba)
         # --------------------------------------------------------------------------------------
         # go back page from get_shaba ------------------------------------------------------
         self.ui.pushButt_back_get_shaba.clicked.connect(self.show_get_photo_meli_pcertificate_obviously)
         # --------------------------------------------------------------------------------------
-        # go to select_service page ------------------------------------------------------
+        # go to select_service page ------------------------------------------------------------
         self.ui.pushButt_next_get_shaba.clicked.connect(self.show_select_service)
         # --------------------------------------------------------------------------------------
-        # go back page select_service ------------------------------------------------------
+        # go back page select_service -----------------------------------------------------------
         self.ui.pushButt_back_select_service.clicked.connect(self.show_get_shaba)
         # --------------------------------------------------------------------------------------
 
