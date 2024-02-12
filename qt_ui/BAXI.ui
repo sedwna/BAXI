@@ -674,7 +674,7 @@
        </property>
       </item>
      </widget>
-     <widget class="QPushButton" name="certificate_get_photo_meli_certificate_obviously">
+     <widget class="QPushButton" name="meli_get_photo_meli_certificate_obviously">
       <property name="geometry">
        <rect>
         <x>230</x>
@@ -690,7 +690,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="meli_get_photo_meli_certificate_obviously">
+     <widget class="QPushButton" name="certificate_get_photo_meli_certificate_obviously">
       <property name="geometry">
        <rect>
         <x>230</x>

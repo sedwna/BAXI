@@ -1,6 +1,7 @@
 import sys
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtWidgets import QFileDialog
 
 from BAXI import Ui_BAXI
 
@@ -53,6 +54,18 @@ class MainWindow:
         # go back page from get_sex_birth_meli  --------------------------------------------
         self.ui.pushButt_back_get_sex_birth_meli.clicked.connect(self.show_get_flname_driver)
         # --------------------------------------------------------------------------------------
+        # go to get_shaba page ------------------------------------------------------
+        # self.ui.pushButt_next_get_photo_meli_certificate_obviously.clicked.connect()
+        # --------------------------------------------------------------------------------------
+        # go to get_photo_meli_pcertificate_obviously page ------------------------------------------------------
+        self.ui.pushButt_next_get_sex_birth_meli.clicked.connect(self.show_get_photo_meli_pcertificate_obviously)
+        # --------------------------------------------------------------------------------------
+        # go back page from get_photo_meli_certificate_obviously  --------------------------------------------
+        self.ui.pushButt_back_get_photo_meli_certificate_obviously.clicked.connect(self.show_get_sex_birth_meli)
+        # --------------------------------------------------------------------------------------
+        # go to brows and select meli card ------------------------------------------------------
+        self.ui.meli_get_photo_meli_certificate_obviously.clicked.connect(self.brows_select_meli_card)
+        # --------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
@@ -90,6 +103,14 @@ class MainWindow:
 
     def show_get_sex_birth_meli(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_sex_birth_meli)
+
+    def show_get_photo_meli_pcertificate_obviously(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.get_photo_meli_certificate_obviously)
+
+    def brows_select_meli_card(self):
+        dialog = QFileDialog(filter="Images *.png ", caption="select a file")
+        print(dialog.getOpenFileName())
+
 
 
 if __name__ == "__main__":
