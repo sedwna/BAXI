@@ -74,6 +74,9 @@ class MainWindow:
         # go back page from get_machine_baxi_info page -------------------------------------------
         self.ui.pushButt_back_get_machine_baxi_info.clicked.connect(self.show_select_service)
         # --------------------------------------------------------------------------------------
+        # go to get_machine_baxi_woman_info page ------------------------------------------------------------
+        self.ui.pushButt_baxi_woman_select_service.clicked.connect(self.show_get_machine_baxi_woman_info)
+        # --------------------------------------------------------------------------------------
 
 
     def show(self):
@@ -128,6 +131,9 @@ class MainWindow:
 
     def show_get_machine_baxi_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_info)
+    def show_get_machine_baxi_woman_info(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_woman_info)
+
 
 
 if __name__ == "__main__":
