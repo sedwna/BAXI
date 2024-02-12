@@ -110,9 +110,7 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
 
     def show_accept_code_sign_up(self):
-        # get number and show in terminal:
-        print(self.ui.enter_number_sign_up.toPlainText())
-        # -----------------------------------------------------
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
 
     def show_select_driver_user(self):
@@ -120,10 +118,7 @@ class MainWindow:
 
     def show_get_flname_driver(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_driver)
-        # get fname, lname driver and show in terminal:
-        print(self.ui.fname.toPlainText())
-        print(self.ui.lname.toPlainText())
-        # -----------------------------------------------------
+
 
     def show_get_sex_birth_meli(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_sex_birth_meli)
@@ -148,9 +143,20 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_woman_info)
 
     def show_registration_successful(self):
+        # get number and show in terminal:
+        print(self.ui.enter_number_sign_up.toPlainText())
+        # -----------------------------------------------------
+        # get fname, lname driver and show in terminal:
+        print(self.ui.fname.toPlainText())
+        print(self.ui.lname.toPlainText())
+        # -----------------------------------------------------
+        print(self.ui.sex_get_sex_birth_meli.show())
+        print(self.ui.meli_get_sex_birth_meli.toPlainText())
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
 
     def exit_app(self):
+
         sys.exit()
 
 
