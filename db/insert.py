@@ -2,7 +2,7 @@ from datetime import date
 import mysql.connector
 
 def insert_into_db(dic):
-    conn = mysql.connector.connect(host='localhost',
+    conn = mysql.connector.connect(host=''192.168.1.181,
                                    user='root',
                                    password='assambalers',
                                    database='test',
