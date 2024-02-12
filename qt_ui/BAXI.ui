@@ -986,7 +986,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../image/machine_baxi_info/get_machine_baxi_info.png</pixmap>
+       <pixmap>../image/get_machine_baxi_info/get_machine_baxi_info.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_next_get_machine_baxi_info">
@@ -1066,8 +1066,8 @@
      <widget class="QTextEdit" name="machine_color_get_machine_baxi_info">
       <property name="geometry">
        <rect>
-        <x>193</x>
-        <y>200</y>
+        <x>195</x>
+        <y>185</y>
         <width>131</width>
         <height>31</height>
        </rect>
@@ -1093,7 +1093,7 @@
       <property name="geometry">
        <rect>
         <x>190</x>
-        <y>295</y>
+        <y>330</y>
         <width>141</width>
         <height>28</height>
        </rect>
@@ -1140,8 +1140,8 @@
      <widget class="QComboBox" name="machine_fuel_get_machine_baxi_info">
       <property name="geometry">
        <rect>
-        <x>27</x>
-        <y>295</y>
+        <x>30</x>
+        <y>330</y>
         <width>141</width>
         <height>28</height>
        </rect>
@@ -1169,6 +1169,94 @@
         <string/>
        </property>
       </item>
+     </widget>
+     <widget class="QTextEdit" name="two_digit_right_pelak_get_machine_baxi_info">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>250</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="three_digit_pelak_get_machine_baxi_info_2">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>250</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="alphabet_get_machine_baxi_info">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>250</y>
+        <width>61</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>الف</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ب</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ل</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ع</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ص</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ق</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>پ</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ی</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ث</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QTextEdit" name="two_digit_left_pelak_get_machine_baxi_info_3">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>250</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
      </widget>
     </widget>
    </widget>
