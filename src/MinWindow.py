@@ -84,8 +84,11 @@ class MainWindow:
         self.ui.pushButt_next_get_machine_baxi_info.clicked.connect(self.show_registration_successful)
         self.ui.pushButt_next_get_machine_baxi_woman_info.clicked.connect(self.show_registration_successful)
         # --------------------------------------------------------------------------------------
-        # go back to sign in page from registration_successful page ------------------------------------------------------------
+        # go back to sign in page from registration_successful page ---------------------------------------------
         self.ui.pushButt_back_to_sign_in_registration_successful.clicked.connect(self.show_sign_in)
+        # --------------------------------------------------------------------------------------
+        # exit app from registration_successful page ---------------------------------------------
+        self.ui.pushButt_exiet_registration_successful.clicked.connect(self.exit_app)
         # --------------------------------------------------------------------------------------
 
     def show(self):
@@ -146,6 +149,9 @@ class MainWindow:
 
     def show_registration_successful(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
+
+    def exit_app(self):
+        sys.exit()
 
 
 if __name__ == "__main__":

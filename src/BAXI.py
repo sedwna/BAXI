@@ -519,15 +519,10 @@ class Ui_BAXI(object):
         self.machine_color_get_machine_baxi_info.addItem("")
         self.machine_color_get_machine_baxi_info.addItem("")
         self.stackedWidget.addWidget(self.get_machine_baxi_info)
-        self.pushButt_next_get_machine_baxi_info_2 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButt_next_get_machine_baxi_info_2.setGeometry(QtCore.QRect(230, 240, 271, 29))
-        self.pushButt_next_get_machine_baxi_info_2.setText("")
-        self.pushButt_next_get_machine_baxi_info_2.setFlat(True)
-        self.pushButt_next_get_machine_baxi_info_2.setObjectName("pushButt_next_get_machine_baxi_info_2")
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(10)
+        self.stackedWidget.setCurrentIndex(5)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):

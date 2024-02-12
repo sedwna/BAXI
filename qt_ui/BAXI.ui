@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>10</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1626,22 +1626,6 @@
       </item>
      </widget>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="pushButt_next_get_machine_baxi_info_2">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>240</y>
-      <width>271</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
    </widget>
   </widget>
  </widget>
