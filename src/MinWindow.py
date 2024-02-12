@@ -2,9 +2,7 @@ import sys
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtWidgets import QMainWindow
 from PyQt6.QtWidgets import QFileDialog
-
 from BAXI import Ui_BAXI
-
 
 class MainWindow:
     def __init__(self):
@@ -152,7 +150,7 @@ class MainWindow:
         # -----------------------------------------------------
         print(self.ui.sex_get_sex_birth_meli.show())
         print(self.ui.meli_get_sex_birth_meli.toPlainText())
-
+        
         self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
 
     def exit_app(self):
