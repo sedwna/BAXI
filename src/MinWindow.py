@@ -80,6 +80,10 @@ class MainWindow:
         # go back page from get_machine_baxi_woman_info page -------------------------------------------
         self.ui.pushButt_back_get_machine_baxi_woman_info.clicked.connect(self.show_select_service)
         # --------------------------------------------------------------------------------------
+        # go to registration_successful page ------------------------------------------------------------
+        self.ui.pushButt_next_get_machine_baxi_info.clicked.connect(self.show_registration_successful)
+        self.ui.pushButt_next_get_machine_baxi_woman_info.clicked.connect(self.show_registration_successful)
+        # --------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
@@ -133,9 +137,12 @@ class MainWindow:
 
     def show_get_machine_baxi_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_info)
+
     def show_get_machine_baxi_woman_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_woman_info)
 
+    def show_registration_successful(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
 
 
 if __name__ == "__main__":
