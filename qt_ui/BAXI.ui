@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -310,6 +310,273 @@
       <item>
        <property name="text">
         <string>خانم</string>
+       </property>
+      </item>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="get_machine_baxi_bar_info">
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/get_machine_baxi_bar_info/get_machine_baxi_bar_info.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="two_digit_left_pelak_get_machine_baxi_bar_info">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>250</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="alphabet_get_machine_baxi_bar_info">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>250</y>
+        <width>61</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <item>
+       <property name="text">
+        <string>الف</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ب</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ل</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ع</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ص</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ق</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>پ</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ی</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ث</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QTextEdit" name="three_digit_pelak_get_machine_baxi_bar_info">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>250</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="two_digit_right_pelak_get_machine_baxi_bar_info">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>250</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="machine_name_get_machine_baxi_bar_info">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>110</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="machine_generate_year_get_machine_baxi_bar_info">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>110</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="machine_fuel_get_machine_baxi_bar_info">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>340</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <item>
+       <property name="text">
+        <string>بنزینی</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>گاز سوز</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>دوگانه سوز</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="machine_card_get_machine_baxi_bar_info">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>420</y>
+        <width>181</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_next_get_machine_baxi_bar_info">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>490</y>
+        <width>271</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_back_get_machine_baxi_bar_info">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>540</y>
+        <width>271</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="machine_capacity_get_machine_baxi_bar_info">
+      <property name="geometry">
+       <rect>
+        <x>193</x>
+        <y>345</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="machine_color_get_machine_baxi_bar_info">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>185</y>
+        <width>82</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <item>
+       <property name="text">
+        <string>آبی</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>سفید</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>قرمز</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>مشکی</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>خاکستری</string>
        </property>
       </item>
      </widget>
