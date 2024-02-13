@@ -13,3 +13,5 @@ def insert_into_db(values):
     conn.commit()
     cursor.close()
     conn.close()
+
+insert_into_db({'name', 'pedram'})
