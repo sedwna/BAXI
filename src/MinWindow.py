@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import QMainWindow
 from PyQt6.QtWidgets import QFileDialog
 from BAXI import Ui_BAXI
 
+
 class MainWindow:
     def __init__(self):
         self.main_win = QMainWindow()
@@ -92,6 +93,9 @@ class MainWindow:
         # go back page from get_machine_baxi_bar_info page -------------------------------------------
         self.ui.pushButt_back_get_machine_baxi_bar_info.clicked.connect(self.show_select_service)
         # --------------------------------------------------------------------------------------
+        # go to get_machine_baxi_bar_info page ------------------------------------------------------------
+        self.ui.pushButt_baxi_bar_select_service.clicked.connect(self.show_get_machine_baxi_bar_info)
+        # --------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
@@ -112,7 +116,6 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
 
     def show_accept_code_sign_up(self):
-
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
 
     def show_select_driver_user(self):
@@ -120,7 +123,6 @@ class MainWindow:
 
     def show_get_flname_driver(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_driver)
-
 
     def show_get_sex_birth_meli(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_sex_birth_meli)
@@ -154,12 +156,14 @@ class MainWindow:
         # -----------------------------------------------------
         print(self.ui.sex_get_sex_birth_meli.showNormal())
         print(self.ui.meli_get_sex_birth_meli.toPlainText())
-        
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
 
     def exit_app(self):
-
         sys.exit()
+
+    def show_get_machine_baxi_bar_info(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_bar_info)
 
 
 if __name__ == "__main__":
