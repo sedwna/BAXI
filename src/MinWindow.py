@@ -151,6 +151,13 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_woman_info)
 
     def show_registration_successful(self):
+        self.baxi_driver_ful_info()
+        self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
+
+    def exit_app(self):
+        sys.exit()
+
+    def baxi_driver_ful_info(self):
         # -----------------------------------------------------
         # get number and show in terminal:
         print("number: ", self.ui.enter_number_sign_up.toPlainText())
@@ -186,12 +193,6 @@ class MainWindow:
         print("machine fuel: ", self.ui.machine_fuel_get_machine_baxi_info.currentText())
         print("machine capacity: ", self.ui.machine_capacity_get_machine_baxi_info.currentText())
         # -----------------------------------------------------
-
-        # -----------------------------------------------------
-        self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
-
-    def exit_app(self):
-        sys.exit()
 
     def show_get_machine_baxi_bar_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_bar_info)
