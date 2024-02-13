@@ -89,6 +89,9 @@ class MainWindow:
         # exit app from registration_successful page ---------------------------------------------
         self.ui.pushButt_exiet_registration_successful.clicked.connect(self.exit_app)
         # --------------------------------------------------------------------------------------
+        # go back page from get_machine_baxi_bar_info page -------------------------------------------
+        self.ui.pushButt_back_get_machine_baxi_bar_info.clicked.connect(self.show_select_service)
+        # --------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
