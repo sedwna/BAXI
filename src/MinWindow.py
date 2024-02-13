@@ -190,6 +190,7 @@ class MainWindow:
         print("machine pelak: ", self.ui.two_digit_left_pelak_get_machine_baxi_info.toPlainText())
         print("machine pelak: ", self.ui.alphabet_get_machine_baxi_info.currentText())
         print("machine pelak: ", self.ui.three_digit_pelak_get_machine_baxi_info.toPlainText())
+        print("machine pelak: ", self.ui.two_digit_right_pelak_get_machine_baxi_info.toPlainText())
         print("machine fuel: ", self.ui.machine_fuel_get_machine_baxi_info.currentText())
         print("machine capacity: ", self.ui.machine_capacity_get_machine_baxi_info.currentText())
         # -----------------------------------------------------
