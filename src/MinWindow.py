@@ -117,9 +117,6 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.sign_in)
 
     def show_accept_code_sign_in(self):
-        # get number and show in terminal:
-        print(self.ui.enter_number_sign_in.toPlainText())
-        # -----------------------------------------------------
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
 
     def show_accept_code_sign_up(self):
@@ -139,7 +136,7 @@ class MainWindow:
 
     def brows_select_meli_card(self):
         dialog = QFileDialog(filter="Images *.png ", caption="select a file")
-        print(dialog.getOpenFileName())
+        # print(dialog.getOpenFileName())
 
     def show_get_shaba(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_shaba)
@@ -154,16 +151,43 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_woman_info)
 
     def show_registration_successful(self):
+        # -----------------------------------------------------
         # get number and show in terminal:
-        print(self.ui.enter_number_sign_up.toPlainText())
+        print("number: ", self.ui.enter_number_sign_up.toPlainText())
         # -----------------------------------------------------
         # get fname, lname driver and show in terminal:
-        print(self.ui.fname.toPlainText())
-        print(self.ui.lname.toPlainText())
+        print("fname: ", self.ui.fname.toPlainText())
+        print("lname: ", self.ui.lname.toPlainText())
         # -----------------------------------------------------
-        print(self.ui.sex_get_sex_birth_meli.showNormal())
-        print(self.ui.meli_get_sex_birth_meli.toPlainText())
+        # get birthday show in terminal:-----------------------
+        print("year: ", self.ui.year_get_sex_birth_meli.text())
+        print("month: ", self.ui.month_get_sex_birth_meli.text())
+        print("day: ", self.ui.day_get_sex_birth_meli.text())
+        # -----------------------------------------------------
+        # get sex show in terminal:----------------------------
+        print("sex: ", self.ui.sex_get_sex_birth_meli.currentText())
+        # -----------------------------------------------------
+        # get meli card number show in terminal:---------------
+        print("meli number: ", self.ui.meli_get_sex_birth_meli.toPlainText())
+        # -----------------------------------------------------
+        # get obviously show in terminal:---------------
+        print("obvioudly: ", self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText())
+        # -----------------------------------------------------
+        # get shaba number show in terminal:---------------
+        print("shaba number: ", self.ui.enter_shaba_number.toPlainText())
+        # -----------------------------------------------------
+        # get machine baxi info show in terminal:---------------
+        print("machine name: ", self.ui.machine_name_get_machine_baxi_info.toPlainText())
+        print("machine generate year: ", self.ui.machine_generate_year_get_machine_baxi_info.toPlainText())
+        print("machine color: ", self.ui.machine_color_get_machine_baxi_info.currentText())
+        print("machine pelak: ", self.ui.two_digit_left_pelak_get_machine_baxi_info.toPlainText())
+        print("machine pelak: ", self.ui.alphabet_get_machine_baxi_info.currentText())
+        print("machine pelak: ", self.ui.three_digit_pelak_get_machine_baxi_info.toPlainText())
+        print("machine fuel: ", self.ui.machine_fuel_get_machine_baxi_info.currentText())
+        print("machine capacity: ", self.ui.machine_capacity_get_machine_baxi_info.currentText())
+        # -----------------------------------------------------
 
+        # -----------------------------------------------------
         self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
 
     def exit_app(self):
@@ -174,7 +198,6 @@ class MainWindow:
 
     def show_get_motor_baxi_box_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_motor_baxi_box_info)
-
 
 
 if __name__ == "__main__":
