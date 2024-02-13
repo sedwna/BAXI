@@ -253,7 +253,7 @@
        <number>6</number>
       </property>
      </widget>
-     <widget class="QSpinBox" name="year__get_sex_birth_meli">
+     <widget class="QSpinBox" name="year_get_sex_birth_meli">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -642,11 +642,6 @@
       <item>
        <property name="text">
         <string>دوگانه سوز</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
        </property>
       </item>
      </widget>
@@ -1414,11 +1409,6 @@
         <string>دوگانه سوز</string>
        </property>
       </item>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
      </widget>
      <widget class="QComboBox" name="machine_color_get_machine_baxi_woman_info">
       <property name="geometry">
@@ -1924,11 +1914,6 @@
       <item>
        <property name="text">
         <string>دوگانه سوز</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string/>
        </property>
       </item>
      </widget>
