@@ -100,6 +100,9 @@ class MainWindow:
         # go back page from get_motor_baxi_box_info page -------------------------------------------
         self.ui.pushButt_back_get_motor_baxi_box_info.clicked.connect(self.show_select_service)
         # --------------------------------------------------------------------------------------
+        # go to get_motor_baxi_bbox_info page ------------------------------------------------------------
+        self.ui.pushButt_baxi_box_select_service.clicked.connect(self.show_get_motor_baxi_box_info)
+        # -------------------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
@@ -168,6 +171,10 @@ class MainWindow:
 
     def show_get_machine_baxi_bar_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_bar_info)
+
+    def show_get_motor_baxi_box_info(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.get_motor_baxi_box_info)
+
 
 
 if __name__ == "__main__":
