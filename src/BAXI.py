@@ -204,8 +204,6 @@ class Ui_BAXI(object):
         self.machine_fuel_get_machine_baxi_bar_info.addItem("")
         self.machine_fuel_get_machine_baxi_bar_info.addItem("")
         self.machine_fuel_get_machine_baxi_bar_info.addItem("")
-        self.machine_fuel_get_machine_baxi_bar_info.addItem("")
-        self.machine_fuel_get_machine_baxi_bar_info.setItemText(3, "")
         self.machine_card_get_machine_baxi_bar_info = QtWidgets.QPushButton(parent=self.get_machine_baxi_bar_info)
         self.machine_card_get_machine_baxi_bar_info.setGeometry(QtCore.QRect(140, 420, 181, 29))
         self.machine_card_get_machine_baxi_bar_info.setText("")
@@ -460,8 +458,6 @@ class Ui_BAXI(object):
         self.machine_fuel_get_machine_baxi_woman_info.addItem("")
         self.machine_fuel_get_machine_baxi_woman_info.addItem("")
         self.machine_fuel_get_machine_baxi_woman_info.addItem("")
-        self.machine_fuel_get_machine_baxi_woman_info.addItem("")
-        self.machine_fuel_get_machine_baxi_woman_info.setItemText(3, "")
         self.machine_color_get_machine_baxi_woman_info = QtWidgets.QComboBox(parent=self.get_machine_baxi_woman_info)
         self.machine_color_get_machine_baxi_woman_info.setGeometry(QtCore.QRect(240, 185, 82, 28))
         self.machine_color_get_machine_baxi_woman_info.setLayoutDirection(QtCore.Qt.LayoutDirection.RightToLeft)
@@ -612,8 +608,6 @@ class Ui_BAXI(object):
         self.machine_fuel_get_machine_baxi_info.addItem("")
         self.machine_fuel_get_machine_baxi_info.addItem("")
         self.machine_fuel_get_machine_baxi_info.addItem("")
-        self.machine_fuel_get_machine_baxi_info.addItem("")
-        self.machine_fuel_get_machine_baxi_info.setItemText(3, "")
         self.two_digit_right_pelak_get_machine_baxi_info = QtWidgets.QTextEdit(parent=self.get_machine_baxi_info)
         self.two_digit_right_pelak_get_machine_baxi_info.setGeometry(QtCore.QRect(290, 250, 31, 31))
         self.two_digit_right_pelak_get_machine_baxi_info.setObjectName("two_digit_right_pelak_get_machine_baxi_info")
@@ -650,7 +644,7 @@ class Ui_BAXI(object):
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):
