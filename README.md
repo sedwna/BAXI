@@ -21,5 +21,12 @@ https://app.diagrams.net/#Hsedwna%2FBAXI%2Fmain%2FEER%2FDiagram.drawio#%7B%22pag
 
 viwe design in figma:
 
+user panel:
+
 
 https://www.figma.com/file/VVgkoPjr2XQsAXT3FawZph/BAXI?type=design&node-id=149%3A350&mode=design&t=OCoCOrdzqbq9VW2e-1 
+
+Admin panel:
+
+
+https://www.figma.com/file/f16EVeUFA5VmUyYbdSXhBd/BAXI_Admin?type=design&node-id=0%3A1&mode=design&t=IeB6MJW0liNXcbxe-1
