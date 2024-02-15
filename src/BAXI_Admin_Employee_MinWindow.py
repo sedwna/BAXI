@@ -14,11 +14,11 @@ class MainWindow:
         self.show_loading()
         # --------------------------------------------------------------------------------
         # go to sign in page--------------------------------------------------------------
-        self.ui.pushButt_logo.clicked.connect(self.show_sign_up)
+        self.ui.pushButt_loading.clicked.connect(self.show_sign_in_admin)
         # --------------------------------------------------------------------------------
         # switch between login and signin page--------------------------------------------
-        self.ui.pushButt_sign_in.clicked.connect(self.show_sign_in)
-        self.ui.pushButt_sign_up.clicked.connect(self.show_sign_up)
+        self.ui.pushButt_admin.clicked.connect(self.show_sign_in_admin)
+        self.ui.pushButt_employee.clicked.connect(self.show_sign_in_employee)
         # --------------------------------------------------------------------------------
 
 
@@ -28,11 +28,11 @@ class MainWindow:
     def show_loading(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.loading)
 
-    def show_sign_up(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.sign_up)
+    def show_sign_in_admin(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.admin_sign_in)
 
-    def show_sign_in(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.sign_in)
+    def show_sign_in_employee(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_sign_in)
 
 
 
