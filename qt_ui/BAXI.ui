@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>12</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -175,14 +175,14 @@
      <widget class="QTextEdit" name="meli_get_sex_birth_meli">
       <property name="geometry">
        <rect>
-        <x>140</x>
+        <x>185</x>
         <y>360</y>
-        <width>171</width>
-        <height>31</height>
+        <width>141</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Box</enum>
       </property>
      </widget>
      <widget class="QSpinBox" name="day_get_sex_birth_meli">
@@ -350,14 +350,14 @@
      <widget class="QTextEdit" name="motor_capacity_get_motor_baxi_bar_info_2">
       <property name="geometry">
        <rect>
-        <x>140</x>
+        <x>160</x>
         <y>290</y>
         <width>41</width>
         <height>31</height>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Panel</enum>
       </property>
      </widget>
      <widget class="QComboBox" name="motor_color_get_motor_baxi_box_info">
@@ -408,7 +408,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Panel</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="five_digit_pelak_get_motor_baxi_box_info">
@@ -421,7 +421,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Panel</enum>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_next_get_motor_baxi_box_info">
@@ -462,11 +462,11 @@
         <x>190</x>
         <y>133</y>
         <width>131</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Box</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="motor_generate_year_get_motor_baxi_box_info">
@@ -475,11 +475,11 @@
         <x>30</x>
         <y>133</y>
         <width>131</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Box</enum>
       </property>
      </widget>
     </widget>
@@ -508,6 +508,9 @@
         <width>31</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
       </property>
      </widget>
      <widget class="QComboBox" name="alphabet_get_machine_baxi_bar_info">
@@ -578,7 +581,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::Panel</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="two_digit_right_pelak_get_machine_baxi_bar_info">
@@ -590,6 +593,9 @@
         <height>31</height>
        </rect>
       </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
      </widget>
      <widget class="QTextEdit" name="machine_name_get_machine_baxi_bar_info">
       <property name="geometry">
@@ -597,11 +603,11 @@
         <x>190</x>
         <y>110</y>
         <width>131</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Box</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="machine_generate_year_get_machine_baxi_bar_info">
@@ -610,11 +616,11 @@
         <x>30</x>
         <y>110</y>
         <width>131</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Box</enum>
       </property>
      </widget>
      <widget class="QComboBox" name="machine_fuel_get_machine_baxi_bar_info">
@@ -703,7 +709,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Panel</enum>
       </property>
      </widget>
      <widget class="QComboBox" name="machine_color_get_machine_baxi_bar_info">
@@ -768,7 +774,7 @@
         <x>70</x>
         <y>240</y>
         <width>221</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -781,7 +787,7 @@
         <x>70</x>
         <y>320</y>
         <width>221</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -911,10 +917,10 @@
      <widget class="QTextEdit" name="fname_get_flname_driver">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>230</y>
+        <x>90</x>
+        <y>225</y>
         <width>221</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -924,10 +930,10 @@
      <widget class="QTextEdit" name="lname_get_flname_driver">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>90</x>
         <y>290</y>
         <width>221</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -1305,7 +1311,7 @@
      <widget class="QPushButton" name="meli_get_photo_meli_certificate_obviously">
       <property name="geometry">
        <rect>
-        <x>230</x>
+        <x>237</x>
         <y>240</y>
         <width>83</width>
         <height>29</height>
@@ -1315,13 +1321,13 @@
        <string/>
       </property>
       <property name="flat">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="certificate_get_photo_meli_certificate_obviously">
       <property name="geometry">
        <rect>
-        <x>230</x>
+        <x>237</x>
         <y>320</y>
         <width>83</width>
         <height>29</height>
@@ -1331,7 +1337,7 @@
        <string/>
       </property>
       <property name="flat">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_next_get_photo_meli_certificate_obviously">
@@ -1399,6 +1405,9 @@
         <height>31</height>
        </rect>
       </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
      </widget>
      <widget class="QTextEdit" name="two_digit_left_pelak_get_machine_baxi_woman_info">
       <property name="geometry">
@@ -1408,6 +1417,9 @@
         <width>31</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="three_digit_pelak_get_machine_baxi_woman_info">
@@ -1420,7 +1432,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::Panel</enum>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_next_get_machine_baxi_woman_info">
@@ -1461,11 +1473,11 @@
         <x>190</x>
         <y>110</y>
         <width>131</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Box</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="machine_generate_year_get_machine_baxi_woman_info">
@@ -1474,11 +1486,11 @@
         <x>30</x>
         <y>110</y>
         <width>131</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Box</enum>
       </property>
      </widget>
      <widget class="QComboBox" name="machine_fuel_get_machine_baxi_woman_info">
@@ -1744,13 +1756,13 @@
       <property name="geometry">
        <rect>
         <x>65</x>
-        <y>275</y>
+        <y>270</y>
         <width>251</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Box</enum>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_next_get_shaba">
@@ -1920,11 +1932,11 @@
         <x>190</x>
         <y>110</y>
         <width>131</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Box</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="machine_generate_year_get_machine_baxi_info">
@@ -1933,11 +1945,11 @@
         <x>30</x>
         <y>110</y>
         <width>131</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Box</enum>
       </property>
      </widget>
      <widget class="QComboBox" name="machine_capacity_get_machine_baxi_info">
@@ -2024,6 +2036,9 @@
         <width>31</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="three_digit_pelak_get_machine_baxi_info">
