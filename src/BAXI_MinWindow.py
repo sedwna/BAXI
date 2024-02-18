@@ -2,11 +2,13 @@ import sys
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtWidgets import QMainWindow
 from PyQt6.QtWidgets import QFileDialog
-from BAXI import Ui_BAXI
-from PyQt6.QtWebEngineWidgets import QWebEngineView
 
-class MainWindow:
+from BAXI import Ui_BAXI
+
+
+class MainWindow():
     def __init__(self):
+        super().__init__()
         self.main_win = QMainWindow()
         self.ui = Ui_BAXI()
         self.ui.setupUi(self.main_win)
@@ -106,10 +108,12 @@ class MainWindow:
         # go back from get_flname_user page ---------------------------------------------------------------
         self.ui.pushButt_back_get_flname_user.clicked.connect(self.show_select_driver_user)
         # -------------------------------------------------------------------------------------------------
-        # go to get_flname_user page ---------------------------------------------------------------------
+
         self.ui.pushButt_select_user_select_driver_user.clicked.connect(self.show_get_flname_user)
         # -------------------------------------------------------------------------------------------------
-
+        # go to show_user_home page ---------------------------------------------------------------------
+        self.ui.pushButt_next_get_flname_user.clicked.connect(self.show_user_home)
+        # -------------------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
@@ -166,6 +170,9 @@ class MainWindow:
 
     def show_get_flname_user(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_user)
+
+    def show_user_home(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
 
     def baxi_driver_ful_info(self):
         # -----------------------------------------------------

@@ -533,6 +533,19 @@ class Ui_BAXI(object):
         self.alphabet_get_machine_baxi_woman_info.addItem("")
         self.alphabet_get_machine_baxi_woman_info.addItem("")
         self.stackedWidget.addWidget(self.get_machine_baxi_woman_info)
+        self.user_home = QtWidgets.QWidget()
+        self.user_home.setObjectName("user_home")
+        self.label_18 = QtWidgets.QLabel(parent=self.user_home)
+        self.label_18.setGeometry(QtCore.QRect(0, 0, 360, 640))
+        self.label_18.setText("")
+        self.label_18.setPixmap(QtGui.QPixmap("../image/user_home/user_home.png"))
+        self.label_18.setObjectName("label_18")
+        self.pushButton = QtWidgets.QPushButton(parent=self.user_home)
+        self.pushButton.setGeometry(QtCore.QRect(152, 407, 51, 16))
+        self.pushButton.setText("")
+        self.pushButton.setFlat(True)
+        self.pushButton.setObjectName("pushButton")
+        self.stackedWidget.addWidget(self.user_home)
         self.registration_successful = QtWidgets.QWidget()
         self.registration_successful.setObjectName("registration_successful")
         self.label_14 = QtWidgets.QLabel(parent=self.registration_successful)
@@ -681,7 +694,7 @@ class Ui_BAXI(object):
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(12)
+        self.stackedWidget.setCurrentIndex(13)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):
