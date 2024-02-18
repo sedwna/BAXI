@@ -23,6 +23,9 @@ class MainWindow:
         # go to sign in page from admin_panel page -----------------------------------------
         self.ui.pushButt_go_to_sign_in_admin_panel.clicked.connect(self.show_sign_in_admin)
         # --------------------------------------------------------------------------------
+        # go to show_admin_panel page -----------------------------------------
+        self.ui.pushBut_admin_sign_in.clicked.connect(self.show_admin_panel)
+        # --------------------------------------------------------------------------------
 
 
     def show(self):
@@ -37,6 +40,8 @@ class MainWindow:
     def show_sign_in_employee(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_sign_in)
 
+    def show_admin_panel(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
