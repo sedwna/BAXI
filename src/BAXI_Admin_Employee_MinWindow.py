@@ -20,6 +20,10 @@ class MainWindow:
         self.ui.pushButt_admin.clicked.connect(self.show_sign_in_admin)
         self.ui.pushButt_employee.clicked.connect(self.show_sign_in_employee)
         # --------------------------------------------------------------------------------
+        # go to sign in page from admin_panel page -----------------------------------------
+        self.ui.pushButt_go_to_sign_in_admin_panel.clicked.connect(self.show_sign_in_admin)
+        # --------------------------------------------------------------------------------
+
 
     def show(self):
         self.main_win.show()
