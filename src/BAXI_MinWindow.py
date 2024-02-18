@@ -85,7 +85,7 @@ class MainWindow:
         self.ui.pushButt_next_get_machine_baxi_bar_info.clicked.connect(self.show_registration_successful)
         self.ui.pushButt_next_get_motor_baxi_box_info.clicked.connect(self.show_registration_successful)
         # --------------------------------------------------------------------------------------
-        # go back to sign in page from registration_successful page ---------------------------------------------
+        # go back to sign in page from registration_successful page -----------------------------------------
         self.ui.pushButt_back_to_sign_in_registration_successful.clicked.connect(self.show_sign_in)
         # --------------------------------------------------------------------------------------
         # exit app from registration_successful page ---------------------------------------------
@@ -102,6 +102,9 @@ class MainWindow:
         # --------------------------------------------------------------------------------------
         # go to get_motor_baxi_bbox_info page ------------------------------------------------------------
         self.ui.pushButt_baxi_box_select_service.clicked.connect(self.show_get_motor_baxi_box_info)
+        # -------------------------------------------------------------------------------------------------
+        # go back from get_flname_user page ---------------------------------------------------------------
+        self.ui.pushButt_back_get_flname_user.clicked.connect(self.show_select_driver_user)
         # -------------------------------------------------------------------------------------------------
 
     def show(self):
