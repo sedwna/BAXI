@@ -21,7 +21,6 @@ class MainWindow:
         self.ui.pushButt_employee.clicked.connect(self.show_sign_in_employee)
         # --------------------------------------------------------------------------------
 
-
     def show(self):
         self.main_win.show()
 
@@ -33,8 +32,6 @@ class MainWindow:
 
     def show_sign_in_employee(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_sign_in)
-
-
 
 
 if __name__ == "__main__":
