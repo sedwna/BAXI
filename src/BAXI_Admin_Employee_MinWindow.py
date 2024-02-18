@@ -26,7 +26,9 @@ class MainWindow:
         # go to show_admin_panel page -----------------------------------------
         self.ui.pushBut_admin_sign_in.clicked.connect(self.show_admin_panel)
         # --------------------------------------------------------------------------------
-
+        # exit from show_admin_panel page -----------------------------------------
+        self.ui.pushButt_exit_admin_panel.clicked.connect(self.exit_app)
+        # --------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
@@ -42,6 +44,10 @@ class MainWindow:
 
     def show_admin_panel(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel)
+
+    def exit_app(self):
+        sys.exit()
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
