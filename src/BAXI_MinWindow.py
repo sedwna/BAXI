@@ -27,8 +27,8 @@ class MainWindow:
         # go to select driver user page---------------------------------------------------
         self.ui.pushButt_accept_sign_up_code.clicked.connect(self.show_select_driver_user)
         # ---------------------------------------------------------------------------------
-        # log in as driver -----------------------------------------------------------------
-        self.ui.pushButt_select_driver.clicked.connect(self.show_get_flname_driver)
+        # sign up as driver -----------------------------------------------------------------
+        self.ui.pushButt_select_driver_select_driver_user.clicked.connect(self.show_get_flname_driver)
         # ---------------------------------------------------------------------------------
         # go back page from fl name driver page -----------------------------------------------
         self.ui.pushButt_back_get_flname_driver.clicked.connect(self.show_select_driver_user)
@@ -106,6 +106,9 @@ class MainWindow:
         # go back from get_flname_user page ---------------------------------------------------------------
         self.ui.pushButt_back_get_flname_user.clicked.connect(self.show_select_driver_user)
         # -------------------------------------------------------------------------------------------------
+        # go to get_flname_user page ---------------------------------------------------------------------
+        self.ui.pushButt_select_user_select_driver_user.clicked.connect(self.show_get_flname_user)
+        # -------------------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
@@ -160,14 +163,17 @@ class MainWindow:
     def exit_app(self):
         sys.exit()
 
+    def show_get_flname_user(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_user)
+
     def baxi_driver_ful_info(self):
         # -----------------------------------------------------
         # get number and show in terminal:
         print("number: ", self.ui.enter_number_sign_up.toPlainText())
         # -----------------------------------------------------
         # get fname, lname driver and show in terminal:
-        print("fname: ", self.ui.fname.toPlainText())
-        print("lname: ", self.ui.lname.toPlainText())
+        print("fname: ", self.ui.fname_get_flname_driver.toPlainText())
+        print("lname: ", self.ui.lname_get_flname_driver.toPlainText())
         # -----------------------------------------------------
         # get birthday show in terminal:-----------------------
         print("year: ", self.ui.year_get_sex_birth_meli.text())
