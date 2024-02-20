@@ -11,10 +11,12 @@ class MainWindow():
     def __init__(self):
         super().__init__()
         self.main_win = QMainWindow()
+
         self.ui = Ui_BAXI()
         self.ui.setupUi(self.main_win)
 
         self.mp = MapWindow()
+        self.mp.setupUi(self.main_win)
 
 
         # waiting page -------------------------------------------------------------------
@@ -177,8 +179,9 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_user)
 
     def show_user_home(self):
-        # while(self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)):
-        self.mp.show()
+        self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
+
+        self.ui.stackedWidget.setCurrentWidget(self.mp.show())
 
 
     def baxi_driver_ful_info(self):
