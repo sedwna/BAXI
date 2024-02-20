@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import QMainWindow
 from PyQt6.QtWidgets import QFileDialog
 
 from BAXI import Ui_BAXI
+from show_map import MapWindow
 
 
 class MainWindow():
@@ -12,6 +13,10 @@ class MainWindow():
         self.main_win = QMainWindow()
         self.ui = Ui_BAXI()
         self.ui.setupUi(self.main_win)
+
+        self.mp = MapWindow()
+
+
         # waiting page -------------------------------------------------------------------
         self.show_loading()
         # --------------------------------------------------------------------------------
@@ -172,7 +177,9 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_user)
 
     def show_user_home(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
+        # while(self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)):
+        self.mp.show()
+
 
     def baxi_driver_ful_info(self):
         # -----------------------------------------------------
@@ -223,5 +230,6 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     main_win = MainWindow()
     ui = Ui_BAXI()
+    mp = MapWindow()
     main_win.show()
     sys.exit(app.exec())
