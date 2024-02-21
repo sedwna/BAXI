@@ -121,7 +121,10 @@ class MainWindow:
         # -------------------------------------------------------------------------------------------------------------------------------------
         # go to employee_panel from employee_panel_authentication_successful ---------------------------------------------------
         self.ui.pushButt_go_to_employee_panel_employee_panel_authentication_successful.clicked.connect(self.show_employee_panel)
-        # -------------------------------------------------------------------------------------------------------------------------------------
+        # ----------------------------------------------------------------------------------------------------------------------
+        # go to employee_panel from employee_panel_authentication_rejected ---------------------------------------------------
+        self.ui.pushButt_go_to_employee_panel_employee_panel_authentication_rejected.clicked.connect(self.show_employee_panel)
+        # --------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -170,8 +173,7 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_2)
 
     def show_employee_panel_authentication_rejected(self):
-        #not ready dist page yet
-        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_1)#(self.ui.employee_panel_authentication_rejected)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_rejected)
 
 
 if __name__ == "__main__":

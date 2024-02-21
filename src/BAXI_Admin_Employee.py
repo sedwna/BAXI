@@ -147,6 +147,19 @@ class Ui_BAXI_Admin_Employee(object):
         self.pushButt_go_to_employee_panel_employee_panel_authentication_successful.setFlat(True)
         self.pushButt_go_to_employee_panel_employee_panel_authentication_successful.setObjectName("pushButt_go_to_employee_panel_employee_panel_authentication_successful")
         self.stackedWidget.addWidget(self.employee_panel_authentication_successful)
+        self.employee_panel_authentication_rejected = QtWidgets.QWidget()
+        self.employee_panel_authentication_rejected.setObjectName("employee_panel_authentication_rejected")
+        self.label_13 = QtWidgets.QLabel(parent=self.employee_panel_authentication_rejected)
+        self.label_13.setGeometry(QtCore.QRect(0, 0, 360, 640))
+        self.label_13.setText("")
+        self.label_13.setPixmap(QtGui.QPixmap("../image/admin_eployee_panel/employee_panel_authentication_rejected/employee_panel_authentication_rejected.png"))
+        self.label_13.setObjectName("label_13")
+        self.pushButt_go_to_employee_panel_employee_panel_authentication_rejected = QtWidgets.QPushButton(parent=self.employee_panel_authentication_rejected)
+        self.pushButt_go_to_employee_panel_employee_panel_authentication_rejected.setGeometry(QtCore.QRect(135, 584, 91, 24))
+        self.pushButt_go_to_employee_panel_employee_panel_authentication_rejected.setText("")
+        self.pushButt_go_to_employee_panel_employee_panel_authentication_rejected.setFlat(True)
+        self.pushButt_go_to_employee_panel_employee_panel_authentication_rejected.setObjectName("pushButt_go_to_employee_panel_employee_panel_authentication_rejected")
+        self.stackedWidget.addWidget(self.employee_panel_authentication_rejected)
         self.admin_panel = QtWidgets.QWidget()
         self.admin_panel.setObjectName("admin_panel")
         self.label_4 = QtWidgets.QLabel(parent=self.admin_panel)
@@ -512,7 +525,7 @@ class Ui_BAXI_Admin_Employee(object):
         BAXI_Admin_Employee.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI_Admin_Employee)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(4)
         QtCore.QMetaObject.connectSlotsByName(BAXI_Admin_Employee)
 
     def retranslateUi(self, BAXI_Admin_Employee):
