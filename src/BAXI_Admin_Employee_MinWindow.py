@@ -91,17 +91,19 @@ class MainWindow:
         self.ui.pushButt_go_to_employee_panel_employee_panel_authentication_request.clicked.connect(self.show_employee_panel)
         # -------------------------------------------------------------------------------------------------------------------
         # go to employee_panel_authentication from employee_panel_authentication_request --------------------------------------------------------------------
-        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_1.clicked.connect(self.show_employee_panel_authentication)
-        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_2.clicked.connect(self.show_employee_panel_authentication)
-        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_3.clicked.connect(self.show_employee_panel_authentication)
+        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_1.clicked.connect(self.show_employee_panel_authentication_1)
+        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_2.clicked.connect(self.show_employee_panel_authentication_1)
+        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_3.clicked.connect(self.show_employee_panel_authentication_1)
         # ---------------------------------------------------------------------------------------------------------------------------------------------------
         # go to employee_panel_authentication_request from employee_panel_authentication ---------------------------------------------------
         self.ui.pushButt_go_to_employee_panel_authentication_request_employee_panel_authentication.clicked.connect(self.show_employee_panel_authentication_request)
         # ----------------------------------------------------------------------------------------------------------------------------------
         # go to employee_panel_authentication_successful from employee_panel_authentication ---------------------------------------------------
-        self.ui.pushButt_go_to_employee_panel_authentication_request_employee_panel_authentication_2.clicked.connect(self.show_employee_panel_authentication_successful)
+        self.ui.pushButt_go_to_employee_panel_authentication_successful_employee_panel_authentication.clicked.connect(self.show_employee_panel_authentication_successful)
         # -------------------------------------------------------------------------------------------------------------------------------------
-
+        # go to employee_panel_authentication_successful from employee_panel_authentication ---------------------------------------------------
+        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication.clicked.connect(self.show_employee_panel_authentication_2)
+        # -------------------------------------------------------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
@@ -134,8 +136,7 @@ class MainWindow:
 
     def show_employee_panel(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)
-    def show_employee_panel_authentication(self):
-        #not ready yet the dest page
+    def show_employee_panel_authentication_1(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
     def show_employee_panel_authentication_request(self):
@@ -144,7 +145,9 @@ class MainWindow:
     def show_employee_panel_authentication_successful(self):
         #dest page not ready yet
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)#(self.ui.employee_panel_authentication_successful)
-
+    def show_employee_panel_authentication_2(self):
+        #dest page not ready yet
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)#(self.ui.employee_panel_authentication)
 
 
 

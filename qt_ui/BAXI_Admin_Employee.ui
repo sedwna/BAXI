@@ -289,7 +289,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_request_employee_panel_authentication_2">
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_successful_employee_panel_authentication">
       <property name="geometry">
        <rect>
         <x>214</x>
