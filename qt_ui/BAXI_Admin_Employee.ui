@@ -72,7 +72,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="employee_panel_authentication">
+    <widget class="QWidget" name="employee_panel_authentication_1">
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
@@ -86,7 +86,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../image/admin_eployee_panel/employee_panel_authentication/employee_panel_authentication.png</pixmap>
+       <pixmap>../image/admin_eployee_panel/employee_panel_authentication_1/employee_panel_authentication_1.png</pixmap>
       </property>
      </widget>
      <widget class="QTextEdit" name="get_first_name_employee_panel_authentication">

@@ -150,7 +150,7 @@ class MainWindow:
     def show_employee_panel(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)
     def show_employee_panel_authentication_1(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_1)
 
     def show_employee_panel_authentication_request(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)
