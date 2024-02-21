@@ -68,6 +68,8 @@ class MainWindow:
         # -----------------------------------------------------------
 
 
+
+
     def show(self):
         self.main_win.show()
 
@@ -87,8 +89,7 @@ class MainWindow:
         sys.exit()
 
     def show_admin_panel_recruitment_successful(self):
-        #page not already yet
-        self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel_recruitment_sec)#(self.ui.show_admin_panel_recruitment_successful)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.pushButt_go_to_admin_panel_admin_panel_recruitment_successful)
 
 
 if __name__ == "__main__":
