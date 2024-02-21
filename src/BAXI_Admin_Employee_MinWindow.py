@@ -81,7 +81,9 @@ class MainWindow:
         # go to employee_sign_in from employee_panel -----------------------------------------------------
         self.ui.pushButt_go_to_employee_sign_in_employee_panel.clicked.connect(self.show_employee_sign_in)
         # ------------------------------------------------------------------------------------------------
-
+        # go to employee_panel_authentication_request from employee_panel -----------------------------------------------------
+        self.ui.pushButt_go_to_employee_panel_authentication_request_employee_panel.clicked.connect(self.show_employee_panel_authentication_request)
+        # ------------------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
@@ -109,6 +111,9 @@ class MainWindow:
 
     def show_admin_panel_recruitment(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel_recruitment)
+    def show_employee_panel_authentication_request(self):
+        #not define employee_panel_authentication_request yet
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)#(self.ui.employee_panel_authentication_request)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
