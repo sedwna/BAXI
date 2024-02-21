@@ -20,15 +20,27 @@ class MainWindow:
         self.ui.pushButt_admin.clicked.connect(self.show_sign_in_admin)
         self.ui.pushButt_employee.clicked.connect(self.show_sign_in_employee)
         # --------------------------------------------------------------------------------
-        # go to sign in page from admin_panel page -----------------------------------------
+        # go to sign in page from admin_panel page ----------------------------------------
         self.ui.pushButt_go_to_sign_in_admin_panel.clicked.connect(self.show_sign_in_admin)
-        # --------------------------------------------------------------------------------
-        # go to show_admin_panel page -----------------------------------------
+        # ---------------------------------------------------------------------------------
+        # go to show_admin_panel page --------------------------------------
         self.ui.pushBut_admin_sign_in.clicked.connect(self.show_admin_panel)
-        # --------------------------------------------------------------------------------
-        # exit from show_admin_panel page -----------------------------------------
+        # ------------------------------------------------------------------
+        # exit from show_admin_panel page ------------------------------
         self.ui.pushButt_exit_admin_panel.clicked.connect(self.exit_app)
-        # --------------------------------------------------------------------------------
+        # --------------------------------------------------------------
+        # go to admin_panel_recruitment_successful page ----------------------------------------------------------------
+        self.ui.pushButt_estekhdam_admin_panel_recruitment.clicked.connect(self.show_admin_panel_recruitment_successful)
+        # --------------------------------------------------------------------------------------------------------------
+        # go to admin_panel page -----------------------------------------------------------
+        self.ui.pushButt_back_admin_panel_recruitment.clicked.connect(self.show_admin_panel)
+        # ----------------------------------------------------------------------------------
+        # upload degree of education ----------------------------------------------
+        self.ui.pushButt_upload_education_admin_panel_recruitment.clicked.connect()
+        # -------------------------------------------------------------------------
+        # upload Profile photo -------------------------------------------------------
+        self.ui.pushButt_upload_profilePhoto_admin_panel_recruitment.clicked.connect()
+        # ----------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
@@ -47,6 +59,10 @@ class MainWindow:
 
     def exit_app(self):
         sys.exit()
+
+    def show_admin_panel_recruitment_successful(self):
+        #page not already yet
+        self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel_recruitment)#(self.ui.show_admin_panel_recruitment_successful)
 
 
 if __name__ == "__main__":
