@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -899,7 +899,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushBut_employee_sign_in">
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_employee_sign_in">
       <property name="geometry">
        <rect>
         <x>210</x>

@@ -296,11 +296,11 @@ class Ui_BAXI_Admin_Employee(object):
         self.pushButt_admin.setText("")
         self.pushButt_admin.setFlat(True)
         self.pushButt_admin.setObjectName("pushButt_admin")
-        self.pushBut_employee_sign_in = QtWidgets.QPushButton(parent=self.employee_sign_in)
-        self.pushBut_employee_sign_in.setGeometry(QtCore.QRect(210, 425, 91, 31))
-        self.pushBut_employee_sign_in.setText("")
-        self.pushBut_employee_sign_in.setFlat(True)
-        self.pushBut_employee_sign_in.setObjectName("pushBut_employee_sign_in")
+        self.pushButt_go_to_employee_panel_employee_sign_in = QtWidgets.QPushButton(parent=self.employee_sign_in)
+        self.pushButt_go_to_employee_panel_employee_sign_in.setGeometry(QtCore.QRect(210, 425, 91, 31))
+        self.pushButt_go_to_employee_panel_employee_sign_in.setText("")
+        self.pushButt_go_to_employee_panel_employee_sign_in.setFlat(True)
+        self.pushButt_go_to_employee_panel_employee_sign_in.setObjectName("pushButt_go_to_employee_panel_employee_sign_in")
         self.get_id_employee_sign_in = QtWidgets.QTextEdit(parent=self.employee_sign_in)
         self.get_id_employee_sign_in.setGeometry(QtCore.QRect(93, 219, 211, 31))
         self.get_id_employee_sign_in.setAutoFillBackground(True)
@@ -370,7 +370,7 @@ class Ui_BAXI_Admin_Employee(object):
         BAXI_Admin_Employee.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI_Admin_Employee)
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(5)
         QtCore.QMetaObject.connectSlotsByName(BAXI_Admin_Employee)
 
     def retranslateUi(self, BAXI_Admin_Employee):

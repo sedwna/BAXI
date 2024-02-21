@@ -85,7 +85,7 @@ class MainWindow:
         self.ui.pushButt_go_to_employee_panel_authentication_request_employee_panel.clicked.connect(self.show_employee_panel_authentication_request)
         # ------------------------------------------------------------------------------------------------------------------------------------------
         # go to employee_sign_in from employee_panel -----------------------------------------------------
-        self.ui.pushButt_go_to_employee_sign_in_employee_panel.clicked.connect(self.show_employee_panel)
+        self.ui.pushButt_go_to_employee_panel_employee_sign_in.clicked.connect(self.show_employee_panel)
         # ------------------------------------------------------------------------------------------------
 
 
