@@ -857,6 +857,88 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="employee_panel_authentication_request">
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/employee_panel_authentication_request/employee_panel_authentication_request.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_1">
+      <property name="geometry">
+       <rect>
+        <x>24</x>
+        <y>143</y>
+        <width>311</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_2">
+      <property name="geometry">
+       <rect>
+        <x>24</x>
+        <y>270</y>
+        <width>311</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_3">
+      <property name="geometry">
+       <rect>
+        <x>24</x>
+        <y>210</y>
+        <width>311</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_4">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>580</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="employee_sign_in">
      <widget class="QLabel" name="label_3">
       <property name="geometry">
