@@ -44,6 +44,28 @@ class MainWindow:
         # go to admin_panel page ------------------------------------------------------------------
         self.ui.pushButt_go_to_admin_panel_admin_panel_query.clicked.connect(self.show_admin_panel)
         # -----------------------------------------------------------------------------------------
+        # queris ----------------------------------------------------
+        self.ui.pushButt_query_1_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_2_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_3_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_4_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_5_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_6_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_7_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_8_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_9_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_10_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_11_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_12_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_13_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_14_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_15_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_16_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_17_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_18_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_19_admin_panel_query.clicked.connect()
+        self.ui.pushButt_query_20_admin_panel_query.clicked.connect()
+        # -----------------------------------------------------------
 
 
     def show(self):
