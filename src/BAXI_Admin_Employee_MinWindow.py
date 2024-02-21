@@ -87,10 +87,14 @@ class MainWindow:
         # go to employee_sign_in from employee_panel -----------------------------------------------------
         self.ui.pushButt_go_to_employee_panel_employee_sign_in.clicked.connect(self.show_employee_panel)
         # ------------------------------------------------------------------------------------------------
-        # go to employee_panel from employee_panel_authentication_request -----------------------------------------------------
+        # go to employee_panel from employee_panel_authentication_request ---------------------------------------------------
         self.ui.pushButt_go_to_employee_panel_employee_panel_authentication_request.clicked.connect(self.show_employee_panel)
-        # ------------------------------------------------------------------------------------------------
-
+        # -------------------------------------------------------------------------------------------------------------------
+        # go to employee_panel_authentication from employee_panel_authentication_request --------------------------------------------------------------------
+        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_1.clicked.connect(self.show_employee_panel_authentication)
+        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_2.clicked.connect(self.show_employee_panel_authentication)
+        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_3.clicked.connect(self.show_employee_panel_authentication)
+        # ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -125,6 +129,9 @@ class MainWindow:
 
     def show_employee_panel(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)
+    def show_employee_panel_authentication(self):
+        #not ready yet the dest page
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)#(self.ui.employee_panel_authentication)
 
 
 
