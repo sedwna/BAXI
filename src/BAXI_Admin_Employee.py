@@ -268,6 +268,19 @@ class Ui_BAXI_Admin_Employee(object):
         self.pushButt_query_20_admin_panel_query.setFlat(True)
         self.pushButt_query_20_admin_panel_query.setObjectName("pushButt_query_20_admin_panel_query")
         self.stackedWidget.addWidget(self.admin_panel_query)
+        self.admin_panel_recruitment_successful = QtWidgets.QWidget()
+        self.admin_panel_recruitment_successful.setObjectName("admin_panel_recruitment_successful")
+        self.label_7 = QtWidgets.QLabel(parent=self.admin_panel_recruitment_successful)
+        self.label_7.setGeometry(QtCore.QRect(0, 0, 360, 640))
+        self.label_7.setText("")
+        self.label_7.setPixmap(QtGui.QPixmap("../image/admin_eployee_panel/admin_panel_recruitment_successful/admin_panel_recruitment_successful.png"))
+        self.label_7.setObjectName("label_7")
+        self.pushButt_go_to_admin_panel_admin_panel_recruitment_successful = QtWidgets.QPushButton(parent=self.admin_panel_recruitment_successful)
+        self.pushButt_go_to_admin_panel_admin_panel_recruitment_successful.setGeometry(QtCore.QRect(140, 585, 81, 24))
+        self.pushButt_go_to_admin_panel_admin_panel_recruitment_successful.setText("")
+        self.pushButt_go_to_admin_panel_admin_panel_recruitment_successful.setFlat(True)
+        self.pushButt_go_to_admin_panel_admin_panel_recruitment_successful.setObjectName("pushButt_go_to_admin_panel_admin_panel_recruitment_successful")
+        self.stackedWidget.addWidget(self.admin_panel_recruitment_successful)
         self.employee_sign_in = QtWidgets.QWidget()
         self.employee_sign_in.setObjectName("employee_sign_in")
         self.label_3 = QtWidgets.QLabel(parent=self.employee_sign_in)
@@ -334,7 +347,7 @@ class Ui_BAXI_Admin_Employee(object):
         BAXI_Admin_Employee.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI_Admin_Employee)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(4)
         QtCore.QMetaObject.connectSlotsByName(BAXI_Admin_Employee)
 
     def retranslateUi(self, BAXI_Admin_Employee):

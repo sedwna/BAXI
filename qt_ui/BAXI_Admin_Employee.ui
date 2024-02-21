@@ -823,7 +823,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page">
+    <widget class="QWidget" name="admin_panel_recruitment_successful">
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
@@ -840,7 +840,7 @@
        <pixmap>../image/admin_eployee_panel/admin_panel_recruitment_successful/admin_panel_recruitment_successful.png</pixmap>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButt_go_to_admin_panel_admin_panel_recruitment_successful">
       <property name="geometry">
        <rect>
         <x>140</x>
