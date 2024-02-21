@@ -98,6 +98,9 @@ class MainWindow:
         # go to employee_panel_authentication_request from employee_panel_authentication ---------------------------------------------------
         self.ui.pushButt_go_to_employee_panel_authentication_request_employee_panel_authentication.clicked.connect(self.show_employee_panel_authentication_request)
         # ----------------------------------------------------------------------------------------------------------------------------------
+        # go to employee_panel_authentication_successful from employee_panel_authentication ---------------------------------------------------
+        self.ui.pushButt_go_to_employee_panel_authentication_request_employee_panel_authentication_2.clicked.connect(self.show_employee_panel_authentication_successful)
+        # -------------------------------------------------------------------------------------------------------------------------------------
 
 
     def show(self):
@@ -138,7 +141,9 @@ class MainWindow:
     def show_employee_panel_authentication_request(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)
 
-
+    def show_employee_panel_authentication_successful(self):
+        #dest page not ready yet
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)#(self.ui.employee_panel_authentication_successful)
 
 
 
