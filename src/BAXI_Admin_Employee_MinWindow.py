@@ -125,9 +125,27 @@ class MainWindow:
         # go to employee_panel from employee_panel_authentication_rejected ---------------------------------------------------
         self.ui.pushButt_go_to_employee_panel_employee_panel_authentication_rejected.clicked.connect(self.show_employee_panel)
         # --------------------------------------------------------------------------------------------------------------------
-
-
-
+        # show_first_name -----------------------------------------------------------------
+        ###self.ui.pushButt_show_first_name_employee_panel_authentication_1.clicked.connect()###
+        # --------------------------------------------------------------------------------
+        # show_last_name -----------------------------------------------------------------
+        ###self.ui.pushButt_show_last_name_employee_panel_authentication_1.clicked.connect()###
+        # --------------------------------------------------------------------------------
+        # show_code_meli -----------------------------------------------------------------
+        ###self.ui.pushButt_show_code_meli_employee_panel_authentication.clicked.connect()###
+        # --------------------------------------------------------------------------------
+        # show_birthdate -----------------------------------------------------------------
+        ###self.ui.pushButt_show_birthdate_employee_panel_authentication_1.clicked.connect()###
+        # --------------------------------------------------------------------------------
+        # show_sex -----------------------------------------------------------------
+        ###self.ui.pushButt_show_sex_employee_panel_authentication_1.clicked.connect()###
+        # --------------------------------------------------------------------------------
+        # show_phone_number -----------------------------------------------------------------
+        ###self.ui.pushButt_show_phone_number_employee_panel_authentication_1.clicked.connect()###
+        # --------------------------------------------------------------------------------
+        # show_shaba_number -----------------------------------------------------------------
+        ###self.ui.pushButt_show_shaba_number_employee_panel_authentication_1.clicked.connect()###
+        # --------------------------------------------------------------------------------
 
 
     def show(self):
