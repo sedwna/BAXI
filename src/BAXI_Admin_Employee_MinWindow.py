@@ -75,7 +75,9 @@ class MainWindow:
         # go to admin_panel page -----------------------------------------------------------------------------------
         self.ui.pushButt_go_to_admin_panel_admin_panel_recruitment_successful.clicked.connect(self.show_admin_panel)
         # ----------------------------------------------------------------------------------------------------------
-
+        # exit from employee panel page -----------------------------------------
+        self.ui.pushButt_go_to_exit_employee_panel.clicked.connect(self.exit_app)
+        # -----------------------------------------------------------------------
 
 
 
