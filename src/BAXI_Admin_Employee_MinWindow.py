@@ -18,7 +18,7 @@ class MainWindow:
         # --------------------------------------------------------------------------------
         # switch between login and signin page--------------------------------------------
         self.ui.pushButt_admin.clicked.connect(self.show_sign_in_admin)
-        self.ui.pushButt_employee.clicked.connect(self.show_sign_in_employee)
+        self.ui.pushButt_employee.clicked.connect(self.show_employee_sign_in)
         # --------------------------------------------------------------------------------
         # go to sign in page from admin_panel page ----------------------------------------
         self.ui.pushButt_go_to_sign_in_admin_panel.clicked.connect(self.show_sign_in_admin)
@@ -78,7 +78,9 @@ class MainWindow:
         # exit from employee panel page -----------------------------------------
         self.ui.pushButt_go_to_exit_employee_panel.clicked.connect(self.exit_app)
         # -----------------------------------------------------------------------
-
+        # go to employee_sign_in from employee_panel -----------------------------------------------------
+        self.ui.pushButt_go_to_employee_sign_in_employee_panel.clicked.connect(self.show_employee_sign_in)
+        # ------------------------------------------------------------------------------------------------
 
 
     def show(self):
@@ -90,7 +92,7 @@ class MainWindow:
     def show_sign_in_admin(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.admin_sign_in)
 
-    def show_sign_in_employee(self):
+    def show_employee_sign_in(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_sign_in)
 
     def show_admin_panel(self):
