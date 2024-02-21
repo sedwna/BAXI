@@ -104,6 +104,19 @@ class MainWindow:
         # go to employee_panel_authentication_successful from employee_panel_authentication ---------------------------------------------------
         self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication.clicked.connect(self.show_employee_panel_authentication_2)
         # -------------------------------------------------------------------------------------------------------------------------------------
+            # show_licence -----------------------------------------------------------------
+        ###self.ui.pushButt_show_licence_employee_panel_authentication.clicked.connect()###
+        # ------------------------------------------------------------------------------
+        # show_cart_meli -----------------------------------------------------------------
+        ###self.ui.pushButt_show_cart_meli_employee_panel_authentication.clicked.connect()###
+        # ------------------------------------------------------------------------------
+        # show_sopishine -----------------------------------------------------------------
+        ###self.ui.pushButt_show_sopishine_employee_panel_authentication.clicked.connect()###
+        # ------------------------------------------------------------------------------
+
+
+
+
 
     def show(self):
         self.main_win.show()
