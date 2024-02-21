@@ -66,6 +66,9 @@ class MainWindow:
         self.ui.pushButt_query_19_admin_panel_query.clicked.connect()
         self.ui.pushButt_query_20_admin_panel_query.clicked.connect()
         # -----------------------------------------------------------
+        # go to admin_panel page -----------------------------------------------------------------------------------
+        self.ui.pushButt_go_to_admin_panel_admin_panel_recruitment_successful.clicked.connect(self.show_admin_panel)
+        # ----------------------------------------------------------------------------------------------------------
 
 
 
