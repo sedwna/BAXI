@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -382,6 +382,40 @@
       </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page">
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/employee_panel_authentication_successful/employee_panel_authentication_successful.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_employee_panel_authentication_successful">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>586</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
