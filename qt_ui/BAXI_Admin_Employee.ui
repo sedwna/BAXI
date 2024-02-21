@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -87,142 +87,6 @@
       </property>
       <property name="pixmap">
        <pixmap>../image/admin_eployee_panel/employee_panel_authentication_1/employee_panel_authentication_1.png</pixmap>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="get_first_name_employee_panel_authentication">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>160</y>
-        <width>104</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="get_last_name_employee_panel_authentication">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>160</y>
-        <width>141</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="get_code_meli_employee_panel_authentication">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>240</y>
-        <width>104</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="get_phone_number_employee_panel_authentication">
-      <property name="geometry">
-       <rect>
-        <x>45</x>
-        <y>325</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="get_shaba_number_employee_panel_authentication">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>397</y>
-        <width>281</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="get_birthday_employee_panel_authentication">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>245</y>
-        <width>42</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="maximum">
-       <number>31</number>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="get_sex_employee_panel_authentication">
-      <property name="geometry">
-       <rect>
-        <x>232</x>
-        <y>324</y>
-        <width>81</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <item>
-       <property name="text">
-        <string>آقا</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>خانم</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QSpinBox" name="get_birthmonth_employee_panel_authentication">
-      <property name="geometry">
-       <rect>
-        <x>93</x>
-        <y>245</y>
-        <width>42</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="maximum">
-       <number>12</number>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="get_birthyear_employee_panel_authentication">
-      <property name="geometry">
-       <rect>
-        <x>38</x>
-        <y>245</y>
-        <width>51</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="minimum">
-       <number>1350</number>
-      </property>
-      <property name="maximum">
-       <number>1600</number>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_show_licence_employee_panel_authentication">
@@ -312,6 +176,118 @@
         <y>522</y>
         <width>111</width>
         <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_last_name_employee_panel_authentication_1">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>158</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_first_name_employee_panel_authentication_1">
+      <property name="geometry">
+       <rect>
+        <x>216</x>
+        <y>159</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_birthdate_employee_panel_authentication_1">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>240</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_code_meli_employee_panel_authentication">
+      <property name="geometry">
+       <rect>
+        <x>216</x>
+        <y>241</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_phone_number_employee_panel_authentication_1">
+      <property name="geometry">
+       <rect>
+        <x>39</x>
+        <y>324</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_sex_employee_panel_authentication_1">
+      <property name="geometry">
+       <rect>
+        <x>217</x>
+        <y>323</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_shaba_number_employee_panel_authentication_1">
+      <property name="geometry">
+       <rect>
+        <x>42</x>
+        <y>397</y>
+        <width>281</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
