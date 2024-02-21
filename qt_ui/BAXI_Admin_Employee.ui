@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -409,6 +409,40 @@
         <y>586</y>
         <width>101</width>
         <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="employee_panel_authentication_rejected">
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/employee_panel_authentication_rejected/employee_panel_authentication_rejected.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_employee_panel_authentication_rejected">
+      <property name="geometry">
+       <rect>
+        <x>135</x>
+        <y>584</y>
+        <width>91</width>
+        <height>24</height>
        </rect>
       </property>
       <property name="text">
