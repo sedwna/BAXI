@@ -41,6 +41,10 @@ class MainWindow:
         # upload Profile photo -------------------------------------------------------
         self.ui.pushButt_upload_profilePhoto_admin_panel_recruitment.clicked.connect()
         # ----------------------------------------------------------------------------
+        # go to admin_panel page ------------------------------------------------------------------
+        self.ui.pushButt_go_to_admin_panel_admin_panel_query.clicked.connect(self.show_admin_panel)
+        # -----------------------------------------------------------------------------------------
+
 
     def show(self):
         self.main_win.show()
