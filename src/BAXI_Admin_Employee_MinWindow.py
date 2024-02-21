@@ -87,7 +87,9 @@ class MainWindow:
         # go to employee_sign_in from employee_panel -----------------------------------------------------
         self.ui.pushButt_go_to_employee_panel_employee_sign_in.clicked.connect(self.show_employee_panel)
         # ------------------------------------------------------------------------------------------------
-
+        # go to employee_panel from employee_panel_authentication_request -----------------------------------------------------
+        self.ui.pushButt_go_to_employee_panel_employee_panel_authentication_request.clicked.connect(self.show_employee_panel)
+        # ------------------------------------------------------------------------------------------------
 
 
 
@@ -119,8 +121,7 @@ class MainWindow:
     def show_admin_panel_recruitment(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel_recruitment)
     def show_employee_panel_authentication_request(self):
-        #not define employee_panel_authentication_request yet
-        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)#(self.ui.employee_panel_authentication_request)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)
 
     def show_employee_panel(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)
