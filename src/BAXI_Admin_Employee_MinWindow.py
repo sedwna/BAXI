@@ -113,6 +113,9 @@ class MainWindow:
         # show_sopishine -----------------------------------------------------------------
         ###self.ui.pushButt_show_sopishine_employee_panel_authentication.clicked.connect()###
         # ------------------------------------------------------------------------------
+        # go to employee_panel_authentication_1 from employee_panel_authentication_2 ---------------------------------------------------
+        self.ui.pushButt_go_to_employee_panel_authentication_1_employee_panel_authentication_2.clicked.connect(self.show_employee_panel_authentication_1)
+        # -------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -159,8 +162,7 @@ class MainWindow:
         #dest page not ready yet
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)#(self.ui.employee_panel_authentication_successful)
     def show_employee_panel_authentication_2(self):
-        #dest page not ready yet
-        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)#(self.ui.employee_panel_authentication)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_2)
 
 
 
