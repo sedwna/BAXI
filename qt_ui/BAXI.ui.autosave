@@ -1699,7 +1699,7 @@
        <pixmap>../image/user_home/user_home.png</pixmap>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButt_scroll_user_home">
       <property name="geometry">
        <rect>
         <x>152</x>
@@ -1713,6 +1713,58 @@
       </property>
       <property name="flat">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="pickup_lat_user_home">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>447</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="pickup_lon_user_home">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>447</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="drop_off_lat_user_home">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>510</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="deop_off_lon_user_home">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>510</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
      </widget>
     </widget>

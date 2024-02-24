@@ -180,8 +180,8 @@ class MainWindow():
 
     def show_user_home(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
-
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
+        # self.ui.stackedWidget.createWindowContainer(self.mp.show)
 
 
     def baxi_driver_ful_info(self):

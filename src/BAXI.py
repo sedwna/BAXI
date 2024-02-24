@@ -545,6 +545,10 @@ class Ui_BAXI(object):
         self.pushButton.setText("")
         self.pushButton.setFlat(True)
         self.pushButton.setObjectName("pushButton")
+        self.graphicsView = QtWidgets.QGraphicsView(parent=self.user_home)
+        self.graphicsView.setGeometry(QtCore.QRect(70, 120, 256, 192))
+        self.graphicsView.setFrameShape(QtWidgets.QFrame.Shape.Box)
+        self.graphicsView.setObjectName("graphicsView")
         self.stackedWidget.addWidget(self.user_home)
         self.registration_successful = QtWidgets.QWidget()
         self.registration_successful.setObjectName("registration_successful")
@@ -694,7 +698,7 @@ class Ui_BAXI(object):
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(13)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):
