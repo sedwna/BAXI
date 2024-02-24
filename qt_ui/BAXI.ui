@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>14</number>
+     <number>13</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1774,6 +1774,22 @@
         <y>20</y>
         <width>31</width>
         <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_accept_user_home">
+      <property name="geometry">
+       <rect>
+        <x>22</x>
+        <y>580</y>
+        <width>311</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
