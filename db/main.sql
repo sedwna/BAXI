@@ -10,8 +10,16 @@ CREATE TABLE	employees
 					last_name				VARCHAR(50)									NOT NULL,
 					birth_date				DATE										NOT NULL,
 					salary					INT											NOT NULL,
-					department				VARCHAR(50)									NOT NULL,
 					signup_time				DATETIME									NOT NULL,
+					department				ENUM
+											(
+												'marketing',
+												'accounting',
+												'finance',
+												'HR',
+												'support',
+												'development'
+											)											NOT NULL,
 					proficiency				ENUM
 											(
 												'basic',
