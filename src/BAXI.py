@@ -604,6 +604,12 @@ class Ui_BAXI(object):
         self.pushButt_go_to_baxi_woman_baxi_user_choose_vehicle_type.setText("")
         self.pushButt_go_to_baxi_woman_baxi_user_choose_vehicle_type.setFlat(True)
         self.pushButt_go_to_baxi_woman_baxi_user_choose_vehicle_type.setObjectName("pushButt_go_to_baxi_woman_baxi_user_choose_vehicle_type")
+        self.popup_success_baxi_user_choose_vehicle_type = QtWidgets.QLabel(parent=self.baxi_user_choose_vehicle_type)
+        self.popup_success_baxi_user_choose_vehicle_type.setEnabled(True)
+        self.popup_success_baxi_user_choose_vehicle_type.setGeometry(QtCore.QRect(10, 140, 320, 305))
+        self.popup_success_baxi_user_choose_vehicle_type.setText("")
+        self.popup_success_baxi_user_choose_vehicle_type.setPixmap(QtGui.QPixmap("../image/baxi_user_choose_vehicle_type/Popup_success.png"))
+        self.popup_success_baxi_user_choose_vehicle_type.setObjectName("popup_success_baxi_user_choose_vehicle_type")
         self.stackedWidget.addWidget(self.baxi_user_choose_vehicle_type)
         self.baxi_bar_choose_vehicle_type = QtWidgets.QWidget()
         self.baxi_bar_choose_vehicle_type.setObjectName("baxi_bar_choose_vehicle_type")
@@ -852,7 +858,7 @@ class Ui_BAXI(object):
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(16)
+        self.stackedWidget.setCurrentIndex(14)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):

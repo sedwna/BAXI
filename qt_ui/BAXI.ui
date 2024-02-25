@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>16</number>
+     <number>14</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1895,6 +1895,25 @@
       </property>
       <property name="flat">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="popup_success_baxi_user_choose_vehicle_type">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>320</width>
+        <height>305</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/baxi_user_choose_vehicle_type/Popup_success.png</pixmap>
       </property>
      </widget>
     </widget>
