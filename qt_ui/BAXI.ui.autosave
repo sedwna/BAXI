@@ -1849,7 +1849,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButt_go_to_baxi_box__baxi_user_choose_vehicle_type">
+     <widget class="QPushButton" name="pushButt_go_to_baxi_box_baxi_user_choose_vehicle_type">
       <property name="geometry">
        <rect>
         <x>215</x>
@@ -1865,7 +1865,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButt_go_to_baxi_bar__baxi_user_choose_vehicle_type">
+     <widget class="QPushButton" name="pushButt_go_to_baxi_bar_baxi_user_choose_vehicle_type">
       <property name="geometry">
        <rect>
         <x>112</x>
@@ -1881,7 +1881,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButt_go_to_baxi_woman__baxi_user_choose_vehicle_type">
+     <widget class="QPushButton" name="pushButt_go_to_baxi_woman_baxi_user_choose_vehicle_type">
       <property name="geometry">
        <rect>
         <x>23</x>
