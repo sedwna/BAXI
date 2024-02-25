@@ -126,130 +126,137 @@ class MainWindow():
         self.ui.pushButt_accept_user_home.clicked.connect(self.show_baxi_user_choose_vehicle_type)
         self.ui.pushButt_go_to_baxi_baxi_box_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_user_choose_vehicle_type)
-        self.ui.pushButt_go_to_baxi_baxi_bar_choose_vehicle_type.clicked.connect(self.show_baxi_user_choose_vehicle_type)
+        self.ui.pushButt_go_to_baxi_baxi_bar_choose_vehicle_type.clicked.connect(
+            self.show_baxi_user_choose_vehicle_type)
         # -------------------------------------------------------------------------------------------------
-        # go to baxi_box_user_choose_vehicle_type
+        # go to baxi_box_user_choose_vehicle_type page
         self.ui.pushButt_go_to_baxi_box__baxi_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_box_user_choose_vehicle_type)
-        self.ui.pushButt_go_to_baxi_box_baxi_bar_choose_vehicle_type.clicked.connect(self.show_baxi_box_user_choose_vehicle_type)
+        self.ui.pushButt_go_to_baxi_box_baxi_bar_choose_vehicle_type.clicked.connect(
+            self.show_baxi_box_user_choose_vehicle_type)
         # -------------------------------------------------------------------------------------------------
+        # go to baxi_bar_choose_vehicle_type page
+        self.ui.pushButt_go_to_baxi_bar_baxi_box_user_choose_vehicle_type.clicked.connect(
+            self.show_baxi_bar_user_choose_vehicle_type)
 
-    def show(self):
-        self.main_win.show()
+        def show(self):
+            self.main_win.show()
 
-    def show_loading(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.loading)
+        def show_loading(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.loading)
 
-    def show_sign_up(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.sign_up)
+        def show_sign_up(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.sign_up)
 
-    def show_sign_in(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.sign_in)
+        def show_sign_in(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.sign_in)
 
-    def show_accept_code_sign_in(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
+        def show_accept_code_sign_in(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
 
-    def show_accept_code_sign_up(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
+        def show_accept_code_sign_up(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
 
-    def show_select_driver_user(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
+        def show_select_driver_user(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
 
-    def show_get_flname_driver(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_driver)
+        def show_get_flname_driver(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_driver)
 
-    def show_get_sex_birth_meli(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.get_sex_birth_meli)
+        def show_get_sex_birth_meli(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.get_sex_birth_meli)
 
-    def show_get_photo_meli_pcertificate_obviously(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.get_photo_meli_certificate_obviously)
+        def show_get_photo_meli_pcertificate_obviously(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.get_photo_meli_certificate_obviously)
 
-    def brows_select_meli_card(self):
-        dialog = QFileDialog(filter="Images *.png ", caption="select a file")
-        # print(dialog.getOpenFileName())
+        def brows_select_meli_card(self):
+            dialog = QFileDialog(filter="Images *.png ", caption="select a file")
+            # print(dialog.getOpenFileName())
 
-    def show_get_shaba(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.get_shaba)
+        def show_get_shaba(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.get_shaba)
 
-    def show_select_service(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.select_service)
+        def show_select_service(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.select_service)
 
-    def show_get_machine_baxi_info(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_info)
+        def show_get_machine_baxi_info(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_info)
 
-    def show_get_machine_baxi_woman_info(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_woman_info)
+        def show_get_machine_baxi_woman_info(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_woman_info)
 
-    def show_registration_successful(self):
-        self.baxi_driver_ful_info()
-        self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
+        def show_registration_successful(self):
+            self.baxi_driver_ful_info()
+            self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
 
-    def exit_app(self):
-        sys.exit()
+        def exit_app(self):
+            sys.exit()
 
-    def show_get_flname_user(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_user)
+        def show_get_flname_user(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_user)
 
-    def show_user_home(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
-        self.ui.stackedWidget.setCurrentWidget(self.mp.show())
-        # self.ui.stackedWidget.createWindowContainer(self.mp.show)
+        def show_user_home(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
+            self.ui.stackedWidget.setCurrentWidget(self.mp.show())
+            # self.ui.stackedWidget.createWindowContainer(self.mp.show)
 
-    def baxi_driver_ful_info(self):
-        # -----------------------------------------------------
-        # get number and show in terminal:
-        print("number: ", self.ui.enter_number_sign_up.toPlainText())
-        # -----------------------------------------------------
-        # get fname, lname driver and show in terminal:
-        print("fname: ", self.ui.fname_get_flname_driver.toPlainText())
-        print("lname: ", self.ui.lname_get_flname_driver.toPlainText())
-        # -----------------------------------------------------
-        # get birthday show in terminal:-----------------------
-        print("year: ", self.ui.year_get_sex_birth_meli.text())
-        print("month: ", self.ui.month_get_sex_birth_meli.text())
-        print("day: ", self.ui.day_get_sex_birth_meli.text())
-        # -----------------------------------------------------
-        # get sex show in terminal:----------------------------
-        print("sex: ", self.ui.sex_get_sex_birth_meli.currentText())
-        # -----------------------------------------------------
-        # get meli card number show in terminal:---------------
-        print("meli number: ", self.ui.meli_get_sex_birth_meli.toPlainText())
-        # -----------------------------------------------------
-        # get obviously show in terminal:---------------
-        print("obvioudly: ", self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText())
-        # -----------------------------------------------------
-        # get shaba number show in terminal:---------------
-        print("shaba number: ", self.ui.enter_shaba_number.toPlainText())
-        # -----------------------------------------------------
-        # get machine baxi info show in terminal:---------------
-        print("machine name: ", self.ui.machine_name_get_machine_baxi_info.toPlainText())
-        print("machine generate year: ", self.ui.machine_generate_year_get_machine_baxi_info.toPlainText())
-        print("machine color: ", self.ui.machine_color_get_machine_baxi_info.currentText())
-        print("machine pelak: ", self.ui.two_digit_left_pelak_get_machine_baxi_info.toPlainText())
-        print("machine pelak: ", self.ui.alphabet_get_machine_baxi_info.currentText())
-        print("machine pelak: ", self.ui.three_digit_pelak_get_machine_baxi_info.toPlainText())
-        print("machine pelak: ", self.ui.two_digit_right_pelak_get_machine_baxi_info.toPlainText())
-        print("machine fuel: ", self.ui.machine_fuel_get_machine_baxi_info.currentText())
-        print("machine capacity: ", self.ui.machine_capacity_get_machine_baxi_info.currentText())
-        # -----------------------------------------------------
+        def baxi_driver_ful_info(self):
+            # -----------------------------------------------------
+            # get number and show in terminal:
+            print("number: ", self.ui.enter_number_sign_up.toPlainText())
+            # -----------------------------------------------------
+            # get fname, lname driver and show in terminal:
+            print("fname: ", self.ui.fname_get_flname_driver.toPlainText())
+            print("lname: ", self.ui.lname_get_flname_driver.toPlainText())
+            # -----------------------------------------------------
+            # get birthday show in terminal:-----------------------
+            print("year: ", self.ui.year_get_sex_birth_meli.text())
+            print("month: ", self.ui.month_get_sex_birth_meli.text())
+            print("day: ", self.ui.day_get_sex_birth_meli.text())
+            # -----------------------------------------------------
+            # get sex show in terminal:----------------------------
+            print("sex: ", self.ui.sex_get_sex_birth_meli.currentText())
+            # -----------------------------------------------------
+            # get meli card number show in terminal:---------------
+            print("meli number: ", self.ui.meli_get_sex_birth_meli.toPlainText())
+            # -----------------------------------------------------
+            # get obviously show in terminal:---------------
+            print("obvioudly: ", self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText())
+            # -----------------------------------------------------
+            # get shaba number show in terminal:---------------
+            print("shaba number: ", self.ui.enter_shaba_number.toPlainText())
+            # -----------------------------------------------------
+            # get machine baxi info show in terminal:---------------
+            print("machine name: ", self.ui.machine_name_get_machine_baxi_info.toPlainText())
+            print("machine generate year: ", self.ui.machine_generate_year_get_machine_baxi_info.toPlainText())
+            print("machine color: ", self.ui.machine_color_get_machine_baxi_info.currentText())
+            print("machine pelak: ", self.ui.two_digit_left_pelak_get_machine_baxi_info.toPlainText())
+            print("machine pelak: ", self.ui.alphabet_get_machine_baxi_info.currentText())
+            print("machine pelak: ", self.ui.three_digit_pelak_get_machine_baxi_info.toPlainText())
+            print("machine pelak: ", self.ui.two_digit_right_pelak_get_machine_baxi_info.toPlainText())
+            print("machine fuel: ", self.ui.machine_fuel_get_machine_baxi_info.currentText())
+            print("machine capacity: ", self.ui.machine_capacity_get_machine_baxi_info.currentText())
+            # -----------------------------------------------------
 
-    def show_get_machine_baxi_bar_info(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_bar_info)
+        def show_get_machine_baxi_bar_info(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_bar_info)
 
-    def show_get_motor_baxi_box_info(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.get_motor_baxi_box_info)
+        def show_get_motor_baxi_box_info(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.get_motor_baxi_box_info)
 
-    def show_baxi_user_choose_vehicle_type(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_user_choose_vehicle_type)
+        def show_baxi_user_choose_vehicle_type(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_user_choose_vehicle_type)
 
-    def show_baxi_box_user_choose_vehicle_type(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_box_user_choose_vehicle_type)
+        def show_baxi_box_user_choose_vehicle_type(self):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_box_user_choose_vehicle_type)
 
+        def show_baxi_bar_user_choose_vehicle_type(self):
+            self.ui.stackedWidget.setCurrentWidget(self.baxi_bar_choose_vehicle_type)
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    main_win = MainWindow()
-    ui = Ui_BAXI()
-    mp = MapWindow()
-    main_win.show()
-    sys.exit(app.exec())
+    if __name__ == "__main__":
+        app = QApplication(sys.argv)
+        main_win = MainWindow()
+        ui = Ui_BAXI()
+        mp = MapWindow()
+        main_win.show()
+        sys.exit(app.exec())
