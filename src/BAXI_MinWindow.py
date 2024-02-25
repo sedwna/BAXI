@@ -18,7 +18,6 @@ class MainWindow():
         self.mp = MapWindow()
         self.mp.setupUi(self.main_win)
 
-
         # waiting page -------------------------------------------------------------------
         self.show_loading()
         # --------------------------------------------------------------------------------
@@ -121,6 +120,8 @@ class MainWindow():
         # go to show_user_home page ---------------------------------------------------------------------
         self.ui.pushButt_next_get_flname_user.clicked.connect(self.show_user_home)
         # -------------------------------------------------------------------------------------------------
+        # go to baxi_user_choose_vehicle_type page -------------------------
+        self.ui.pushButt_accept_user_home.clicked.connect(self.show_baxi_user_choose_vehicle_type)
 
     def show(self):
         self.main_win.show()
@@ -183,7 +184,6 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
         # self.ui.stackedWidget.createWindowContainer(self.mp.show)
 
-
     def baxi_driver_ful_info(self):
         # -----------------------------------------------------
         # get number and show in terminal:
@@ -227,6 +227,9 @@ class MainWindow():
 
     def show_get_motor_baxi_box_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_motor_baxi_box_info)
+
+    def show_baxi_user_choose_vehicle_type(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_user_choose_vehicle_type)
 
 
 if __name__ == "__main__":
