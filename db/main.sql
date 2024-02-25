@@ -53,7 +53,7 @@ CREATE TABLE	clients
 									(
 										'M',
 										'F'
-									)								NOT NULL,
+									)				DEFAULT 'M'		NOT NULL,
 					email			VARCHAR(50)
 				);
 
@@ -114,15 +114,14 @@ CREATE TABLE	drivers
 														(
 															'M',
 															'F'
-														)														NOT NULL,
+														)										DEFAULT 'M'		NOT NULL,
 					profile_picture_path				VARCHAR(50),
 					verifier_personnel_code				INT														NOT NULL,
 					FOREIGN KEY(verifier_personnel_code)	REFERENCES employees(personnel_code)
 				);
-
 CREATE TABLE	baxi
 				(
-					vehicle_license_plate		CHAR(8)			UNIQUE			NOT NULL,
+					vehicle_license_plate		CHAR(9)			UNIQUE			NOT NULL,
 					vehicle_capacity			INT								NOT NULL,
 					vehicle_color				VARCHAR(50)						NOT NULL,
 					vehicle_name				VARCHAR(50)						NOT NULL,
@@ -141,7 +140,7 @@ CREATE TABLE	baxi
 
 CREATE TABLE	baxi_baar
 				(
-					vehicle_license_plate		CHAR(8)			UNIQUE			NOT NULL,
+					vehicle_license_plate		CHAR(9)			UNIQUE			NOT NULL,
 					vehicle_capacity			INT								NOT NULL,
 					vehicle_color				VARCHAR(50)						NOT NULL,
 					vehicle_name				VARCHAR(50)						NOT NULL,
@@ -160,19 +159,12 @@ CREATE TABLE	baxi_baar
 
 CREATE TABLE	baxi_box
 				(
-					vehicle_license_plate		CHAR(8)				UNIQUE				NOT NULL,
+					vehicle_license_plate		CHAR(9)				UNIQUE				NOT NULL,
 					vehicle_capacity			INT										NOT NULL,
 					vehicle_color				VARCHAR(50)								NOT NULL,
 					vehicle_name				VARCHAR(50)								NOT NULL,
 					vehicle_production_date		DATE									NOT NULL,
 					vehicle_card_photo			VARCHAR(50)								NOT NULL,
-					vehicle_fuel_type			ENUM
-												(
-													'gasoline',
-													'CNG',
-													'dual',
-													'electricity'
-												)					DEFAULT 'gasoline'	NOT NULL,
 					driver_id					INT					PRIMARY KEY,	
 					FOREIGN KEY(driver_id)	REFERENCES drivers(driver_id)
 				);
@@ -255,9 +247,9 @@ CREATE TABLE	withdrawals
 									(
 										'daily',
 										'momentary'
-									)				DEFAULT 'daily'		NOT NULL,
+									)				DEFAULT 'momentary'		NOT NULL,
 					tracking_code	VARCHAR(20)		PRIMARY KEY,
-					driver_id		INT									NOT NULL,
+					driver_id		INT										NOT NULL,
 					FOREIGN KEY(tracking_code)	REFERENCES transactions(tracking_code),
 					FOREIGN KEY(driver_id)		REFERENCES drivers(driver_id)
 				);
