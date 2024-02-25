@@ -143,6 +143,10 @@ class MainWindow():
         self.ui.pushButt_go_to_baxi_bar_baxi_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_bar_user_choose_vehicle_type)
         # -------------------------------------------------------------------------------------------------
+        # go to baxi_bar_choose_vehicle_type page
+        self.ui.pushButt_go_to_baxi_woman_baxi_user_choose_vehicle_type.clicked.connect(self.show_baxi_bar_choose_vehicle_type)
+        self.ui.pushButt_go_to_baxi_woman_baxi_box_user_choose_vehicle_type.clicked.connect(self.show_baxi_bar_choose_vehicle_type)
+        self.ui.pushButt_go_to_baxi_woman_baxi_bar_choose_vehicle_type.clicked.connect(self.show_baxi_bar_choose_vehicle_type)
 
     def show(self):
         self.main_win.show()
@@ -257,6 +261,9 @@ class MainWindow():
 
     def show_baxi_bar_user_choose_vehicle_type(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_bar_choose_vehicle_type)
+
+    def show_baxi_bar_choose_vehicle_type(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_woman_user_choose_vehicle_type)
 
 
 if __name__ == "__main__":
