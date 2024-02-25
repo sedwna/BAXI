@@ -131,6 +131,7 @@ class MainWindow():
         # go to baxi_box_user_choose_vehicle_type
         self.ui.pushButt_go_to_baxi_box__baxi_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_box_user_choose_vehicle_type)
+        self.ui.pushButt_go_to_baxi_box_baxi_bar_choose_vehicle_type.clicked.connect(self.show_baxi_box_user_choose_vehicle_type)
         # -------------------------------------------------------------------------------------------------
 
     def show(self):
