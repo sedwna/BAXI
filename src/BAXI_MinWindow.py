@@ -128,7 +128,7 @@ class MainWindow():
         self.ui.pushButt_accept_user_home.clicked.connect(self.show_baxi_user_choose_vehicle_type)
         self.ui.pushButt_go_to_baxi_baxi_box_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_user_choose_vehicle_type)
-        self.ui.pushButt_go_to_baxi_baxi_bar_choose_vehicle_type.clicked.connect(
+        self.ui.pushButt_go_to_baxi_baxi_bar_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_user_choose_vehicle_type)
         self.ui.pushButt_go_to_baxi_baxi_woman_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_user_choose_vehicle_type)
@@ -136,7 +136,7 @@ class MainWindow():
         # go to baxi_box_user_choose_vehicle_type page
         self.ui.pushButt_go_to_baxi_box_baxi_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_box_user_choose_vehicle_type)
-        self.ui.pushButt_go_to_baxi_box_baxi_bar_choose_vehicle_type.clicked.connect(
+        self.ui.pushButt_go_to_baxi_box_baxi_bar_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_box_user_choose_vehicle_type)
         self.ui.pushButt_go_to_baxi_box_baxi_woman_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_box_user_choose_vehicle_type)
@@ -149,15 +149,26 @@ class MainWindow():
         self.ui.pushButt_go_to_baxi_bar_baxi_woman_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_bar_user_choose_vehicle_type)
         # -------------------------------------------------------------------------------------------------
-        # go to baxi_bar_choose_vehicle_type page
+        # go to show_baxi_woman_user_choose_vehicle_type page
         self.ui.pushButt_go_to_baxi_woman_baxi_user_choose_vehicle_type.clicked.connect(
-            self.show_baxi_bar_choose_vehicle_type)
+            self.show_baxi_woman_user_choose_vehicle_type)
         self.ui.pushButt_go_to_baxi_woman_baxi_box_user_choose_vehicle_type.clicked.connect(
-            self.show_baxi_bar_choose_vehicle_type)
-        self.ui.pushButt_go_to_baxi_woman_baxi_bar_choose_vehicle_type.clicked.connect(
-            self.show_baxi_bar_choose_vehicle_type)
+            self.show_baxi_woman_user_choose_vehicle_type)
+        self.ui.pushButt_go_to_baxi_woman_baxi_bar_user_choose_vehicle_type.clicked.connect(
+            self.show_baxi_woman_user_choose_vehicle_type)
         # -------------------------------------------------------------------------------------------------
-        self.ui.pushButt_request_baxi_user_choose_vehicle_type.clicked.connect(self.popup_success_setHidden)
+        self.ui.pushButt_request_baxi_user_choose_vehicle_type.clicked.connect(
+            self.popup_success_baxi_user_choose_vehicle_type_setHidden)
+
+        self.ui.pushButt_request_baxi_woman_baxi_woman_user_choose_vehicle_type.clicked.connect(
+            self.popup_success_baxi_woman_user_choose_vehicle_type_setHidden)
+
+
+        self.ui.pushButt_request_baxi_box_baxi_box_user_choose_vehicle_type.clicked.connect(
+            self.popup_success_baxi_box_user_choose_vehicle_type_setHidden)
+
+        self.ui.pushButt_request_baxi_bar_baxi_bar_user_choose_vehicle_type.clicked.connect(
+            self.popup_success_baxi_bar_user_choose_vehicle_type_setHidden)
 
     def show(self):
         self.main_win.show()
@@ -220,6 +231,18 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
         # self.ui.stackedWidget.createWindowContainer(self.mp.show)
 
+    def popup_success_baxi_user_choose_vehicle_type_setHidden(self):
+        self.ui.popup_success_baxi_user_choose_vehicle_type.setHidden(False)
+
+    def popup_success_baxi_woman_user_choose_vehicle_type_setHidden(self):
+        self.ui.popup_success_baxi_woman_user_choose_vehicle_type.setHidden(False)
+
+    def popup_success_baxi_bar_user_choose_vehicle_type_setHidden(self):
+        self.ui.popup_success_baxi_bar_user_choose_vehicle_type.setHidden(False)
+
+    def popup_success_baxi_box_user_choose_vehicle_type_setHidden(self):
+        self.ui.popup_success_baxi_box_user_choose_vehicle_type.setHidden(False)
+
     def baxi_driver_ful_info(self):
         # -----------------------------------------------------
         # get number and show in terminal:
@@ -269,16 +292,16 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_user_choose_vehicle_type)
 
     def show_baxi_box_user_choose_vehicle_type(self):
+        self.ui.popup_success_baxi_box_user_choose_vehicle_type.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_box_user_choose_vehicle_type)
 
     def show_baxi_bar_user_choose_vehicle_type(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_bar_choose_vehicle_type)
+        self.ui.popup_success_baxi_bar_user_choose_vehicle_type.setHidden(True)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_bar_user_choose_vehicle_type)
 
-    def show_baxi_bar_choose_vehicle_type(self):
+    def show_baxi_woman_user_choose_vehicle_type(self):
+        self.ui.popup_success_baxi_woman_user_choose_vehicle_type.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_woman_user_choose_vehicle_type)
-
-    def popup_success_setHidden(self):
-        self.ui.popup_success_baxi_user_choose_vehicle_type.setHidden(False)
 
 
 if __name__ == "__main__":

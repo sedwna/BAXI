@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>14</number>
+     <number>17</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1917,7 +1917,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="baxi_bar_choose_vehicle_type">
+    <widget class="QWidget" name="baxi_bar_user_choose_vehicle_type">
      <widget class="QLabel" name="label_21">
       <property name="geometry">
        <rect>
@@ -1966,7 +1966,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButt_go_to_baxi_baxi_bar_choose_vehicle_type">
+     <widget class="QPushButton" name="pushButt_go_to_baxi_baxi_bar_user_choose_vehicle_type">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -1982,7 +1982,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButt_go_to_baxi_box_baxi_bar_choose_vehicle_type">
+     <widget class="QPushButton" name="pushButt_go_to_baxi_box_baxi_bar_user_choose_vehicle_type">
       <property name="geometry">
        <rect>
         <x>210</x>
@@ -1998,7 +1998,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButt_go_to_baxi_woman_baxi_bar_choose_vehicle_type">
+     <widget class="QPushButton" name="pushButt_go_to_baxi_woman_baxi_bar_user_choose_vehicle_type">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -2012,6 +2012,25 @@
       </property>
       <property name="flat">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="popup_success_baxi_bar_user_choose_vehicle_type">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>130</y>
+        <width>320</width>
+        <height>305</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/baxi_user_choose_vehicle_type/Popup_success.png</pixmap>
       </property>
      </widget>
     </widget>
@@ -2112,6 +2131,25 @@
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QLabel" name="popup_success_baxi_woman_user_choose_vehicle_type">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>120</y>
+        <width>320</width>
+        <height>305</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/baxi_user_choose_vehicle_type/Popup_success.png</pixmap>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="baxi_box_user_choose_vehicle_type">
      <widget class="QLabel" name="label_20">
@@ -2208,6 +2246,25 @@
       </property>
       <property name="flat">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="popup_success_baxi_box_user_choose_vehicle_type">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>320</width>
+        <height>305</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/baxi_user_choose_vehicle_type/Popup_success.png</pixmap>
       </property>
      </widget>
     </widget>
