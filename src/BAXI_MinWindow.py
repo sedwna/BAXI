@@ -122,6 +122,7 @@ class MainWindow():
         self.ui.pushButt_back_baxi_box_baxi_box_user_choose_vehicle_type.clicked.connect(self.show_user_home)
         self.ui.pushButt_back_baxi_user_choose_vehicle_type.clicked.connect(self.show_user_home)
         self.ui.pushButt_back_baxi_bar_baxi_bar_user_choose_vehicle_type.clicked.connect(self.show_user_home)
+        self.ui.pushButt_back_baxi_woman_baxi_woman_user_choose_vehicle_type.clicked.connect(self.show_user_home)
         # -------------------------------------------------------------------------------------------------
         # go to baxi_user_choose_vehicle_type page --------------------------------------------------------
         self.ui.pushButt_accept_user_home.clicked.connect(self.show_baxi_user_choose_vehicle_type)
