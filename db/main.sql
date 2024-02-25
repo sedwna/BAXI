@@ -371,7 +371,7 @@ CREATE TABLE	compliments
 										'punctuality',
 										'proper routing',
 										'moderate temperature'
-									),
+									)							NOT NULL,
 					PRIMARY KEY(client_id, request_time, point),
 					FOREIGN KEY(client_id)		REFERENCES service_requests(client_id),
 					FOREIGN KEY(request_time)	REFERENCES service_requests(request_time)
@@ -396,7 +396,7 @@ CREATE TABLE	complaints
 										'disrespectful behavior',
 										'poor vehicle condition',
 										'unpunctuality'
-									),
+									)									NOT NULL,
 					PRIMARY KEY(client_id, request_time, point),
 					FOREIGN KEY(client_id)		REFERENCES service_requests(client_id),
 					FOREIGN KEY(request_time)	REFERENCES service_requests(request_time)
