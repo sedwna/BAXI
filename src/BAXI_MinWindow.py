@@ -120,8 +120,10 @@ class MainWindow():
         # go to show_user_home page ---------------------------------------------------------------------
         self.ui.pushButt_next_get_flname_user.clicked.connect(self.show_user_home)
         # -------------------------------------------------------------------------------------------------
-        # go to baxi_user_choose_vehicle_type page -------------------------
+        # go to baxi_user_choose_vehicle_type page --------------------------------------------------------
         self.ui.pushButt_accept_user_home.clicked.connect(self.show_baxi_user_choose_vehicle_type)
+        # -------------------------------------------------------------------------------------------------
+        
 
     def show(self):
         self.main_win.show()
