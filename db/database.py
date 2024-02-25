@@ -11,12 +11,12 @@ def create_connection(db):
 	'last_name':			VARCHAR(50),
 	'birth_date':			DATE,
 	'salary':				INT,
-	'signup_time':			DATETIME,
-	'department':			'marketing'/'accounting'/'finance'/'HR'/'support'/'development'
-	'proficiency':			'basic'/'intermediate'/'advanced'/'proficient'/'expert'
-	'education':			'none'/'high school diploma'/'associate degree'/'bachelor''s degree'/'master''s degree'/'phd'
-	'position':				'department manager'/'basic employee'/'programmer'
-	'profile_picture_path':	VARCHAR(50)}'''
+	'signup_time':			None/DATETIME,
+	'department':			'marketing'/'accounting'/'finance'/'HR'/'support'/'development',
+	'proficiency':			'basic'/'intermediate'/'advanced'/'proficient'/'expert',
+	'education':			'none'/'high school diploma'/'associate degree'/'bachelor''s degree'/'master''s degree'/'phd',
+	'position':				'department manager'/'basic employee'/'programmer',
+	'profile_picture_path':	None/VARCHAR(50)}'''
 def insert_employee(values):
 	cnx = create_connection('baxi_staff')
 	cur = cnx.cursor()
@@ -28,3 +28,67 @@ def insert_employee(values):
 	cnx.commit()
 	cnx.close()
 
+'''{'vehicle_license_plate':	CHAR(9),
+	'vehicle_capacity':			INT,
+ 	'vehicle_color':			VARCHAR(50),
+	'vehicle_name': 			VARCHAR(50),
+	'vehicle_production_date':	DATE,
+	'vehicle_card_photo':		VARCHAR(50),
+	'vehicle_fuel_type':		'gasoline'/'CNG'/'dual'/'electricity',
+	'driver_id':				INT}'''
+def insert_baxi(values):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''INSERT INTO baxi VALUES (%(vehicle_license_plate)s, %(vehicle_capacity)s,
+			%(vehicle_color)s, %(vehicle_name)s, %(vehicle_production_date)s,
+			%(vehicle_card_photo)s, %(vehicle_fuel_type)s, %(driver_id)s)'''
+	cur.execute(query, values)
+	cnx.commit()
+	cnx.close()
+
+'''{'vehicle_license_plate':	CHAR(9),
+	'vehicle_capacity':			INT,
+ 	'vehicle_color':			VARCHAR(50),
+	'vehicle_name': 			VARCHAR(50),
+	'vehicle_production_date':	DATE,
+	'vehicle_card_photo':		VARCHAR(50),
+	'vehicle_fuel_type':		'gasoline'/'CNG'/'dual'/'electricity',
+	'driver_id':				INT}'''
+def insert_baxi_baar(values):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''INSERT INTO baxi_baar VALUES (%(vehicle_license_plate)s, %(vehicle_capacity)s,
+			%(vehicle_color)s, %(vehicle_name)s, %(vehicle_production_date)s,
+			%(vehicle_card_photo)s, %(vehicle_fuel_type)s, %(driver_id)s)'''
+	cur.execute(query, values)
+	cnx.commit()
+	cnx.close()
+
+'''{'vehicle_license_plate':	CHAR(9),
+	'vehicle_capacity':			INT,
+ 	'vehicle_color':			VARCHAR(50),
+	'vehicle_name': 			VARCHAR(50),
+	'vehicle_production_date':	DATE,
+	'vehicle_card_photo':		VARCHAR(50),
+	'driver_id':				INT}'''
+def insert_baxi_box(values):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''INSERT INTO baxi_box VALUES (%(vehicle_license_plate)s, %(vehicle_capacity)s,
+			%(vehicle_color)s, %(vehicle_name)s, %(vehicle_production_date)s,
+			%(vehicle_card_photo)s, %(driver_id)s)'''
+	cur.execute(query, values)
+	cnx.commit()
+	cnx.close()
+
+'''{'pickup_location':	POINT,
+	'client_id':		INT,
+ 	'request_time':		DATETIME}'''
+def insert_request(values):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''INSERT INTO service_requests VALUES (%(pickup_location)s, %(client_id)s,
+			%(request_time)s)'''
+	cur.execute(query, values)
+	cnx.commit()
+	cnx.close()

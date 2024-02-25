@@ -3,14 +3,14 @@ USE baxi_staff;
 
 CREATE TABLE	employees
 				(
-					personnel_code			INT							PRIMARY KEY		AUTO_INCREMENT,
-					shaba_number			CHAR(26)					UNIQUE			NOT NULL,
-					password				VARCHAR(50)									NOT NULL,
-					first_name				VARCHAR(50)									NOT NULL,
-					last_name				VARCHAR(50)									NOT NULL,
-					birth_date				DATE										NOT NULL,
-					salary					INT											NOT NULL,
-					signup_time				DATETIME									NOT NULL,
+					personnel_code			INT							PRIMARY KEY					AUTO_INCREMENT,
+					shaba_number			CHAR(26)					UNIQUE						NOT NULL,
+					password				VARCHAR(50)												NOT NULL,
+					first_name				VARCHAR(50)												NOT NULL,
+					last_name				VARCHAR(50)												NOT NULL,
+					birth_date				DATE													NOT NULL,
+					salary					INT														NOT NULL,
+					signup_time				DATETIME					DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					department				ENUM
 											(
 												'marketing',
@@ -19,7 +19,7 @@ CREATE TABLE	employees
 												'HR',
 												'support',
 												'development'
-											)											NOT NULL,
+											)														NOT NULL,
 					proficiency				ENUM
 											(
 												'basic',
@@ -27,7 +27,7 @@ CREATE TABLE	employees
 												'advanced',
 												'proficient',
 												'expert'
-											)											NOT NULL,
+											)														NOT NULL,
 					education				ENUM
 											(
 												'none',
@@ -36,13 +36,13 @@ CREATE TABLE	employees
 												'bachelor''s degree',
 												'master''s degree',
 												'phd'
-											)											NOT NULL,
+											)														NOT NULL,
 					position				ENUM
 											(
 												'department manager',
 												'basic employee',
 												'programmer'
-											)											NOT NULL,
+											)														NOT NULL,
 					profile_picture_path	VARCHAR(50)
 				);
 
@@ -51,17 +51,17 @@ USE baxi_users;
 
 CREATE TABLE	clients
 				(
-					client_id		INT				PRIMARY KEY		AUTO_INCREMENT,
-					phone_number	CHAR(11)		UNIQUE			NOT NULL,
-					wallet_balance	INT				DEFAULT 0		NOT NULL,
-					first_name		VARCHAR(50)						NOT NULL,
-					last_name		VARCHAR(50)						NOT NULL,
-					signup_time		DATETIME						NOT NULL,
+					client_id		INT				PRIMARY KEY					AUTO_INCREMENT,
+					phone_number	CHAR(11)		UNIQUE						NOT NULL,
+					wallet_balance	INT				DEFAULT 0					NOT NULL,
+					first_name		VARCHAR(50)									NOT NULL,
+					last_name		VARCHAR(50)									NOT NULL,
+					signup_time		DATETIME		DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					sex				ENUM
 									(
 										'M',
 										'F'
-									)				DEFAULT 'M'		NOT NULL,
+									)				DEFAULT 'M'					NOT NULL,
 					email			VARCHAR(50)
 				);
 
@@ -106,27 +106,28 @@ CREATE TABLE	drivers
 															'parkinson''s disease',
 															'developmental disabilities',
 															'physical disabilities'
-														)										DEFAULT 'none'	NOT NULL,
-					first_name							VARCHAR(50)												NOT NULL,
-					last_name							VARCHAR(50)												NOT NULL,
-					birth_date							DATE													NOT NULL,
-					national_code						CHAR(10)												NOT NULL,
-					license_photo_path					VARCHAR(50)												NOT NULL,
-					national_card_photo_path			VARCHAR(50)												NOT NULL,
-					license_verification_date			DATE													NOT NULL,
-					judicial_letter_path				VARCHAR(50)												NOT NULL,
-					judicial_letter_verification_date	DATE													NOT NULL,
-					final_verification_date				DATE													NOT NULL,
-					signup_time							DATETIME												NOT NULL,
+														)										DEFAULT 'none'				NOT NULL,
+					first_name							VARCHAR(50)															NOT NULL,
+					last_name							VARCHAR(50)															NOT NULL,
+					birth_date							DATE																NOT NULL,
+					national_code						CHAR(10)															NOT NULL,
+					license_photo_path					VARCHAR(50)															NOT NULL,
+					national_card_photo_path			VARCHAR(50)															NOT NULL,
+					license_verification_date			DATE																NOT NULL,
+					judicial_letter_path				VARCHAR(50)															NOT NULL,
+					judicial_letter_verification_date	DATE																NOT NULL,
+					final_verification_date				DATE																NOT NULL,
+					signup_time							DATETIME								DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					sex									ENUM
 														(
 															'M',
 															'F'
-														)										DEFAULT 'M'		NOT NULL,
+														)										DEFAULT 'M'					NOT NULL,
 					profile_picture_path				VARCHAR(50),
-					verifier_personnel_code				INT														NOT NULL,
+					verifier_personnel_code				INT																	NOT NULL,
 					FOREIGN KEY(verifier_personnel_code)	REFERENCES employees(personnel_code)
 				);
+
 CREATE TABLE	baxi
 				(
 					vehicle_license_plate		CHAR(9)			UNIQUE			NOT NULL,
