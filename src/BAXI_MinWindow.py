@@ -157,6 +157,7 @@ class MainWindow():
         self.ui.pushButt_go_to_baxi_woman_baxi_bar_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_woman_user_choose_vehicle_type)
         # -------------------------------------------------------------------------------------------------
+        # set popup success hide-------------------------------------------------------------------------
         self.ui.pushButt_request_baxi_user_choose_vehicle_type.clicked.connect(
             self.popup_success_baxi_user_choose_vehicle_type_setHidden)
 
@@ -169,6 +170,7 @@ class MainWindow():
 
         self.ui.pushButt_request_baxi_bar_baxi_bar_user_choose_vehicle_type.clicked.connect(
             self.popup_success_baxi_bar_user_choose_vehicle_type_setHidden)
+        # -------------------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
