@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>14</number>
+     <number>15</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1963,7 +1963,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButt_gp_to_my_account_">
+     <widget class="QPushButton" name="pushButt_go_to_my_account">
       <property name="geometry">
        <rect>
         <x>0</x>

@@ -179,6 +179,10 @@ class MainWindow():
         # go to setting in user home page --------------------------------------------------------------------
         self.ui.pushButt_settings_user_home.clicked.connect(self.show_user_setting)
         # ----------------------------------------------------------------------------------------------------
+        # go to user_my_account------------------------------------------------------------------------------
+        self.ui.pushButt_go_to_my_account.clicked.connect(self.show_user_my_account)
+        # ----------------------------------------------------------------------------------------------------
+
     def show(self):
         self.main_win.show()
 
@@ -331,6 +335,9 @@ class MainWindow():
 
     def show_user_setting(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_setting)
+
+    def show_user_my_account(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.user_my_account)
 
 
 if __name__ == "__main__":
