@@ -412,6 +412,19 @@ class Ui_BAXI(object):
         self.pushButt_edit_number_sign_in.setFlat(True)
         self.pushButt_edit_number_sign_in.setObjectName("pushButt_edit_number_sign_in")
         self.stackedWidget.addWidget(self.accept_code_sign_in)
+        self.user_history = QtWidgets.QWidget()
+        self.user_history.setObjectName("user_history")
+        self.label_27 = QtWidgets.QLabel(parent=self.user_history)
+        self.label_27.setGeometry(QtCore.QRect(0, 0, 360, 640))
+        self.label_27.setText("")
+        self.label_27.setPixmap(QtGui.QPixmap("../image/user_history/user_history.png"))
+        self.label_27.setObjectName("label_27")
+        self.pushButt_back_user_setting_2 = QtWidgets.QPushButton(parent=self.user_history)
+        self.pushButt_back_user_setting_2.setGeometry(QtCore.QRect(10, 40, 21, 29))
+        self.pushButt_back_user_setting_2.setText("")
+        self.pushButt_back_user_setting_2.setFlat(True)
+        self.pushButt_back_user_setting_2.setObjectName("pushButt_back_user_setting_2")
+        self.stackedWidget.addWidget(self.user_history)
         self.get_photo_meli_certificate_obviously = QtWidgets.QWidget()
         self.get_photo_meli_certificate_obviously.setObjectName("get_photo_meli_certificate_obviously")
         self.label_9 = QtWidgets.QLabel(parent=self.get_photo_meli_certificate_obviously)
@@ -973,7 +986,7 @@ class Ui_BAXI(object):
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(15)
+        self.stackedWidget.setCurrentIndex(11)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):
