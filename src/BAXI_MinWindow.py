@@ -182,6 +182,11 @@ class MainWindow():
         # go to user_my_account------------------------------------------------------------------------------
         self.ui.pushButt_go_to_my_account.clicked.connect(self.show_user_my_account)
         # ----------------------------------------------------------------------------------------------------
+        # go back from user_my_account page------------------------------------------------------------
+        self.ui.pushButt_back_user_my_account.clicked.connect(self.show_user_setting)
+        # ----------------------------------------------------------------------------------------------------
+        # go back from user_setting page------------------------------------------------------------
+        self.ui.pushButt_back_user_setting.clicked.connect(self.show_user_home)
 
     def show(self):
         self.main_win.show()
