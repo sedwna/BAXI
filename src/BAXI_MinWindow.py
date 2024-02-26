@@ -176,83 +176,64 @@ class MainWindow():
         self.ui.pushButt_logout_user_home.clicked.connect(self.show_sign_in)
         # self.ui.pushButton_my_wallet_user_home.clicked.connect()
         # self.ui.pushButt_history_user_home.clicked.connect()
-        # self.ui.pushButt_settings_user_home.clicked.connect()
-        
-
-
+        # go to setting in user home page --------------------------------------------------------------------
+        self.ui.pushButt_settings_user_home.clicked.connect(self.show_user_setting)
+        # -------------------------------------------------------------------------------------------------
     def show(self):
         self.main_win.show()
-
 
     def show_loading(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.loading)
 
-
     def show_sign_up(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.sign_up)
-
 
     def show_sign_in(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.sign_in)
 
-
     def show_accept_code_sign_in(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
-
 
     def show_accept_code_sign_up(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
 
-
     def show_select_driver_user(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
-
 
     def show_get_flname_driver(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_driver)
 
-
     def show_get_sex_birth_meli(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_sex_birth_meli)
 
-
     def show_get_photo_meli_pcertificate_obviously(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_photo_meli_certificate_obviously)
-
 
     def brows_select_meli_card(self):
         dialog = QFileDialog(filter="Images *.png ", caption="select a file")
         # print(dialog.getOpenFileName())
 
-
     def show_get_shaba(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_shaba)
-
 
     def show_select_service(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.select_service)
 
-
     def show_get_machine_baxi_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_info)
 
-
     def show_get_machine_baxi_woman_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_woman_info)
-
 
     def show_registration_successful(self):
         self.baxi_driver_ful_info()
         self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
 
-
     def exit_app(self):
         sys.exit()
 
-
     def show_get_flname_user(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_user)
-
 
     def show_user_home(self):
         self.off_menu_bar_user_home()
@@ -260,22 +241,17 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
         # self.ui.stackedWidget.createWindowContainer(self.mp.show)
 
-
     def popup_success_baxi_user_choose_vehicle_type_setHidden(self):
         self.ui.popup_success_baxi_user_choose_vehicle_type.setHidden(False)
-
 
     def popup_success_baxi_woman_user_choose_vehicle_type_setHidden(self):
         self.ui.popup_success_baxi_woman_user_choose_vehicle_type.setHidden(False)
 
-
     def popup_success_baxi_bar_user_choose_vehicle_type_setHidden(self):
         self.ui.popup_success_baxi_bar_user_choose_vehicle_type.setHidden(False)
 
-
     def popup_success_baxi_box_user_choose_vehicle_type_setHidden(self):
         self.ui.popup_success_baxi_box_user_choose_vehicle_type.setHidden(False)
-
 
     def baxi_driver_ful_info(self):
         # -----------------------------------------------------
@@ -315,34 +291,27 @@ class MainWindow():
         print("machine capacity: ", self.ui.machine_capacity_get_machine_baxi_info.currentText())
         # -----------------------------------------------------
 
-
     def show_get_machine_baxi_bar_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_bar_info)
 
-
     def show_get_motor_baxi_box_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_motor_baxi_box_info)
-
 
     def show_baxi_user_choose_vehicle_type(self):
         self.ui.popup_success_baxi_user_choose_vehicle_type.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_user_choose_vehicle_type)
 
-
     def show_baxi_box_user_choose_vehicle_type(self):
         self.ui.popup_success_baxi_box_user_choose_vehicle_type.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_box_user_choose_vehicle_type)
-
 
     def show_baxi_bar_user_choose_vehicle_type(self):
         self.ui.popup_success_baxi_bar_user_choose_vehicle_type.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_bar_user_choose_vehicle_type)
 
-
     def show_baxi_woman_user_choose_vehicle_type(self):
         self.ui.popup_success_baxi_woman_user_choose_vehicle_type.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_woman_user_choose_vehicle_type)
-
 
     def show_menu_bar_user_home(self):
         self.ui.pushButton_my_wallet_user_home.setHidden(False)
@@ -352,7 +321,6 @@ class MainWindow():
         self.ui.pushButt_menu_off_user_home.setHidden(False)
         self.ui.menu_bar_user_home.setHidden(False)
 
-
     def off_menu_bar_user_home(self):
         self.ui.pushButton_my_wallet_user_home.setHidden(True)
         self.ui.pushButt_history_user_home.setHidden(True)
@@ -360,6 +328,9 @@ class MainWindow():
         self.ui.pushButt_logout_user_home.setHidden(True)
         self.ui.pushButt_menu_off_user_home.setHidden(True)
         self.ui.menu_bar_user_home.setHidden(True)
+
+    def show_user_setting(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.user_setting)
 
 
 if __name__ == "__main__":
