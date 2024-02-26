@@ -181,14 +181,17 @@ class MainWindow():
         # go to user_my_account------------------------------------------------------------------------------
         self.ui.pushButt_go_to_my_account.clicked.connect(self.show_user_my_account)
         # ----------------------------------------------------------------------------------------------------
-        # go back from user_my_account page------------------------------------------------------------
+        # go back from user_my_account page-------------------------------------------------------------------
         self.ui.pushButt_back_user_my_account.clicked.connect(self.show_user_setting)
         # ----------------------------------------------------------------------------------------------------
-        # go back from user_setting page------------------------------------------------------------
+        # go back from user_setting page-----------------------------------------------------------------------
         self.ui.pushButt_back_user_setting.clicked.connect(self.show_user_home)
         # ----------------------------------------------------------------------------------------------------
-        # go to user_my_wallet-------------------------------------------------------------
+        # go to user_my_wallet--------------------------------------------------------------------------------
         self.ui.pushButt_my_wallet_user_home.clicked.connect(self.show_user_my_wallet)
+        # ----------------------------------------------------------------------------------------------------
+        # go back from user_my_wallet page--------------------------------------------------------------------
+        self.ui.pushButt_back_user_my_wallet.clicked.connect(self.show_user_home)
         # ----------------------------------------------------------------------------------------------------
 
     def show(self):
