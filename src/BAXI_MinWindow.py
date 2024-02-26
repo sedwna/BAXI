@@ -187,8 +187,9 @@ class MainWindow():
         # go back from user_setting page------------------------------------------------------------
         self.ui.pushButt_back_user_setting.clicked.connect(self.show_user_home)
         # ----------------------------------------------------------------------------------------------------
-        # go to 
-        self.ui.pushButton_my_wallet_user_home.clicked.connect()
+        # go to user_my_wallet-------------------------------------------------------------
+        self.ui.pushButt_my_wallet_user_home.clicked.connect(self.show_user_my_wallet)
+        # ----------------------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
@@ -333,7 +334,7 @@ class MainWindow():
         self.ui.menu_bar_user_home.setHidden(False)
 
     def off_menu_bar_user_home(self):
-        self.ui.pushButton_my_wallet_user_home.setHidden(True)
+        self.ui.pushButt_my_wallet_user_home.setHidden(True)
         self.ui.pushButt_history_user_home.setHidden(True)
         self.ui.pushButt_settings_user_home.setHidden(True)
         self.ui.pushButt_logout_user_home.setHidden(True)
@@ -345,6 +346,8 @@ class MainWindow():
 
     def show_user_my_account(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_my_account)
+    def show_user_my_wallet(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.user_my_wallet)
 
 
 if __name__ == "__main__":
