@@ -174,7 +174,6 @@ class MainWindow():
         self.ui.pushButt_profile_user_home.clicked.connect(self.show_menu_bar_user_home)
         self.ui.pushButt_menu_off_user_home.clicked.connect(self.off_menu_bar_user_home)
         self.ui.pushButt_logout_user_home.clicked.connect(self.show_sign_in)
-        # self.ui.pushButton_my_wallet_user_home.clicked.connect()
         # self.ui.pushButt_history_user_home.clicked.connect()
         # go to setting in user home page --------------------------------------------------------------------
         self.ui.pushButt_settings_user_home.clicked.connect(self.show_user_setting)
@@ -187,6 +186,9 @@ class MainWindow():
         # ----------------------------------------------------------------------------------------------------
         # go back from user_setting page------------------------------------------------------------
         self.ui.pushButt_back_user_setting.clicked.connect(self.show_user_home)
+        # ----------------------------------------------------------------------------------------------------
+        # go to 
+        self.ui.pushButton_my_wallet_user_home.clicked.connect()
 
     def show(self):
         self.main_win.show()

@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>17</number>
+     <number>14</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1831,7 +1831,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_my_wallet_user_home">
+     <widget class="QPushButton" name="pushButt_my_wallet_user_home">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -1886,6 +1886,56 @@
         <y>590</y>
         <width>111</width>
         <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="user_my_wallet">
+     <widget class="QLabel" name="label_25">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/user_my_wallet/user_my_wallet.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_back_user_my_wallet">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>21</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_payment_methods_user_my_wallet">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>360</y>
+        <width>341</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
