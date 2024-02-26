@@ -5,12 +5,12 @@ CREATE TABLE	employees
 				(
 					personnel_code			INT							PRIMARY KEY					AUTO_INCREMENT,
 					shaba_number			CHAR(26)					UNIQUE						NOT NULL,
+					signup_time				DATETIME					DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					password				VARCHAR(50)												NOT NULL,
 					first_name				VARCHAR(50)												NOT NULL,
 					last_name				VARCHAR(50)												NOT NULL,
 					birth_date				DATE													NOT NULL,
 					salary					INT														NOT NULL,
-					signup_time				DATETIME					DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					department				ENUM
 											(
 												'marketing',
@@ -54,9 +54,9 @@ CREATE TABLE	clients
 					client_id		INT				PRIMARY KEY					AUTO_INCREMENT,
 					phone_number	CHAR(11)		UNIQUE						NOT NULL,
 					wallet_balance	INT				DEFAULT 0					NOT NULL,
+					signup_time		DATETIME		DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					first_name		VARCHAR(50)									NOT NULL,
 					last_name		VARCHAR(50)									NOT NULL,
-					signup_time		DATETIME		DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					sex				ENUM
 									(
 										'M',
@@ -94,6 +94,7 @@ CREATE TABLE	drivers
 					shaba_number						CHAR(26)								UNIQUE			NOT NULL,
 					referral_code						CHAR(10)								UNIQUE			NOT NULL,
 					wallet_balance						INT										DEFAULT 0		NOT NULL,
+					signup_time							DATETIME								DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					disability							ENUM
 														(
 															'none',
@@ -117,7 +118,7 @@ CREATE TABLE	drivers
 					judicial_letter_path				VARCHAR(50)															NOT NULL,
 					judicial_letter_verification_date	DATE																NOT NULL,
 					final_verification_date				DATE																NOT NULL,
-					signup_time							DATETIME								DEFAULT CURRENT_TIMESTAMP	NOT NULL,
+					location							POINT																NOT NULL
 					sex									ENUM
 														(
 															'M',
@@ -180,7 +181,10 @@ CREATE TABLE	baxi_box
 
 CREATE TABLE	service_requests
 				(
+					
 					pickup_location		POINT,
+					pickup_province		VARCHAR(50),
+					pickup_city			VARCHAR(50),
 					client_id			INT,
 					request_time		DATETIME,
 					PRIMARY KEY(client_id, request_time),
@@ -203,38 +207,42 @@ CREATE TABLE	baxi_trips
 
 CREATE TABLE	heavy_transports
 				(
-					cost			INT											NOT NULL,
-					cargo_weight	INT											NOT NULL,
-					cargo_value		INT											NOT NULL,
-					cargo_type		ENUM
-									(
-										'unfragile',
-										'fragile'
-									)					DEFAULT 'unfragile'		NOT NULL,
-					client_helped	ENUM
-									(
-										'no',
-										'yes'
-									)					DEFAULT 'no'			NOT NULL,
-					client_id		INT,
-					request_time	DATETIME,
+					cost				INT											NOT NULL,
+					cargo_weight		INT											NOT NULL,
+					cargo_value			INT											NOT NULL,
+					dropoff_location	POINT										NOT NULL,
+					dropoff_city		VARCHAR(50)									NOT NULL,
+					cargo_type			ENUM
+										(
+											'unfragile',
+											'fragile'
+										)					DEFAULT 'unfragile'		NOT NULL,
+					client_helped		ENUM
+										(
+											'no',
+											'yes'
+										)					DEFAULT 'no'			NOT NULL,
+					client_id			INT,
+					request_time		DATETIME,
 					PRIMARY KEY(client_id, request_time),
 					FOREIGN KEY(client_id, request_time)	REFERENCES service_requests(client_id, request_time)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
 CREATE TABLE	light_transports
 				(
-					cost			INT											NOT NULL,
-					cargo_weight	INT											NOT NULL,
-					cargo_value		INT											NOT NULL,
-					insurance_cost	INT											NOT NULL,
-					cargo_type		ENUM
-									(
-										'unfragile',
-										'fragile'
-									)					DEFAULT 'unfragile'		NOT NULL,
-					client_id		INT,
-					request_time	DATETIME,
+					cost				INT											NOT NULL,
+					cargo_weight		INT											NOT NULL,
+					cargo_value			INT											NOT NULL,
+					dropoff_location	POINT										NOT NULL,
+					dropoff_city		VARCHAR(50)									NOT NULL,
+					insurance_cost		INT											NOT NULL,
+					cargo_type			ENUM
+										(
+											'unfragile',
+											'fragile'
+										)					DEFAULT 'unfragile'		NOT NULL,
+					client_id			INT,
+					request_time		DATETIME,
 					PRIMARY KEY(client_id, request_time),
 					FOREIGN KEY(client_id, request_time)	REFERENCES service_requests(client_id, request_time)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
@@ -342,6 +350,7 @@ CREATE TABLE	addresses
 
 CREATE TABLE	destinations
 				(
+					city			VARCHAR(50),
 					client_id		INT,
 					request_time	DATETIME,
 					location		POINT		NOT NULL,

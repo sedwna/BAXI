@@ -6,12 +6,12 @@ def create_connection(db):
 
 '''{'personnel_code':		None/INT,
 	'shaba_number':			CHAR(26),
+	'signup_time':			None/DATETIME,
  	'password':				VARCHAR(50),
 	'first_name': 			VARCHAR(50),
 	'last_name':			VARCHAR(50),
 	'birth_date':			DATE,
 	'salary':				INT,
-	'signup_time':			None/DATETIME,
 	'department':			'marketing'/'accounting'/'finance'/'HR'/'support'/'development',
 	'proficiency':			'basic'/'intermediate'/'advanced'/'proficient'/'expert',
 	'education':			'none'/'high school diploma'/'associate degree'/'bachelor''s degree'/'master''s degree'/'phd',
@@ -20,10 +20,9 @@ def create_connection(db):
 def insert_employee(values):
 	cnx = create_connection('baxi_staff')
 	cur = cnx.cursor()
-	query = '''INSERT INTO employees VALUES (%(personnel_code)s, %(shaba_number)s,
-			%(password)s, %(first_name)s, %(last_name)s, %(birth_date)s, %(salary)s,
-			%(department)s, %(signup_time)s, %(proficiency)s, %(education)s,
-			%(position)s, %(profile_picture_path)s)'''
+	query = '''INSERT INTO employees VALUES (%(personnel_code)s, %(shaba_number)s, %(signup_time)s,%(password)s,
+											%(first_name)s, %(last_name)s, %(birth_date)s, %(salary)s, %(department)s,
+											%(proficiency)s, %(education)s, %(position)s, %(profile_picture_path)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -40,8 +39,8 @@ def insert_baxi(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
 	query = '''INSERT INTO baxi VALUES (%(vehicle_license_plate)s, %(vehicle_capacity)s,
-			%(vehicle_color)s, %(vehicle_name)s, %(vehicle_production_date)s,
-			%(vehicle_card_photo)s, %(vehicle_fuel_type)s, %(driver_id)s)'''
+										%(vehicle_color)s, %(vehicle_name)s, %(vehicle_production_date)s,
+										%(vehicle_card_photo)s, %(vehicle_fuel_type)s, %(driver_id)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -58,8 +57,8 @@ def insert_baar(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
 	query = '''INSERT INTO baxi_baar VALUES (%(vehicle_license_plate)s, %(vehicle_capacity)s,
-			%(vehicle_color)s, %(vehicle_name)s, %(vehicle_production_date)s,
-			%(vehicle_card_photo)s, %(vehicle_fuel_type)s, %(driver_id)s)'''
+											%(vehicle_color)s, %(vehicle_name)s, %(vehicle_production_date)s,
+											%(vehicle_card_photo)s, %(vehicle_fuel_type)s, %(driver_id)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -75,20 +74,22 @@ def insert_box(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
 	query = '''INSERT INTO baxi_box VALUES (%(vehicle_license_plate)s, %(vehicle_capacity)s,
-			%(vehicle_color)s, %(vehicle_name)s, %(vehicle_production_date)s,
-			%(vehicle_card_photo)s, %(driver_id)s)'''
+											%(vehicle_color)s, %(vehicle_name)s, %(vehicle_production_date)s,
+											%(vehicle_card_photo)s, %(driver_id)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
 
 '''{'pickup_location':	POINT,
+	'pickup_province':	VARCHAR(50),
+	'pickup_city':		VARCHAR(50),
 	'client_id':		INT,
  	'request_time':		DATETIME}'''
 def insert_request(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO service_requests VALUES (%(pickup_location)s, %(client_id)s,
-			%(request_time)s)'''
+	query = '''INSERT INTO service_requests VALUES (%(pickup_location)s, %(pickup_province)s
+													%(pickup_city)s, %(client_id)s, %(request_time)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -102,8 +103,8 @@ def insert_request(values):
 def insert_transaction(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO transactions VALUES (%(tracking_code)s, %(time)s,
-				%(shaba_number)s, %(amount)s, %(state)s, %(type)s)'''
+	query = '''INSERT INTO transactions VALUES (%(tracking_code)s, %(time)s, %(shaba_number)s,
+												%(amount)s, %(state)s, %(type)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -113,6 +114,7 @@ def insert_transaction(values):
 	'shaba_number':							CHAR(26),
 	'referral_code':						CHAR(10),
 	'wallet_balance':						INT,
+	'signup_time':							None/DATETIME,
 	'disability':							None/'none'/'alzheimer''s disease'/'epilepsy'
 											/hearing loss'/'paralysis'/'reduced limb or finger function'
 											/'weakened muscles'/'parkinson's disease'/
@@ -127,7 +129,7 @@ def insert_transaction(values):
 	'judicial_letter_path' :				VARCHAR(50),
 	'judicial_letter_verification_date':	DATE,
 	'final_verification_date':				DATE,
-	'signup_time':							DATETIME/None,
+	'location':								POINT,
 	'sex':									None/'M'/'F',
 	'profile_picture_path':					VARCHAR(50),
 	'verifier_personnel_code':				INT}'''
@@ -135,11 +137,12 @@ def insert_driver(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
 	query = '''INSERT INTO drivers VALUES (%(id)s, %(phone_number)s,%(shaba_number)s, %(referral_code)s,
-											%(wallet_balance)s, %(disability)s, %(first_name)s, %(last_name)s, %(birth_date)s, 
-											%(national_code)s, %(license_photo_path)s, %(national_card_photo_path)s,
-											%(license_verification_date)s, %(judicial_letter_path)s, %(judicial_letter_verification_date)s,
-											%(final_verification_date)s, %(signup_time)s, %(sex)s, %(profile_picture_path)s,
-											%(verifier_personnel_code)s)'''
+											%(wallet_balance)s, %(signup_time)s, %(disability)s, %(first_name)s,
+											%(last_name)s, %(birth_date)s, %(national_code)s, %(license_photo_path)s,
+											%(national_card_photo_path)s, %(license_verification_date)s,
+											%(judicial_letter_path)s, %(judicial_letter_verification_date)s,
+											%(final_verification_date)s, %(location)s, %(sex)s,
+											%(profile_picture_path)s, %(verifier_personnel_code)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -159,6 +162,8 @@ def insert_trip(values):
 '''{'cost':				INT,
 	'cargo_weight':		INT,
 	'cargo_value':		INT,
+	'dropoff_location':	POINT,
+	'dropoff_city':		VARCHAR(50),
 	'cargo_type':		None/'unfragile'/'fragile',
 	'client_helped':	None/'no'/'yes',
 	'client_id':		None/'none'/'alzheimer''s disease'/'epilepsy',
@@ -166,8 +171,9 @@ def insert_trip(values):
 def insert_heavy(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO heavy_transports VALUES (%(cost)s, %(cargo_weight)s,%(cargo_value)s, %(cargo_type)s,
-													%(client_helped)s, %(client_id)s, %(request_time)s)'''
+	query = '''INSERT INTO heavy_transports VALUES (%(cost)s, %(cargo_weight)s,%(cargo_value)s, %(dropoff_location)s,
+													%(dropoff_city)s, %(cargo_type)s, %(client_helped)s, %(client_id)s,
+													%(request_time)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -175,6 +181,8 @@ def insert_heavy(values):
 '''{'cost':				INT,
 	'cargo_weight':		INT,
 	'cargo_value':		INT,
+	'dropoff_location':	POINT,
+	'dropoff_city':		VARCHAR(50),
 	'insurance_cost':	INT,
 	'cargo_type':		None/'unfragile'/'fragile',
 	'client_id':		INT,
@@ -182,8 +190,9 @@ def insert_heavy(values):
 def insert_light(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO light_transports VALUES (%(cost)s, %(cargo_weight)s,%(cargo_value)s, %(insurance_cost)s,
-													%(cargo_type)s, %(client_id)s, %(request_time)s)'''
+	query = '''INSERT INTO light_transports VALUES (%(cost)s, %(cargo_weight)s, %(cargo_value)s, %(dropoff_location)s,
+													%(dropoff_city)s, %(insurance_cost)s, %(cargo_type)s, %(client_id)s,
+													%(request_time)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -263,13 +272,14 @@ def insert_address(values):
 	cnx.commit()
 	cnx.close()
 
-'''{'client_id':	INT,
+'''{'city':			VARCHAR(50),
+	'client_id':	INT,
 	'request_time':	DATETIME,
 	'location':		POINT}'''
 def insert_destination(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO destinations VALUES (%(client_id)s, %(request_time)s,%(location)s)'''
+	query = '''INSERT INTO destinations VALUES (%(city)s, %(client_id)s, %(request_time)s,%(location)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
