@@ -178,7 +178,7 @@ class MainWindow():
         # self.ui.pushButt_history_user_home.clicked.connect()
         # go to setting in user home page --------------------------------------------------------------------
         self.ui.pushButt_settings_user_home.clicked.connect(self.show_user_setting)
-        # -------------------------------------------------------------------------------------------------
+        # ----------------------------------------------------------------------------------------------------
     def show(self):
         self.main_win.show()
 
