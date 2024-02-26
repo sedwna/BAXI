@@ -1275,7 +1275,7 @@
        <pixmap>../image/user_history/user_history.png</pixmap>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButt_back_user_setting_2">
+     <widget class="QPushButton" name="pushButt_back_user_history">
       <property name="geometry">
        <rect>
         <x>10</x>

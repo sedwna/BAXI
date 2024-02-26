@@ -199,8 +199,12 @@ class MainWindow():
         # go back from user_payment_method page---------------------------------------------------------------
         self.ui.pushButt_back_user_payment_method.clicked.connect(self.show_user_my_wallet)
         # ----------------------------------------------------------------------------------------------------
-        # go to user_history page---------------------------------------
+        # go to user_history page-----------------------------------------------------------------------------
         self.ui.pushButt_history_user_home.clicked.connect(self.show_pushButt_history_user_home)
+        # go back user_history page--------------------------------------------------------------------------------
+        self.ui.pushButt_back_user_history.clicked.connect(self.show_user_home)
+        # ----------------------------------------------------------------------------------------------------
+
 
     def show(self):
         self.main_win.show()
