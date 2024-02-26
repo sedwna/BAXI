@@ -2,7 +2,7 @@ import mysql.connector
 from datetime import date, datetime
 
 def create_connection(db):
-	return mysql.connector.connect(host='localhost', user='root', password='assambalers', database='baxi_staff')
+	return mysql.connector.connect(host='manaslu.liara.cloud', user='root', password='qYpFg1HGZ2S29jBzRnIiwXBf', database=db, port=34251)
 
 '''{'personnel_code':		None/INT,
 	'shaba_number':			CHAR(26),
@@ -93,7 +93,7 @@ def insert_request(values):
 	cnx.commit()
 	cnx.close()
 
-'''{'tracking_code':	VARCHAR(20),
+'''{'tracking_code':	None/VARCHAR(20),
 	'time':				DATETIME/None,
 	'shaba_number':		CHAR(26),
 	'amount':			INT,
@@ -151,7 +151,7 @@ def insert_driver(values):
 def insert_trip(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO baxi_trips VALUES (%(cost)s, %(round_trip)s,%(client_id)s, %(request_time)s)'''
+	query = '''INSERT INTO baxi_trips VALUES (%(cost)s, %(round_trip)s ,%(client_id)s, %(request_time)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()

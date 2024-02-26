@@ -125,7 +125,7 @@ CREATE TABLE	drivers
 														)										DEFAULT 'M'					NOT NULL,
 					profile_picture_path				VARCHAR(50),
 					verifier_personnel_code				INT																	NOT NULL,
-					FOREIGN KEY(verifier_personnel_code)	REFERENCES employees(personnel_code)
+					FOREIGN KEY(verifier_personnel_code)	REFERENCES baxi_staff.employees(personnel_code)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
 CREATE TABLE	baxi
@@ -144,7 +144,7 @@ CREATE TABLE	baxi
 													'electricity'
 												)								NOT NULL,
 					driver_id					INT				PRIMARY KEY,
-					FOREIGN KEY(driver_id)	REFERENCES drivers(driver_id)
+					FOREIGN KEY(driver_id)	REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
 CREATE TABLE	baxi_baar
@@ -163,7 +163,7 @@ CREATE TABLE	baxi_baar
 													'electricity'
 												)								NOT NULL,
 					driver_id					INT				PRIMARY KEY,	
-					FOREIGN KEY(driver_id)	REFERENCES drivers(driver_id)
+					FOREIGN KEY(driver_id)	REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
 CREATE TABLE	baxi_box
@@ -175,7 +175,7 @@ CREATE TABLE	baxi_box
 					vehicle_production_date		DATE									NOT NULL,
 					vehicle_card_photo			VARCHAR(50)								NOT NULL,
 					driver_id					INT					PRIMARY KEY,	
-					FOREIGN KEY(driver_id)	REFERENCES drivers(driver_id)
+					FOREIGN KEY(driver_id)	REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
 CREATE TABLE	service_requests
@@ -184,7 +184,7 @@ CREATE TABLE	service_requests
 					client_id			INT,
 					request_time		DATETIME,
 					PRIMARY KEY(client_id, request_time),
-					FOREIGN KEY(client_id)	REFERENCES clients(client_id)
+					FOREIGN KEY(client_id)	REFERENCES clients(client_id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
 CREATE TABLE	baxi_trips
@@ -198,8 +198,7 @@ CREATE TABLE	baxi_trips
 					client_id		INT,
 					request_time	DATETIME,
 					PRIMARY KEY(client_id, request_time),
-					FOREIGN KEY(client_id)		REFERENCES service_requests(client_id),
-					FOREIGN KEY(request_time)	REFERENCES service_requests(request_time)
+					FOREIGN KEY(client_id, request_time)	REFERENCES service_requests(client_id, request_time)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
 CREATE TABLE	heavy_transports
@@ -220,8 +219,7 @@ CREATE TABLE	heavy_transports
 					client_id		INT,
 					request_time	DATETIME,
 					PRIMARY KEY(client_id, request_time),
-					FOREIGN KEY(client_id)		REFERENCES service_requests(client_id),
-					FOREIGN KEY(request_time)	REFERENCES service_requests(request_time)
+					FOREIGN KEY(client_id, request_time)	REFERENCES service_requests(client_id, request_time)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
 CREATE TABLE	light_transports
@@ -238,16 +236,15 @@ CREATE TABLE	light_transports
 					client_id		INT,
 					request_time	DATETIME,
 					PRIMARY KEY(client_id, request_time),
-					FOREIGN KEY(client_id)		REFERENCES service_requests(client_id),
-					FOREIGN KEY(request_time)	REFERENCES service_requests(request_time)
+					FOREIGN KEY(client_id, request_time)	REFERENCES service_requests(client_id, request_time)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
 CREATE TABLE	referrals
 				(
 					referrer_id		INT		PRIMARY KEY,
-					referred_id		INT,
-					FOREIGN KEY(referrer_id)	REFERENCES drivers(driver_id),
-					FOREIGN KEY(referred_id)	REFERENCES drivers(driver_id)
+					referred_id		INT		NOT NULL,
+					FOREIGN KEY(referrer_id)	REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE RESTRICT,
+					FOREIGN KEY(referred_id)	REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
 CREATE TABLE	withdrawals
@@ -259,16 +256,16 @@ CREATE TABLE	withdrawals
 									)				DEFAULT 'momentary'		NOT NULL,
 					tracking_code	VARCHAR(20)		PRIMARY KEY,
 					driver_id		INT										NOT NULL,
-					FOREIGN KEY(tracking_code)	REFERENCES transactions(tracking_code),
-					FOREIGN KEY(driver_id)		REFERENCES drivers(driver_id)
+					FOREIGN KEY(tracking_code)	REFERENCES transactions(tracking_code)	ON UPDATE CASCADE	ON DELETE CASCADE,
+					FOREIGN KEY(driver_id)		REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
 CREATE TABLE	deposits
 				(
 					tracking_code	VARCHAR(20)		PRIMARY KEY,
 					client_id		INT				NOT NULL,
-					FOREIGN KEY(tracking_code)	REFERENCES transactions(tracking_code),
-					FOREIGN KEY(client_id)		REFERENCES clients(client_id)
+					FOREIGN KEY(tracking_code)	REFERENCES transactions(tracking_code)	ON UPDATE CASCADE	ON DELETE CASCADE,
+					FOREIGN KEY(client_id)		REFERENCES clients(client_id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
 CREATE TABLE	service_acceptances
@@ -307,14 +304,13 @@ CREATE TABLE	service_acceptances
 											'10-to-30 minutes',
 											'30-to-60 minutes'
 										)						DEFAULT '0-to-5 minutes'	NOT NULL,
+					tracking_code		VARCHAR(20),
 					client_id			INT,
 					request_time		DATETIME,
-					tracking_code		VARCHAR(20),
-					PRIMARY KEY(client_id, request_time, tracking_code),
-					FOREIGN KEY(client_id)		REFERENCES service_requests(client_id),
-					FOREIGN KEY(request_time)	REFERENCES service_requests(request_time),
-					FOREIGN KEY(tracking_code)	REFERENCES transactions(tracking_code),
-					FOREIGN KEY(driver_id)		REFERENCES drivers(driver_id)
+					PRIMARY KEY(client_id, request_time),
+					FOREIGN KEY(client_id, request_time)	REFERENCES service_requests(client_id, request_time)	ON UPDATE CASCADE	ON DELETE CASCADE,
+					FOREIGN KEY(tracking_code)	REFERENCES transactions(tracking_code)	ON UPDATE CASCADE	ON DELETE RESTRICT,
+					FOREIGN KEY(driver_id)		REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
 CREATE TABLE	reports
@@ -331,8 +327,8 @@ CREATE TABLE	reports
 					client_id		INT,
 					driver_id		INT,
 					PRIMARY KEY(client_id, driver_id),
-					FOREIGN KEY(client_id)	REFERENCES clients(client_id),
-					FOREIGN KEY(driver_id)	REFERENCES drivers(driver_id)
+					FOREIGN KEY(client_id)	REFERENCES clients(client_id)	ON UPDATE CASCADE	ON DELETE RESTRICT,
+					FOREIGN KEY(driver_id)	REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
 CREATE TABLE	addresses
@@ -341,17 +337,17 @@ CREATE TABLE	addresses
 					client_id		INT,
 					address_name	VARCHAR(50),
 					PRIMARY KEY(client_id, address_name),
-					FOREIGN KEY(client_id)	REFERENCES clients(client_id)
+					FOREIGN KEY(client_id)	REFERENCES clients(client_id)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
 CREATE TABLE	destinations
 				(
 					client_id		INT,
 					request_time	DATETIME,
-					location		POINT,
-					PRIMARY KEY(client_id, request_time, location),
-					FOREIGN KEY(client_id)		REFERENCES service_requests(client_id),
-					FOREIGN KEY(request_time)	REFERENCES service_requests(request_time)
+					location		POINT		NOT NULL,
+					PRIMARY KEY(client_id, request_time),
+                    SPATIAL KEY(location),
+					FOREIGN KEY(client_id, request_time)	REFERENCES service_requests(client_id, request_time)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
 CREATE TABLE	compliments
@@ -373,8 +369,7 @@ CREATE TABLE	compliments
 										'moderate temperature'
 									)							NOT NULL,
 					PRIMARY KEY(client_id, request_time, point),
-					FOREIGN KEY(client_id)		REFERENCES service_requests(client_id),
-					FOREIGN KEY(request_time)	REFERENCES service_requests(request_time)
+					FOREIGN KEY(client_id, request_time)	REFERENCES service_requests(client_id, request_time)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
 CREATE TABLE	complaints
@@ -398,8 +393,7 @@ CREATE TABLE	complaints
 										'unpunctuality'
 									)									NOT NULL,
 					PRIMARY KEY(client_id, request_time, point),
-					FOREIGN KEY(client_id)		REFERENCES service_requests(client_id),
-					FOREIGN KEY(request_time)	REFERENCES service_requests(request_time)
+					FOREIGN KEY(client_id, request_time)	REFERENCES service_requests(client_id, request_time)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
 CREATE TABLE	company_deposits
@@ -414,14 +408,14 @@ CREATE TABLE	company_deposits
 					employee_personnel_code		INT,
 					driver_id					INT,
 					PRIMARY KEY(employee_personnel_code, driver_id),
-					FOREIGN KEY(employee_personnel_code)	REFERENCES employees(personnel_code),
-					FOREIGN KEY(driver_id)					REFERENCES drivers(driver_id)
+					FOREIGN KEY(employee_personnel_code)	REFERENCES baxi_staff.employees(personnel_code)	ON UPDATE CASCADE	ON DELETE RESTRICT,
+					FOREIGN KEY(driver_id)					REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
 CREATE TABLE	compensatory_deposits
 				(
 					tracking_code	VARCHAR(20)		PRIMARY KEY,
 					driver_id		INT				NOT NULL,
-					FOREIGN KEY(tracking_code)	REFERENCES transactions(tracking_code),
-					FOREIGN KEY(driver_id)		REFERENCES drivers(driver_id)
+					FOREIGN KEY(tracking_code)	REFERENCES transactions(tracking_code)	ON UPDATE CASCADE	ON DELETE CASCADE,
+					FOREIGN KEY(driver_id)		REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
