@@ -164,13 +164,16 @@ class MainWindow():
         self.ui.pushButt_request_baxi_woman_baxi_woman_user_choose_vehicle_type.clicked.connect(
             self.popup_success_baxi_woman_user_choose_vehicle_type_setHidden)
 
-
         self.ui.pushButt_request_baxi_box_baxi_box_user_choose_vehicle_type.clicked.connect(
             self.popup_success_baxi_box_user_choose_vehicle_type_setHidden)
 
         self.ui.pushButt_request_baxi_bar_baxi_bar_user_choose_vehicle_type.clicked.connect(
             self.popup_success_baxi_bar_user_choose_vehicle_type_setHidden)
         # -------------------------------------------------------------------------------------------------
+        # set menu bar in user home -----------------------------------------------------------------------
+        self.ui.pushButt_profile_user_home.clicked.connect(self.show_menu_bar_user_home)
+        self.ui.pushButt_menu_off_user_home.clicked.connect(self.off_menu_bar_user_home)
+
 
     def show(self):
         self.main_win.show()
@@ -229,6 +232,8 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_user)
 
     def show_user_home(self):
+        self.ui.pushButt_menu_off_user_home.setHidden(True)
+        self.ui.menu_bar_user_home.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
         # self.ui.stackedWidget.createWindowContainer(self.mp.show)
@@ -304,6 +309,15 @@ class MainWindow():
     def show_baxi_woman_user_choose_vehicle_type(self):
         self.ui.popup_success_baxi_woman_user_choose_vehicle_type.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_woman_user_choose_vehicle_type)
+
+    def show_menu_bar_user_home(self):
+        self.ui.pushButt_menu_off_user_home.setHidden(False)
+        self.ui.menu_bar_user_home.setHidden(False)
+
+    def off_menu_bar_user_home(self):
+        self.ui.pushButt_menu_off_user_home.setHidden(True)
+        self.ui.menu_bar_user_home.setHidden(True)
+
 
 
 if __name__ == "__main__":
