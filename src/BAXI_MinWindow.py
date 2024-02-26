@@ -177,6 +177,7 @@ class MainWindow():
         # self.ui.pushButton_my_wallet_user_home.clicked.connect()
         # self.ui.pushButt_history_user_home.clicked.connect()
         # self.ui.pushButt_settings_user_home.clicked.connect()
+        
 
 
     def show(self):

@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>13</number>
+     <number>14</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1896,7 +1896,56 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="user_menu_bar"/>
+    <widget class="QWidget" name="user_setting">
+     <widget class="QLabel" name="label_23">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/user_setting/user_setting.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_logout_user_setting_user_setting">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>608</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_gp_to_my_account_">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>128</y>
+        <width>361</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="baxi_user_choose_vehicle_type">
      <widget class="QLabel" name="label_19">
       <property name="geometry">
