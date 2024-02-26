@@ -193,6 +193,9 @@ class MainWindow():
         # go back from user_my_wallet page--------------------------------------------------------------------
         self.ui.pushButt_back_user_my_wallet.clicked.connect(self.show_user_home)
         # ----------------------------------------------------------------------------------------------------
+        # go to user_payment_method--------------------------------------------------------------------------------
+        self.ui.pushButt_go_to_payment_methods_user_my_wallet.clicked.connect(self.show_user_payment_method)
+        # ----------------------------------------------------------------------------------------------------
 
     def show(self):
         self.main_win.show()
@@ -329,7 +332,7 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_woman_user_choose_vehicle_type)
 
     def show_menu_bar_user_home(self):
-        self.ui.pushButton_my_wallet_user_home.setHidden(False)
+        self.ui.pushButt_my_wallet_user_home.setHidden(False)
         self.ui.pushButt_history_user_home.setHidden(False)
         self.ui.pushButt_settings_user_home.setHidden(False)
         self.ui.pushButt_logout_user_home.setHidden(False)
@@ -351,6 +354,8 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_my_account)
     def show_user_my_wallet(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_my_wallet)
+    def show_user_payment_method(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.user_payment_method)
 
 
 if __name__ == "__main__":

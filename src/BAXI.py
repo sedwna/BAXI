@@ -620,6 +620,19 @@ class Ui_BAXI(object):
         self.pushButt_go_to_payment_methods_user_my_wallet.setFlat(True)
         self.pushButt_go_to_payment_methods_user_my_wallet.setObjectName("pushButt_go_to_payment_methods_user_my_wallet")
         self.stackedWidget.addWidget(self.user_my_wallet)
+        self.user_payment_method = QtWidgets.QWidget()
+        self.user_payment_method.setObjectName("user_payment_method")
+        self.label_26 = QtWidgets.QLabel(parent=self.user_payment_method)
+        self.label_26.setGeometry(QtCore.QRect(0, 0, 360, 640))
+        self.label_26.setText("")
+        self.label_26.setPixmap(QtGui.QPixmap("../image/user_payment_method/user_payment_method.png"))
+        self.label_26.setObjectName("label_26")
+        self.pushButt_back_user_payment_method = QtWidgets.QPushButton(parent=self.user_payment_method)
+        self.pushButt_back_user_payment_method.setGeometry(QtCore.QRect(10, 40, 21, 29))
+        self.pushButt_back_user_payment_method.setText("")
+        self.pushButt_back_user_payment_method.setFlat(True)
+        self.pushButt_back_user_payment_method.setObjectName("pushButt_back_user_payment_method")
+        self.stackedWidget.addWidget(self.user_payment_method)
         self.user_my_account = QtWidgets.QWidget()
         self.user_my_account.setObjectName("user_my_account")
         self.label_24 = QtWidgets.QLabel(parent=self.user_my_account)
@@ -960,7 +973,7 @@ class Ui_BAXI(object):
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(14)
+        self.stackedWidget.setCurrentIndex(15)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):
