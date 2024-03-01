@@ -219,7 +219,7 @@ class MainWindow():
         # select_go_to_user_or_driver_home---------------------------------------------------------------------------
         self.ui.pushButt_accept_sign_in_code.clicked.connect(self.select_go_to_user_or_driver_home)
         # -----------------------------------------------------------------------------------------------------------
-        # go to driver_accept_request page
+        # go to driver_accept_request page ---------------------------------------------------------------------------
         self.ui.pushButt_accept_request_driver_home.clicked.connect(self.show_driver_accept_request)
         # -----------------------------------------------------------------------------------------------------------
 

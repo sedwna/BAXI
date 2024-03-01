@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>10</number>
+     <number>11</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1277,6 +1277,59 @@
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_profile_driver_accept_request">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="driver_passenger_boarded">
+     <widget class="QLabel" name="label_31">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/driver_passenger_boarded/driver_passenger_boarded.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_passanger_boarded_driver_passenger_boarded">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>560</y>
+        <width>301</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_profile_driver_passenger_boarded">
       <property name="geometry">
        <rect>
         <x>10</x>
