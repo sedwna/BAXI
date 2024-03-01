@@ -210,6 +210,8 @@ class MainWindow():
         self.ui.pushButt_done_baxi_box_user_choose_vehicle_type.clicked.connect(self.show_user_driver_request_accepts_info)
         self.ui.pushButt_done_baxi_bar_user_choose_vehicle_type.clicked.connect(self.show_user_driver_request_accepts_info)
         # ------------------------------------------------------------------------------------------------------
+        # go back from user_driver_request_accepts_info page------------------------------------------------------
+        self.ui.pushButt_cancel_request_user_driver_request_accepts_info.clicked.connect(self.show_user_home)
 
 
     def show(self):
