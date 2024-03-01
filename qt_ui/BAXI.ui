@@ -1293,6 +1293,56 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="driver_reached_the_destination">
+     <widget class="QLabel" name="label_32">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/driver_reached_the_destination/driver_reached_the_destination.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_reached_destination_driver_reached_the_destination">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>560</y>
+        <width>301</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_profile_driver_reached_the_destination">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="driver_passenger_boarded">
      <widget class="QLabel" name="label_31">
       <property name="geometry">
