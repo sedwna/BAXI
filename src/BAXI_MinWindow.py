@@ -219,7 +219,14 @@ class MainWindow():
         # select_go_to_user_or_driver_home---------------------------------------------------------------------------
         self.ui.pushButt_accept_sign_in_code.clicked.connect(self.select_go_to_user_or_driver_home)
         # -----------------------------------------------------------------------------------------------------------
-        
+        # go to driver_accept_request page
+        self.ui.pushButt_accept_request_driver_home.clicked.connect(self.show_driver_accept_request)
+        # -----------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
     def show(self):
         self.main_win.show()
@@ -402,6 +409,9 @@ class MainWindow():
             self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home)
         if False:
             self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
+
+    def show_driver_accept_request(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.driver_accept_request)
 
 
 if __name__ == "__main__":
