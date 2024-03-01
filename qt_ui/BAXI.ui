@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>23</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1148,6 +1148,88 @@
         <y>450</y>
         <width>281</width>
         <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="driver_home">
+     <widget class="QLabel" name="label_29">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/driver_home/driver_home.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_accept_request_driver_home">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>558</y>
+        <width>301</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_next_driver_home">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>250</y>
+        <width>83</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_previous_driver_home">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>250</y>
+        <width>83</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_profile_driver_home">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
