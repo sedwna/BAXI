@@ -216,8 +216,10 @@ class MainWindow():
         # go back from user_driver_request_accepts_info page------------------------------------------------------
         self.ui.pushButt_cancel_request_user_driver_request_accepts_info.clicked.connect(self.show_user_home)
         # -----------------------------------------------------------------------------------------------------------
-        # select_go_to_user_or_driver_home------------------------------------------------------------------------------------
+        # select_go_to_user_or_driver_home---------------------------------------------------------------------------
         self.ui.pushButt_accept_sign_in_code.clicked.connect(self.select_go_to_user_or_driver_home)
+        # -----------------------------------------------------------------------------------------------------------
+        
 
     def show(self):
         self.main_win.show()
