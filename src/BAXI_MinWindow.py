@@ -222,7 +222,9 @@ class MainWindow():
         # go to driver_accept_request page ---------------------------------------------------------------------------
         self.ui.pushButt_accept_request_driver_home.clicked.connect(self.show_driver_accept_request)
         # -----------------------------------------------------------------------------------------------------------
-
+        # go to driver_passenger_boarded page -----------------------------------------------------------------------
+        self.ui.pushButt_reached_the_origin_driver_accept_request.clicked.connect(self.show_driver_passenger_boarded)
+        # -----------------------------------------------------------------------------------------------------------
 
 
 
@@ -412,6 +414,9 @@ class MainWindow():
 
     def show_driver_accept_request(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_accept_request)
+
+    def show_driver_passenger_boarded(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.driver_passenger_boarded)
 
 
 if __name__ == "__main__":
