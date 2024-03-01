@@ -270,15 +270,19 @@ class MainWindow():
 
     def popup_success_baxi_user_choose_vehicle_type_setHidden(self):
         self.ui.popup_success_baxi_user_choose_vehicle_type.setHidden(False)
+        self.ui.pushButt_done_baxi_user_choose_vehicle_type.setHidden(False)
 
     def popup_success_baxi_woman_user_choose_vehicle_type_setHidden(self):
         self.ui.popup_success_baxi_woman_user_choose_vehicle_type.setHidden(False)
+        self.ui.pushButt_done_baxi_woman_user_choose_vehicle_type.setHidden(False)
 
     def popup_success_baxi_bar_user_choose_vehicle_type_setHidden(self):
         self.ui.popup_success_baxi_bar_user_choose_vehicle_type.setHidden(False)
+        self.ui.pushButt_done_baxi_bar_user_choose_vehicle_type.setHidden(False)
 
     def popup_success_baxi_box_user_choose_vehicle_type_setHidden(self):
         self.ui.popup_success_baxi_box_user_choose_vehicle_type.setHidden(False)
+        self.ui.pushButt_done_baxi_box_user_choose_vehicle_type.setHidden(False)
 
     def baxi_driver_ful_info(self):
         # -----------------------------------------------------
@@ -326,18 +330,22 @@ class MainWindow():
 
     def show_baxi_user_choose_vehicle_type(self):
         self.ui.popup_success_baxi_user_choose_vehicle_type.setHidden(True)
+        self.ui.pushButt_done_baxi_user_choose_vehicle_type.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_user_choose_vehicle_type)
 
     def show_baxi_box_user_choose_vehicle_type(self):
         self.ui.popup_success_baxi_box_user_choose_vehicle_type.setHidden(True)
+        self.ui.pushButt_done_baxi_box_user_choose_vehicle_type.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_box_user_choose_vehicle_type)
 
     def show_baxi_bar_user_choose_vehicle_type(self):
         self.ui.popup_success_baxi_bar_user_choose_vehicle_type.setHidden(True)
+        self.ui.pushButt_done_baxi_bar_user_choose_vehicle_type.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_bar_user_choose_vehicle_type)
 
     def show_baxi_woman_user_choose_vehicle_type(self):
         self.ui.popup_success_baxi_woman_user_choose_vehicle_type.setHidden(True)
+        self.ui.pushButt_done_baxi_woman_user_choose_vehicle_type.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_woman_user_choose_vehicle_type)
 
     def show_menu_bar_user_home(self):
