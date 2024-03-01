@@ -1329,7 +1329,7 @@
      <widget class="QPushButton" name="pushButt_profile_driver_reached_the_destination">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>40</y>
         <width>41</width>
         <height>41</height>
