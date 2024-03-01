@@ -858,6 +858,19 @@ class Ui_BAXI(object):
         self.pushButt_done_baxi_box_user_choose_vehicle_type.setFlat(True)
         self.pushButt_done_baxi_box_user_choose_vehicle_type.setObjectName("pushButt_done_baxi_box_user_choose_vehicle_type")
         self.stackedWidget.addWidget(self.baxi_box_user_choose_vehicle_type)
+        self.user_driver_request_accepts_info = QtWidgets.QWidget()
+        self.user_driver_request_accepts_info.setObjectName("user_driver_request_accepts_info")
+        self.label_28 = QtWidgets.QLabel(parent=self.user_driver_request_accepts_info)
+        self.label_28.setGeometry(QtCore.QRect(0, 0, 360, 640))
+        self.label_28.setText("")
+        self.label_28.setPixmap(QtGui.QPixmap("../image/user_driver_request_accepts_info/user_driver_request_accepts_info.png"))
+        self.label_28.setObjectName("label_28")
+        self.pushButt_cancel_request_user_driver_request_accepts_info = QtWidgets.QPushButton(parent=self.user_driver_request_accepts_info)
+        self.pushButt_cancel_request_user_driver_request_accepts_info.setGeometry(QtCore.QRect(30, 558, 301, 41))
+        self.pushButt_cancel_request_user_driver_request_accepts_info.setText("")
+        self.pushButt_cancel_request_user_driver_request_accepts_info.setFlat(True)
+        self.pushButt_cancel_request_user_driver_request_accepts_info.setObjectName("pushButt_cancel_request_user_driver_request_accepts_info")
+        self.stackedWidget.addWidget(self.user_driver_request_accepts_info)
         self.registration_successful = QtWidgets.QWidget()
         self.registration_successful.setObjectName("registration_successful")
         self.label_14 = QtWidgets.QLabel(parent=self.registration_successful)
@@ -1006,7 +1019,7 @@ class Ui_BAXI(object):
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(21)
+        self.stackedWidget.setCurrentIndex(23)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):

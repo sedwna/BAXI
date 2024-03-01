@@ -204,6 +204,12 @@ class MainWindow():
         # go back user_history page--------------------------------------------------------------------------------
         self.ui.pushButt_back_user_history.clicked.connect(self.show_user_home)
         # ----------------------------------------------------------------------------------------------------
+        # go to user_driver_request_accepts_info page--------------------------------------------------------
+        self.ui.pushButt_done_baxi_user_choose_vehicle_type.clicked.connect(self.show_user_driver_request_accepts_info)
+        self.ui.pushButt_done_baxi_woman_user_choose_vehicle_type.clicked.connect(self.show_user_driver_request_accepts_info)
+        self.ui.pushButt_done_baxi_box_user_choose_vehicle_type.clicked.connect(self.show_user_driver_request_accepts_info)
+        self.ui.pushButt_done_baxi_bar_user_choose_vehicle_type.clicked.connect(self.show_user_driver_request_accepts_info)
+        # ------------------------------------------------------------------------------------------------------
 
 
     def show(self):
@@ -322,6 +328,7 @@ class MainWindow():
         print("machine capacity: ", self.ui.machine_capacity_get_machine_baxi_info.currentText())
         # -----------------------------------------------------
 
+
     def show_get_machine_baxi_bar_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_bar_info)
 
@@ -378,6 +385,9 @@ class MainWindow():
 
     def show_pushButt_history_user_home(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_history)
+
+    def show_user_driver_request_accepts_info(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.user_driver_request_accepts_info)
 
 
 if __name__ == "__main__":
