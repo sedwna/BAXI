@@ -2,7 +2,7 @@ import mysql.connector
 from datetime import date, datetime
 
 def create_connection(db):
-	return mysql.connector.connect(host='manaslu.liara.cloud', user='root', password='qYpFg1HGZ2S29jBzRnIiwXBf', database=db, port=34251)
+	return mysql.connector.connect(host='localhost', user='root', password='assambalers', database=db, port=3306)
 
 '''{'personnel_code':		None/INT,
 	'shaba_number':			CHAR(26),
@@ -113,7 +113,7 @@ def insert_transaction(values):
 	'phone_number':							CHAR(11),
 	'shaba_number':							CHAR(26),
 	'referral_code':						CHAR(10),
-	'wallet_balance':						INT,
+	'wallet_balance':						None/INT,
 	'signup_time':							None/DATETIME,
 	'disability':							None/'none'/'alzheimer''s disease'/'epilepsy'
 											/hearing loss'/'paralysis'/'reduced limb or finger function'
@@ -125,24 +125,24 @@ def insert_transaction(values):
 	'national_code':						CHAR(10),
 	'license_photo_path':					VARCHAR(50),
 	'national_card_photo_path':				VARCHAR(50),
-	'license_verification_date':			DATE,
-	'judicial_letter_path' :				VARCHAR(50),
-	'judicial_letter_verification_date':	DATE,
-	'final_verification_date':				DATE,
-	'location':								POINT,
 	'sex':									None/'M'/'F',
-	'profile_picture_path':					VARCHAR(50),
-	'verifier_personnel_code':				INT}'''
+	'license_verification_date':			None/DATE,
+	'judicial_letter_path':					None/VARCHAR(50),
+	'judicial_letter_verification_date':	None/DATE,
+	'final_verification_date':				None/DATE,
+	'location':								None/POINT,
+	'profile_picture_path':					None/VARCHAR(50),
+	'verifier_personnel_code':				None/INT}'''
 def insert_driver(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
 	query = '''INSERT INTO drivers VALUES (%(id)s, %(phone_number)s,%(shaba_number)s, %(referral_code)s,
 											%(wallet_balance)s, %(signup_time)s, %(disability)s, %(first_name)s,
 											%(last_name)s, %(birth_date)s, %(national_code)s, %(license_photo_path)s,
-											%(national_card_photo_path)s, %(license_verification_date)s,
+											%(national_card_photo_path)s, %(sex)s, %(license_verification_date)s,
 											%(judicial_letter_path)s, %(judicial_letter_verification_date)s,
-											%(final_verification_date)s, %(location)s, %(sex)s,
-											%(profile_picture_path)s, %(verifier_personnel_code)s)'''
+											%(final_verification_date)s, %(location)s, %(profile_picture_path)s,
+											%(verifier_personnel_code)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -154,7 +154,7 @@ def insert_driver(values):
 def insert_trip(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO baxi_trips VALUES (%(cost)s, %(round_trip)s ,%(client_id)s, %(request_time)s)'''
+	query = '''INSERT INTO baxi_trips VALUES (%(cost)s, %(round_trip)s ,c%(client_id)s, %(request_time)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -171,7 +171,7 @@ def insert_trip(values):
 def insert_heavy(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO heavy_transports VALUES (%(cost)s, %(cargo_weight)s,%(cargo_value)s, %(dropoff_location)s,
+	query = '''INSERT INTO heavy_transports VALUES (%(cost)s, %(cargo_weight)s, %(cargo_value)s, %(dropoff_location)s,
 													%(dropoff_city)s, %(cargo_type)s, %(client_helped)s, %(client_id)s,
 													%(request_time)s)'''
 	cur.execute(query, values)
@@ -213,7 +213,7 @@ def insert_referral(values):
 def insert_withdrawal(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO withdrawals VALUES (%(type)s, %(tracking_code)s,%(driver_id)s)'''
+	query = '''INSERT INTO withdrawals VALUES (%(type)s, %(tracking_code)s, %(driver_id)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -256,7 +256,7 @@ def insert_acceptance(values):
 def insert_report(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO reports VALUES (%(description)s, %(state)s,%(client_id)s, %(driver_id)s)'''
+	query = '''INSERT INTO reports VALUES (%(description)s, %(state)s, %(client_id)s, %(driver_id)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -267,7 +267,7 @@ def insert_report(values):
 def insert_address(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO addresses VALUES (%(location)s, %(client_id)s,%(address_name)s)'''
+	query = '''INSERT INTO addresses VALUES (%(location)s, %(client_id)s, %(address_name)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -275,11 +275,13 @@ def insert_address(values):
 '''{'city':			VARCHAR(50),
 	'client_id':	INT,
 	'request_time':	DATETIME,
-	'location':		POINT}'''
+	'latitude':		INT
+	'longitude':	INT}'''
 def insert_destination(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO destinations VALUES (%(city)s, %(client_id)s, %(request_time)s,%(location)s)'''
+	query = '''INSERT INTO destinations VALUES (%(city)s, %(client_id)s, %(request_time)s,
+				%(latitude)s, %(longitude)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -297,7 +299,7 @@ def insert_destination(values):
 def insert_compliment(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO compliments VALUES (%(client_id)s, %(request_time)s,%(point)s)'''
+	query = '''INSERT INTO compliments VALUES (%(client_id)s, %(request_time)s, %(point)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -316,7 +318,7 @@ def insert_compliment(values):
 def insert_complaint(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO complaints VALUES (%(client_id)s, %(request_time)s,%(point)s)'''
+	query = '''INSERT INTO complaints VALUES (%(client_id)s, %(request_time)s, %(point)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -329,7 +331,7 @@ def insert_complaint(values):
 def insert_company_deposit(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO company_deposits VALUES (%(amount)s, %(time)s,%(type)s, %(employee_personnel_code)s,%(driver_id)s)'''
+	query = '''INSERT INTO company_deposits VALUES (%(amount)s, %(time)s,%(type)s, %(employee_personnel_code)s, %(driver_id)s)'''
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
@@ -343,3 +345,38 @@ def insert_compensatory_deposit(values):
 	cur.execute(query, values)
 	cnx.commit()
 	cnx.close()
+
+'''{'client_id':		None/INT,
+	'phone_number':		CHAR(11),
+	'wallet_balance':	None/INT,
+	'signup_time':		None/DATETIME,
+	'first_name':		VARCHAR(50),
+	'last_name':		VARCHAR(50),
+	'birth_date':		DATE,
+	'sex':				None/'M'/'F',
+	'email':			None/VARCHAR(50)}'''
+def insert_client(values):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''INSERT INTO clients VALUES (%(client_id)s, %(phone_number)s, %(wallet_balance), %(signup_time)s,
+											%(first_name)s, %(last_name)s, %(birth_date)s, %(sex)s, %(email)s)'''
+	cur.execute(query, values)
+	cnx.commit()
+	cnx.close()
+
+def query4():
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT		c.*
+				FROM		clients c join addresses
+				USING		(client_id)
+				WHERE		wallet_balance > 50
+				GROUP BY	c.client_id, phone_number, wallet_balance, signup_time, first_name, last_name, birth_date, sex, email
+				HAVING		COUNT(*) >= 2'''
+	cur.execute(query)
+	for row in cur:
+		print(row)
+
+def query6():
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()

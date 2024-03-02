@@ -57,6 +57,7 @@ CREATE TABLE	clients
 					signup_time		DATETIME		DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					first_name		VARCHAR(50)									NOT NULL,
 					last_name		VARCHAR(50)									NOT NULL,
+					birth_date		DATE										NOT NULL,
 					sex				ENUM
 									(
 										'M',
@@ -114,18 +115,18 @@ CREATE TABLE	drivers
 					national_code						CHAR(10)															NOT NULL,
 					license_photo_path					VARCHAR(50)															NOT NULL,
 					national_card_photo_path			VARCHAR(50)															NOT NULL,
-					license_verification_date			DATE																NOT NULL,
-					judicial_letter_path				VARCHAR(50)															NOT NULL,
-					judicial_letter_verification_date	DATE																NOT NULL,
-					final_verification_date				DATE																NOT NULL,
-					location							POINT																NOT NULL,
 					sex									ENUM
 														(
 															'M',
 															'F'
 														)										DEFAULT 'M'					NOT NULL,
+					license_verification_date			DATE,
+					judicial_letter_path				VARCHAR(50),
+					judicial_letter_verification_date	DATE,
+					final_verification_date				DATE,
+					location							POINT,
 					profile_picture_path				VARCHAR(50),
-					verifier_personnel_code				INT																	NOT NULL,
+					verifier_personnel_code				INT,
 					FOREIGN KEY(verifier_personnel_code)	REFERENCES baxi_staff.employees(personnel_code)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
