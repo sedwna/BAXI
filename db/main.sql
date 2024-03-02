@@ -118,7 +118,7 @@ CREATE TABLE	drivers
 					judicial_letter_path				VARCHAR(50)															NOT NULL,
 					judicial_letter_verification_date	DATE																NOT NULL,
 					final_verification_date				DATE																NOT NULL,
-					location							POINT																NOT NULL
+					location							POINT																NOT NULL,
 					sex									ENUM
 														(
 															'M',
@@ -182,9 +182,9 @@ CREATE TABLE	baxi_box
 CREATE TABLE	service_requests
 				(
 					
-					pickup_location		POINT,
-					pickup_province		VARCHAR(50),
-					pickup_city			VARCHAR(50),
+					pickup_location		POINT			NOT NULL,
+					pickup_province		VARCHAR(50)		NOT NULL,	
+					pickup_city			VARCHAR(50)		NOT NULL,
 					client_id			INT,
 					request_time		DATETIME,
 					PRIMARY KEY(client_id, request_time),
@@ -350,12 +350,12 @@ CREATE TABLE	addresses
 
 CREATE TABLE	destinations
 				(
-					city			VARCHAR(50),
-					client_id		INT,
-					request_time	DATETIME,
-					location		POINT		NOT NULL,
-					PRIMARY KEY(client_id, request_time),
-                    SPATIAL KEY(location),
+					city			VARCHAR(50)		NOT NULL,
+					client_id		INT				NOT NULL,
+					request_time	DATETIME		NOT NULL,
+					latitude		INT				NOT NULL,
+					longitude		INT				NOT NULL,
+					PRIMARY KEY(client_id, request_time, latitude, longitude),
 					FOREIGN KEY(client_id, request_time)	REFERENCES service_requests(client_id, request_time)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
