@@ -395,8 +395,7 @@ def phone_number_exists(number):
 	cnx.close()
 	if result:
 		return True
-	else:
-		return False
+	return False
 
 '''	sign-in phone number lookup
 	result is returned in the following formats:
@@ -516,3 +515,42 @@ def box_driver_info(id):
 	result = cur.fetchall()
 	cnx.close()
 	return result
+
+# returns True/False
+def is_manager(pcode):
+	cnx = create_connection('baxi_staff')
+	cur = cnx.cursor()
+	query = """SELECT	personnel_code
+				FROM	employees
+				WHERE	personnel_code = %s AND department = 'HR' AND position = 'department manager'"""
+	cur.execute(query, (pcode))
+	result = cur.fetchall()
+	if result:
+		return True
+	return False
+
+''' called upon employee sign-in attempt
+	return format: tuple(first_name, last_name)'''
+def employee_info(pcode, password):
+	cnx = create_connection('baxi_staff')
+	cur = cnx.cursor()
+	query = '''SELECT	first_name, last_name
+				FROM	employees
+				WHERE	personnel_code = %s AND password = %s'''
+	cur.execute(query, (pcode, password))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+def get_unverified_drivers():
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	*
+				FROM	drivers
+				WHERE	verifier_personnel_code IS NULL'''
+	cur.execute(query, (pcode, password))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+# todo: various verification funcs
