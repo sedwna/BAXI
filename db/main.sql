@@ -51,7 +51,7 @@ USE baxi_users;
 
 CREATE TABLE	clients
 				(
-					client_id		INT				PRIMARY KEY					AUTO_INCREMENT,
+					id				INT				PRIMARY KEY					AUTO_INCREMENT,
 					phone_number	CHAR(11)		UNIQUE						NOT NULL,
 					wallet_balance	INT				DEFAULT 0					NOT NULL,
 					signup_time		DATETIME		DEFAULT CURRENT_TIMESTAMP	NOT NULL,
@@ -189,7 +189,7 @@ CREATE TABLE	service_requests
 					client_id			INT,
 					request_time		DATETIME,
 					PRIMARY KEY(client_id, request_time),
-					FOREIGN KEY(client_id)	REFERENCES clients(client_id)	ON UPDATE CASCADE	ON DELETE RESTRICT
+					FOREIGN KEY(client_id)	REFERENCES clients(id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
 CREATE TABLE	baxi_trips
@@ -274,7 +274,7 @@ CREATE TABLE	deposits
 					tracking_code	VARCHAR(20)		PRIMARY KEY,
 					client_id		INT				NOT NULL,
 					FOREIGN KEY(tracking_code)	REFERENCES transactions(tracking_code)	ON UPDATE CASCADE	ON DELETE CASCADE,
-					FOREIGN KEY(client_id)		REFERENCES clients(client_id)	ON UPDATE CASCADE	ON DELETE RESTRICT
+					FOREIGN KEY(client_id)		REFERENCES clients(id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
 CREATE TABLE	service_acceptances
@@ -336,7 +336,7 @@ CREATE TABLE	reports
 					client_id		INT,
 					driver_id		INT,
 					PRIMARY KEY(client_id, driver_id),
-					FOREIGN KEY(client_id)	REFERENCES clients(client_id)	ON UPDATE CASCADE	ON DELETE RESTRICT,
+					FOREIGN KEY(client_id)	REFERENCES clients(id)	ON UPDATE CASCADE	ON DELETE RESTRICT,
 					FOREIGN KEY(driver_id)	REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
@@ -346,7 +346,7 @@ CREATE TABLE	addresses
 					client_id		INT,
 					address_name	VARCHAR(50),
 					PRIMARY KEY(client_id, address_name),
-					FOREIGN KEY(client_id)	REFERENCES clients(client_id)	ON UPDATE CASCADE	ON DELETE CASCADE
+					FOREIGN KEY(client_id)	REFERENCES clients(id)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
 
 CREATE TABLE	destinations

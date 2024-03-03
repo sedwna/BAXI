@@ -109,7 +109,7 @@ def insert_transaction(values):
 	cnx.commit()
 	cnx.close()
 
-'''{'id':									INT,
+'''{'id':									None/INT,
 	'phone_number':							CHAR(11),
 	'shaba_number':							CHAR(26),
 	'referral_code':						CHAR(10),
@@ -374,9 +374,68 @@ def query4():
 				GROUP BY	c.client_id, phone_number, wallet_balance, signup_time, first_name, last_name, birth_date, sex, email
 				HAVING		COUNT(*) >= 2'''
 	cur.execute(query)
-	for row in cur:
-		print(row)
+	result = cur.fetchall()
+	cnx.close()
+	return result
 
-def query6():
+# sign-up phone number lookup
+def phone_number_exists(number):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
+	query = '''SELECT	id
+				FROM	clients
+				WHERE	phone_number = %s'''
+	cur.execute(query, (number))
+	temp = cur.fetchall()
+	query = '''SELECT	id
+				FROM	drivers
+				WHERE	phone_number = %s'''
+	cur.execute(query, (number))
+	result = temp + cur.fetchall()
+	cnx.close()
+	if result:
+		return True
+	else:
+		return False
+
+'''	sign-in phone number lookup
+	result is returned in the following formats:
+	tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
+def phone_number_lookup(number):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	id, wallet_balance, first_name, last_name, profile_picture_path
+				FROM	clients
+				WHERE	phone_number = %s'''
+	cur.execute(query, (number))
+	if result:
+		return result
+	query = '''SELECT	id, wallet_balance, first_name, last_name, profile_picture_path
+				FROM	drivers
+				WHERE	phone_number = %s'''
+	cur.execute(query, (number))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+# call after driver sign-in
+def update_location(driver_id, location):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''UPDATE	drivers
+				SET		location = %s
+				WHERE	id = %s'''
+	cur.execute(query, (location, driver_id))
+	cur.commit()
+	cnx.close()
+
+def driver_service_history(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	c.first_name, c.last_name, a.request_time, a.end_time, a.method_of_payment, a.driver_rating, a.client_rating, a.wait_time
+				FROM	(service_acceptances a JOIN clients c ON a.client_id = c.id) JOIN drivers d ON a.driver_id = d.id
+				WHERE	d.id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
