@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>11</number>
+     <number>18</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -64,7 +64,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../image/loading/Android Small - 1.png</pixmap>
+       <pixmap>../image/loading/loading.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_logo">
@@ -175,7 +175,7 @@
      <widget class="QTextEdit" name="meli_get_sex_birth_meli">
       <property name="geometry">
        <rect>
-        <x>185</x>
+        <x>40</x>
         <y>360</y>
         <width>141</width>
         <height>41</height>
@@ -188,7 +188,7 @@
      <widget class="QSpinBox" name="day_get_sex_birth_meli">
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>200</x>
         <y>230</y>
         <width>48</width>
         <height>29</height>
@@ -225,7 +225,7 @@
      <widget class="QSpinBox" name="month_get_sex_birth_meli">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>130</x>
         <y>230</y>
         <width>48</width>
         <height>29</height>
@@ -256,7 +256,7 @@
      <widget class="QSpinBox" name="year_get_sex_birth_meli">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>40</x>
         <y>230</y>
         <width>71</width>
         <height>29</height>
@@ -290,26 +290,26 @@
      <widget class="QComboBox" name="sex_get_sex_birth_meli">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>40</x>
         <y>290</y>
         <width>82</width>
         <height>28</height>
        </rect>
       </property>
       <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
+       <enum>Qt::LeftToRight</enum>
       </property>
       <property name="frame">
        <bool>true</bool>
       </property>
       <item>
        <property name="text">
-        <string>آقا</string>
+        <string>Sir</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>خانم</string>
+        <string>Madam</string>
        </property>
       </item>
      </widget>
@@ -771,8 +771,8 @@
      <widget class="QTextEdit" name="fname_get_flname_user">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>240</y>
+        <x>30</x>
+        <y>220</y>
         <width>221</width>
         <height>41</height>
        </rect>
@@ -784,8 +784,8 @@
      <widget class="QTextEdit" name="lname_get_flname_user">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>320</y>
+        <x>30</x>
+        <y>290</y>
         <width>221</width>
         <height>41</height>
        </rect>
@@ -797,9 +797,9 @@
      <widget class="QComboBox" name="comboBox">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>380</y>
-        <width>68</width>
+        <x>30</x>
+        <y>370</y>
+        <width>51</width>
         <height>31</height>
        </rect>
       </property>
@@ -808,12 +808,12 @@
       </property>
       <item>
        <property name="text">
-        <string>آقا</string>
+        <string>Sir</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>خانم</string>
+        <string>Madam</string>
        </property>
       </item>
      </widget>
@@ -864,7 +864,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../image/sign_in/Android Small - 11.png</pixmap>
+       <pixmap>../image/sign_in/sign_in.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_enter_sign_in">
@@ -917,7 +917,7 @@
      <widget class="QTextEdit" name="fname_get_flname_driver">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>30</x>
         <y>225</y>
         <width>221</width>
         <height>41</height>
@@ -930,7 +930,7 @@
      <widget class="QTextEdit" name="lname_get_flname_driver">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>30</x>
         <y>290</y>
         <width>221</width>
         <height>41</height>
@@ -969,7 +969,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../image/flname_driver/Android Small -.png</pixmap>
+       <pixmap>../image/get_flname_driver/get_flname_driver.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_back_get_flname_driver">
@@ -1008,7 +1008,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../image/select_driver_user/Android Small - 7.png</pixmap>
+       <pixmap>../image/select_driver_user/select_driver_user.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_select_user_select_driver_user">
@@ -1410,7 +1410,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../image/send_code/Android Small - 5.png</pixmap>
+       <pixmap>../image/accept_code_sign_up/accept_code_sign_up.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_accept_sign_up_code">
@@ -1460,7 +1460,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../image/send_code/Android Small - 5.png</pixmap>
+       <pixmap>../image/accept_code_sign_in/accept_code_sign_in.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_accept_sign_in_code">
@@ -1544,46 +1544,46 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../image/get_photo_meli_pcertificate_obviously/get_photo_meli_certificate_obviously.png</pixmap>
+       <pixmap>../image/get_photo_meli_pcertificate_obviously/get_photo_meli_pcertificate_obviously.png</pixmap>
       </property>
      </widget>
      <widget class="QComboBox" name="obviously_get_photo_meli_pcertificate_obviously">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>40</x>
         <y>390</y>
         <width>191</width>
         <height>28</height>
        </rect>
       </property>
       <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
+       <enum>Qt::LeftToRight</enum>
       </property>
       <item>
        <property name="text">
-        <string>بدون محدودیت</string>
+        <string>Without limited</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>ناشنوا</string>
+        <string>Deaf</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>ناتوان حرکتی</string>
+        <string>Unable to move</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>هردو</string>
+        <string>both</string>
        </property>
       </item>
      </widget>
      <widget class="QPushButton" name="meli_get_photo_meli_certificate_obviously">
       <property name="geometry">
        <rect>
-        <x>237</x>
+        <x>40</x>
         <y>240</y>
         <width>83</width>
         <height>29</height>
@@ -1599,7 +1599,7 @@
      <widget class="QPushButton" name="certificate_get_photo_meli_certificate_obviously">
       <property name="geometry">
        <rect>
-        <x>237</x>
+        <x>40</x>
         <y>320</y>
         <width>83</width>
         <height>29</height>
@@ -1968,7 +1968,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../image/user_home/user_home.png</pixmap>
+       <pixmap>../image/user_home/user_choose_drop_off.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_scroll_user_home">
@@ -3048,7 +3048,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../image/sign_up/Android Small - 8.png</pixmap>
+       <pixmap>../image/sign_up/sign_up.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_enter_sign_up">
