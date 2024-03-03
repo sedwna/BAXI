@@ -378,7 +378,7 @@ def query4():
 	cnx.close()
 	return result
 
-# sign-up phone number lookup
+# sign-up phone number lookup (returns True/False)
 def phone_number_exists(number):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
@@ -429,12 +429,89 @@ def update_location(driver_id, location):
 	cur.commit()
 	cnx.close()
 
+# return format: tuple(first_name, last_name, request_time, end_time, method_of_payment, driver_rating, client_rating, wait_time)
 def driver_service_history(id):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''SELECT	c.first_name, c.last_name, a.request_time, a.end_time, a.method_of_payment, a.driver_rating, a.client_rating, a.wait_time
-				FROM	(service_acceptances a JOIN clients c ON a.client_id = c.id) JOIN drivers d ON a.driver_id = d.id
-				WHERE	d.id = %s'''
+	query = '''SELECT	first_name, last_name, request_time, end_time, method_of_payment, driver_rating, client_rating, wait_time
+				FROM	service_acceptances JOIN clients ON client_id = id
+				WHERE	driver_id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+# return format: tuple(first_name, last_name, request_time, end_time, method_of_payment, driver_rating, client_rating, wait_time)
+def client_service_history(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	first_name, last_name, request_time, end_time, method_of_payment, driver_rating, client_rating, wait_time
+				FROM	service_acceptances JOIN drivers ON driver_id = id
+				WHERE	client_id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+# return format: tuple(address_name, location)
+def client_favorites(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	address_name, location
+				FROM	addresses
+				WHERE	client_id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+''' side panel information
+	return format: tuple(email, sex, birth_date, phone_number)'''
+def client_panel_info(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	email, sex, birth_date, phone_number
+				FROM	clients
+				WHERE	id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+''' on service acceptance
+	return format: tuple(first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity)'''
+def baxi_driver_info(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity
+				FROM	drivers JOIN baxi ON id = driver_id
+				WHERE	id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+''' on service acceptance
+	return format: tuple(first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity)'''
+def baar_driver_info(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity
+				FROM	drivers JOIN baxi_baar ON id = driver_id
+				WHERE	id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+''' on service acceptance
+	return format: tuple(first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity)'''
+def box_driver_info(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity
+				FROM	drivers JOIN baxi_box ON id = driver_id
+				WHERE	id = %s'''
 	cur.execute(query, (id))
 	result = cur.fetchall()
 	cnx.close()
