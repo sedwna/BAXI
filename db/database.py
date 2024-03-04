@@ -552,4 +552,62 @@ def get_unverified_drivers():
 	cnx.close()
 	return result
 
-# todo: various verification funcs
+def set_license_verification_date(id, date):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''UPDATE	drivers
+				SET		licensce_verification_date = %s
+				WHERE	id = %s'''
+	cur.execute(query, (date, id))
+	cur.commit()
+	cnx.close()
+
+def set_judicial_letter_path(id, path):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''UPDATE	drivers
+				SET		judicial_letter_path = %s
+				WHERE	id = %s'''
+	cur.execute(query, (path, id))
+	cur.commit()
+	cnx.close()
+
+def set_judicial_letter_verification_date(id, date):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''UPDATE	drivers
+				SET		judicial_letter_verification_date = %s
+				WHERE	id = %s'''
+	cur.execute(query, (date, id))
+	cur.commit()
+	cnx.close()
+
+def set_judicial_letter_verification_date(id, date):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''UPDATE	drivers
+				SET		judicial_letter_verification_date = %s
+				WHERE	id = %s'''
+	cur.execute(query, (date, id))
+	cur.commit()
+	cnx.close()
+
+def set_final_verification_date(id, date):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''UPDATE	drivers
+				SET		final_verification_date = %s
+				WHERE	id = %s'''
+	cur.execute(query, (date, id))
+	cur.commit()
+	cnx.close()
+
+def set_verifier_personnel_code(id, code):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''UPDATE	drivers
+				SET		verifier_personnel_code = %s
+				WHERE	id = %s'''
+	cur.execute(query, (code, id))
+	cur.commit()
+	cnx.close()
