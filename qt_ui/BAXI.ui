@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>16</number>
+     <number>13</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1433,6 +1433,11 @@
         <height>51</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
      </widget>
      <widget class="QPlainTextEdit" name="pass_digit3_accept_code_sign_up">
       <property name="geometry">
@@ -1442,6 +1447,11 @@
         <width>51</width>
         <height>51</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
       </property>
      </widget>
      <widget class="QPlainTextEdit" name="pass_digit2_accept_code_sign_up">
@@ -1453,6 +1463,11 @@
         <height>51</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
      </widget>
      <widget class="QPlainTextEdit" name="pass_digit1_accept_code_sign_up">
       <property name="geometry">
@@ -1462,6 +1477,11 @@
         <width>51</width>
         <height>51</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
       </property>
      </widget>
     </widget>
@@ -1523,6 +1543,11 @@
         <height>51</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
      </widget>
      <widget class="QPlainTextEdit" name="pass_digit2_accept_code_sign_in">
       <property name="geometry">
@@ -1532,6 +1557,11 @@
         <width>51</width>
         <height>51</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
       </property>
      </widget>
      <widget class="QPlainTextEdit" name="pass_digit3_accept_code_sign_in">
@@ -1543,6 +1573,11 @@
         <height>51</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
      </widget>
      <widget class="QPlainTextEdit" name="pass_digit4_accept_code_sign_in">
       <property name="geometry">
@@ -1552,6 +1587,11 @@
         <width>51</width>
         <height>51</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
       </property>
      </widget>
     </widget>
