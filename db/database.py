@@ -109,7 +109,7 @@ def insert_transaction(values):
 	cnx.commit()
 	cnx.close()
 
-'''{'id':									INT,
+'''{'id':									None/INT,
 	'phone_number':							CHAR(11),
 	'shaba_number':							CHAR(26),
 	'referral_code':						CHAR(10),
@@ -374,9 +374,183 @@ def query4():
 				GROUP BY	c.client_id, phone_number, wallet_balance, signup_time, first_name, last_name, birth_date, sex, email
 				HAVING		COUNT(*) >= 2'''
 	cur.execute(query)
-	for row in cur:
-		print(row)
+	result = cur.fetchall()
+	cnx.close()
+	return result
 
-def query6():
+# sign-up phone number lookup (returns True/False)
+def phone_number_exists(number):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
+	query = '''SELECT	id
+				FROM	clients
+				WHERE	phone_number = %s'''
+	cur.execute(query, (number))
+	temp = cur.fetchall()
+	query = '''SELECT	id
+				FROM	drivers
+				WHERE	phone_number = %s'''
+	cur.execute(query, (number))
+	result = temp + cur.fetchall()
+	cnx.close()
+	if result:
+		return True
+	return False
+
+'''	sign-in phone number lookup
+	result is returned in the following formats:
+	tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
+def phone_number_lookup(number):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	id, wallet_balance, first_name, last_name, profile_picture_path
+				FROM	clients
+				WHERE	phone_number = %s'''
+	cur.execute(query, (number))
+	if result:
+		return result
+	query = '''SELECT	id, wallet_balance, first_name, last_name, profile_picture_path
+				FROM	drivers
+				WHERE	phone_number = %s'''
+	cur.execute(query, (number))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+# call after driver sign-in
+def update_location(driver_id, location):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''UPDATE	drivers
+				SET		location = %s
+				WHERE	id = %s'''
+	cur.execute(query, (location, driver_id))
+	cur.commit()
+	cnx.close()
+
+# return format: tuple(first_name, last_name, request_time, end_time, method_of_payment, driver_rating, client_rating, wait_time)
+def driver_service_history(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	first_name, last_name, request_time, end_time, method_of_payment, driver_rating, client_rating, wait_time
+				FROM	service_acceptances JOIN clients ON client_id = id
+				WHERE	driver_id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+# return format: tuple(first_name, last_name, request_time, end_time, method_of_payment, driver_rating, client_rating, wait_time)
+def client_service_history(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	first_name, last_name, request_time, end_time, method_of_payment, driver_rating, client_rating, wait_time
+				FROM	service_acceptances JOIN drivers ON driver_id = id
+				WHERE	client_id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+# return format: tuple(address_name, location)
+def client_favorites(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	address_name, location
+				FROM	addresses
+				WHERE	client_id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+''' side panel information
+	return format: tuple(email, sex, birth_date, phone_number)'''
+def client_panel_info(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	email, sex, birth_date, phone_number
+				FROM	clients
+				WHERE	id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+''' on service acceptance
+	return format: tuple(first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity)'''
+def baxi_driver_info(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity
+				FROM	drivers JOIN baxi ON id = driver_id
+				WHERE	id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+''' on service acceptance
+	return format: tuple(first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity)'''
+def baar_driver_info(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity
+				FROM	drivers JOIN baxi_baar ON id = driver_id
+				WHERE	id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+''' on service acceptance
+	return format: tuple(first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity)'''
+def box_driver_info(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity
+				FROM	drivers JOIN baxi_box ON id = driver_id
+				WHERE	id = %s'''
+	cur.execute(query, (id))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+# returns True/False
+def is_manager(pcode):
+	cnx = create_connection('baxi_staff')
+	cur = cnx.cursor()
+	query = """SELECT	personnel_code
+				FROM	employees
+				WHERE	personnel_code = %s AND department = 'HR' AND position = 'department manager'"""
+	cur.execute(query, (pcode))
+	result = cur.fetchall()
+	if result:
+		return True
+	return False
+
+''' called upon employee sign-in attempt
+	return format: tuple(first_name, last_name)'''
+def employee_info(pcode, password):
+	cnx = create_connection('baxi_staff')
+	cur = cnx.cursor()
+	query = '''SELECT	first_name, last_name
+				FROM	employees
+				WHERE	personnel_code = %s AND password = %s'''
+	cur.execute(query, (pcode, password))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+def get_unverified_drivers():
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''SELECT	*
+				FROM	drivers
+				WHERE	verifier_personnel_code IS NULL'''
+	cur.execute(query, (pcode, password))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+# todo: various verification funcs
