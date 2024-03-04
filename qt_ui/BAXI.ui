@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>13</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -304,12 +304,12 @@
       </property>
       <item>
        <property name="text">
-        <string>Sir</string>
+        <string>M</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Madam</string>
+        <string>F</string>
        </property>
       </item>
      </widget>
@@ -1419,6 +1419,46 @@
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QPlainTextEdit" name="pass_digit4_accept_code_sign_up">
+      <property name="geometry">
+       <rect>
+        <x>275</x>
+        <y>210</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="pass_digit3_accept_code_sign_up">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>210</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="pass_digit2_accept_code_sign_up">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>210</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="pass_digit1_accept_code_sign_up">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>210</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="accept_code_sign_in">
      <widget class="QLabel" name="label_3">
@@ -1467,6 +1507,46 @@
       </property>
       <property name="flat">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="pass_digit1_accept_code_sign_in">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>210</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="pass_digit2_accept_code_sign_in">
+      <property name="geometry">
+       <rect>
+        <x>275</x>
+        <y>210</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="pass_digit3_accept_code_sign_in">
+      <property name="geometry">
+       <rect>
+        <x>195</x>
+        <y>210</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="pass_digit4_accept_code_sign_in">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>210</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -1535,22 +1615,52 @@
       </property>
       <item>
        <property name="text">
-        <string>Without limited</string>
+        <string>none</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Deaf</string>
+        <string>alzheimer's disease</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Unable to move</string>
+        <string>epilepsy</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>both</string>
+        <string>hearing loss</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>paralysis</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>reduced limb or finger function</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>weakened muscles</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>parkinson's disease</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>developmental disabilities</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>physical disabilities</string>
        </property>
       </item>
      </widget>
