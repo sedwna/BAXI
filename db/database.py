@@ -407,6 +407,7 @@ def phone_number_lookup(number):
 				FROM	clients
 				WHERE	phone_number = %s'''
 	cur.execute(query, (number))
+	result = cur.fetchall()
 	if result:
 		return result
 	query = '''SELECT	id, wallet_balance, first_name, last_name, profile_picture_path
@@ -548,7 +549,7 @@ def get_unverified_drivers():
 	query = '''SELECT	*
 				FROM	drivers
 				WHERE	verifier_personnel_code IS NULL'''
-	cur.execute(query, (pcode, password))
+	cur.execute(query)
 	result = cur.fetchall()
 	cnx.close()
 	return result
