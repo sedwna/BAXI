@@ -2,7 +2,7 @@ import mysql.connector
 from datetime import date, datetime
 
 def create_connection(db):
-	return mysql.connector.connect(host='localhost', user='root', password='assambalers', database=db, port=3306)
+	return mysql.connector.connect(host='manaslu.liara.cloud', user='root', password='qYpFg1HGZ2S29jBzRnIiwXBf', database=db, port=34251)
 
 '''{'personnel_code':		None/INT,
 	'shaba_number':			CHAR(26),
@@ -110,13 +110,13 @@ def insert_transaction(values):
 	cnx.close()
 
 '''{'id':									None/INT,
+	'referral_code':						None/CHAR(10),
 	'phone_number':							CHAR(11),
 	'shaba_number':							CHAR(26),
-	'referral_code':						CHAR(10),
 	'wallet_balance':						None/INT,
 	'signup_time':							None/DATETIME,
-	'disability':							None/'none'/'alzheimer''s disease'/'epilepsy'
-											/hearing loss'/'paralysis'/'reduced limb or finger function'
+	'disability':							None/'none'/'alzheimer's disease'/'epilepsy'
+											/'hearing loss'/'paralysis'/'reduced limb or finger function'
 											/'weakened muscles'/'parkinson's disease'/
 											'developmental disabilities'/'physical disabilities'
 	'first_name':							VARCHAR(50),
