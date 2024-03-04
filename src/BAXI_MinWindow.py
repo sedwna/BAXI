@@ -8,13 +8,13 @@ from show_map import MapWindow
 from db.database import *
 import datetime
 
-from set_info import DriverInfo
+from set_info import InsertInfo
 from generate_random_number import GenerateRandom4Digit
 
 
 class MainWindow():
-    driver_info = DriverInfo()
-    password = GenerateRandom4Digit()
+    driver_info = InsertInfo()
+    gen_rand_number = GenerateRandom4Digit()
 
     def __init__(self):
         super().__init__()
@@ -258,30 +258,40 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
 
     def show_accept_code_sign_up(self):
-        self.password.gen_rand()
+        self.gen_rand_number.gen_password_code_rand()
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
         self.driver_info.set_phone_number(self.ui.enter_number_sign_up.toPlainText())
-        print(self.driver_info.insert_driver['phone_number'])
+        # print(self.driver_info.insert_driver['phone_number'])
 
     def show_select_driver_user(self):
-        input_password = self.ui.pass_digit1_accept_code_sign_up.toPlainText() + self.ui.pass_digit2_accept_code_sign_up.toPlainText() + self.ui.pass_digit3_accept_code_sign_up.toPlainText() + self.ui.pass_digit4_accept_code_sign_up.toPlainText()
-        try:
-            if int(input_password) == int(self.password.rand_number):
-                self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
-            else:
-                print("uncorrect password")
-
-        except:
-            print("err1")
+        # input_password = self.ui.pass_digit1_accept_code_sign_up.toPlainText() + self.ui.pass_digit2_accept_code_sign_up.toPlainText() + self.ui.pass_digit3_accept_code_sign_up.toPlainText() + self.ui.pass_digit4_accept_code_sign_up.toPlainText()
+        # try:
+        #     if int(input_password) == int(self.password.rand_number):
+        #         self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
+        #     else:
+        #         print("Uncorrect password")
+        #
+        # except:
+        #     print("err1")
+        self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
 
     def show_get_flname_driver(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_driver)
 
     def show_get_sex_birth_meli(self):
+        self.driver_info.set_first_name(self.ui.fname_get_flname_driver.toPlainText())
+        self.driver_info.set_last_name(self.ui.lname_get_flname_driver.toPlainText())
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_sex_birth_meli)
 
     def show_get_photo_meli_pcertificate_obviously(self):
+
+        self.driver_info.set_sex(self.ui.sex_get_sex_birth_meli.currentText())
+        self.driver_info.set_birth_date(datetime.datetime(int(self.ui.year_get_sex_birth_meli.text()),
+                                                          int(self.ui.month_get_sex_birth_meli.text()),
+                                                          int(self.ui.day_get_sex_birth_meli.text())))
+        self.driver_info.set_national_code(self.ui.meli_get_sex_birth_meli.toPlainText())
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_photo_meli_certificate_obviously)
 
     def brows_select_meli_card(self):
@@ -289,11 +299,17 @@ class MainWindow():
         print(dialog.getOpenFileName())
 
     def show_get_shaba(self):
+        self.driver_info.set_national_card_photo_path("../c:desktop/national id card")
+        self.driver_info.set_license_photo_path("../c:desktop/license card")
+        self.driver_info.set_disability(self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText())
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_shaba)
 
     def show_select_service(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.select_service)
+        self.driver_info.set_shaba_number(self.ui.enter_shaba_number.toPlainText())
         self.send_driver_info_to_db()
+
+        self.ui.stackedWidget.setCurrentWidget(self.ui.select_service)
 
     def show_get_machine_baxi_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_info)
@@ -332,63 +348,16 @@ class MainWindow():
         self.ui.pushButt_done_baxi_box_user_choose_vehicle_type.setHidden(False)
 
     def send_driver_info_to_db(self):
-
-        # -----------------------------------------------------
-        # get number and show in terminal:
-        print("number: ", self.ui.enter_number_sign_up.toPlainText())
-        phone_number = self.ui.enter_number_sign_up.toPlainText()
-        # -----------------------------------------------------
-        # get fname, lname driver and show in terminal:
-        print("fname: ", self.ui.fname_get_flname_driver.toPlainText())
-        print("lname: ", self.ui.lname_get_flname_driver.toPlainText())
-        first_name = self.ui.fname_get_flname_driver.toPlainText()
-        last_name = self.ui.lname_get_flname_driver.toPlainText()
-        # -----------------------------------------------------
-        # get birthday show in terminal:-----------------------
-        print("year: ", self.ui.year_get_sex_birth_meli.text())
-        print("month: ", self.ui.month_get_sex_birth_meli.text())
-        print("day: ", self.ui.day_get_sex_birth_meli.text())
-        birth_date = datetime.datetime(int(self.ui.year_get_sex_birth_meli.text()),
-                                       int(self.ui.month_get_sex_birth_meli.text()),
-                                       int(self.ui.day_get_sex_birth_meli.text()))
-        # -----------------------------------------------------
-        # get sex show in terminal:----------------------------
-        print("sex: ", self.ui.sex_get_sex_birth_meli.currentText())
-        sex = self.ui.sex_get_sex_birth_meli.currentText()
-        # -----------------------------------------------------
-        # get meli card number show in terminal:---------------
-        print("meli number: ", self.ui.meli_get_sex_birth_meli.toPlainText())
-        national_code = self.ui.meli_get_sex_birth_meli.toPlainText()
-        # -----------------------------------------------------
-        # get obviously show in terminal:---------------
-        print("obvioudly: ", self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText())
-        disability = self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText()
-        # -----------------------------------------------------
-        # get shaba number show in terminal:---------------
-        print("shaba number: ", self.ui.enter_shaba_number.toPlainText())
-        shaba_number = self.ui.enter_shaba_number.toPlainText()
-        # -----------------------------------------------------
-        insert_driver({'id': None,
-                       'phone_number': phone_number,
-                       'shaba_number': shaba_number,
-                       'referral_code': "13012",
-                       'wallet_balance': None,
-                       'signup_time': None,
-                       'disability': disability,
-                       'first_name': first_name,
-                       'last_name': last_name,
-                       'birth_date': birth_date,
-                       'national_code': national_code,
-                       'license_photo_path': "djkfhlkjsad",
-                       'national_card_photo_path': "jfgbljsfjdhbujo",
-                       'sex': sex,
-                       'license_verification_date': None,
-                       'judicial_letter_path': None,
-                       'judicial_letter_verification_date': None,
-                       'final_verification_date': None,
-                       'location': None,
-                       'profile_picture_path': None,
-                       'verifier_personnel_code': None})
+        self.gen_rand_number.gen_referral_code_rand()
+        self.driver_info.set_referral_code(self.gen_rand_number.referral_code)
+        self.driver_info.set_signup_time()
+        print(self.driver_info.insert_driver_dict)
+        try:
+            insert_driver(self.driver_info.insert_driver_dict)
+        except Exception as err:
+            print(err)
+        finally:
+            print("finish")
 
     def show_get_machine_baxi_bar_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_bar_info)
