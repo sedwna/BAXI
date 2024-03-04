@@ -94,11 +94,11 @@ def insert_request(values):
 	cnx.commit()
 	cnx.close()
 
-'''{'tracking_code':	None/VARCHAR(20),
+'''{'tracking_code':	VARCHAR(20),
 	'time':				DATETIME/None,
 	'shaba_number':		CHAR(26),
 	'amount':			INT,
-	'state':			None/'failed'/'declined'/'pending'/'cancelled'/'completed'/'returned',
+	'state':			'failed'/'declined'/'pending'/'cancelled'/'completed'/'returned',
 	'type':				'card-to-wallet'/'wallet-to-card'}'''			 
 def insert_transaction(values):
 	cnx = create_connection('baxi_users')
@@ -110,12 +110,12 @@ def insert_transaction(values):
 	cnx.close()
 
 '''{'id':									None/INT,
-	'referral_code':						None/CHAR(10),
+	'referral_code':						CHAR(10),
 	'phone_number':							CHAR(11),
 	'shaba_number':							CHAR(26),
-	'wallet_balance':						None/INT,
-	'signup_time':							None/DATETIME,
-	'disability':							None/'none'/'alzheimer's disease'/'epilepsy'
+	'wallet_balance':						INT,
+	'signup_time':							DATETIME,
+	'disability':							'none'/'alzheimer's disease'/'epilepsy'
 											/'hearing loss'/'paralysis'/'reduced limb or finger function'
 											/'weakened muscles'/'parkinson's disease'/
 											'developmental disabilities'/'physical disabilities'
@@ -125,7 +125,7 @@ def insert_transaction(values):
 	'national_code':						CHAR(10),
 	'license_photo_path':					VARCHAR(50),
 	'national_card_photo_path':				VARCHAR(50),
-	'sex':									None/'M'/'F',
+	'sex':									'M'/'F',
 	'license_verification_date':			None/DATE,
 	'judicial_letter_path':					None/VARCHAR(50),
 	'judicial_letter_verification_date':	None/DATE,
@@ -164,9 +164,9 @@ def insert_trip(values):
 	'cargo_value':		INT,
 	'dropoff_location':	POINT,
 	'dropoff_city':		VARCHAR(50),
-	'cargo_type':		None/'unfragile'/'fragile',
-	'client_helped':	None/'no'/'yes',
-	'client_id':		None/'none'/'alzheimer''s disease'/'epilepsy',
+	'cargo_type':		'unfragile'/'fragile',
+	'client_helped':	'no'/'yes',
+	'client_id':		'none'/'alzheimer''s disease'/'epilepsy',
 	'request_time':		DATETIME}'''
 def insert_heavy(values):
 	cnx = create_connection('baxi_users')
@@ -184,7 +184,7 @@ def insert_heavy(values):
 	'dropoff_location':	POINT,
 	'dropoff_city':		VARCHAR(50),
 	'insurance_cost':	INT,
-	'cargo_type':		None/'unfragile'/'fragile',
+	'cargo_type':		'unfragile'/'fragile',
 	'client_id':		INT,
 	'request_time':		DATETIME}'''
 def insert_light(values):
@@ -207,7 +207,7 @@ def insert_referral(values):
 	cnx.commit()
 	cnx.close()
 
-'''{'type':				None/'daily'/'momentary',
+'''{'type':				'daily'/'momentary',
 	'tracking_code':	VARCHAR(20),
 	'driver_id':		INT}'''
 def insert_withdrawal(values):
@@ -232,7 +232,7 @@ def insert_deposit(values):
 	'end_time':				DATETIME,
 	'driver_id:				INT,
 	'method_of_payment':	'direct'/'cash'/'wallet-to-wallet',
-	'wait_time':			None/'0-to-5 minutes'/'5-to-10 minutes'/'10-to-30 minutes'/'30-to-60 minutes',
+	'wait_time':			'0-to-5 minutes'/'5-to-10 minutes'/'10-to-30 minutes'/'30-to-60 minutes',
 	'driver_rating':		None/'0-star'/'1-star'/'2-star'/'3-star'/'4-star'/'5-star',
 	'client_rating':		None/'0-star'/'1-star'/'2-star'/'3-star'/'4-star'/'5-star',
 	'client_id':			INT,
@@ -249,7 +249,7 @@ def insert_acceptance(values):
 	cnx.close()
 
 '''{'description':	VARCHAR(100),
-	'state':		None/'pending'/'under investigation'/'dismissed'/
+	'state':		'pending'/'under investigation'/'dismissed'/
 					'driver''s account deactivated'/'client''s account deactivated',
 	'client_id':	INT,
 	'driver_id':	INT}'''
@@ -288,8 +288,7 @@ def insert_destination(values):
 
 '''{'client_id':	INT,
 	'request_time':	DATETIME,
-	'point':		None/
-					baxi:
+	'point':		baxi:
 					'safe driving'/'enjoyable music'/
 					box and baar:
 					'safe shipment'/
@@ -306,8 +305,7 @@ def insert_compliment(values):
 
 '''{'client_id':	INT,
 	'request_time':	DATETIME,
-	'point':		None/
-					baxi:
+	'point':		baxi:
 					'dangerous driving'/'immoderate temperature'/
 					box and baar:
 					'unsafe shipment'/
@@ -348,12 +346,12 @@ def insert_compensatory_deposit(values):
 
 '''{'client_id':		None/INT,
 	'phone_number':		CHAR(11),
-	'wallet_balance':	None/INT,
-	'signup_time':		None/DATETIME,
+	'wallet_balance':	INT,
+	'signup_time':		DATETIME,
 	'first_name':		VARCHAR(50),
 	'last_name':		VARCHAR(50),
 	'birth_date':		DATE,
-	'sex':				None/'M'/'F',
+	'sex':				'M'/'F',
 	'email':			None/VARCHAR(50)}'''
 def insert_client(values):
 	cnx = create_connection('baxi_users')
