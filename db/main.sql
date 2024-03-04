@@ -5,7 +5,7 @@ CREATE TABLE	employees
 				(
 					personnel_code			INT							PRIMARY KEY					AUTO_INCREMENT,
 					shaba_number			CHAR(26)					UNIQUE						NOT NULL,
-					signup_time				DATETIME					DEFAULT CURRENT_TIMESTAMP,
+					signup_time				DATETIME					DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					password				VARCHAR(50)												NOT NULL,
 					first_name				VARCHAR(50)												NOT NULL,
 					last_name				VARCHAR(50)												NOT NULL,
@@ -53,8 +53,8 @@ CREATE TABLE	clients
 				(
 					id				INT				PRIMARY KEY					AUTO_INCREMENT,
 					phone_number	CHAR(11)		UNIQUE						NOT NULL,
-					wallet_balance	INT				DEFAULT 0,
-					signup_time		DATETIME		DEFAULT CURRENT_TIMESTAMP,
+					wallet_balance	INT				DEFAULT 0					NOT NULL,
+					signup_time		DATETIME		DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					first_name		VARCHAR(50)									NOT NULL,
 					last_name		VARCHAR(50)									NOT NULL,
 					birth_date		DATE										NOT NULL,
@@ -62,14 +62,14 @@ CREATE TABLE	clients
 									(
 										'M',
 										'F'
-									)				DEFAULT 'M',
+									)				DEFAULT 'M'					NOT NULL,
 					email			VARCHAR(50)
 				);
 
 CREATE TABLE	transactions
 				(
 					tracking_code		VARCHAR(20)				PRIMARY KEY,
-					time				DATETIME				DEFAULT CURRENT_TIMESTAMP,
+					time				DATETIME				DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					shaba_number		CHAR(26)											NOT NULL,
 					amount				INT													NOT NULL,
 					state				ENUM
@@ -80,7 +80,7 @@ CREATE TABLE	transactions
 											'cancelled',
 											'completed',
 											'returned'
-										)						DEFAULT 'pending',
+										)						DEFAULT 'pending'			NOT NULL,
 					type				ENUM
 										(
 											'card-to-wallet',
@@ -94,8 +94,8 @@ CREATE TABLE	drivers
 					phone_number						CHAR(11)								UNIQUE						NOT NULL,
 					shaba_number						CHAR(26)								UNIQUE						NOT NULL,
 					referral_code						CHAR(10)								UNIQUE						NOT NULL,
-					wallet_balance						INT										DEFAULT 0,
-					signup_time							DATETIME								DEFAULT CURRENT_TIMESTAMP,
+					wallet_balance						INT										DEFAULT 0					NOT NULL,
+					signup_time							DATETIME								DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					disability							ENUM
 														(
 															'none',
@@ -108,7 +108,7 @@ CREATE TABLE	drivers
 															'parkinson''s disease',
 															'developmental disabilities',
 															'physical disabilities'
-														)										DEFAULT 'none',
+														)										DEFAULT 'none'				NOT NULL,
 					first_name							VARCHAR(50)															NOT NULL,
 					last_name							VARCHAR(50)															NOT NULL,
 					birth_date							DATE																NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE	drivers
 														(
 															'M',
 															'F'
-														)										DEFAULT 'M',
+														)										DEFAULT 'M'					NOT NULL,
 					license_verification_date			DATE,
 					judicial_letter_path				VARCHAR(50),
 					judicial_letter_verification_date	DATE,
@@ -199,7 +199,7 @@ CREATE TABLE	baxi_trips
 									(
 										'no',
 										'yes'
-									)			DEFAULT 'no',
+									)			DEFAULT 'no'	NOT NULL,
 					client_id		INT,
 					request_time	DATETIME,
 					PRIMARY KEY(client_id, request_time),
@@ -217,12 +217,12 @@ CREATE TABLE	heavy_transports
 										(
 											'unfragile',
 											'fragile'
-										)					DEFAULT 'unfragile',
+										)					DEFAULT 'unfragile'		NOT NULL,
 					client_helped		ENUM
 										(
 											'no',
 											'yes'
-										)					DEFAULT 'no',
+										)					DEFAULT 'no'			NOT NULL,
 					client_id			INT,
 					request_time		DATETIME,
 					PRIMARY KEY(client_id, request_time),
@@ -241,7 +241,7 @@ CREATE TABLE	light_transports
 										(
 											'unfragile',
 											'fragile'
-										)					DEFAULT 'unfragile',
+										)					DEFAULT 'unfragile'		NOT NULL,
 					client_id			INT,
 					request_time		DATETIME,
 					PRIMARY KEY(client_id, request_time),
@@ -262,7 +262,7 @@ CREATE TABLE	withdrawals
 									(
 										'daily',
 										'momentary'
-									)				DEFAULT 'momentary',
+									)				DEFAULT 'momentary'		NOT NULL,
 					tracking_code	VARCHAR(20)		PRIMARY KEY,
 					driver_id		INT										NOT NULL,
 					FOREIGN KEY(tracking_code)	REFERENCES transactions(tracking_code)	ON UPDATE CASCADE	ON DELETE CASCADE,
@@ -280,7 +280,7 @@ CREATE TABLE	deposits
 CREATE TABLE	service_acceptances
 				(
 					estimated_end_time	DATETIME											NOT NULL,
-					end_time			DATETIME				DEFAULT CURRENT_TIMESTAMP,
+					end_time			DATETIME				DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					driver_id			INT													NOT NULL,
 					method_of_payment	ENUM
 										(
@@ -288,6 +288,13 @@ CREATE TABLE	service_acceptances
 											'cash',
 											'wallet-to-wallet'
 										)													NOT NULL,
+					wait_time			ENUM
+										(
+											'0-to-5 minutes',
+											'5-to-10 minutes',
+											'10-to-30 minutes',
+											'30-to-60 minutes'
+										)						DEFAULT '0-to-5 minutes'	NOT NULL,
 					driver_rating		ENUM
 										(
 											'0-star',
@@ -306,13 +313,6 @@ CREATE TABLE	service_acceptances
 											'4-star',
 											'5-star'
 										)						DEFAULT NULL,
-					wait_time			ENUM
-										(
-											'0-to-5 minutes',
-											'5-to-10 minutes',
-											'10-to-30 minutes',
-											'30-to-60 minutes'
-										)						DEFAULT '0-to-5 minutes',
 					tracking_code		VARCHAR(20),
 					client_id			INT,
 					request_time		DATETIME,
@@ -332,7 +332,7 @@ CREATE TABLE	reports
 										'dismissed',
 										'driver''s account deactivated',
 										'client''s account deactivated'
-									)										DEFAULT 'pending',
+									)										DEFAULT 'pending'	NOT NULL,
 					client_id		INT,
 					driver_id		INT,
 					PRIMARY KEY(client_id, driver_id),
