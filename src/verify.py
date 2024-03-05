@@ -1,4 +1,5 @@
 from db.database import *
+import string
 
 
 def IS_MANAGER(id, password):
@@ -42,9 +43,8 @@ def IS_EMPLOYEE(id, password):
 
 
 def CHECK_PHONE_NOT_EXIST(phone_number):
-    print('phone number enter: ', )
     phone_number = phone_number.strip('0')
-    print('phone number send to db:', phone_number)
+    print('phone number:', phone_number)
     try:
         if not phone_number_exists(phone_number):
 
@@ -66,3 +66,12 @@ def CHECK_IN_PASS_EQ_GEN_PASS(input_pass, genrate_pass):
         print("CHECK_IN_PASS_EQ_GEN_PASS err")
 
     return False
+
+
+def PHONE_NUMBER_EMPTY(phone_number):
+
+    if bool(phone_number.strip()):
+        print('pn', phone_number)
+        return False
+    else:
+        return True

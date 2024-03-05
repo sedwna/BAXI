@@ -266,10 +266,14 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
 
     def show_accept_code_sign_up(self):
-        if CHECK_PHONE_NOT_EXIST(self.ui.enter_number_sign_up.toPlainText()):
+
+        if (self.ui.enter_number_sign_up.toPlainText()) and CHECK_PHONE_NOT_EXIST(
+                self.ui.enter_number_sign_up.toPlainText()):
             self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
             self.driver_info.set_phone_number_insert_driver_dict(self.ui.enter_number_sign_up.toPlainText())
             self.gen_rand_number.gen_password_code_rand()
+        else:
+            print("enter a phone number")
 
     def show_select_driver_user(self):
         input_password = self.ui.pass_digit1_accept_code_sign_up.toPlainText() + self.ui.pass_digit2_accept_code_sign_up.toPlainText() + self.ui.pass_digit3_accept_code_sign_up.toPlainText() + self.ui.pass_digit4_accept_code_sign_up.toPlainText()
