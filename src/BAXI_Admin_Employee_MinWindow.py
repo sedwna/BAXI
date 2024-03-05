@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import QMainWindow
 from PyQt6.QtWidgets import QFileDialog
 from BAXI_Admin_Employee import Ui_BAXI_Admin_Employee
 from db.database import *
+from verify import *
 
 
 class MainWindow:
@@ -173,15 +174,8 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_sign_in)
 
     def show_admin_panel(self):
-        # self.ui.get_password_admin_sign_in.toPlainText()
-        print(self.ui.get_id_admin_sign_in.toPlainText())
-        try:
-            if is_manager(int(self.ui.get_id_admin_sign_in.toPlainText())):
-                self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel)
-            else:
-                print("uncorrect id or password")
-        except Exception as err:
-            print(err)
+        if IS_MANAGER(self.ui.get_id_admin_sign_in.toPlainText(), self.ui.get_password_admin_sign_in.toPlainText()):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel)
 
     def exit_app(self):
         sys.exit()
@@ -199,7 +193,9 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)
 
     def show_employee_panel(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)
+        if IS_EMPLOYEE(self.ui.get_id_employee_sign_in.toPlainText(),
+                       self.ui.get_password_employee_sign_in.toPlainText()):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)
 
     def show_employee_panel_authentication_1(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_1)

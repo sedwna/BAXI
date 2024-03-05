@@ -265,24 +265,27 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
 
     def show_accept_code_sign_up(self):
-        print(self.ui.enter_number_sign_up.toPlainText())
+        print('phone number enter: ',self.ui.enter_number_sign_up.toPlainText())
+        phone_number = self.ui.enter_number_sign_up.toPlainText().strip('0')
+        print('phone number send to db:',phone_number)
+
         try:
-            if phone_number_exists(self.ui.enter_number_sign_up.toPlainText()):
+            if not phone_number_exists(phone_number):
                 self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
+                self.driver_info.set_phone_number_insert_driver_dict(self.ui.enter_number_sign_up.toPlainText())
+                self.gen_rand_number.gen_password_code_rand()
             else:
                 print("this phone number already exist")
         except Exception as err:
             print(err)
         # self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
 
-        self.driver_info.set_phone_number_insert_driver_dict(self.ui.enter_number_sign_up.toPlainText())
-        self.gen_rand_number.gen_password_code_rand()
 
 
     def show_select_driver_user(self):
         input_password = self.ui.pass_digit1_accept_code_sign_up.toPlainText() + self.ui.pass_digit2_accept_code_sign_up.toPlainText() + self.ui.pass_digit3_accept_code_sign_up.toPlainText() + self.ui.pass_digit4_accept_code_sign_up.toPlainText()
         try:
-            if int(input_password) == int(self.password.rand_number):
+            if int(input_password) == int(self.gen_rand_number.password_code):
                 self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
             else:
                 print("incorrect password")
@@ -302,9 +305,10 @@ class MainWindow():
     def show_get_photo_meli_pcertificate_obviously(self):
 
         self.driver_info.set_sex_insert_driver_dict(self.ui.sex_get_sex_birth_meli.currentText())
-        self.driver_info.set_birth_date_insert_driver_dict(datetime.datetime(int(self.ui.year_get_sex_birth_meli.text()),
-                                                          int(self.ui.month_get_sex_birth_meli.text()),
-                                                          int(self.ui.day_get_sex_birth_meli.text())))
+        self.driver_info.set_birth_date_insert_driver_dict(
+            datetime.datetime(int(self.ui.year_get_sex_birth_meli.text()),
+                              int(self.ui.month_get_sex_birth_meli.text()),
+                              int(self.ui.day_get_sex_birth_meli.text())))
         self.driver_info.set_national_code_insert_driver_dict(self.ui.meli_get_sex_birth_meli.toPlainText())
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_photo_meli_certificate_obviously)
@@ -316,7 +320,8 @@ class MainWindow():
     def show_get_shaba(self):
         self.driver_info.set_national_card_photo_path_insert_driver_dict("../c:desktop/national id card")
         self.driver_info.set_license_photo_path_insert_driver_dict("../c:desktop/license card")
-        self.driver_info.set_disability_insert_driver_dict(self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText())
+        self.driver_info.set_disability_insert_driver_dict(
+            self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText())
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_shaba)
 
