@@ -383,12 +383,12 @@ def phone_number_exists(number):
 	query = '''SELECT	id
 				FROM	clients
 				WHERE	phone_number = %s'''
-	cur.execute(query, (number))
+	cur.execute(query, (number,))
 	temp = cur.fetchall()
 	query = '''SELECT	id
 				FROM	drivers
 				WHERE	phone_number = %s'''
-	cur.execute(query, (number))
+	cur.execute(query, (number,))
 	result = temp + cur.fetchall()
 	cnx.close()
 	if result:
@@ -404,14 +404,14 @@ def phone_number_lookup(number):
 	query = '''SELECT	id, wallet_balance, first_name, last_name, profile_picture_path
 				FROM	clients
 				WHERE	phone_number = %s'''
-	cur.execute(query, (number))
+	cur.execute(query, (number,))
 	result = cur.fetchall()
 	if result:
 		return result
 	query = '''SELECT	id, wallet_balance, first_name, last_name, profile_picture_path
 				FROM	drivers
 				WHERE	phone_number = %s'''
-	cur.execute(query, (number))
+	cur.execute(query, (number,))
 	result = cur.fetchall()
 	cnx.close()
 	return result
@@ -434,7 +434,7 @@ def driver_service_history(id):
 	query = '''SELECT	first_name, last_name, request_time, end_time, method_of_payment, driver_rating, client_rating, wait_time
 				FROM	service_acceptances JOIN clients ON client_id = id
 				WHERE	driver_id = %s'''
-	cur.execute(query, (id))
+	cur.execute(query, (id,))
 	result = cur.fetchall()
 	cnx.close()
 	return result
@@ -446,7 +446,7 @@ def client_service_history(id):
 	query = '''SELECT	first_name, last_name, request_time, end_time, method_of_payment, driver_rating, client_rating, wait_time
 				FROM	service_acceptances JOIN drivers ON driver_id = id
 				WHERE	client_id = %s'''
-	cur.execute(query, (id))
+	cur.execute(query, (id,))
 	result = cur.fetchall()
 	cnx.close()
 	return result
@@ -458,7 +458,7 @@ def client_favorites(id):
 	query = '''SELECT	address_name, location
 				FROM	addresses
 				WHERE	client_id = %s'''
-	cur.execute(query, (id))
+	cur.execute(query, (id,))
 	result = cur.fetchall()
 	cnx.close()
 	return result
@@ -471,7 +471,7 @@ def client_panel_info(id):
 	query = '''SELECT	email, sex, birth_date, phone_number
 				FROM	clients
 				WHERE	id = %s'''
-	cur.execute(query, (id))
+	cur.execute(query, (id,))
 	result = cur.fetchall()
 	cnx.close()
 	return result
@@ -484,7 +484,7 @@ def baxi_driver_info(id):
 	query = '''SELECT	first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity
 				FROM	drivers JOIN baxi ON id = driver_id
 				WHERE	id = %s'''
-	cur.execute(query, (id))
+	cur.execute(query, (id,))
 	result = cur.fetchall()
 	cnx.close()
 	return result
@@ -497,7 +497,7 @@ def baar_driver_info(id):
 	query = '''SELECT	first_name, last_name, phone_number, vehicle_license_plate, vehicle_name, vehicle_production_date, vehicle_color, vehicle_capacity
 				FROM	drivers JOIN baxi_baar ON id = driver_id
 				WHERE	id = %s'''
-	cur.execute(query, (id))
+	cur.execute(query, (id,))
 	result = cur.fetchall()
 	cnx.close()
 	return result
@@ -522,7 +522,7 @@ def is_manager(pcode):
 	query = """SELECT	personnel_code
 				FROM	employees
 				WHERE	personnel_code = %s AND department = 'HR' AND position = 'department manager'"""
-	cur.execute(query, (pcode))
+	cur.execute(query, (pcode,))
 	result = cur.fetchall()
 	if result:
 		return True

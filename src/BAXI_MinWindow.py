@@ -255,42 +255,57 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.sign_in)
 
     def show_accept_code_sign_in(self):
+        # try:
+        #     if not phone_number_exists(self.ui.enter_number_sign_up.toPlainText()):
+        #         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
+        #     else:
+        #         print("this phone number already exist")
+        # except Exception as err:
+        #     print(err)
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
 
     def show_accept_code_sign_up(self):
+        print(self.ui.enter_number_sign_up.toPlainText())
+        try:
+            if phone_number_exists(self.ui.enter_number_sign_up.toPlainText()):
+                self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
+            else:
+                print("this phone number already exist")
+        except Exception as err:
+            print(err)
+        # self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
+
+        self.driver_info.set_phone_number_insert_driver_dict(self.ui.enter_number_sign_up.toPlainText())
         self.gen_rand_number.gen_password_code_rand()
 
-        self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
-        self.driver_info.set_phone_number(self.ui.enter_number_sign_up.toPlainText())
-        # print(self.driver_info.insert_driver['phone_number'])
 
     def show_select_driver_user(self):
-        # input_password = self.ui.pass_digit1_accept_code_sign_up.toPlainText() + self.ui.pass_digit2_accept_code_sign_up.toPlainText() + self.ui.pass_digit3_accept_code_sign_up.toPlainText() + self.ui.pass_digit4_accept_code_sign_up.toPlainText()
-        # try:
-        #     if int(input_password) == int(self.password.rand_number):
-        #         self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
-        #     else:
-        #         print("Uncorrect password")
-        #
-        # except:
-        #     print("err1")
+        input_password = self.ui.pass_digit1_accept_code_sign_up.toPlainText() + self.ui.pass_digit2_accept_code_sign_up.toPlainText() + self.ui.pass_digit3_accept_code_sign_up.toPlainText() + self.ui.pass_digit4_accept_code_sign_up.toPlainText()
+        try:
+            if int(input_password) == int(self.password.rand_number):
+                self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
+            else:
+                print("incorrect password")
+
+        except:
+            print("err1")
         self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
 
     def show_get_flname_driver(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_driver)
 
     def show_get_sex_birth_meli(self):
-        self.driver_info.set_first_name(self.ui.fname_get_flname_driver.toPlainText())
-        self.driver_info.set_last_name(self.ui.lname_get_flname_driver.toPlainText())
+        self.driver_info.set_first_name_insert_driver_dict(self.ui.fname_get_flname_driver.toPlainText())
+        self.driver_info.set_last_name_insert_driver_dict(self.ui.lname_get_flname_driver.toPlainText())
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_sex_birth_meli)
 
     def show_get_photo_meli_pcertificate_obviously(self):
 
-        self.driver_info.set_sex(self.ui.sex_get_sex_birth_meli.currentText())
-        self.driver_info.set_birth_date(datetime.datetime(int(self.ui.year_get_sex_birth_meli.text()),
+        self.driver_info.set_sex_insert_driver_dict(self.ui.sex_get_sex_birth_meli.currentText())
+        self.driver_info.set_birth_date_insert_driver_dict(datetime.datetime(int(self.ui.year_get_sex_birth_meli.text()),
                                                           int(self.ui.month_get_sex_birth_meli.text()),
                                                           int(self.ui.day_get_sex_birth_meli.text())))
-        self.driver_info.set_national_code(self.ui.meli_get_sex_birth_meli.toPlainText())
+        self.driver_info.set_national_code_insert_driver_dict(self.ui.meli_get_sex_birth_meli.toPlainText())
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_photo_meli_certificate_obviously)
 
@@ -299,14 +314,14 @@ class MainWindow():
         print(dialog.getOpenFileName())
 
     def show_get_shaba(self):
-        self.driver_info.set_national_card_photo_path("../c:desktop/national id card")
-        self.driver_info.set_license_photo_path("../c:desktop/license card")
-        self.driver_info.set_disability(self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText())
+        self.driver_info.set_national_card_photo_path_insert_driver_dict("../c:desktop/national id card")
+        self.driver_info.set_license_photo_path_insert_driver_dict("../c:desktop/license card")
+        self.driver_info.set_disability_insert_driver_dict(self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText())
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_shaba)
 
     def show_select_service(self):
-        self.driver_info.set_shaba_number(self.ui.enter_shaba_number.toPlainText())
+        self.driver_info.set_shaba_number_insert_driver_dict(self.ui.enter_shaba_number.toPlainText())
         self.send_driver_info_to_db()
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.select_service)
@@ -349,8 +364,8 @@ class MainWindow():
 
     def send_driver_info_to_db(self):
         self.gen_rand_number.gen_referral_code_rand()
-        self.driver_info.set_referral_code(self.gen_rand_number.referral_code)
-        self.driver_info.set_signup_time()
+        self.driver_info.set_referral_code_insert_driver_dict(self.gen_rand_number.referral_code)
+        self.driver_info.set_signup_time_insert_driver_dict()
         print(self.driver_info.insert_driver_dict)
         try:
             insert_driver(self.driver_info.insert_driver_dict)
