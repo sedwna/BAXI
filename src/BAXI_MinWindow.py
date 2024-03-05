@@ -10,6 +10,7 @@ import datetime
 
 from set_info import InsertInfo
 from generate_random_number import GenerateRandom4Digit
+from verify import *
 
 
 class MainWindow():
@@ -265,34 +266,15 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
 
     def show_accept_code_sign_up(self):
-        print('phone number enter: ',self.ui.enter_number_sign_up.toPlainText())
-        phone_number = self.ui.enter_number_sign_up.toPlainText().strip('0')
-        print('phone number send to db:',phone_number)
-
-        try:
-            if not phone_number_exists(phone_number):
-                self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
-                self.driver_info.set_phone_number_insert_driver_dict(self.ui.enter_number_sign_up.toPlainText())
-                self.gen_rand_number.gen_password_code_rand()
-            else:
-                print("this phone number already exist")
-        except Exception as err:
-            print(err)
-        # self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
-
-
+        if CHECK_PHONE_NOT_EXIST(self.ui.enter_number_sign_up.toPlainText()):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
+            self.driver_info.set_phone_number_insert_driver_dict(self.ui.enter_number_sign_up.toPlainText())
+            self.gen_rand_number.gen_password_code_rand()
 
     def show_select_driver_user(self):
         input_password = self.ui.pass_digit1_accept_code_sign_up.toPlainText() + self.ui.pass_digit2_accept_code_sign_up.toPlainText() + self.ui.pass_digit3_accept_code_sign_up.toPlainText() + self.ui.pass_digit4_accept_code_sign_up.toPlainText()
-        try:
-            if int(input_password) == int(self.gen_rand_number.password_code):
-                self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
-            else:
-                print("incorrect password")
-
-        except:
-            print("err1")
-        self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
+        if CHECK_IN_PASS_EQ_GEN_PASS(input_password, self.gen_rand_number.password_code):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
 
     def show_get_flname_driver(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_driver)
