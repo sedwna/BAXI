@@ -611,3 +611,33 @@ def set_verifier_personnel_code(id, code):
 	cur.execute(query, (code, id))
 	cur.commit()
 	cnx.close()
+
+def set_employee_pppath(pcode, path):
+	cnx = create_connection('baxi_staff')
+	cur = cnx.cursor()
+	query = '''UPDATE	employees
+				SET		profile_picture_path = %s
+				WHERE	personnel_code = %s'''
+	cur.execute(query, (path, pcode))
+	cur.commit()
+	cnx.close()
+
+def set_driver_pppath(id, path):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''UPDATE	drivers
+				SET		profile_picture_path = %s
+				WHERE	id = %s'''
+	cur.execute(query, (path, id))
+	cur.commit()
+	cnx.close()
+
+def set_email(id, path):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = '''UPDATE	clients
+				SET		email = %s
+				WHERE	id = %s'''
+	cur.execute(query, (path, id))
+	cur.commit()
+	cnx.close()

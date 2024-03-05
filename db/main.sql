@@ -52,7 +52,7 @@ USE baxi_users;
 CREATE TABLE	clients
 				(
 					id				INT				PRIMARY KEY					AUTO_INCREMENT,
-					phone_number	CHAR(11)		UNIQUE						NOT NULL,
+					phone_number	CHAR(10)		UNIQUE						NOT NULL,
 					wallet_balance	INT				DEFAULT 0					NOT NULL,
 					signup_time		DATETIME		DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					first_name		VARCHAR(50)									NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE	transactions
 CREATE TABLE	drivers
 				(
 					id									INT										PRIMARY KEY					AUTO_INCREMENT,
-					phone_number						CHAR(11)								UNIQUE						NOT NULL,
+					phone_number						CHAR(10)								UNIQUE						NOT NULL,
 					shaba_number						CHAR(26)								UNIQUE						NOT NULL,
 					referral_code						CHAR(10)								UNIQUE						NOT NULL,
 					wallet_balance						INT										DEFAULT 0					NOT NULL,
