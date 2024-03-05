@@ -85,8 +85,8 @@ class InsertInfo:
     def set_last_name_insert_driver_dict(self, last_name):
         self.insert_driver_dict['last_name'] = last_name
 
-    def set_birth_date_insert_driver_dict(self, birth_date):
-        self.insert_driver_dict['birth_date'] = birth_date
+    def set_birth_date_insert_driver_dict(self, year, month, day):
+        self.insert_driver_dict['birth_date'] = datetime.datetime(year, month, day)
 
     def set_national_code_insert_driver_dict(self, national_code):
         self.insert_driver_dict['national_code'] = national_code

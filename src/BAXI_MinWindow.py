@@ -280,18 +280,24 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_driver)
 
     def show_get_sex_birth_meli(self):
-        self.driver_info.set_first_name_insert_driver_dict(self.ui.fname_get_flname_driver.toPlainText())
-        self.driver_info.set_last_name_insert_driver_dict(self.ui.lname_get_flname_driver.toPlainText())
+        try:
+            self.driver_info.set_first_name_insert_driver_dict(self.ui.fname_get_flname_driver.toPlainText())
+            self.driver_info.set_last_name_insert_driver_dict(self.ui.lname_get_flname_driver.toPlainText())
+        except Exception as eer:
+            print(eer)
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_sex_birth_meli)
 
     def show_get_photo_meli_pcertificate_obviously(self):
+        try:
+            self.driver_info.set_sex_insert_driver_dict(self.ui.sex_get_sex_birth_meli.currentText())
+            self.driver_info.set_birth_date_insert_driver_dict(int(self.ui.year_get_sex_birth_meli.text()),
+                                                               int(self.ui.month_get_sex_birth_meli.text()),
+                                                               int(self.ui.day_get_sex_birth_meli.text()))
 
-        self.driver_info.set_sex_insert_driver_dict(self.ui.sex_get_sex_birth_meli.currentText())
-        self.driver_info.set_birth_date_insert_driver_dict(
-            datetime.datetime(int(self.ui.year_get_sex_birth_meli.text()),
-                              int(self.ui.month_get_sex_birth_meli.text()),
-                              int(self.ui.day_get_sex_birth_meli.text())))
-        self.driver_info.set_national_code_insert_driver_dict(self.ui.meli_get_sex_birth_meli.toPlainText())
+            self.driver_info.set_national_code_insert_driver_dict(self.ui.meli_get_sex_birth_meli.toPlainText())
+        except Exception as err:
+            print(err)
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_photo_meli_certificate_obviously)
 
@@ -300,16 +306,22 @@ class MainWindow():
         print(dialog.getOpenFileName())
 
     def show_get_shaba(self):
-        self.driver_info.set_national_card_photo_path_insert_driver_dict("../c:desktop/national id card")
-        self.driver_info.set_license_photo_path_insert_driver_dict("../c:desktop/license card")
-        self.driver_info.set_disability_insert_driver_dict(
-            self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText())
+        try:
+            self.driver_info.set_national_card_photo_path_insert_driver_dict("../c:desktop/national id card")
+            self.driver_info.set_license_photo_path_insert_driver_dict("../c:desktop/license card")
+            self.driver_info.set_disability_insert_driver_dict(
+                self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText())
+        except Exception as err:
+            print(err)
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_shaba)
 
     def show_select_service(self):
-        self.driver_info.set_shaba_number_insert_driver_dict(self.ui.enter_shaba_number.toPlainText())
-        self.send_driver_info_to_db()
+        try:
+            self.driver_info.set_shaba_number_insert_driver_dict(self.ui.enter_shaba_number.toPlainText())
+            self.send_driver_info_to_db()
+        except Exception as err:
+            print(err)
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.select_service)
 

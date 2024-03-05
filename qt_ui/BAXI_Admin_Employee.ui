@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>12</number>
+     <number>10</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
