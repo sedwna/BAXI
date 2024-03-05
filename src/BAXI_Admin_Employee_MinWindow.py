@@ -193,9 +193,11 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)
 
     def show_employee_panel(self):
-        if IS_EMPLOYEE(self.ui.get_id_employee_sign_in.toPlainText(),
-                       self.ui.get_password_employee_sign_in.toPlainText()):
+        if flname := IS_EMPLOYEE(self.ui.get_id_employee_sign_in.toPlainText(),
+                                 self.ui.get_password_employee_sign_in.toPlainText()):
 
+            self.ui.box_fname_employee_panel.setPlainText(flname[0][0])
+            self.ui.box_lname_employee_panel.setPlainText(flname[0][1])
             self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)
 
     def show_employee_panel_authentication_1(self):
