@@ -195,6 +195,7 @@ class MainWindow:
     def show_employee_panel(self):
         if IS_EMPLOYEE(self.ui.get_id_employee_sign_in.toPlainText(),
                        self.ui.get_password_employee_sign_in.toPlainText()):
+
             self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)
 
     def show_employee_panel_authentication_1(self):
