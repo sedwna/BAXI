@@ -14,7 +14,7 @@ from verify import *
 
 
 class MainWindow():
-    driver_info = InsertInfo()
+    info_dict = InsertInfo()
     gen_rand_number = GenerateRandom4Digit()
 
     def __init__(self):
@@ -127,11 +127,14 @@ class MainWindow():
         self.ui.pushButt_select_user_select_driver_user.clicked.connect(self.show_get_flname_user)
         # -------------------------------------------------------------------------------------------------
         # go to show_user_home page ---------------------------------------------------------------------
-        self.ui.pushButt_next_get_flname_user.clicked.connect(self.show_user_home)
-        self.ui.pushButt_back_baxi_box_baxi_box_user_choose_vehicle_type.clicked.connect(self.show_user_home)
-        self.ui.pushButt_back_baxi_user_choose_vehicle_type.clicked.connect(self.show_user_home)
-        self.ui.pushButt_back_baxi_bar_baxi_bar_user_choose_vehicle_type.clicked.connect(self.show_user_home)
-        self.ui.pushButt_back_baxi_woman_baxi_woman_user_choose_vehicle_type.clicked.connect(self.show_user_home)
+        self.ui.pushButt_next_get_flname_user.clicked.connect(self.show_user_home_after_sign_up)
+        self.ui.pushButt_back_baxi_box_baxi_box_user_choose_vehicle_type.clicked.connect(
+            self.show_user_home_after_sign_in)
+        self.ui.pushButt_back_baxi_user_choose_vehicle_type.clicked.connect(self.show_user_home_after_sign_in)
+        self.ui.pushButt_back_baxi_bar_baxi_bar_user_choose_vehicle_type.clicked.connect(
+            self.show_user_home_after_sign_in)
+        self.ui.pushButt_back_baxi_woman_baxi_woman_user_choose_vehicle_type.clicked.connect(
+            self.show_user_home_after_sign_in)
         # -------------------------------------------------------------------------------------------------
         # go to baxi_user_choose_vehicle_type page --------------------------------------------------------
         self.ui.pushButt_accept_user_home.clicked.connect(self.show_baxi_user_choose_vehicle_type)
@@ -194,13 +197,13 @@ class MainWindow():
         self.ui.pushButt_back_user_my_account.clicked.connect(self.show_user_setting)
         # ----------------------------------------------------------------------------------------------------
         # go back from user_setting page-----------------------------------------------------------------------
-        self.ui.pushButt_back_user_setting.clicked.connect(self.show_user_home)
+        self.ui.pushButt_back_user_setting.clicked.connect(self.show_user_home_after_sign_in)
         # ----------------------------------------------------------------------------------------------------
         # go to user_my_wallet--------------------------------------------------------------------------------
         self.ui.pushButt_my_wallet_user_home.clicked.connect(self.show_user_my_wallet)
         # ----------------------------------------------------------------------------------------------------
         # go back from user_my_wallet page--------------------------------------------------------------------
-        self.ui.pushButt_back_user_my_wallet.clicked.connect(self.show_user_home)
+        self.ui.pushButt_back_user_my_wallet.clicked.connect(self.show_user_home_after_sign_in)
         # ----------------------------------------------------------------------------------------------------
         # go to user_payment_method----------------------------------------------------------------------------
         self.ui.pushButt_go_to_payment_methods_user_my_wallet.clicked.connect(self.show_user_payment_method)
@@ -211,7 +214,7 @@ class MainWindow():
         # go to user_history page-----------------------------------------------------------------------------
         self.ui.pushButt_history_user_home.clicked.connect(self.show_pushButt_history_user_home)
         # go back user_history page--------------------------------------------------------------------------------
-        self.ui.pushButt_back_user_history.clicked.connect(self.show_user_home)
+        self.ui.pushButt_back_user_history.clicked.connect(self.show_user_home_after_sign_in)
         # ----------------------------------------------------------------------------------------------------
         # go to user_driver_request_accepts_info page--------------------------------------------------------
         self.ui.pushButt_done_baxi_user_choose_vehicle_type.clicked.connect(self.show_user_driver_request_accepts_info)
@@ -223,7 +226,8 @@ class MainWindow():
             self.show_user_driver_request_accepts_info)
         # ------------------------------------------------------------------------------------------------------
         # go back from user_driver_request_accepts_info page------------------------------------------------------
-        self.ui.pushButt_cancel_request_user_driver_request_accepts_info.clicked.connect(self.show_user_home)
+        self.ui.pushButt_cancel_request_user_driver_request_accepts_info.clicked.connect(
+            self.show_user_home_after_sign_in)
         # -----------------------------------------------------------------------------------------------------------
         # select_go_to_user_or_driver_home---------------------------------------------------------------------------
         self.ui.pushButt_accept_sign_in_code.clicked.connect(self.select_go_to_user_or_driver_home)
@@ -260,8 +264,9 @@ class MainWindow():
             if (self.ui.enter_number_sign_in.toPlainText()) and CHECK_PHONE_EXIST(
                     self.ui.enter_number_sign_in.toPlainText()):
                 self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
+                self.gen_rand_number.gen_password_code_rand()
             else:
-                print("pls enter a number")
+                print("pls enter a valid number")
 
         except Exception as err:
             print(err)
@@ -271,7 +276,6 @@ class MainWindow():
             if (self.ui.enter_number_sign_up.toPlainText()) and not CHECK_PHONE_EXIST(
                     self.ui.enter_number_sign_up.toPlainText()):
                 self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
-                self.driver_info.set_phone_number_insert_driver_dict(self.ui.enter_number_sign_up.toPlainText())
                 self.gen_rand_number.gen_password_code_rand()
             else:
                 print("pls enter a valid number")
@@ -285,12 +289,13 @@ class MainWindow():
             self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
 
     def show_get_flname_driver(self):
+        self.info_dict.set_phone_number_insert_driver_dict(self.ui.enter_number_sign_up.toPlainText().strip('0'))
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_driver)
 
     def show_get_sex_birth_meli(self):
         try:
-            self.driver_info.set_first_name_insert_driver_dict(self.ui.fname_get_flname_driver.toPlainText())
-            self.driver_info.set_last_name_insert_driver_dict(self.ui.lname_get_flname_driver.toPlainText())
+            self.info_dict.set_first_name_insert_driver_dict(self.ui.fname_get_flname_driver.toPlainText())
+            self.info_dict.set_last_name_insert_driver_dict(self.ui.lname_get_flname_driver.toPlainText())
         except Exception as eer:
             print(eer)
 
@@ -298,12 +303,12 @@ class MainWindow():
 
     def show_get_photo_meli_pcertificate_obviously(self):
         try:
-            self.driver_info.set_sex_insert_driver_dict(self.ui.sex_get_sex_birth_meli.currentText())
-            self.driver_info.set_birth_date_insert_driver_dict(int(self.ui.year_get_sex_birth_meli.text()),
-                                                               int(self.ui.month_get_sex_birth_meli.text()),
-                                                               int(self.ui.day_get_sex_birth_meli.text()))
+            self.info_dict.set_sex_insert_driver_dict(self.ui.sex_get_sex_birth_meli.currentText())
+            self.info_dict.set_birth_date_insert_driver_dict(int(self.ui.year_get_sex_birth_meli.text()),
+                                                             int(self.ui.month_get_sex_birth_meli.text()),
+                                                             int(self.ui.day_get_sex_birth_meli.text()))
 
-            self.driver_info.set_national_code_insert_driver_dict(self.ui.meli_get_sex_birth_meli.toPlainText())
+            self.info_dict.set_national_code_insert_driver_dict(self.ui.meli_get_sex_birth_meli.toPlainText())
         except Exception as err:
             print(err)
 
@@ -315,9 +320,9 @@ class MainWindow():
 
     def show_get_shaba(self):
         try:
-            self.driver_info.set_national_card_photo_path_insert_driver_dict("../c:desktop/national id card")
-            self.driver_info.set_license_photo_path_insert_driver_dict("../c:desktop/license card")
-            self.driver_info.set_disability_insert_driver_dict(
+            self.info_dict.set_national_card_photo_path_insert_driver_dict("../c:desktop/national id card")
+            self.info_dict.set_license_photo_path_insert_driver_dict("../c:desktop/license card")
+            self.info_dict.set_disability_insert_driver_dict(
                 self.ui.obviously_get_photo_meli_pcertificate_obviously.currentText())
         except Exception as err:
             print(err)
@@ -326,7 +331,7 @@ class MainWindow():
 
     def show_select_service(self):
         try:
-            self.driver_info.set_shaba_number_insert_driver_dict(self.ui.enter_shaba_number.toPlainText())
+            self.info_dict.set_shaba_number_insert_driver_dict(self.ui.enter_shaba_number.toPlainText())
             self.send_driver_info_to_db()
         except Exception as err:
             print(err)
@@ -346,9 +351,27 @@ class MainWindow():
         sys.exit()
 
     def show_get_flname_user(self):
+        self.info_dict.set_phone_number_insert_client_dict(self.ui.enter_number_sign_up.toPlainText().strip('0'))
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_user)
 
-    def show_user_home(self):
+    def show_user_home_after_sign_in(self):
+
+        self.off_menu_bar_user_home()
+        self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
+        self.ui.stackedWidget.setCurrentWidget(self.mp.show())
+
+    def show_user_home_after_sign_up(self):
+        self.info_dict.set_sign_up_time_insert_client_dict()
+        self.info_dict.set_sex_insert_client_dict(self.ui.sex_get_flname_user.currentText())
+        self.info_dict.set_first_name_insert_client_dict(self.ui.fname_get_flname_user.toPlainText())
+        self.info_dict.set_last_name_insert_client_dict(self.ui.lname_get_flname_user.toPlainText())
+
+        try:
+            insert_client(self.info_dict.insert_client_dict)
+            print('add client was successful')
+        except Exception as err:
+            print(err)
+
         self.off_menu_bar_user_home()
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
@@ -371,11 +394,11 @@ class MainWindow():
 
     def send_driver_info_to_db(self):
         self.gen_rand_number.gen_referral_code_rand()
-        self.driver_info.set_referral_code_insert_driver_dict(self.gen_rand_number.referral_code)
-        self.driver_info.set_signup_time_insert_driver_dict()
-        print(self.driver_info.insert_driver_dict)
+        self.info_dict.set_referral_code_insert_driver_dict(self.gen_rand_number.referral_code)
+        self.info_dict.set_signup_time_insert_driver_dict()
+        print(self.info_dict.insert_driver_dict)
         try:
-            insert_driver(self.driver_info.insert_driver_dict)
+            insert_driver(self.info_dict.insert_driver_dict)
         except Exception as err:
             print(err)
         finally:
@@ -442,9 +465,9 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_driver_request_accepts_info)
 
     def select_go_to_user_or_driver_home(self):
-        if True:
+        if IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()):
             self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home)
-        if False:
+        if IS_CLIENT(self.ui.enter_number_sign_in.toPlainText()):
             self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
 
     def show_driver_accept_request(self):

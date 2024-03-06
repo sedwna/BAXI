@@ -74,3 +74,11 @@ def PHONE_NUMBER_EMPTY(phone_number):
         return False
     else:
         return True
+
+
+def IS_DRIVER(phone_number):
+    phone_number = phone_number.strip('0')
+
+
+def IS_CLIENT(phone_number):
+    phone_number = phone_number.strip('0')

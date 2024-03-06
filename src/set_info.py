@@ -2,6 +2,16 @@ import datetime
 
 
 class InsertInfo:
+    insert_client_dict = {'client_id': None,
+                          'phone_number': None,
+                          'wallet_balance': 0,
+                          'signup_time': None,
+                          'first_name': None,
+                          'last_name': None,
+                          'birth_date': None,
+                          'sex': None,
+                          'email': None}
+
     insert_driver_dict = {'id': None,
                           'referral_code': None,
                           'phone_number': None,
@@ -120,3 +130,30 @@ class InsertInfo:
 
     def set_verifier_personnel_code_insert_driver_dict(self, verifier_personnel_code):
         self.insert_driver_dict['verifier_personnel_code'] = verifier_personnel_code
+
+    def set_client_id_insert_client_dict(self, client_id):
+        self.insert_client_dict['client_id'] = client_id
+
+    def set_phone_number_insert_client_dict(self, phone_number):
+        self.insert_client_dict['phone_number'] = phone_number
+
+    def set_wallet_balance_insert_client_dict(self, wallet_balance):
+        self.insert_client_dict['wallet_balance'] = wallet_balance
+
+    def set_sign_up_time_insert_client_dict(self):
+        self.insert_client_dict['signup_time'] = datetime.datetime.now()
+
+    def set_first_name_insert_client_dict(self, first_name):
+        self.insert_client_dict['first_name'] = first_name
+
+    def set_last_name_insert_client_dict(self, last_name):
+        self.insert_client_dict['last_name'] = last_name
+
+    def set_birth_date_insert_client_dict(self, birth_date):
+        self.insert_client_dict['birth_date'] = birth_date
+
+    def set_sex_insert_client_dict(self, sex):
+        self.insert_client_dict['sex'] = sex
+
+    def set_email_insert_client_dict(self, email):
+        self.insert_client_dict['email'] = email
