@@ -33,6 +33,7 @@ class InsertInfo:
                           'location': None,
                           'profile_picture_path': None,
                           'verifier_personnel_code': None}
+
     insert_baxi_dict = {'vehicle_license_plate': 'none',
                         'vehicle_capacity': 4,
                         'vehicle_color': 'none',
@@ -41,6 +42,31 @@ class InsertInfo:
                         'vehicle_card_photo': '../C:desktop/vehicle card',
                         'vehicle_fuel_type': 'none',
                         'driver_id': 0}
+
+    def set_vehicle_license_plate_insert_baxi_dict(self, vehicle_license_plate):
+        self.insert_baxi_dict['vehicle_license_plate'] = vehicle_license_plate
+
+    def set_vehicle_capacity_insert_baxi_dict(self, vehicle_capacity):
+        self.insert_baxi_dict['vehicle_capacity'] = vehicle_capacity
+
+    def set_vehicle_color_insert_baxi_dict(self, vehicle_color):
+        self.insert_baxi_dict['vehicle_color'] = vehicle_color
+
+    def set_vehicle_name_insert_baxi_dict(self, vehicle_name):
+        self.insert_baxi_dict['vehicle_name'] = vehicle_name
+
+    def set_vehicle_production_date_insert_baxi_dict(self, vehicle_production_date):
+        self.insert_baxi_dict['vehicle_production_date'] = vehicle_production_date
+
+    def set_vehicle_card_photo_insert_baxi_dict(self, vehicle_card_photo):
+        self.insert_baxi_dict['vehicle_card_photo'] = vehicle_card_photo
+
+    def set_vehicle_fuel_type_insert_baxi_dict(self, vehicle_fuel_type):
+        self.insert_baxi_dict['vehicle_fuel_type'] = vehicle_fuel_type
+
+    def set_driver_id_insert_baxi_dict(self, driver_id):
+        self.insert_baxi_dict['driver_id'] = driver_id
+
     insert_baar_dict = {'vehicle_license_plate': 'none',
                         'vehicle_capacity': 4,
                         'vehicle_color': 'none',

@@ -39,7 +39,7 @@ class MainWindow():
         # --------------------------------------------------------------------------------
         # go to code certified page ------------------------------------------------------
         self.ui.pushButt_enter_sign_up.clicked.connect(self.show_accept_code_sign_up)
-        self.ui.pushButt_enter_sign_in.clicked.connect(self.show_accept_code_sign_in)
+        self.ui.pushButt_enter_sign_in.clicked.connect(self.phone_number_for_client_or_driver)
         # --------------------------------------------------------------------------------
         # go to select driver user page---------------------------------------------------
         self.ui.pushButt_accept_sign_up_code.clicked.connect(self.show_select_driver_user)
@@ -97,10 +97,11 @@ class MainWindow():
         self.ui.pushButt_back_get_machine_baxi_woman_info.clicked.connect(self.show_select_service)
         # --------------------------------------------------------------------------------------
         # go to registration_successful page ------------------------------------------------------------
-        self.ui.pushButt_next_get_machine_baxi_info.clicked.connect(self.show_registration_successful)
-        self.ui.pushButt_next_get_machine_baxi_woman_info.clicked.connect(self.show_registration_successful)
-        self.ui.pushButt_next_get_machine_baxi_bar_info.clicked.connect(self.show_registration_successful)
-        self.ui.pushButt_next_get_motor_baxi_box_info.clicked.connect(self.show_registration_successful)
+        self.ui.pushButt_next_get_machine_baxi_info.clicked.connect(self.show_registration_successful_baxi)
+        self.ui.pushButt_next_get_machine_baxi_woman_info.clicked.connect(
+            self.show_registration_successful_baxi_woman)
+        self.ui.pushButt_next_get_machine_baxi_bar_info.clicked.connect(self.show_registration_successful_baxi_bar)
+        self.ui.pushButt_next_get_motor_baxi_box_info.clicked.connect(self.show_registration_successful_baxi_box)
         # --------------------------------------------------------------------------------------
         # go back to sign in page from registration_successful page -----------------------------------------
         self.ui.pushButt_back_to_sign_in_registration_successful.clicked.connect(self.show_sign_in)
@@ -261,8 +262,7 @@ class MainWindow():
 
     def show_accept_code_sign_in(self):
         try:
-            if (self.ui.enter_number_sign_in.toPlainText()) and CHECK_PHONE_EXIST(
-                    self.ui.enter_number_sign_in.toPlainText()):
+            if self.ui.enter_number_sign_in.toPlainText():
                 self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
                 self.gen_rand_number.gen_password_code_rand()
             else:
@@ -344,7 +344,54 @@ class MainWindow():
     def show_get_machine_baxi_woman_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_woman_info)
 
-    def show_registration_successful(self):
+    def show_registration_successful_baxi_woman(self):
+        try:
+            insert_baxi(self.info_dict.insert_baxi_dict)
+            print("baxi women info successfully ad to db")
+        except Exception as err:
+            print(err)
+
+    def show_registration_successful_baxi_bar(self):
+        try:
+            insert_baxi(self.info_dict.insert_baar_dict)
+            print("baxi baar info successfully ad to db")
+        except Exception as err:
+            print(err)
+
+    def show_registration_successful_baxi_box(self):
+        try:
+            insert_baxi(self.info_dict.insert_box_dict)
+            print("baxi box info successfully ad to db")
+        except Exception as err:
+            print(err)
+
+    def show_registration_successful_baxi(self):
+        try:
+            self.info_dict.set_vehicle_production_date_insert_baxi_dict(
+                datetime(int(self.ui.machine_generate_year_get_machine_baxi_info.text()), 1, 1))
+            self.info_dict.set_vehicle_name_insert_baxi_dict(
+                self.ui.machine_name_get_machine_baxi_info.toPlainText())
+            self.info_dict.set_vehicle_color_insert_baxi_dict(
+                self.ui.machine_color_get_machine_baxi_info.currentText())
+            self.info_dict.set_vehicle_license_plate_insert_baxi_dict(
+                self.ui.two_digit_left_pelak_get_machine_baxi_info.toPlainText() +
+                self.ui.alphabet_get_machine_baxi_info.currentText() +
+                self.ui.three_digit_pelak_get_machine_baxi_info.toPlainText() +
+                self.ui.two_digit_right_pelak_get_machine_baxi_info.toPlainText())
+            self.info_dict.set_vehicle_fuel_type_insert_baxi_dict(
+                self.ui.machine_fuel_get_machine_baxi_info.currentText())
+            self.info_dict.set_vehicle_capacity_insert_baxi_dict(
+                self.ui.machine_capacity_get_machine_baxi_info.currentText())
+            i_d = CHECK_ID_DRIVER(self.ui.enter_number_sign_up.toPlainText())
+            self.info_dict.set_driver_id_insert_baxi_dict(i_d[0][0])
+            insert_baxi(self.info_dict.insert_baxi_dict)
+            print(self.info_dict.insert_baxi_dict)
+
+            print("baxi info successfully ad to db")
+
+        except Exception as err:
+            print(err)
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
 
     def exit_app(self):
@@ -355,7 +402,6 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_user)
 
     def show_user_home_after_sign_in(self):
-
         self.off_menu_bar_user_home()
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
@@ -464,11 +510,23 @@ class MainWindow():
     def show_user_driver_request_accepts_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_driver_request_accepts_info)
 
-    def select_go_to_user_or_driver_home(self):
+    def phone_number_for_client_or_driver(self):
         if IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()):
-            self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home)
-        if IS_CLIENT(self.ui.enter_number_sign_in.toPlainText()):
-            self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
+            self.ui.stackedWidget.setCurrentWidget(self.show_accept_code_sign_in)
+
+        elif IS_CLIENT(self.ui.enter_number_sign_in.toPlainText()):
+            self.ui.stackedWidget.setCurrentWidget(self.show_accept_code_sign_in)
+
+        else:
+            print("pls sign up first")
+
+    def select_go_to_user_or_driver_home(self):
+        input_password = self.ui.pass_digit1_accept_code_sign_in.toPlainText() + self.ui.pass_digit2_accept_code_sign_in.toPlainText() + self.ui.pass_digit3_accept_code_sign_in.toPlainText() + self.ui.pass_digit4_accept_code_sign_in.toPlainText()
+        if CHECK_IN_PASS_EQ_GEN_PASS(input_password, self.gen_rand_number.password_code):
+            if IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()):
+                self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
+            if IS_CLIENT(self.ui.enter_number_sign_in.toPlainText()):
+                self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home)
 
     def show_driver_accept_request(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_accept_request)
