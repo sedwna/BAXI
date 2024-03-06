@@ -381,7 +381,7 @@ def query4():
 def phone_number_lookup(number):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''SELECT	id, wallet_balance, first_name, last_name, profile_picture_path
+	query = '''SELECT	id, wallet_balance, first_name, last_name
 				FROM	clients
 				WHERE	phone_number = %s'''
 	cur.execute(query, (number,))
