@@ -357,7 +357,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Panel</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="three_digit_pelak_get_motor_baxi_box_info">
@@ -370,7 +370,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Panel</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="five_digit_pelak_get_motor_baxi_box_info">
@@ -383,7 +383,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Panel</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_next_get_motor_baxi_box_info">
@@ -478,7 +478,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Panel</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
      </widget>
      <widget class="QComboBox" name="alphabet_get_machine_baxi_bar_info">
@@ -549,7 +549,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Panel</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="two_digit_right_pelak_get_machine_baxi_bar_info">
@@ -562,7 +562,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Panel</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="machine_name_get_machine_baxi_bar_info">
@@ -669,7 +669,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Panel</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
      </widget>
      <widget class="QComboBox" name="machine_color_get_machine_baxi_bar_info">
@@ -1807,7 +1807,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Panel</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="two_digit_left_pelak_get_machine_baxi_woman_info">
@@ -1820,7 +1820,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Panel</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="three_digit_pelak_get_machine_baxi_woman_info">
@@ -1833,7 +1833,7 @@
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Panel</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_next_get_machine_baxi_woman_info">
@@ -3442,47 +3442,47 @@
       </property>
       <item>
        <property name="text">
-        <string>الف</string>
+        <string>A</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>ب</string>
+        <string>B</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>ل</string>
+        <string>C</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>ع</string>
+        <string>E</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>ص</string>
+        <string>U</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>ق</string>
+        <string>Q</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>پ</string>
+        <string>W</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>ی</string>
+        <string>O</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>ث</string>
+        <string>K</string>
        </property>
       </item>
      </widget>
