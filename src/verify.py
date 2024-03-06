@@ -42,18 +42,18 @@ def IS_EMPLOYEE(id, password):
     return False
 
 
-def CHECK_PHONE_NOT_EXIST(phone_number):
+def CHECK_PHONE_EXIST(phone_number):
     phone_number = phone_number.strip('0')
     print('phone number:', phone_number)
     try:
-        if not phone_number_exists(phone_number):
-
+        if phone_number_exists(phone_number):
+            print("this phone number not exist")
             return True
         else:
-            print("this phone number already exist")
+            print("this phone number not exist")
+            return False
     except Exception as err:
         print(err)
-    return False
 
 
 def CHECK_IN_PASS_EQ_GEN_PASS(input_pass, genrate_pass):
@@ -69,7 +69,6 @@ def CHECK_IN_PASS_EQ_GEN_PASS(input_pass, genrate_pass):
 
 
 def PHONE_NUMBER_EMPTY(phone_number):
-
     if bool(phone_number.strip()):
         print('pn', phone_number)
         return False

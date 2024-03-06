@@ -256,24 +256,28 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.sign_in)
 
     def show_accept_code_sign_in(self):
-        # try:
-        #     if not phone_number_exists(self.ui.enter_number_sign_up.toPlainText()):
-        #         self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
-        #     else:
-        #         print("this phone number already exist")
-        # except Exception as err:
-        #     print(err)
-        self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
+        try:
+            if (self.ui.enter_number_sign_in.toPlainText()) and CHECK_PHONE_EXIST(
+                    self.ui.enter_number_sign_in.toPlainText()):
+                self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
+            else:
+                print("pls enter a number")
+
+        except Exception as err:
+            print(err)
 
     def show_accept_code_sign_up(self):
+        try:
+            if (self.ui.enter_number_sign_up.toPlainText()) and not CHECK_PHONE_EXIST(
+                    self.ui.enter_number_sign_up.toPlainText()):
+                self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
+                self.driver_info.set_phone_number_insert_driver_dict(self.ui.enter_number_sign_up.toPlainText())
+                self.gen_rand_number.gen_password_code_rand()
+            else:
+                print("pls enter a valid number")
 
-        if (self.ui.enter_number_sign_up.toPlainText()) and CHECK_PHONE_NOT_EXIST(
-                self.ui.enter_number_sign_up.toPlainText()):
-            self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_up)
-            self.driver_info.set_phone_number_insert_driver_dict(self.ui.enter_number_sign_up.toPlainText())
-            self.gen_rand_number.gen_password_code_rand()
-        else:
-            print("enter a phone number")
+        except Exception as err:
+            print(err)
 
     def show_select_driver_user(self):
         input_password = self.ui.pass_digit1_accept_code_sign_up.toPlainText() + self.ui.pass_digit2_accept_code_sign_up.toPlainText() + self.ui.pass_digit3_accept_code_sign_up.toPlainText() + self.ui.pass_digit4_accept_code_sign_up.toPlainText()
