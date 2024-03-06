@@ -356,7 +356,7 @@ def insert_compensatory_deposit(values):
 def insert_client(values):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
-	query = '''INSERT INTO clients VALUES (%(client_id)s, %(phone_number)s, %(wallet_balance), %(signup_time)s,
+	query = '''INSERT INTO clients VALUES (%(client_id)s, %(phone_number)s, %(wallet_balance)s, %(signup_time)s,
 											%(first_name)s, %(last_name)s, %(birth_date)s, %(sex)s, %(email)s)'''
 	cur.execute(query, values)
 	cnx.commit()
@@ -641,3 +641,36 @@ def set_email(id, path):
 	cur.execute(query, (path, id))
 	cur.commit()
 	cnx.close()
+
+def is_female(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = """SELECT	id
+				FROM	drivers
+				WHERE	id = %s AND sex = 'F'"""
+	cur.execute(query, (id,))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+def is_driver_account_active(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = """SELECT	id
+				FROM	drivers JOIN reports ON id = driver_id
+				WHERE	id = %s AND verifier_personnel_code IS NOT NULL AND state <> 'driver''s account deactivated'"""
+	cur.execute(query, (id,))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+def is_client_account_active(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = """SELECT	id
+				FROM	clients JOIN reports ON id = client_id
+				WHERE	id = %s AND state <> 'client''s account deactivated'"""
+	cur.execute(query, (id,))
+	result = cur.fetchall()
+	cnx.close()
+	return result
