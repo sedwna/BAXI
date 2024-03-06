@@ -46,8 +46,12 @@ def CHECK_PHONE_EXIST(phone_number):
     phone_number = phone_number.strip('0')
     print('phone number:', phone_number)
     try:
-        if phone_number_exists(phone_number):
-            print("this phone number not exist")
+        print("1")
+        if res := phone_number_lookup(phone_number):
+            print(res)
+            print("this phone number exist")
+            print('user id', res[0][0])
+
             return True
         else:
             print("this phone number not exist")
@@ -78,7 +82,23 @@ def PHONE_NUMBER_EMPTY(phone_number):
 
 def IS_DRIVER(phone_number):
     phone_number = phone_number.strip('0')
+    res = phone_number_lookup(phone_number)
+    if is_driver_account_active(res[0][0]):
+        return res
+    else:
+        return False
 
 
 def IS_CLIENT(phone_number):
     phone_number = phone_number.strip('0')
+    res = phone_number_lookup(phone_number)
+    if is_client_account_active(res[0][0]):
+        return res
+    else:
+        return False
+
+
+def CHECK_ID_DRIVER(phone_number):
+    phone_number = phone_number.strip('0')
+
+    return phone_number_lookup(phone_number)

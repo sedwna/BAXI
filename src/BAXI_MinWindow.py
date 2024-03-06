@@ -346,6 +346,27 @@ class MainWindow():
 
     def show_registration_successful_baxi_woman(self):
         try:
+            self.info_dict.set_vehicle_production_date_insert_baxi_dict(
+                datetime(int(self.ui.machine_generate_year_get_machine_baxi_info.text()), 1, 1))
+            self.info_dict.set_vehicle_name_insert_baxi_dict(
+                self.ui.machine_name_get_machine_baxi_info.toPlainText())
+            self.info_dict.set_vehicle_color_insert_baxi_dict(
+                self.ui.machine_color_get_machine_baxi_info.currentText())
+            self.info_dict.set_vehicle_license_plate_insert_baxi_dict(
+                self.ui.two_digit_left_pelak_get_machine_baxi_info.toPlainText() +
+                self.ui.alphabet_get_machine_baxi_info.currentText() +
+                self.ui.three_digit_pelak_get_machine_baxi_info.toPlainText() +
+                self.ui.two_digit_right_pelak_get_machine_baxi_info.toPlainText())
+            self.info_dict.set_vehicle_fuel_type_insert_baxi_dict(
+                self.ui.machine_fuel_get_machine_baxi_info.currentText())
+            self.info_dict.set_vehicle_capacity_insert_baxi_dict(
+                self.ui.machine_capacity_get_machine_baxi_info.currentText())
+            i_d = CHECK_ID_DRIVER(self.ui.enter_number_sign_up.toPlainText())
+            self.info_dict.set_driver_id_insert_baxi_dict(i_d[0][0])
+            insert_baxi(self.info_dict.insert_baxi_dict)
+            print(self.info_dict.insert_baxi_dict)
+
+            print("baxi info successfully ad to db")
             insert_baxi(self.info_dict.insert_baxi_dict)
             print("baxi women info successfully ad to db")
         except Exception as err:
