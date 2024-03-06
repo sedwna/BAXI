@@ -685,3 +685,14 @@ def is_driver(id):
 	result = cur.fetchall()
 	cnx.close()
 	return result
+
+def requests_within_range(lat, lon):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = """SELECT	first_name, last_name, pickup_location, pickup_province, pickup_city, city, latitude, longitude
+				FROM	(service_requests JOIN clients ON client_id = id) JOIN destinations USING (client_id, request_time)
+				WHERE	(6371 * acos(cos(radians(%s)) * cos(radians(ST_Y(pickup_location))) * cos(radians(ST_X(pickup_location))) - radians(%s)) + sin(radians(%s)) * sin(radians(ST_Y(pickup_location)))) <= 5"""
+	cur.execute(query, (lat, lon, lat))
+	result = cur.fetchall()
+	cnx.close()
+	return result
