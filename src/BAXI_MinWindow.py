@@ -342,7 +342,9 @@ class MainWindow():
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_info)
 
     def show_get_machine_baxi_woman_info(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_woman_info)
+
+        if CHECK_M_OR_F(self.ui.enter_number_sign_up.toPlainText()):
+            self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_woman_info)
 
     def show_registration_successful_baxi_woman(self):
         try:

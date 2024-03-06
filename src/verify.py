@@ -102,3 +102,8 @@ def CHECK_ID_DRIVER(phone_number):
     phone_number = phone_number.strip('0')
 
     return phone_number_lookup(phone_number)
+
+
+def CHECK_M_OR_F(phone_number):
+    res = CHECK_ID_DRIVER(phone_number)
+    return is_female(res[0][0])
