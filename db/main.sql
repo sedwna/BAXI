@@ -53,11 +53,11 @@ CREATE TABLE	clients
 				(
 					id				INT				PRIMARY KEY					AUTO_INCREMENT,
 					phone_number	CHAR(10)		UNIQUE						NOT NULL,
-					wallet_balance	INT				DEFAULT 0					NOT NULL,
+					wallet_balance	INT				DEFAULT 0					NOT NULL			CHECK (wallet_balance >= 0),
 					signup_time		DATETIME		DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					first_name		VARCHAR(50)									NOT NULL,
 					last_name		VARCHAR(50)									NOT NULL,
-					birth_date		DATE										NOT NULL,
+					birth_date		DATE										NOT NULL			CHECK (TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) >= 15),
 					sex				ENUM
 									(
 										'M',
@@ -94,7 +94,7 @@ CREATE TABLE	drivers
 					phone_number						CHAR(10)								UNIQUE						NOT NULL,
 					shaba_number						CHAR(26)								UNIQUE						NOT NULL,
 					referral_code						CHAR(10)								UNIQUE						NOT NULL,
-					wallet_balance						INT										DEFAULT 0					NOT NULL,
+					wallet_balance						INT										DEFAULT 0					NOT NULL			CHECK (wallet_balance > -50),
 					signup_time							DATETIME								DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					disability							ENUM
 														(
@@ -111,7 +111,7 @@ CREATE TABLE	drivers
 														)										DEFAULT 'none'				NOT NULL,
 					first_name							VARCHAR(50)															NOT NULL,
 					last_name							VARCHAR(50)															NOT NULL,
-					birth_date							DATE																NOT NULL,
+					birth_date							DATE																NOT NULL			CHECK (TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) >= 18)
 					national_code						CHAR(10)															NOT NULL,
 					license_photo_path					VARCHAR(50)															NOT NULL,
 					national_card_photo_path			VARCHAR(50)															NOT NULL,
@@ -132,7 +132,7 @@ CREATE TABLE	drivers
 
 CREATE TABLE	baxi
 				(
-					vehicle_license_plate		CHAR(9)			UNIQUE			NOT NULL,
+					vehicle_license_plate		CHAR(9)			UNIQUE			NOT NULL	CHECK (vehicle_license_plate REGEXP '^[0-9]{2}[A-Z][0-9]{3}-[0-9]{2}$'),
 					vehicle_capacity			INT								NOT NULL,
 					vehicle_color				VARCHAR(50)						NOT NULL,
 					vehicle_name				VARCHAR(50)						NOT NULL,
@@ -151,7 +151,7 @@ CREATE TABLE	baxi
 
 CREATE TABLE	baxi_baar
 				(
-					vehicle_license_plate		CHAR(9)			UNIQUE			NOT NULL,
+					vehicle_license_plate		CHAR(9)			UNIQUE			NOT NULL	CHECK (vehicle_license_plate REGEXP '^[0-9]{2}[A-Z][0-9]{3}-[0-9]{2}$'),
 					vehicle_capacity			INT								NOT NULL,
 					vehicle_color				VARCHAR(50)						NOT NULL,
 					vehicle_name				VARCHAR(50)						NOT NULL,
@@ -170,7 +170,7 @@ CREATE TABLE	baxi_baar
 
 CREATE TABLE	baxi_box
 				(
-					vehicle_license_plate		CHAR(9)				UNIQUE				NOT NULL,
+					vehicle_license_plate		CHAR(9)				UNIQUE				NOT NULL	CHECK (vehicle_license_plate REGEXP '^[0-9]{2}[A-Z][0-9]{3}-[0-9]{2}$'),
 					vehicle_capacity			INT										NOT NULL,
 					vehicle_color				VARCHAR(50)								NOT NULL,
 					vehicle_name				VARCHAR(50)								NOT NULL,
@@ -313,7 +313,7 @@ CREATE TABLE	service_acceptances
 											'4-star',
 											'5-star'
 										)						DEFAULT NULL,
-					tracking_code		VARCHAR(20),
+					tracking_code		VARCHAR(20)
 					client_id			INT,
 					request_time		DATETIME,
 					PRIMARY KEY(client_id, request_time),
