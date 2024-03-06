@@ -376,28 +376,8 @@ def query4():
 	cnx.close()
 	return result
 
-# sign-up phone number lookup (returns True/False)
-def phone_number_exists(number):
-	cnx = create_connection('baxi_users')
-	cur = cnx.cursor()
-	query = '''SELECT	id
-				FROM	clients
-				WHERE	phone_number = %s'''
-	cur.execute(query, (number,))
-	temp = cur.fetchall()
-	query = '''SELECT	id
-				FROM	drivers
-				WHERE	phone_number = %s'''
-	cur.execute(query, (number,))
-	result = temp + cur.fetchall()
-	cnx.close()
-	if result:
-		return True
-	return False
-
 '''	sign-in phone number lookup
-	result is returned in the following formats:
-	tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
+	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
 def phone_number_lookup(number):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
@@ -515,7 +495,6 @@ def box_driver_info(id):
 	cnx.close()
 	return result
 
-# returns True/False
 def is_manager(pcode):
 	cnx = create_connection('baxi_staff')
 	cur = cnx.cursor()
@@ -524,9 +503,8 @@ def is_manager(pcode):
 				WHERE	personnel_code = %s AND department = 'HR' AND position = 'department manager'"""
 	cur.execute(query, (pcode,))
 	result = cur.fetchall()
-	if result:
-		return True
-	return False
+	cnx.close()
+	return result
 
 ''' called upon employee sign-in attempt
 	return format: tuple(first_name, last_name)'''
@@ -670,6 +648,39 @@ def is_client_account_active(id):
 	query = """SELECT	id
 				FROM	clients JOIN reports ON id = client_id
 				WHERE	id = %s AND state <> 'client''s account deactivated'"""
+	cur.execute(query, (id,))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+def ref_code_exists(code):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = """SELECT	id
+				FROM	drivers
+				WHERE	referral_code = %s"""
+	cur.execute(query, (code,))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+def is_client(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = """SELECT	id
+				FROM	clients
+				WHERE	id = %s"""
+	cur.execute(query, (id,))
+	result = cur.fetchall()
+	cnx.close()
+	return result
+
+def is_driver(id):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
+	query = """SELECT	id
+				FROM	drivers
+				WHERE	id = %s"""
 	cur.execute(query, (id,))
 	result = cur.fetchall()
 	cnx.close()
