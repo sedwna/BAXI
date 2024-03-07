@@ -51,7 +51,7 @@ class MainWindow():
         self.ui.pushButt_back_get_flname_driver.clicked.connect(self.show_select_driver_user)
         # --------------------------------------------------------------------------------------
         # go back page from select_driver_user page --------------------------------------------
-        self.ui.pushButt_back_select_driver_user.clicked.connect(self.show_accept_code_sign_up)
+        self.ui.pushButt_back_select_driver_user.clicked.connect(self.show_sign_up)
         # --------------------------------------------------------------------------------------
         # go back page from accept code to edit number --------------------------------------------
         self.ui.pushButt_edit_number_sign_up.clicked.connect(self.show_sign_up)
