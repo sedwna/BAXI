@@ -5,15 +5,14 @@ from PyQt6.QtWidgets import QFileDialog
 
 from BAXI import Ui_BAXI
 from show_map import MapWindow
-from db.database import *
 import datetime
-
+from db.database import *
 from set_info import InsertInfo
 from generate_random_number import GenerateRandom4Digit
 from verify import *
 
 
-class MainWindow():
+class MainWindow:
     info_dict = InsertInfo()
     gen_rand_number = GenerateRandom4Digit()
 
@@ -39,7 +38,7 @@ class MainWindow():
         # --------------------------------------------------------------------------------
         # go to code certified page ------------------------------------------------------
         self.ui.pushButt_enter_sign_up.clicked.connect(self.show_accept_code_sign_up)
-        self.ui.pushButt_enter_sign_in.clicked.connect(self.phone_number_for_client_or_driver)
+        self.ui.pushButt_enter_sign_in.clicked.connect(self.show_accept_code_sign_in)
         # --------------------------------------------------------------------------------
         # go to select driver user page---------------------------------------------------
         self.ui.pushButt_accept_sign_up_code.clicked.connect(self.show_select_driver_user)
@@ -121,14 +120,14 @@ class MainWindow():
         # go to get_motor_baxi_bbox_info page ------------------------------------------------------------
         self.ui.pushButt_baxi_box_select_service.clicked.connect(self.show_get_motor_baxi_box_info)
         # -------------------------------------------------------------------------------------------------
-        # go back from get_flname_user page ---------------------------------------------------------------
-        self.ui.pushButt_back_get_flname_user.clicked.connect(self.show_select_driver_user)
+        # go back from get_flname_sex_birth_user page ---------------------------------------------------------------
+        self.ui.pushButt_back_get_flname_sex_birth_user.clicked.connect(self.show_select_driver_user)
         # -------------------------------------------------------------------------------------------------
 
-        self.ui.pushButt_select_user_select_driver_user.clicked.connect(self.show_get_flname_user)
+        self.ui.pushButt_select_user_select_driver_user.clicked.connect(self.show_get_flname_sex_birth_user)
         # -------------------------------------------------------------------------------------------------
         # go to show_user_home page ---------------------------------------------------------------------
-        self.ui.pushButt_next_get_flname_user.clicked.connect(self.show_user_home_after_sign_up)
+        self.ui.pushButt_next_get_flname_sex_birth_user.clicked.connect(self.show_user_home_after_sign_up)
         self.ui.pushButt_back_baxi_box_baxi_box_user_choose_vehicle_type.clicked.connect(
             self.show_user_home_after_sign_in)
         self.ui.pushButt_back_baxi_user_choose_vehicle_type.clicked.connect(self.show_user_home_after_sign_in)
@@ -262,9 +261,9 @@ class MainWindow():
 
     def show_accept_code_sign_in(self):
         try:
-            if self.ui.enter_number_sign_in.toPlainText():
-                self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
+            if CHECK_PHONE_EXIST(self.ui.enter_number_sign_in.toPlainText()):
                 self.gen_rand_number.gen_password_code_rand()
+                self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
             else:
                 print("pls enter a valid number")
 
@@ -349,41 +348,81 @@ class MainWindow():
     def show_registration_successful_baxi_woman(self):
         try:
             self.info_dict.set_vehicle_production_date_insert_baxi_dict(
-                datetime(int(self.ui.machine_generate_year_get_machine_baxi_info.text()), 1, 1))
+                datetime(int(self.ui.machine_generate_year_get_machine_baxi_woman_info.text()), 1, 1))
             self.info_dict.set_vehicle_name_insert_baxi_dict(
-                self.ui.machine_name_get_machine_baxi_info.toPlainText())
+                self.ui.machine_name_get_machine_baxi_woman_info.toPlainText())
             self.info_dict.set_vehicle_color_insert_baxi_dict(
-                self.ui.machine_color_get_machine_baxi_info.currentText())
+                self.ui.machine_color_get_machine_baxi_woman_info.currentText())
             self.info_dict.set_vehicle_license_plate_insert_baxi_dict(
-                self.ui.two_digit_left_pelak_get_machine_baxi_info.toPlainText() +
-                self.ui.alphabet_get_machine_baxi_info.currentText() +
-                self.ui.three_digit_pelak_get_machine_baxi_info.toPlainText() +
-                self.ui.two_digit_right_pelak_get_machine_baxi_info.toPlainText())
+                self.ui.two_digit_left_pelak_get_machine_baxi_woman_info.toPlainText() +
+                self.ui.alphabet_get_machine_baxi_woman_info.currentText() +
+                self.ui.three_digit_pelak_get_machine_baxi_woman_info.toPlainText() +
+                self.ui.two_digit_right_pelak_get_machine_baxi_woman_info.toPlainText())
             self.info_dict.set_vehicle_fuel_type_insert_baxi_dict(
-                self.ui.machine_fuel_get_machine_baxi_info.currentText())
+                self.ui.machine_fuel_get_machine_baxi_woman_info.currentText())
             self.info_dict.set_vehicle_capacity_insert_baxi_dict(
-                self.ui.machine_capacity_get_machine_baxi_info.currentText())
+                self.ui.machine_capacity_get_machine_baxi_woman_info.currentText())
             i_d = CHECK_ID_DRIVER(self.ui.enter_number_sign_up.toPlainText())
             self.info_dict.set_driver_id_insert_baxi_dict(i_d[0][0])
+
             insert_baxi(self.info_dict.insert_baxi_dict)
             print(self.info_dict.insert_baxi_dict)
-
-            print("baxi info successfully ad to db")
-            insert_baxi(self.info_dict.insert_baxi_dict)
             print("baxi women info successfully ad to db")
         except Exception as err:
             print(err)
 
     def show_registration_successful_baxi_bar(self):
         try:
-            insert_baxi(self.info_dict.insert_baar_dict)
+            self.info_dict.set_vehicle_name_insert_baar_dict(
+                self.ui.machine_name_get_machine_baxi_bar_info.toPlainText())
+            print(int(self.ui.machine_generate_year_get_machine_baxi_bar_info.text()))
+            self.info_dict.set_vehicle_production_date_insert_baar_dict(
+                datetime(int(self.ui.machine_generate_year_get_machine_baxi_bar_info.text()), 1, 1))
+
+            self.info_dict.set_vehicle_color_insert_baar_dict(
+                self.ui.machine_color_get_machine_baxi_bar_info.currentText())
+            self.info_dict.set_vehicle_license_plate_insert_baar_dict(
+                self.ui.two_digit_left_pelak_get_machine_baxi_bar_info.toPlainText()
+                +
+                self.ui.alphabet_get_machine_baxi_bar_info.currentText()
+                +
+                self.ui.three_digit_pelak_get_machine_baxi_bar_info.toPlainText()
+                +
+                self.ui.two_digit_right_pelak_get_machine_baxi_bar_info.toPlainText())
+            self.info_dict.set_vehicle_fuel_type_insert_baar_dict(
+                self.ui.machine_fuel_get_machine_baxi_bar_info.currentText())
+            self.info_dict.set_vehicle_capacity_insert_baar_dict(
+                self.ui.machine_capacity_get_machine_baxi_bar_info.toPlainText())
+            i_d = CHECK_ID_DRIVER(self.ui.enter_number_sign_up.toPlainText())
+            self.info_dict.set_driver_id_insert_insert_baar_dict(i_d[0][0])
+
+            insert_baar(self.info_dict.insert_baar_dict)
+            print(self.info_dict.insert_baar_dict)
             print("baxi baar info successfully ad to db")
         except Exception as err:
             print(err)
 
     def show_registration_successful_baxi_box(self):
         try:
-            insert_baxi(self.info_dict.insert_box_dict)
+
+            self.info_dict.set_vehicle_name_insert_box_dict(
+                self.ui.motor_name_get_motor_baxi_box_info.toPlainText())
+
+            self.info_dict.set_vehicle_production_date_insert_box_dict(
+                datetime(int(self.ui.motor_generate_year_get_motor_baxi_box_info.text()), 1, 1))
+
+            self.info_dict.set_vehicle_license_plate_insert_box_dict(
+                self.ui.five_digit_pelak_get_motor_baxi_box_info.toPlainText() +
+                self.ui.three_digit_pelak_get_motor_baxi_box_info.toPlainText())
+
+            self.info_dict.set_vehicle_capacity_insert_box_dict(
+                self.ui.motor_capacity_get_motor_baxi_box_info.toPlainText())
+
+            i_d = CHECK_ID_DRIVER(self.ui.enter_number_sign_up.toPlainText())
+            self.info_dict.set_driver_id_insert_insert_box_dict(i_d[0][0])
+
+            insert_box(self.info_dict.insert_box_dict)
+            print(self.info_dict.insert_box_dict)
             print("baxi box info successfully ad to db")
         except Exception as err:
             print(err)
@@ -407,9 +446,9 @@ class MainWindow():
                 self.ui.machine_capacity_get_machine_baxi_info.currentText())
             i_d = CHECK_ID_DRIVER(self.ui.enter_number_sign_up.toPlainText())
             self.info_dict.set_driver_id_insert_baxi_dict(i_d[0][0])
+
             insert_baxi(self.info_dict.insert_baxi_dict)
             print(self.info_dict.insert_baxi_dict)
-
             print("baxi info successfully ad to db")
 
         except Exception as err:
@@ -420,9 +459,9 @@ class MainWindow():
     def exit_app(self):
         sys.exit()
 
-    def show_get_flname_user(self):
+    def show_get_flname_sex_birth_user(self):
         self.info_dict.set_phone_number_insert_client_dict(self.ui.enter_number_sign_up.toPlainText().strip('0'))
-        self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_user)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.get_flname_sex_birth_user)
 
     def show_user_home_after_sign_in(self):
         self.off_menu_bar_user_home()
@@ -431,12 +470,16 @@ class MainWindow():
 
     def show_user_home_after_sign_up(self):
         self.info_dict.set_sign_up_time_insert_client_dict()
-        self.info_dict.set_sex_insert_client_dict(self.ui.sex_get_flname_user.currentText())
-        self.info_dict.set_first_name_insert_client_dict(self.ui.fname_get_flname_user.toPlainText())
-        self.info_dict.set_last_name_insert_client_dict(self.ui.lname_get_flname_user.toPlainText())
+        self.info_dict.set_sex_insert_client_dict(self.ui.sex_get_flname_sex_birth_user.currentText())
+        self.info_dict.set_first_name_insert_client_dict(self.ui.fname_get_flname_sex_birth_user.toPlainText())
+        self.info_dict.set_last_name_insert_client_dict(self.ui.lname_get_flname_sex_birth_user.toPlainText())
+        self.info_dict.set_birth_date_insert_client_dict(datetime(int(self.ui.year_get_flname_sex_birth_user.text()),
+                                                                  int(self.ui.day_get_flname_sex_birth_user.text()),
+                                                                  int(self.ui.month_get_flname_sex_birth_user.text())))
 
         try:
             insert_client(self.info_dict.insert_client_dict)
+            print(self.info_dict.insert_client_dict)
             print('add client was successful')
         except Exception as err:
             print(err)
@@ -533,23 +576,15 @@ class MainWindow():
     def show_user_driver_request_accepts_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_driver_request_accepts_info)
 
-    def phone_number_for_client_or_driver(self):
-        if IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()):
-            self.ui.stackedWidget.setCurrentWidget(self.show_accept_code_sign_in)
-
-        elif IS_CLIENT(self.ui.enter_number_sign_in.toPlainText()):
-            self.ui.stackedWidget.setCurrentWidget(self.show_accept_code_sign_in)
-
-        else:
-            print("pls sign up first")
-
     def select_go_to_user_or_driver_home(self):
         input_password = self.ui.pass_digit1_accept_code_sign_in.toPlainText() + self.ui.pass_digit2_accept_code_sign_in.toPlainText() + self.ui.pass_digit3_accept_code_sign_in.toPlainText() + self.ui.pass_digit4_accept_code_sign_in.toPlainText()
+        print(input_password)
+        print(self.gen_rand_number.password_code)
         if CHECK_IN_PASS_EQ_GEN_PASS(input_password, self.gen_rand_number.password_code):
             if IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()):
-                self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
+                self.show_driver_home()
             if IS_CLIENT(self.ui.enter_number_sign_in.toPlainText()):
-                self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home)
+                self.show_user_home_after_sign_in()
 
     def show_driver_accept_request(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_accept_request)

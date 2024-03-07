@@ -71,10 +71,35 @@ class InsertInfo:
                         'vehicle_capacity': 4,
                         'vehicle_color': 'none',
                         'vehicle_name': 'none',
-                        'vehicle_production_date': 'none',
+                        'vehicle_production_date': None,
                         'vehicle_card_photo': '../C:desktop/vehicle card',
                         'vehicle_fuel_type': 'none',
                         'driver_id': 0}
+
+    def set_vehicle_license_plate_insert_baar_dict(self, vehicle_license_plate):
+        self.insert_baar_dict['vehicle_license_plate'] = vehicle_license_plate
+
+    def set_vehicle_capacity_insert_baar_dict(self, vehicle_capacity):
+        self.insert_baar_dict['vehicle_capacity'] = vehicle_capacity
+
+    def set_vehicle_color_insert_baar_dict(self, vehicle_color):
+        self.insert_baar_dict['vehicle_color'] = vehicle_color
+
+    def set_vehicle_name_insert_baar_dict(self, vehicle_name):
+        self.insert_baar_dict['vehicle_name'] = vehicle_name
+
+    def set_vehicle_production_date_insert_baar_dict(self, vehicle_production_date):
+        self.insert_baar_dict['vehicle_production_date'] = vehicle_production_date
+
+    def set_vehicle_card_photo_insert_baar_dict(self, vehicle_card_photo):
+        self.insert_baar_dict['vehicle_card_photo'] = vehicle_card_photo
+
+    def set_vehicle_fuel_type_insert_baar_dict(self, vehicle_fuel_type):
+        self.insert_baar_dict['vehicle_fuel_type'] = vehicle_fuel_type
+
+    def set_driver_id_insert_insert_baar_dict(self, driver_id):
+        self.insert_baar_dict['driver_id'] = driver_id
+
     insert_box_dict = {'vehicle_license_plate': 'none',
                        'vehicle_capacity': 4,
                        'vehicle_color': 'none',
@@ -82,6 +107,27 @@ class InsertInfo:
                        'vehicle_production_date': None,
                        'vehicle_card_photo': '../C:desktop/vehicle card',
                        'driver_id': 0}
+
+    def set_vehicle_license_plate_insert_box_dict(self, vehicle_license_plate):
+        self.insert_box_dict['vehicle_license_plate'] = vehicle_license_plate
+
+    def set_vehicle_capacity_insert_box_dict(self, vehicle_capacity):
+        self.insert_box_dict['vehicle_capacity'] = vehicle_capacity
+
+    def set_vehicle_color_insert_box_dict(self, vehicle_color):
+        self.insert_box_dict['vehicle_color'] = vehicle_color
+
+    def set_vehicle_name_insert_box_dict(self, vehicle_name):
+        self.insert_box_dict['vehicle_name'] = vehicle_name
+
+    def set_vehicle_production_date_insert_box_dict(self, vehicle_production_date):
+        self.insert_box_dict['vehicle_production_date'] = vehicle_production_date
+
+    def set_vehicle_card_photo_insert_box_dict(self, vehicle_card_photo):
+        self.insert_box_dict['vehicle_card_photo'] = vehicle_card_photo
+
+    def set_driver_id_insert_insert_box_dict(self, driver_id):
+        self.insert_box_dict['driver_id'] = driver_id
 
     insert_employee_dict = {'personnel_code': 11111111,
                             'shaba_number': None,

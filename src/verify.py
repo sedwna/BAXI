@@ -46,12 +46,8 @@ def CHECK_PHONE_EXIST(phone_number):
     phone_number = phone_number.strip('0')
     print('phone number:', phone_number)
     try:
-        print("1")
-        if res := phone_number_lookup(phone_number):
-            print(res)
+        if driver_phone_number_lookup(phone_number) or client_phone_number_lookup(phone_number):
             print("this phone number exist")
-            print('user id', res[0][0])
-
             return True
         else:
             print("this phone number not exist")
@@ -60,9 +56,9 @@ def CHECK_PHONE_EXIST(phone_number):
         print(err)
 
 
-def CHECK_IN_PASS_EQ_GEN_PASS(input_pass, genrate_pass):
+def CHECK_IN_PASS_EQ_GEN_PASS(input_pass, generate_pass):
     try:
-        if input_pass == genrate_pass:
+        if input_pass == generate_pass:
             return True
         else:
             print("incorrect code")
@@ -82,26 +78,30 @@ def PHONE_NUMBER_EMPTY(phone_number):
 
 def IS_DRIVER(phone_number):
     phone_number = phone_number.strip('0')
-    res = phone_number_lookup(phone_number)
-    if is_driver_account_active(res[0][0]):
-        return res
-    else:
-        return False
+    res = driver_phone_number_lookup(phone_number)
+    print("driver ", res)
+    try:
+        if res and not is_driver_account_inactive(res[0][0]):
+            print("driver ", res)
+            return res
+    except Exception as err:
+        print(err)
 
 
 def IS_CLIENT(phone_number):
     phone_number = phone_number.strip('0')
-    res = phone_number_lookup(phone_number)
-    if is_client_account_active(res[0][0]):
+    res = client_phone_number_lookup(phone_number)
+    print("client ", res)
+    if res and not is_client_account_inactive(res[0][0]):
+        print(res[0][0])
         return res
-    else:
-        return False
 
 
+# for check id driver by baxi or box or baar or women service
 def CHECK_ID_DRIVER(phone_number):
     phone_number = phone_number.strip('0')
 
-    return phone_number_lookup(phone_number)
+    return driver_phone_number_lookup(phone_number)
 
 
 def CHECK_M_OR_F(phone_number):
