@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>14</number>
+     <number>15</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1694,6 +1694,73 @@
        <font>
         <pointsize>20</pointsize>
        </font>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="driver_home_on_off_service">
+     <widget class="QLabel" name="label_33">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/driver_home_on_off_service/driver_home_on_off_service.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_on_service_driver_home_on_off_service">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>510</y>
+        <width>221</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="get_x_driver_home_on_off_service">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>185</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="get_y_driver_home_on_off_service">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>240</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="box_show_wallet_balance_driver_home_on_off_service">
+      <property name="geometry">
+       <rect>
+        <x>83</x>
+        <y>60</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
      </widget>
     </widget>

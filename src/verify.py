@@ -81,7 +81,7 @@ def IS_DRIVER(phone_number):
     res = driver_phone_number_lookup(phone_number)
     print("driver ", res)
     try:
-        if res and not is_driver_account_inactive(res[0][0]):
+        if res :#and not is_driver_account_inactive(res[0][0])
             print("driver ", res)
             return res
     except Exception as err:

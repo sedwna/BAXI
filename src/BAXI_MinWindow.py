@@ -243,9 +243,12 @@ class MainWindow:
             self.show_driver_reached_the_destination)
         # -----------------------------------------------------------------------------------------------------------
         # go back from driver_reached_the_destination page-----------------------------------------------------------
-        self.ui.pushButt_reached_destination_driver_reached_the_destination.clicked.connect(self.show_driver_home)
+        self.ui.pushButt_reached_destination_driver_reached_the_destination.clicked.connect(
+            self.show_driver_home_on_off_service)
         # -----------------------------------------------------------------------------------------------------------
         self.ui.meli_get_photo_meli_certificate_obviously.clicked.connect(self.brows_select_meli_card)
+
+        self.ui.pushButt_on_service_driver_home_on_off_service.clicked.connect(self.show_driver_home)
 
     def show(self):
         self.main_win.show()
@@ -582,7 +585,7 @@ class MainWindow:
         print(self.gen_rand_number.password_code)
         if CHECK_IN_PASS_EQ_GEN_PASS(input_password, self.gen_rand_number.password_code):
             if IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()):
-                self.show_driver_home()
+                self.show_driver_home_on_off_service()
             if IS_CLIENT(self.ui.enter_number_sign_in.toPlainText()):
                 self.show_user_home_after_sign_in()
 
@@ -597,6 +600,9 @@ class MainWindow:
 
     def show_driver_home(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home)
+
+    def show_driver_home_on_off_service(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home_on_off_service)
 
 
 if __name__ == "__main__":
