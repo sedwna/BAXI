@@ -181,6 +181,7 @@ class MainWindow:
         sys.exit()
 
     def show_admin_panel_recruitment_successful(self):
+        
         self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel_recruitment_successful)
 
     def show_admin_panel_query(self):

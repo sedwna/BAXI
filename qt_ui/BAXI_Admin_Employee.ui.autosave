@@ -1,0 +1,1581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BAXI_Admin_Employee</class>
+ <widget class="QMainWindow" name="BAXI_Admin_Employee">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>360</width>
+    <height>640</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>360</width>
+    <height>640</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>360</width>
+    <height>640</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>360</width>
+      <height>640</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>6</number>
+    </property>
+    <widget class="QWidget" name="loading">
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/loading/loading.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_loading">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>240</y>
+        <width>101</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="employee_panel_authentication_1">
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>369</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/employee_panel_authentication_1/employee_panel_authentication_1.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_licence_employee_panel_authentication">
+      <property name="geometry">
+       <rect>
+        <x>252</x>
+        <y>460</y>
+        <width>75</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_cart_meli_employee_panel_authentication">
+      <property name="geometry">
+       <rect>
+        <x>145</x>
+        <y>463</y>
+        <width>75</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_sopishine_employee_panel_authentication">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>464</y>
+        <width>75</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_request_employee_panel_authentication">
+      <property name="geometry">
+       <rect>
+        <x>129</x>
+        <y>583</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_successful_employee_panel_authentication">
+      <property name="geometry">
+       <rect>
+        <x>214</x>
+        <y>521</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_employee_panel_authentication">
+      <property name="geometry">
+       <rect>
+        <x>38</x>
+        <y>522</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_last_name_employee_panel_authentication_1">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>158</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_first_name_employee_panel_authentication_1">
+      <property name="geometry">
+       <rect>
+        <x>216</x>
+        <y>159</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_birthdate_employee_panel_authentication_1">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>240</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_code_meli_employee_panel_authentication">
+      <property name="geometry">
+       <rect>
+        <x>216</x>
+        <y>241</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_phone_number_employee_panel_authentication_1">
+      <property name="geometry">
+       <rect>
+        <x>39</x>
+        <y>324</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_sex_employee_panel_authentication_1">
+      <property name="geometry">
+       <rect>
+        <x>217</x>
+        <y>323</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_show_shaba_number_employee_panel_authentication_1">
+      <property name="geometry">
+       <rect>
+        <x>42</x>
+        <y>397</y>
+        <width>281</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="employee_panel_authentication_2">
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/employee_panel_authentication_2/employee_panel_authentication_2.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_rejected_employee_panel_authentication_2">
+      <property name="geometry">
+       <rect>
+        <x>125</x>
+        <y>524</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_1_employee_panel_authentication_2">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>582</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="get_description_employee_panel_authentication_2">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>230</y>
+        <width>261</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="employee_panel_authentication_successful">
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/employee_panel_authentication_successful/employee_panel_authentication_successful.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_employee_panel_authentication_successful">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>586</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="employee_panel_authentication_rejected">
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/employee_panel_authentication_rejected/employee_panel_authentication_rejected.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_employee_panel_authentication_rejected">
+      <property name="geometry">
+       <rect>
+        <x>135</x>
+        <y>584</y>
+        <width>91</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="admin_panel">
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/admin_panel/admin_panel.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_sign_in_admin_panel">
+      <property name="geometry">
+       <rect>
+        <x>175</x>
+        <y>587</y>
+        <width>91</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_exit_admin_panel">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>590</y>
+        <width>31</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_add_new_employee_admin_panel">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>453</y>
+        <width>281</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_admin_panel">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>530</y>
+        <width>281</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="admin_panel_recruitment">
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/admin_panel_recruitment/admin_panel_recruitment.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_estekhdam_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>540</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_back_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>590</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="get_last_name_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>140</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="get_sex_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>285</y>
+        <width>81</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <item>
+       <property name="text">
+        <string>آقا</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>خانم</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QSpinBox" name="get_birthday_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>220</y>
+        <width>42</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>31</number>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="get_department_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>252</x>
+        <y>350</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <item>
+       <property name="text">
+        <string>الف</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ب</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>پ</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QComboBox" name="get_semat_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>143</x>
+        <y>350</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <item>
+       <property name="text">
+        <string>مدیر</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>برنامه نویس</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>کارمند</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QComboBox" name="get_skill_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>350</y>
+        <width>68</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <item>
+       <property name="text">
+        <string>الف </string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ب</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>پ</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QTextEdit" name="get_first_name_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>147</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="get_code_meli_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>217</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="get_code_personnel_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>35</x>
+        <y>285</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="get_shaba_number_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>420</y>
+        <width>281</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="get_salary_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>489</y>
+        <width>81</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_upload_education_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>490</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_upload_profilePhoto_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>487</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="get_birthmonth_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>220</y>
+        <width>42</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>12</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="get_birthyear_admin_panel_recruitment">
+      <property name="geometry">
+       <rect>
+        <x>34</x>
+        <y>220</y>
+        <width>51</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1350</number>
+      </property>
+      <property name="maximum">
+       <number>1600</number>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="admin_panel_query">
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/admin_panel_query/admin_panel_query.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_admin_panel_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>134</x>
+        <y>585</y>
+        <width>91</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_1_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>180</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_2_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>218</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_3_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>255</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_4_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>295</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_5_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>330</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_6_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>370</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_7_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>405</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_9_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>483</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_10_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>520</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_8_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>445</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_15_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>66</x>
+        <y>330</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_14_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>66</x>
+        <y>293</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_13_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>66</x>
+        <y>255</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_12_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>66</x>
+        <y>217</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_11_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>66</x>
+        <y>180</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_16_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>66</x>
+        <y>370</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_17_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>66</x>
+        <y>406</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_18_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>66</x>
+        <y>445</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_19_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>66</x>
+        <y>483</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_query_20_admin_panel_query">
+      <property name="geometry">
+       <rect>
+        <x>66</x>
+        <y>520</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="admin_panel_recruitment_successful">
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/admin_panel_recruitment_successful/admin_panel_recruitment_successful.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_admin_panel_admin_panel_recruitment_successful">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>585</y>
+        <width>81</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="employee_panel_authentication_request">
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/employee_panel_authentication_request/employee_panel_authentication_request.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_1">
+      <property name="geometry">
+       <rect>
+        <x>24</x>
+        <y>143</y>
+        <width>311</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_2">
+      <property name="geometry">
+       <rect>
+        <x>24</x>
+        <y>270</y>
+        <width>311</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_3">
+      <property name="geometry">
+       <rect>
+        <x>24</x>
+        <y>210</y>
+        <width>311</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_employee_panel_authentication_request">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>580</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="employee_sign_in">
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/employee_sign_in/employee_sign_in.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_admin">
+      <property name="geometry">
+       <rect>
+        <x>55</x>
+        <y>150</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_employee_sign_in">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>425</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="get_id_employee_sign_in">
+      <property name="geometry">
+       <rect>
+        <x>93</x>
+        <y>219</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="get_password_employee_sign_in">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>279</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="employee_panel">
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/employee_panel/employee_panel.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_panel_authentication_request_employee_panel">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>480</y>
+        <width>301</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_employee_sign_in_employee_panel">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>590</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_go_to_exit_employee_panel">
+      <property name="geometry">
+       <rect>
+        <x>108</x>
+        <y>590</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="box_fname_employee_panel">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>50</y>
+        <width>104</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="box_lname_employee_panel">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>50</y>
+        <width>104</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="admin_sign_in">
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/admin_eployee_panel/admin_sign_in/admin_sign_in.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_employee">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>150</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushBut_admin_sign_in">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>425</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="get_id_admin_sign_in">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>219</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="get_password_admin_sign_in">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>279</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
