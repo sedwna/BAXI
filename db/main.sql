@@ -354,8 +354,8 @@ CREATE TABLE	destinations
 					city			VARCHAR(50)		NOT NULL,
 					client_id		INT				NOT NULL,
 					request_time	DATETIME		NOT NULL,
-					latitude		INT				NOT NULL,
-					longitude		INT				NOT NULL,
+					latitude		FLOAT			NOT NULL,
+					longitude		FLOAT			NOT NULL,
 					PRIMARY KEY(client_id, request_time, latitude, longitude),
 					FOREIGN KEY(client_id, request_time)	REFERENCES service_requests(client_id, request_time)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
@@ -430,7 +430,17 @@ CREATE TABLE	compensatory_deposits
 					FOREIGN KEY(driver_id)		REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
+CREATE TABLE	monthly_incomes
+				(
+					income		INT		NOT NULL,
+					driver_id	INT,
+					date		DATE,
+					PRIMARY KEY(driver_id, date),
+					FOREIGN KEY(driver_id)	REFERENCES drivers(id)
+				);
+
 DELIMITER //
+
 CREATE TRIGGER	update_wallets	AFTER INSERT ON service_acceptances	FOR EACH ROW
 BEGIN
 	DECLARE cost	INT;
@@ -444,3 +454,45 @@ BEGIN
 		UPDATE drivers	SET wallet_balance = wallet_balance - cost * 0.2	WHERE id = NEW.driver_id;
 	END IF;
 END//
+
+CREATE TRIGGER	commit_deposit	AFTER INSERT ON deposits	FOR EACH ROW
+BEGIN
+	DECLARE amount	INT;
+	DECLARE state	ENUM ('failed', 'declined', 'pending', 'cancelled', 'completed', 'returned');
+	SELECT state, amount INTO state, amount	FROM transactions	WHERE tracking_code = NEW.tracking_code;
+	IF (state = 'completed') THEN
+		UPDATE clients	SET wallet_balance = wallet_balance + amount	WHERE id = NEW.client_id;
+	END IF;
+END//
+
+DELIMITER ;
+
+SET GLOBAL event_scheduler = ON;
+CREATE EVENT monthly_income_event
+ON SCHEDULE
+	EVERY 1 MONTH STARTS
+	CURRENT_DATE + INTERVAL 1 MONTH
+	ON COMPLETION PRESERVE
+DO
+	INSERT	INTO monthly_incomes
+	SELECT	income, driver_id, LAST_DAY(DATE_SUB(CURDATE(), INTERVAL 1 MONTH))
+	FROM	(
+				SELECT		driver_id, SUM(cost) AS income
+				FROM		(
+								(SELECT	driver_id, cost
+								FROM	service_acceptance JOIN baxi_trips USING (client_id, request_time)
+								WHERE	YEAR(end_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+										AND MONTH(end_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH))
+								UNION
+								(SELECT	driver_id, cost
+								FROM	service_acceptance JOIN heavy_transports USING (client_id, request_time)
+								WHERE	YEAR(end_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+										AND MONTH(end_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH))
+								UNION
+								(SELECT	driver_id, cost
+								FROM	service_acceptance JOIN light_transports USING (client_id, request_time)
+								WHERE	YEAR(end_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+										AND MONTH(end_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH))
+							) AS sub0
+				GROUP BY	driver_id
+			) AS sub1;
