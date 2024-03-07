@@ -430,17 +430,13 @@ CREATE TABLE	compensatory_deposits
 					FOREIGN KEY(driver_id)		REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
 
--- DELIMITER //
--- CREATE TRIGGER	capacity_check	BEFORE INSERT ON heavy_transport	FOR EACH STATEMENT
--- BEGIN
--- 	DECLARE	weight		INT;
--- 	DECLARE	capacity	INT;
--- 	SELECT	cargo_weight, vehicle_capacity INTO weight, capacity
--- 	FROM	(service_acceptance a JOIN heavy_transport USING (client_id, request_time)) JOIN baxi_baar USING driver_id
--- 	WHERE	a.client_id = NEW.client_id AND a.request_time = NEW.request_time;
--- 	IF weight > capacity THEN
--- 		SIGNAL SQLSTATE '45000'
--- 		SET MESSAGE_TEXT = 'cargo weight is higher than vehicle capacity';
--- 	END IF;
--- END//
--- DELIMITER ;
+DELIMITER //
+CREATE TRIGGER	update_wallets	AFTER INSERT ON service_acceptances	FOR EACH ROW
+BEGIN
+	IF (NEW.method_of_payment = 'direct' OR NEW.method_of_payment = 'wallet_to_wallet') THEN
+		DECLARE cost	INT;
+		SELECT cost INTO cost	FROM baxi_trips JOIN service_acceptances a USING (client_id, request_time)	WHERE NEW.client_id = a.client_id AND NEW.request_time = a.request_time;
+		UPDATE clients	SET wallet_balance = wallet_balance - cost	WHERE client_id = NEW.client_id;
+		UPDATE drivers	SET wallet_balance = wallet_balance + cost	WHERE
+	ELSE
+END//

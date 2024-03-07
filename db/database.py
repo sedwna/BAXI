@@ -635,23 +635,23 @@ def is_female(id):
 	cnx.close()
 	return result
 
-def is_driver_account_active(id):
+def is_driver_account_inactive(id):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
 	query = """SELECT	id
 				FROM	drivers JOIN reports ON id = driver_id
-				WHERE	id = %s AND verifier_personnel_code IS NOT NULL AND state <> 'driver''s account deactivated'"""
+				WHERE	id = %s AND (verifier_personnel_code IS NULL OR state = 'driver''s account deactivated)'"""
 	cur.execute(query, (id,))
 	result = cur.fetchall()
 	cnx.close()
 	return result
 
-def is_client_account_active(id):
+def is_client_account_inactive(id):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
 	query = """SELECT	id
 				FROM	clients JOIN reports ON id = client_id
-				WHERE	id = %s AND state <> 'client''s account deactivated'"""
+				WHERE	id = %s AND state = 'client''s account deactivated'"""
 	cur.execute(query, (id,))
 	result = cur.fetchall()
 	cnx.close()
