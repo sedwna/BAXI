@@ -378,7 +378,7 @@ def query4():
 
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
-def phone_number_lookup(number):
+def client_phone_number_lookup(number):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
 	query = '''SELECT	id, wallet_balance, first_name, last_name
@@ -386,8 +386,12 @@ def phone_number_lookup(number):
 				WHERE	phone_number = %s'''
 	cur.execute(query, (number,))
 	result = cur.fetchall()
-	if result:
-		return result
+	cnx.close()
+	return result
+
+def driver_phone_number_lookup(number):
+	cnx = create_connection('baxi_users')
+	cur = cnx.cursor()
 	query = '''SELECT	id, wallet_balance, first_name, last_name, profile_picture_path
 				FROM	drivers
 				WHERE	phone_number = %s'''

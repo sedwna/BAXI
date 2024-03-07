@@ -111,7 +111,7 @@ CREATE TABLE	drivers
 														)										DEFAULT 'none'				NOT NULL,
 					first_name							VARCHAR(50)															NOT NULL,
 					last_name							VARCHAR(50)															NOT NULL,
-					birth_date							DATE																NOT NULL			CHECK (TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) >= 18)
+					birth_date							DATE																NOT NULL			CHECK (TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) >= 18),
 					national_code						CHAR(10)															NOT NULL,
 					license_photo_path					VARCHAR(50)															NOT NULL,
 					national_card_photo_path			VARCHAR(50)															NOT NULL,
@@ -429,3 +429,18 @@ CREATE TABLE	compensatory_deposits
 					FOREIGN KEY(tracking_code)	REFERENCES transactions(tracking_code)	ON UPDATE CASCADE	ON DELETE CASCADE,
 					FOREIGN KEY(driver_id)		REFERENCES drivers(id)	ON UPDATE CASCADE	ON DELETE RESTRICT
 				);
+
+-- DELIMITER //
+-- CREATE TRIGGER	capacity_check	BEFORE INSERT ON heavy_transport	FOR EACH STATEMENT
+-- BEGIN
+-- 	DECLARE	weight		INT;
+-- 	DECLARE	capacity	INT;
+-- 	SELECT	cargo_weight, vehicle_capacity INTO weight, capacity
+-- 	FROM	(service_acceptance a JOIN heavy_transport USING (client_id, request_time)) JOIN baxi_baar USING driver_id
+-- 	WHERE	a.client_id = NEW.client_id AND a.request_time = NEW.request_time;
+-- 	IF weight > capacity THEN
+-- 		SIGNAL SQLSTATE '45000'
+-- 		SET MESSAGE_TEXT = 'cargo weight is higher than vehicle capacity';
+-- 	END IF;
+-- END//
+-- DELIMITER ;
