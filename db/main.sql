@@ -433,10 +433,14 @@ CREATE TABLE	compensatory_deposits
 DELIMITER //
 CREATE TRIGGER	update_wallets	AFTER INSERT ON service_acceptances	FOR EACH ROW
 BEGIN
-	IF (NEW.method_of_payment = 'direct' OR NEW.method_of_payment = 'wallet_to_wallet') THEN
-		DECLARE cost	INT;
-		SELECT cost INTO cost	FROM baxi_trips JOIN service_acceptances a USING (client_id, request_time)	WHERE NEW.client_id = a.client_id AND NEW.request_time = a.request_time;
-		UPDATE clients	SET wallet_balance = wallet_balance - cost	WHERE client_id = NEW.client_id;
-		UPDATE drivers	SET wallet_balance = wallet_balance + cost	WHERE
-	ELSE
+	DECLARE cost	INT;
+	DECLARE state	ENUM ('failed', 'declined', 'pending', 'cancelled', 'completed', 'returned');
+	SELECT state INTO state	FROM service_acceptances JOIN transactions USING (tracking_code);
+	IF ((NEW.method_of_payment = 'direct' AND state = 'completed') OR NEW.method_of_payment = 'wallet_to_wallet') THEN
+		SELECT cost INTO cost	FROM baxi_trips b	WHERE NEW.client_id = b.client_id AND NEW.request_time = b.request_time;
+		UPDATE clients	SET wallet_balance = wallet_balance - cost	WHERE id = NEW.client_id;
+		UPDATE drivers	SET wallet_balance = wallet_balance + cost * 0.8	WHERE id = NEW.driver_id;
+	ELSEIF (NEW.method_of_payment = 'cash')	THEN
+		UPDATE drivers	SET wallet_balance = wallet_balance - cost * 0.2	WHERE id = NEW.driver_id;
+	END IF;
 END//
