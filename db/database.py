@@ -668,28 +668,6 @@ def ref_code_exists(code):
 	cnx.close()
 	return result
 
-def is_client(id):
-	cnx = create_connection('baxi_users')
-	cur = cnx.cursor()
-	query = """SELECT	id
-				FROM	clients
-				WHERE	id = %s"""
-	cur.execute(query, (id,))
-	result = cur.fetchall()
-	cnx.close()
-	return result
-
-def is_driver(id):
-	cnx = create_connection('baxi_users')
-	cur = cnx.cursor()
-	query = """SELECT	id
-				FROM	drivers
-				WHERE	id = %s"""
-	cur.execute(query, (id,))
-	result = cur.fetchall()
-	cnx.close()
-	return result
-
 def requests_within_range(lat, lon):
 	cnx = create_connection('baxi_users')
 	cur = cnx.cursor()
