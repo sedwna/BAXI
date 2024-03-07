@@ -1,3 +1,4 @@
+import datetime
 import sys
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtWidgets import QMainWindow
@@ -6,9 +7,14 @@ from BAXI_Admin_Employee import Ui_BAXI_Admin_Employee
 from db.database import *
 from verify import *
 
+from set_info import InsertInfo
+
 
 class MainWindow:
+    info_dict = InsertInfo()
+
     def __init__(self):
+
         self.main_win = QMainWindow()
         self.ui = Ui_BAXI_Admin_Employee()
         self.ui.setupUi(self.main_win)
@@ -181,7 +187,31 @@ class MainWindow:
         sys.exit()
 
     def show_admin_panel_recruitment_successful(self):
-        
+        self.info_dict.set_first_name_insert_employee_dict(self.ui.get_first_name_admin_panel_recruitment.toPlainText())
+        self.info_dict.set_last_name_insert_employee_dict(self.ui.get_last_name_admin_panel_recruitment.toPlainText())
+        print('1', self.ui.get_code_meli_admin_panel_recruitment.toPlainText())
+        self.info_dict.set_birth_date_insert_employee_dict(
+            datetime(int(self.ui.get_birthyear_admin_panel_recruitment.text()),
+                     int(self.ui.get_birthmonth_admin_panel_recruitment.text()),
+                     int(self.ui.get_birthday_admin_panel_recruitment.text())))
+        print("2", self.ui.get_sex_admin_panel_recruitment.currentText())
+        self.info_dict.set_personnel_code_insert_employee_dict(
+            self.ui.get_code_personnel_admin_panel_recruitment.toPlainText())
+        self.info_dict.set_department_insert_employee_dict(self.ui.get_department_admin_panel_recruitment.currentText())
+        self.info_dict.set_position_code_insert_employee_dict(self.ui.get_semat_admin_panel_recruitment.currentText())
+        self.info_dict.set_proficiency_insert_employee_dict(self.ui.get_skill_admin_panel_recruitment.currentText())
+        self.info_dict.set_shaba_number_insert_employee_dict(
+            self.ui.get_shaba_number_admin_panel_recruitment.toPlainText())
+        self.info_dict.set_signup_time_insert_employee_dict()
+        self.info_dict.set_salary_insert_employee_dict(self.ui.get_salary_admin_panel_recruitment.toPlainText())
+        self.info_dict.set_password_insert_employee_dict(self.ui.get_code_meli_admin_panel_recruitment.toPlainText())
+
+        try:
+            insert_employee(self.info_dict.insert_employee_dict)
+            print("employee add successfully to db")
+        except Exception as err:
+            print(err)
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel_recruitment_successful)
 
     def show_admin_panel_query(self):
@@ -196,7 +226,6 @@ class MainWindow:
     def show_employee_panel(self):
         if flname := IS_EMPLOYEE(self.ui.get_id_employee_sign_in.toPlainText(),
                                  self.ui.get_password_employee_sign_in.toPlainText()):
-
             self.ui.box_fname_employee_panel.setPlainText(flname[0][0])
             self.ui.box_lname_employee_panel.setPlainText(flname[0][1])
             self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)

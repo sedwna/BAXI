@@ -139,47 +139,47 @@ class InsertInfo:
                             'salary': 0,
                             'department': None,
                             'proficiency': None,
-                            'education': None,
+                            'education': 'none',
                             'position': None,
                             'profile_picture_path': None}
 
-    def personnel_code_insert_employee_dict(self, personnel_code):
+    def set_personnel_code_insert_employee_dict(self, personnel_code):
         self.insert_employee_dict['phone_number'] = personnel_code
 
-    def shaba_number_insert_employee_dict(self, shaba_number):
+    def set_shaba_number_insert_employee_dict(self, shaba_number):
         self.insert_employee_dict['shaba_number'] = shaba_number
 
-    def signup_time_insert_employee_dict(self):
+    def set_signup_time_insert_employee_dict(self):
         self.insert_employee_dict['signup_time'] = datetime.datetime.now()
 
-    def password_insert_employee_dict(self, password):
+    def set_password_insert_employee_dict(self, password):
         self.insert_employee_dict['password'] = password
 
-    def first_name_insert_employee_dict(self, first_name):
+    def set_first_name_insert_employee_dict(self, first_name):
         self.insert_employee_dict['first_name'] = first_name
 
-    def last_name_insert_employee_dict(self, last_name):
+    def set_last_name_insert_employee_dict(self, last_name):
         self.insert_employee_dict['last_name'] = last_name
 
-    def birth_date_insert_employee_dict(self, birth_date):
+    def set_birth_date_insert_employee_dict(self, birth_date):
         self.insert_employee_dict['birth_date'] = birth_date
 
-    def salary_insert_employee_dict(self, salary):
+    def set_salary_insert_employee_dict(self, salary):
         self.insert_employee_dict['salary'] = salary
 
-    def department_insert_employee_dict(self, department):
+    def set_department_insert_employee_dict(self, department):
         self.insert_employee_dict['department'] = department
 
-    def proficiency_insert_employee_dict(self, proficiency):
+    def set_proficiency_insert_employee_dict(self, proficiency):
         self.insert_employee_dict['proficiency'] = proficiency
 
-    def education_insert_employee_dict(self, education):
+    def set_education_insert_employee_dict(self, education):
         self.insert_employee_dict['education'] = education
 
-    def position_code_insert_employee_dict(self, position):
+    def set_position_code_insert_employee_dict(self, position):
         self.insert_employee_dict['position'] = position
 
-    def profile_picture_path_insert_employee_dict(self, profile_picture_path):
+    def set_profile_picture_path_insert_employee_dict(self, profile_picture_path):
         self.insert_employee_dict['profile_picture_path'] = profile_picture_path
 
     def set_phone_number_insert_driver_dict(self, phone_number):
