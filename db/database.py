@@ -548,6 +548,17 @@ def query8():
     cnx.close()
     return result
 
+def query9():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT		vehicle_license_plate, first_name, last_name
+                FROM		((heavy_transports NATRUAL JOIN service_acceptances) NATURAL JOIN baxi_baar) JOIN drivers ON driver_id = id
+                WHERE		cargo_value <= 50000000 AND cargo_type = 'fragile''''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
+
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
 
