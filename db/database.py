@@ -97,7 +97,8 @@ def insert_box(values):
     cnx.close()
 
 
-'''{'pickup_location':	POINT,
+'''{'pickup_latitude	FLOAT,
+	'pickup_longitude':	FLOAT,
 	'pickup_province':	VARCHAR(50),
 	'pickup_city':		VARCHAR(50),
 	'client_id':		INT,
@@ -107,7 +108,7 @@ def insert_box(values):
 def insert_request(values):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''INSERT INTO service_requests VALUES (%(pickup_location)s, %(pickup_province)s
+    query = '''INSERT INTO service_requests VALUES (%(pickup_latitude)s, %(pickup_longitude)s, %(pickup_province)s
 													%(pickup_city)s, %(client_id)s, %(request_time)s)'''
     cur.execute(query, values)
     cnx.commit()
@@ -155,7 +156,8 @@ def insert_transaction(values):
 	'judicial_letter_path':					None/VARCHAR(50),
 	'judicial_letter_verification_date':	None/DATE,
 	'final_verification_date':				None/DATE,
-	'location':								None/POINT,
+	'latitude':								None/FLOAT
+	'longitude':							None/FLOAT,
 	'profile_picture_path':					None/VARCHAR(50),
 	'verifier_personnel_code':				None/INT}'''
 
@@ -168,8 +170,8 @@ def insert_driver(values):
 											%(last_name)s, %(birth_date)s, %(national_code)s, %(license_photo_path)s,
 											%(national_card_photo_path)s, %(sex)s, %(license_verification_date)s,
 											%(judicial_letter_path)s, %(judicial_letter_verification_date)s,
-											%(final_verification_date)s, %(location)s, %(profile_picture_path)s,
-											%(verifier_personnel_code)s)'''
+											%(final_verification_date)s, %(latitude)s, %(longitude)s,
+											%(profile_picture_path)s, %(verifier_personnel_code)s)'''
     cur.execute(query, values)
     cnx.commit()
     cur.close()
@@ -192,46 +194,46 @@ def insert_trip(values):
     cnx.close()
 
 
-'''{'cost':				INT,
-	'cargo_weight':		INT,
-	'cargo_value':		INT,
-	'dropoff_location':	POINT,
-	'dropoff_city':		VARCHAR(50),
-	'cargo_type':		'unfragile'/'fragile',
-	'client_helped':	'no'/'yes',
-	'client_id':		'none'/'alzheimer''s disease'/'epilepsy',
-	'request_time':		DATETIME}'''
+'''{'cost':					INT,
+	'cargo_weight':			INT,
+	'cargo_value':			INT,
+	'dropoff_latitude		FLOAT,
+	'dropoff_longitude':	FLOAT,
+	'dropoff_city':			VARCHAR(50),
+	'cargo_type':			'unfragile'/'fragile',
+	'client_helped':		'no'/'yes',
+	'client_id':			'none'/'alzheimer''s disease'/'epilepsy',
+	'request_time':			DATETIME}'''
 
 
 def insert_heavy(values):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''INSERT INTO heavy_transports VALUES (%(cost)s, %(cargo_weight)s, %(cargo_value)s, %(dropoff_location)s,
-													%(dropoff_city)s, %(cargo_type)s, %(client_helped)s, %(client_id)s,
-													%(request_time)s)'''
+    query = '''INSERT INTO heavy_transports VALUES (%(cost)s, %(cargo_weight)s, %(cargo_value)s, %(dropoff_latitude)s, %(dropoff_longitude)s,
+													%(dropoff_city)s, %(cargo_type)s, %(client_helped)s, %(client_id)s, %(request_time)s)'''
     cur.execute(query, values)
     cnx.commit()
     cur.close()
     cnx.close()
 
 
-'''{'cost':				INT,
-	'cargo_weight':		INT,
-	'cargo_value':		INT,
-	'dropoff_location':	POINT,
-	'dropoff_city':		VARCHAR(50),
-	'insurance_cost':	INT,
-	'cargo_type':		'unfragile'/'fragile',
-	'client_id':		INT,
-	'request_time':		DATETIME}'''
+'''{'cost':					INT,
+	'cargo_weight':			INT,
+	'cargo_value':			INT,
+	'dropoff_latitude':		FLOAT,
+	'dropoff_longitude':	FLOAT,
+	'dropoff_city':			VARCHAR(50),
+	'insurance_cost':		INT,
+	'cargo_type':			'unfragile'/'fragile',
+	'client_id':			INT,
+	'request_time':			DATETIME}'''
 
 
 def insert_light(values):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''INSERT INTO light_transports VALUES (%(cost)s, %(cargo_weight)s, %(cargo_value)s, %(dropoff_location)s,
-													%(dropoff_city)s, %(insurance_cost)s, %(cargo_type)s, %(client_id)s,
-													%(request_time)s)'''
+    query = '''INSERT INTO light_transports VALUES (%(cost)s, %(cargo_weight)s, %(cargo_value)s, %(dropoff_latitude)s, %(dropoff_longitude)s,
+													%(dropoff_city)s, %(insurance_cost)s, %(cargo_type)s, %(client_id)s, %(request_time)s)'''
     cur.execute(query, values)
     cnx.commit()
     cur.close()
@@ -322,7 +324,8 @@ def insert_report(values):
     cnx.close()
 
 
-'''{'location':		POINT,
+'''{'latitude':		FLOAT,
+	'longitude':	FLOAT,
 	'client_id':	INT,
 	'address_name':	VARCHAR(50)}'''
 
@@ -330,7 +333,7 @@ def insert_report(values):
 def insert_address(values):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''INSERT INTO addresses VALUES (%(location)s, %(client_id)s, %(address_name)s)'''
+    query = '''INSERT INTO addresses VALUES (%(latitude)s, %(longitude)s, %(client_id)s, %(address_name)s)'''
     cur.execute(query, values)
     cnx.commit()
     cur.close()
@@ -820,7 +823,7 @@ def query18():
     cur = cnx.cursor()
     query = '''SELECT		B.*
                 FROM		(drivers D JOIN baxi B ON id = driver_id)
-                WHERE		D.sex = 'F' AND B.vehicle_capacity >= 3 AND ST_Distance_Sphere(D.location, POINT(35.7819, 51.3749)) <= 2000 AND D.wallet_balance >= 0'''
+                WHERE		D.sex = 'F' AND B.vehicle_capacity >= 3 AND ST_Distance_Sphere(POINT(latitude, longitude), POINT(35.7819, 51.3749)) <= 2000 AND D.wallet_balance >= 0'''
     cur.execute(query)
     result = cur.fetchall()
     cur.close()
@@ -863,9 +866,9 @@ def query20():
                 FROM		(drivers D NATURAL JOIN service_acceptances) DS
                 (
                     SELECT		requests_time, client_id
-                    FROM		(service_requests NATURAL JOIN service_acceptances) NATURAL JOIN destinations
+                    FROM		(service_requests AS sr NATURAL JOIN service_acceptances) NATURAL JOIN destinations AS d
                     WHERE		DATE(request_time) BETWEEN '2024-01-01' AND '2024-02-21' AND driver_rating > '3-star' AND
-                                ST_Distance_Sphere(	pickup_location, POINT(latitude, longitude)) > 10000
+                                ST_Distance_Sphere(POINT(d.latitude, d.longitude), POINT(sr.latitude, sr.longitude)) > 10000
                 ) EVERY,
                 (
                     SELECT		D2.id
@@ -927,7 +930,7 @@ def update_location(driver_id, lat, lon):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''UPDATE	drivers
-				SET		location = POINT(%s, %s)
+				SET		latitude = %s, longitude = %s
 				WHERE	id = %s'''
     cur.execute(query, (lat, lon, driver_id))
     cnx.commit()
@@ -963,11 +966,11 @@ def client_service_history(id):
     return result
 
 
-# return format: tuple(address_name, location)
+# return format: tuple(address_name, latitude, longitude)
 def client_favorites(id):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''SELECT	address_name, location
+    query = '''SELECT	address_name, latitude, longitude
 				FROM	addresses
 				WHERE	client_id = %s'''
     cur.execute(query, (id,))
@@ -1238,23 +1241,10 @@ def ref_code_exists(code):
 def requests_within_range(lat, lon):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = """SELECT	first_name, last_name, pickup_location, pickup_province, pickup_city, city, latitude, longitude
+    query = """SELECT	first_name, last_name, latitude, longitude, pickup_province, pickup_city, city, latitude, longitude
 				FROM	(service_requests JOIN clients ON client_id = id) JOIN destinations USING (client_id, request_time)
-				WHERE	ST_Distance_Sphere(POINT(%s, %s), pickup_location) <= 5000"""
+				WHERE	ST_Distance_Sphere(POINT(%s, %s), POINT(latitude, longitude) <= 5000"""
     cur.execute(query, (lat, lon))
-    result = cur.fetchall()
-    cur.close()
-    cnx.close()
-    return result
-
-
-def get_location(id):
-    cnx = create_connection('baxi_users')
-    cur = cnx.cursor()
-    query = '''SELECT	location
-				FROM	drivers
-				WHERE	id = %s'''
-    cur.execute(query, (id,))
     result = cur.fetchall()
     cur.close()
     cnx.close()
