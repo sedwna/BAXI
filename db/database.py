@@ -478,6 +478,24 @@ def query4():
     cnx.close()
     return result
 
+def query5():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT       time
+                FROM		
+                (
+	                SELECT 		DATE(request_time) time, COUNT(*) no
+	                FROM		baxi_trips JOIN clients ON client_id = id
+	                WHERE		round_trip = 'yes' AND TIMESTAMPDIFF(YEAR, birth_date,CURDATE()) BETWEEN 15 AND 18
+	                GROUP BY	DATE(request_time)
+                )
+                HAVING		MIN(no) = no'''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
+
+
 
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
