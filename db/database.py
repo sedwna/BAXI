@@ -430,6 +430,17 @@ def insert_client(values):
     cnx.commit()
     cnx.close()
 
+def query1():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT       D.*
+                FROM		drivers D, baxi B, baxi_baar BB
+                WHERE		(D.id = B.driver_id AND B.vehicle_color  = 'blue' AND B.vehicle_name  LIKE '%pride%') OR 
+			                (D.id = BB.driver_id AND B.vehicle_color = 'blue' AND BB.vehicle_name LIKE '%pride%'))'''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
 
 def query4():
     cnx = create_connection('baxi_users')
