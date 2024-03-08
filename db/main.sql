@@ -46,6 +46,12 @@ CREATE TABLE	employees
 					profile_picture_path	VARCHAR(50)
 				);
 
+CREATE VIEW managers AS	(
+							SELECT	*
+							FROM	employees
+							WHERE	position = 'department manager'
+						);
+
 CREATE DATABASE baxi_users;
 USE baxi_users;
 
@@ -526,12 +532,22 @@ DO
 
 CREATE VIEW	female_drivers AS	(
 									SELECT	*
-									FROM	drivers
+									FROM	drivers JOIN baxi ON id = driver_id
 									WHERE	sex = 'F'
 								);
 
 CREATE VIEW	male_drivers AS	(
 								SELECT	*
-								FROM	drivers
+								FROM	drivers JOIN baxi ON id = driver_id
 								WHERE	sex = 'M'
+							);
+
+CREATE VIEW	baar_drivers AS	(
+								SELECT	*
+								FROM	driver JOIN baxi_baar ON id = driver_id
+							);
+
+CREATE VIEW	box_drivers AS	(
+								SELECT	*
+								FROM	driver JOIN baxi_box ON id = driver_id
 							);
