@@ -690,14 +690,43 @@ def query14():
     cnx.close()
     return result
 
+def query15():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = """SELECT		cancelled / successful AS ratio
+				FROM		(
+								SELECT		COUNT(*) AS successful
+								FROM		service_requests JOIN service_acceptances USING (client_id, request_time)
+								WHERE		pickup_province = 'tehran' AND pickup_city = 'rey'
+							),
+							(
+								SELECT		COUNT(*) AS cancelled
+								FROM		(
+												SELECT		client_id, request_time
+												FROM		service_requests
+												WHERE		pickup_province = 'tehran' AND pickup_city = 'rey'
+											)
+											EXCEPT
+											(
+												SELECT		sr.client_id, sr.request_time
+												FROM		service_requests sr JOIN service_acceptances USING (client_id, request_time)
+												WHERE		pickup_province = 'tehran' AND pickup_city = 'rey'
+											)
+							)"""
+    cur.execute(query)
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
 def query16():
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''SELECT			D.*
-                FROM		
+                FROM
                 (
                     SELECT		driver_id, 
-                                MAX(TIMEDIFF(estimated_end_time, end_time)) 				T
+                                MAX(TIMEDIFF(estimated_end_time, end_time)) T
                     FROM		service_acceptances NATRUAL JOIN baxi_box
                     GROUP BY	driver_id
                 ) JOIN drivers D ON driver_id = id
