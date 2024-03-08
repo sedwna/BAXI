@@ -30,8 +30,8 @@ def insert_employee(values):
 											%(proficiency)s, %(education)s, %(position)s, %(profile_picture_path)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
-
 
 '''{'vehicle_license_plate':	CHAR(9),
 	'vehicle_capacity':			INT,
@@ -51,6 +51,7 @@ def insert_baxi(values):
 										%(vehicle_card_photo)s, %(vehicle_fuel_type)s, %(driver_id)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -72,8 +73,8 @@ def insert_baar(values):
 											%(vehicle_card_photo)s, %(vehicle_fuel_type)s, %(driver_id)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
-
 
 '''{'vehicle_license_plate':	CHAR(9),
 	'vehicle_capacity':			INT,
@@ -92,6 +93,7 @@ def insert_box(values):
 											%(vehicle_card_photo)s, %(driver_id)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -109,6 +111,7 @@ def insert_request(values):
 													%(pickup_city)s, %(client_id)s, %(request_time)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -127,6 +130,7 @@ def insert_transaction(values):
 												%(amount)s, %(state)s, %(type)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -168,6 +172,7 @@ def insert_driver(values):
 											%(verifier_personnel_code)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -183,6 +188,7 @@ def insert_trip(values):
     query = '''INSERT INTO baxi_trips VALUES (%(cost)s, %(round_trip)s ,c%(client_id)s, %(request_time)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -205,6 +211,7 @@ def insert_heavy(values):
 													%(request_time)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -227,6 +234,7 @@ def insert_light(values):
 													%(request_time)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -240,6 +248,7 @@ def insert_referral(values):
     query = '''INSERT INTO referrals VALUES (%(referrer_id)s, %(referred_id)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -254,6 +263,7 @@ def insert_withdrawal(values):
     query = '''INSERT INTO withdrawals VALUES (%(type)s, %(tracking_code)s, %(driver_id)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -267,6 +277,7 @@ def insert_deposit(values):
     query = '''INSERT INTO deposits VALUES (%(tracking_code)s, %(client_id)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -290,6 +301,7 @@ def insert_acceptance(values):
 														%(client_id)s, %(request_time)s, %(tracking_code)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -306,6 +318,7 @@ def insert_report(values):
     query = '''INSERT INTO reports VALUES (%(description)s, %(state)s, %(client_id)s, %(driver_id)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -320,6 +333,7 @@ def insert_address(values):
     query = '''INSERT INTO addresses VALUES (%(location)s, %(client_id)s, %(address_name)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -337,6 +351,7 @@ def insert_destination(values):
 				%(latitude)s, %(longitude)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -357,6 +372,7 @@ def insert_compliment(values):
     query = '''INSERT INTO compliments VALUES (%(client_id)s, %(request_time)s, %(point)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -378,6 +394,7 @@ def insert_complaint(values):
     query = '''INSERT INTO complaints VALUES (%(client_id)s, %(request_time)s, %(point)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -394,6 +411,7 @@ def insert_company_deposit(values):
     query = '''INSERT INTO company_deposits VALUES (%(amount)s, %(time)s,%(type)s, %(employee_personnel_code)s, %(driver_id)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -407,6 +425,7 @@ def insert_compensatory_deposit(values):
     query = '''INSERT INTO compensatory_deposits VALUES (%(tracking_code)s, %(driver_id)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -428,6 +447,7 @@ def insert_client(values):
 											%(first_name)s, %(last_name)s, %(birth_date)s, %(sex)s, %(email)s)'''
     cur.execute(query, values)
     cnx.commit()
+    cur.close()
     cnx.close()
 
 def query1():
@@ -439,6 +459,7 @@ def query1():
 			                (D.id = BB.driver_id AND B.vehicle_color = 'blue' AND BB.vehicle_name LIKE '%pride%'))'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -450,6 +471,7 @@ def query2():
                 WHERE 		D.sex = 'F' AND vehicle_color = 'blue' AND TIMESTAMPDIFF(YEAR, birth_date,CURDATE()) > 30'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -461,6 +483,7 @@ def query3():
                 WHERE		vehicle_name LIKE '%vanet%' AND final_verification_date IS NOT NULL'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -475,6 +498,7 @@ def query4():
 				HAVING		COUNT(*) >= 2'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -492,6 +516,7 @@ def query5():
                 HAVING		MIN(no) = no'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -505,6 +530,7 @@ def query6():
                 HAVING 	COUNT(*) >= 2'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -522,6 +548,7 @@ def query7():
                 GROUP BY	C.first_name, C.last_name, C.id'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -545,6 +572,7 @@ def query8():
                 HAVING		COUNT(*) > Z4'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -556,6 +584,7 @@ def query9():
                 WHERE		cargo_value <= 50000000 AND cargo_type = 'fragile'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -585,6 +614,7 @@ def query10():
                             )'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -604,6 +634,7 @@ def query11():
                 HAVING 		COUNT(*) <= 2'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -619,6 +650,7 @@ def query12():
                 ) P'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -631,6 +663,7 @@ def query13():
                             AND TIMESTAMPDIFF(YEAR, signup_time, CURDATE()) >= 1'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -653,6 +686,7 @@ def query14():
                 GROUP BY	driver_id'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -672,6 +706,7 @@ def query16():
                 LIMIT		10'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -687,6 +722,7 @@ def client_phone_number_lookup(number):
 				WHERE	phone_number = %s'''
     cur.execute(query, (number,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -699,6 +735,7 @@ def driver_phone_number_lookup(number):
 				WHERE	phone_number = %s'''
     cur.execute(query, (number,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -711,7 +748,8 @@ def update_location(driver_id, location):
 				SET		location = %s
 				WHERE	id = %s'''
     cur.execute(query, (location, driver_id))
-    cur.commit()
+    cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -724,6 +762,7 @@ def driver_service_history(id):
 				WHERE	driver_id = %s'''
     cur.execute(query, (id,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -737,6 +776,7 @@ def client_service_history(id):
 				WHERE	client_id = %s'''
     cur.execute(query, (id,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -750,6 +790,7 @@ def client_favorites(id):
 				WHERE	client_id = %s'''
     cur.execute(query, (id,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -766,6 +807,7 @@ def client_panel_info(id):
 				WHERE	id = %s'''
     cur.execute(query, (id,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -782,6 +824,7 @@ def baxi_driver_info(id):
 				WHERE	id = %s'''
     cur.execute(query, (id,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -798,6 +841,7 @@ def baar_driver_info(id):
 				WHERE	id = %s'''
     cur.execute(query, (id,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -814,6 +858,7 @@ def box_driver_info(id):
 				WHERE	id = %s'''
     cur.execute(query, (id))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -826,6 +871,7 @@ def is_manager(pcode):
 				WHERE	personnel_code = %s AND department = 'HR' AND position = 'department manager'"""
     cur.execute(query, (pcode,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -842,6 +888,7 @@ def employee_info(pcode, password):
 				WHERE	personnel_code = %s AND password = %s'''
     cur.execute(query, (pcode, password))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -854,6 +901,7 @@ def get_unverified_drivers():
 				WHERE	verifier_personnel_code IS NULL'''
     cur.execute(query)
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -865,7 +913,8 @@ def set_license_verification_date(id, date):
 				SET		license_verification_date = %s
 				WHERE	id = %s'''
     cur.execute(query, (date, id))
-    cur.commit()
+    cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -876,7 +925,8 @@ def set_judicial_letter_path(id, path):
 				SET		judicial_letter_path = %s
 				WHERE	id = %s'''
     cur.execute(query, (path, id))
-    cur.commit()
+    cnx.commit()
+    cur.close()
     cnx.close()
 
 def set_judicial_letter_verification_date(id, date):
@@ -886,7 +936,8 @@ def set_judicial_letter_verification_date(id, date):
 				SET		judicial_letter_verification_date = %s
 				WHERE	id = %s'''
     cur.execute(query, (date, id))
-    cur.commit()
+    cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -897,7 +948,8 @@ def set_final_verification_date(id, date):
 				SET		final_verification_date = %s
 				WHERE	id = %s'''
     cur.execute(query, (date, id))
-    cur.commit()
+    cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -908,7 +960,8 @@ def set_verifier_personnel_code(id, code):
 				SET		verifier_personnel_code = %s
 				WHERE	id = %s'''
     cur.execute(query, (code, id))
-    cur.commit()
+    cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -919,7 +972,8 @@ def set_employee_pppath(pcode, path):
 				SET		profile_picture_path = %s
 				WHERE	personnel_code = %s'''
     cur.execute(query, (path, pcode))
-    cur.commit()
+    cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -930,7 +984,8 @@ def set_driver_pppath(id, path):
 				SET		profile_picture_path = %s
 				WHERE	id = %s'''
     cur.execute(query, (path, id))
-    cur.commit()
+    cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -941,7 +996,8 @@ def set_email(id, path):
 				SET		email = %s
 				WHERE	id = %s'''
     cur.execute(query, (path, id))
-    cur.commit()
+    cnx.commit()
+    cur.close()
     cnx.close()
 
 
@@ -953,6 +1009,7 @@ def is_female(id):
 				WHERE	id = %s AND sex = 'F'"""
     cur.execute(query, (id,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -965,6 +1022,7 @@ def is_driver_account_inactive(id):
 				WHERE	id = %s AND (verifier_personnel_code IS NULL OR state = 'driver''s account deactivated)'"""
     cur.execute(query, (id,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -977,6 +1035,7 @@ def is_client_account_inactive(id):
 				WHERE	id = %s AND state = 'client''s account deactivated'"""
     cur.execute(query, (id,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -989,6 +1048,7 @@ def ref_code_exists(code):
 				WHERE	referral_code = %s"""
     cur.execute(query, (code,))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
 
@@ -1001,5 +1061,6 @@ def requests_within_range(lat, lon):
 				WHERE	(6371 * acos(cos(radians(%s)) * cos(radians(ST_Y(pickup_location))) * cos(radians(ST_X(pickup_location))) - radians(%s)) + sin(radians(%s)) * sin(radians(ST_Y(pickup_location)))) <= 5"""
     cur.execute(query, (lat, lon, lat))
     result = cur.fetchall()
+    cur.close()
     cnx.close()
     return result
