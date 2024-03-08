@@ -862,7 +862,7 @@ def set_license_verification_date(id, date):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''UPDATE	drivers
-				SET		licensce_verification_date = %s
+				SET		license_verification_date = %s
 				WHERE	id = %s'''
     cur.execute(query, (date, id))
     cur.commit()
