@@ -559,6 +559,35 @@ def query9():
     cnx.close()
     return result
 
+def query10():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT		C.last_name, C.phone_number, C.email
+                FROM		clients C, 
+                (
+                    SELECT		C2.id, DATE(A.request_time), COUNT(*) no
+                    FROM		clients C2 JOIN service_acceptances A ON C2.id = A.client_id
+                    WHERE		DATE(A.request_time) BETWEEN '2024-02-21' AND '2024-01-01'	
+                    GROUP BY	DATE(A.request_time)		
+                ) BETDAT
+                WHERE		(C.first_name LIKE '%Piotr%' OR C.last_name LIKE '%Piotr%') AND C.sex = 'M' AND C.id IN 
+                            (
+                                SELECT		BDT.id
+                                FROM		BETDAT BDT,
+                                (
+                                    SELECT 		COUNT(*) no
+                                    FROM		destinations D	
+                                    WHERE		DATE(D.request_time) BETWEEN '2024-02-21' AND '2024-01-01'
+                                    GROUP BY	D.client_id, DATE(D.request_time)
+                                    HAVING		COUNT(*) >= 2
+                                ) MULTID
+                                HAVING		MAX(BDT.no) > MAX(MULTID.no)
+                            )''''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
+
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
 
