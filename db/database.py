@@ -607,6 +607,21 @@ def query11():
     cnx.close()
     return result
 
+def query12():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT		P/COUNT(T.*)
+                FROM		reports T,
+                (
+                    SELECT		COUTN(*) * 100
+                    FROM		reports
+                    WHERE		state = 'driver''s account deactivated' OR state = 'client''s account deactivated' OR state = 'dismissed'
+                ) P''''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
+
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
 
