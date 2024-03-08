@@ -656,6 +656,25 @@ def query14():
     cnx.close()
     return result
 
+def query16():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT			D.*
+                FROM		
+                (
+                    SELECT		driver_id, 
+                                MAX(TIMEDIFF(estimated_end_time, end_time)) 				T
+                    FROM		service_acceptances NATRUAL JOIN baxi_box
+                    GROUP BY	driver_id
+                ) JOIN drivers D ON driver_id = id
+                GROUP BY	driver_id 
+                ORDER BY	T DESC
+                LIMIT		10'''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
+
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
 
