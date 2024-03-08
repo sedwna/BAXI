@@ -1065,8 +1065,8 @@ def is_driver_account_inactive(id):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = """SELECT	id
-				FROM	drivers JOIN reports ON id = driver_id
-				WHERE	id = %s AND (final_verification_date IS NULL OR state = 'driver''s account deactivated')"""
+				FROM	drivers, reports
+				WHERE	id = %s AND (final_verification_date IS NULL OR (driver_id = id AND state = 'driver''s account deactivated'))"""
     cur.execute(query, (id,))
     result = cur.fetchall()
     cur.close()
