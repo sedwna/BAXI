@@ -588,6 +588,25 @@ def query10():
     cnx.close()
     return result
 
+def query11():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT		C.*
+                FROM		clients C JOIN accepteances A on C.id = A.client_id,
+                (
+                    SELECT		client_id
+                    FROM		(clients JOIN deposits ON id = client_id) NATRUAL JOIN transactoins
+                    GROUP BY	client_id
+                    HAVING		SUM(amount) > 100000
+                )MONEY
+                WHERE		C.id IN MONEY AND TIMESTAMPDIFF(HOUR, request_time, A.end_time) >= 1
+                GROUP BY	C.id
+                HAVING 		COUNT(*) <= 2''''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
+
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
 
