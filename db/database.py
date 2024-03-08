@@ -442,6 +442,18 @@ def query1():
     cnx.close()
     return result
 
+def query2():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT		drivers.*
+                FROM		drivers JOIN baxi ON id = driver_id
+                WHERE 		D.sex = 'F' AND vehicle_color = 'blue' AND TIMESTAMPDIFF(YEAR, birth_date,CURDATE()) > 30'''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
+
+
 def query4():
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
