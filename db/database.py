@@ -488,13 +488,25 @@ def query5():
 	                FROM		baxi_trips JOIN clients ON client_id = id
 	                WHERE		round_trip = 'yes' AND TIMESTAMPDIFF(YEAR, birth_date,CURDATE()) BETWEEN 15 AND 18
 	                GROUP BY	DATE(request_time)
-                )
+                ) AS subq1
                 HAVING		MIN(no) = no'''
     cur.execute(query)
     result = cur.fetchall()
     cnx.close()
     return result
 
+def query6():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT       first_name , last_name, wallet_balance
+                FROM		service_acceptances JOIN drivers ON driver_id = id
+                WHERE 		DATE(request_time) = '2024-01-01'
+                GROUP BY	first_name, last_name, wallet_balance, driver_id
+                HAVING 	COUNT(*) >= 2'''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
 
 
 '''	sign-in phone number lookup
