@@ -488,7 +488,7 @@ def query5():
 	                FROM		baxi_trips JOIN clients ON client_id = id
 	                WHERE		round_trip = 'yes' AND TIMESTAMPDIFF(YEAR, birth_date,CURDATE()) BETWEEN 15 AND 18
 	                GROUP BY	DATE(request_time)
-                ) AS subq1
+                )
                 HAVING		MIN(no) = no'''
     cur.execute(query)
     result = cur.fetchall()
@@ -508,6 +508,22 @@ def query6():
     cnx.close()
     return result
 
+def query7():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT		C.first_name, C.last_name, SUM(cost)
+                FROM		clients C,
+                (
+	                SELECT		client_id, request_time, cost
+	                FROM		service_acceptances NATURAL JOIN baxi_trips
+	                WHERE		YEARWEEK(request_time) = YEARWEEK(CURDATE()) AND TIMESTAMPDIFF(HOUR, end_time, request_time) > 2
+                ) TARGET
+                WHERE		TARGET.client_id = C.id
+                GROUP BY	C.first_name, C.last_name, C.id'''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
 
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
