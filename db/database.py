@@ -740,10 +740,10 @@ def query15():
 def query16():
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''SELECT			D.*
+    query = '''SELECT       D.*
                 FROM
                 (
-                    SELECT		driver_id, 
+                    SELECT	    driver_id, 
                                 MAX(TIMEDIFF(estimated_end_time, end_time)) T
                     FROM		service_acceptances NATRUAL JOIN baxi_box
                     GROUP BY	driver_id
@@ -751,6 +751,58 @@ def query16():
                 GROUP BY	driver_id 
                 ORDER BY	T DESC
                 LIMIT		10'''
+    cur.execute(query)
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
+def query17():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT       MOST - FIRST
+                FROM	
+                (
+                    SELECT      SUM(cost) FIRST
+                    FROM
+                    (
+                        SELECT		requests_time, cost
+                        FROM		baxi_trips
+                        UNION
+                        SELECT		requests_time, cost	
+                        FROM		heavy_transports
+                        UNION
+                        SELECT		requests_time, cost
+                        FROM		light_transports
+                    )
+                    WHERE 	    requeste_time = (SELECT DISTINCT MIN(signup_time) FROM employees)
+                ),
+                (
+                    SELECT 		SUM(cost) MOST
+                    FROM
+                    (
+                        SELECT		requests_time, cost
+                        FROM		baxi_trips
+                        UNION
+                        SELECT		requests_time, cost	
+                        FROM		heavy_transports
+                        UNION
+                        SELECT		requests_time, cost
+                        FROM		light_transports
+                    )
+                    WHERE 	requeste_time =
+                            (
+                                SELECT 		M
+                                FROM		
+                                (
+                                    SELECT		COUNT(*) no, signup_time M
+                                    FROM		clients
+                                    GROUP BY	YEAR(signup_time), MONTH(signup_time)
+                                )
+                                ORDER BY	no DESC
+                                LIMIT		1
+                            )      
+                )'''
     cur.execute(query)
     result = cur.fetchall()
     cur.close()
