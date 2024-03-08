@@ -108,7 +108,7 @@ def insert_box(values):
 def insert_request(values):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''INSERT INTO service_requests VALUES (%(pickup_latitude)s, %(pickup_longitude)s, %(pickup_province)s
+    query = '''INSERT INTO service_requests VALUES (%(pickup_latitude)s, %(pickup_longitude)s, %(pickup_province)s,
 													%(pickup_city)s, %(client_id)s, %(request_time)s)'''
     cur.execute(query, values)
     cnx.commit()
@@ -351,7 +351,7 @@ def insert_destination(values):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''INSERT INTO destinations VALUES (%(city)s, %(client_id)s, %(request_time)s,
-				%(latitude)s, %(longitude)s)'''
+												%(latitude)s, %(longitude)s)'''
     cur.execute(query, values)
     cnx.commit()
     cur.close()
@@ -411,7 +411,7 @@ def insert_complaint(values):
 def insert_company_deposit(values):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''INSERT INTO company_deposits VALUES (%(amount)s, %(time)s,%(type)s, %(employee_personnel_code)s, %(driver_id)s)'''
+    query = '''INSERT INTO company_deposits VALUES (%(amount)s, %(time)s, %(type)s, %(employee_personnel_code)s, %(driver_id)s)'''
     cur.execute(query, values)
     cnx.commit()
     cur.close()
@@ -668,13 +668,14 @@ def query11():
 def query12():
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''SELECT		P/COUNT(T.*)
+    query = '''SELECT		P.no/COUNT(*)
                 FROM		reports T,
                 (
-                    SELECT		COUTN(*) * 100
+                    SELECT		COUNT(*) * 100 AS no
                     FROM		reports
                     WHERE		state = 'driver''s account deactivated' OR state = 'client''s account deactivated' OR state = 'dismissed'
-                ) P'''
+                ) P
+				GROUP BY P.no'''
     cur.execute(query)
     result = cur.fetchall()
     cur.close()
@@ -686,7 +687,7 @@ def query13():
     cur = cnx.cursor()
     query = '''SELECT		COUNT(*) No
                 FROM		employees
-                WHERE		positoin <> 'department manager' AND salary > 5000000 AND education >= 'bachelor''s degree'
+                WHERE		position <> 'department manager' AND salary > 5000000 AND education >= 'bachelor''s degree'
                             AND TIMESTAMPDIFF(YEAR, signup_time, CURDATE()) >= 1'''
     cur.execute(query)
     result = cur.fetchall()
@@ -705,11 +706,12 @@ def query14():
                     (
                         SELECT	    driver_id, cost, vehicle_name, COUNT(*) no
                         FROM		(service_acceptances NATURAL JOIN baxi_trips) NATURAL  JOIN baxi
-                        WHERE		vehicle_production_date < '2009-00-00' AND method_of_payment = 'cash'
-                    )
+                        WHERE		vehicle_production_date < '2009-01-01' AND method_of_payment = 'cash'
+						GROUP BY	driver_id, cost, vehicle_name
+                    ) AS sub0
                     ORDER BY	no
                     LIMIT		3
-                ) JOIN drivers ON driver_id = id
+                ) AS sub JOIN drivers ON sub.driver_id = id
                 GROUP BY	driver_id'''
     cur.execute(query)
     result = cur.fetchall()
@@ -725,21 +727,15 @@ def query15():
 								SELECT		COUNT(*) AS successful
 								FROM		service_requests JOIN service_acceptances USING (client_id, request_time)
 								WHERE		pickup_province = 'tehran' AND pickup_city = 'rey'
-							),
+							) AS sub0,
 							(
 								SELECT		COUNT(*) AS cancelled
 								FROM		(
-												SELECT		client_id, request_time
-												FROM		service_requests
-												WHERE		pickup_province = 'tehran' AND pickup_city = 'rey'
-											)
-											EXCEPT
-											(
-												SELECT		sr.client_id, sr.request_time
-												FROM		service_requests sr JOIN service_acceptances USING (client_id, request_time)
-												WHERE		pickup_province = 'tehran' AND pickup_city = 'rey'
-											)
-							)"""
+													SELECT		client_id, request_time
+                                                    FROM		service_requests LEFT JOIN service_acceptances AS a USING (client_id, request_time)
+                                                    WHERE		pickup_province = 'tehran' AND pickup_city = 'rey' AND a.client_id IS NULL
+											) AS s0
+							) AS sub1"""
     cur.execute(query)
     result = cur.fetchall()
     cur.close()
@@ -754,9 +750,9 @@ def query16():
                 (
                     SELECT	    driver_id, 
                                 MAX(TIMEDIFF(estimated_end_time, end_time)) T
-                    FROM		service_acceptances NATRUAL JOIN baxi_box
+                    FROM		service_acceptances JOIN baxi_box USING(driver_id)
                     GROUP BY	driver_id
-                ) JOIN drivers D ON driver_id = id
+                ) AS s0 JOIN drivers D ON driver_id = id
                 GROUP BY	driver_id 
                 ORDER BY	T DESC
                 LIMIT		10'''
@@ -768,6 +764,7 @@ def query16():
 
 def query17():
     cnx = create_connection('baxi_users')
+    cnx = create_connection('baxi_staff')
     cur = cnx.cursor()
     query = '''SELECT       MOST - FIRST
                 FROM	
