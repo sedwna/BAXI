@@ -809,6 +809,18 @@ def query17():
     cnx.close()
     return result
 
+def query18():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT		B.*
+                FROM		(drivers D JOIN baxi B ON id = driver_id)
+                WHERE		D.sex = 'F' AND B.vehicle_capacity >= 3 AND ST_Distance_Sphere(D.location, POINT(35.7819, 51.3749)) <= 2000 AND D.wallet_balance >= 0'''
+    cur.execute(query)
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
 
