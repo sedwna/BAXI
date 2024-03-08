@@ -772,43 +772,45 @@ def query17():
                     SELECT      SUM(cost) FIRST
                     FROM
                     (
-                        SELECT		requests_time, cost
+                        SELECT		request_time, cost
                         FROM		baxi_trips
                         UNION
-                        SELECT		requests_time, cost	
+                        SELECT		request_time, cost	
                         FROM		heavy_transports
                         UNION
-                        SELECT		requests_time, cost
+                        SELECT		request_time, cost
                         FROM		light_transports
-                    )
-                    WHERE 	    requeste_time = (SELECT DISTINCT MIN(signup_time) FROM employees)
-                ),
+                    ) AS s0
+                    WHERE 	    s0.request_time = (SELECT DISTINCT MIN(signup_time) FROM baxi_staff.employees GROUP BY signup_time)
+                    GROUP BY	cost
+                ) AS sub0,
                 (
                     SELECT 		SUM(cost) MOST
                     FROM
                     (
-                        SELECT		requests_time, cost
+                        SELECT		request_time, cost
                         FROM		baxi_trips
                         UNION
-                        SELECT		requests_time, cost	
+                        SELECT		request_time, cost	
                         FROM		heavy_transports
                         UNION
-                        SELECT		requests_time, cost
+                        SELECT		request_time, cost
                         FROM		light_transports
-                    )
-                    WHERE 	requeste_time =
+                    ) AS s1
+                    WHERE 	s1.request_time =
                             (
                                 SELECT 		M
                                 FROM		
                                 (
                                     SELECT		COUNT(*) no, signup_time M
                                     FROM		clients
-                                    GROUP BY	YEAR(signup_time), MONTH(signup_time)
-                                )
+                                    GROUP BY	YEAR(signup_time), MONTH(signup_time), M
+                                ) AS s2
                                 ORDER BY	no DESC
                                 LIMIT		1
-                            )      
-                )'''
+                            ) 
+					GROUP BY	cost
+                ) AS sub1'''
     cur.execute(query)
     result = cur.fetchall()
     cur.close()
@@ -831,22 +833,22 @@ def query19():
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''SELECT		C.*
-                FROM		(clients C JOIN baxi_trips ON id = client_id) T
+                FROM		clients C JOIN baxi_trips AS T ON id = client_id
                 WHERE		C.sex = 'F' AND 4 = 
 			                (
-                                SELECT 		COUNT(DISTICT DAY(request_time))
-                                FROM		client JOIN baxi_trips ON id = client_id
-                                WHERE		requeste_time >= CURDATE() - INTERVAL 1 WEEK AND client_id = C.id AND DAY(request_time) % 2 <> 0
+                                SELECT 		COUNT(DAY(request_time))
+                                FROM		clients JOIN baxi_trips ON id = client_id
+                                WHERE		request_time >= CURDATE() - INTERVAL 1 WEEK AND client_id = C.id AND DAY(request_time) % 2 <> 0
                             ) AND EXISTS
 			                (
                                 SELECT		driver_id
-                                FROM		T NATURAL JOIN
+                                FROM		(clients C JOIN baxi_trips ON id = client_id) NATURAL JOIN
                                     (
                                         SELECT		driver_id
-                                        FROM		withdrawals NATURAL JOIN transactoins
+                                        FROM		withdrawals NATURAL JOIN transactions
                                         GROUP BY	driver_id
                                         HAVING		SUM(amount) > 100000
-                                    )
+                                    ) AS s0
                             
                                 WHERE		T.client_id = C.id 
 			                )'''
@@ -860,31 +862,26 @@ def query20():
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''SELECT		D.*
-                FROM		(drivers D NATURAL JOIN service_acceptances) DS
-                (
-                    SELECT		requests_time, client_id
-                    FROM		(service_requests AS sr NATURAL JOIN service_acceptances) NATURAL JOIN destinations AS d
-                    WHERE		DATE(request_time) BETWEEN '2024-01-01' AND '2024-02-21' AND driver_rating > '3-star' AND
-                                ST_Distance_Sphere(POINT(d.latitude, d.longitude), POINT(sr.latitude, sr.longitude)) > 10000
-                ) EVERY,
-                (
-                    SELECT		D2.id
-                    FROM		((service_acceptances NATURAL JOIN service_requests) JOIN clients C ON client_id = id) JOIN drivers D2 ON driver_id = D2.id
-                    WHERE		TIMESTAMPDIFF(MONTH, license_verification_date,CURDATE()) >= 2 AND TIMESTAMPDIFF(MONTH, judicial_letter_verification_date,CURDATE()) >= 2 
-                                AND C.sex = 'M' 
-                    GROUP BY	D2.id
-                    HAVING		COUNT(*) <= 3
-                ) REFERENCE
-                WHERE		D.id IN REFERENCE AND NOT EXISTS 
+                FROM		drivers D NATURAL JOIN service_acceptances
+                WHERE		D.id IN (
+										SELECT		D2.id
+										FROM		((service_acceptances NATURAL JOIN service_requests) JOIN clients C ON client_id = id) JOIN drivers D2 ON driver_id = D2.id
+										WHERE		TIMESTAMPDIFF(MONTH, license_verification_date,CURDATE()) >= 2 AND TIMESTAMPDIFF(MONTH, judicial_letter_verification_date,CURDATE()) >= 2 
+													AND C.sex = 'M' 
+										GROUP BY	D2.id
+										HAVING		COUNT(*) <= 3
+									) AND NOT EXISTS 
                             (
-                                SELECT 		request_time, client_id
-                                FROM		EVERY
-                                
-                                EXCEPT	
-
-                                SELECT 		DS.request_time, DS.client_id
-                                FROM		DS
-                                WHERE		DS.driver_id = D.id	
+								SELECT		request_time, client_id
+                                FROM		(drivers D NATURAL JOIN service_acceptances) RIGHT JOIN 
+								(
+									SELECT		request_time, client_id
+									FROM		(service_requests AS sr NATURAL JOIN service_acceptances) NATURAL JOIN destinations AS d
+									WHERE		DATE(request_time) BETWEEN '2024-01-01' AND '2024-02-21' AND driver_rating > '3-star' AND
+												ST_Distance_Sphere(POINT(d.latitude, d.longitude), POINT(sr.pickup_latitude, sr.pickup_longitude)) > 10000
+								) AS E
+                                USING		(request_time, client_id)
+                                WHERE		D.id IS NULL	
                             )'''
     cur.execute(query)
     result = cur.fetchall()
