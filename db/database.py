@@ -879,18 +879,6 @@ def set_judicial_letter_path(id, path):
     cur.commit()
     cnx.close()
 
-
-def set_judicial_letter_verification_date(id, date):
-    cnx = create_connection('baxi_users')
-    cur = cnx.cursor()
-    query = '''UPDATE	drivers
-				SET		judicial_letter_verification_date = %s
-				WHERE	id = %s'''
-    cur.execute(query, (date, id))
-    cur.commit()
-    cnx.close()
-
-
 def set_judicial_letter_verification_date(id, date):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
