@@ -270,27 +270,86 @@ class MainWindow:
 
     def show_employee_panel_authentication_2(self):
         res = get_unverified_drivers()
-        print(res[1])
+        print('driver', res[1])
+        driver = res[1]
+        self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
+        self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
+        self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
+        self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
+        self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
+
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
+
 
     def show_employee_panel_authentication_3(self):
         res = get_unverified_drivers()
-        print(res[2])
+        print('driver', res[2])
+        driver = res[2]
+        self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
+        self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
+        self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
+        self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
+        self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
+
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
     def show_employee_panel_authentication_4(self):
         res = get_unverified_drivers()
-        print(res[3])
+        print('driver', res[3])
+        driver = res[3]
+        self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
+        self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
+        self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
+        self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
+        self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
+
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
     def show_employee_panel_authentication_5(self):
         res = get_unverified_drivers()
-        print(res[4])
+        print('driver', res[4])
+        driver = res[4]
+        self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
+        self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
+        self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
+        self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
+        self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
+
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
     def show_employee_panel_authentication_6(self):
         res = get_unverified_drivers()
-        print(res[5])
+        print('driver', res[5])
+        driver = res[5]
+        self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
+        self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
+        self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
+        self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
+        self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
+
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
     def show_employee_panel_authentication_7(self):
         res = get_unverified_drivers()
-        print(res[6])
+        print('driver', res[6])
+        driver = res[6]
+        self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
+        self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
+        self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
+        self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
+        self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
