@@ -102,11 +102,7 @@ class MainWindow:
         # -------------------------------------------------------------------------------------------------------------------
         # go to employee_panel_authentication from employee_panel_authentication_request --------------------------------------------------------------------
         self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_1.clicked.connect(
-            self.show_employee_panel_authentication_1)
-        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_2.clicked.connect(
-            self.show_employee_panel_authentication_1)
-        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication_request_3.clicked.connect(
-            self.show_employee_panel_authentication_1)
+            self.show_employee_panel_authentication_successful)
         # ---------------------------------------------------------------------------------------------------------------------------------------------------
         # go to employee_panel_authentication_request from employee_panel_authentication ---------------------------------------------------
         self.ui.pushButt_go_to_employee_panel_authentication_request_employee_panel_authentication.clicked.connect(
@@ -116,9 +112,6 @@ class MainWindow:
         self.ui.pushButt_go_to_employee_panel_authentication_successful_employee_panel_authentication.clicked.connect(
             self.show_employee_panel_authentication_successful)
         # -------------------------------------------------------------------------------------------------------------------------------------
-        # go to show_employee_panel_authentication_2 from employee_panel_authentication_1 ---------------------------------------------------
-        self.ui.pushButt_go_to_employee_panel_authentication_employee_panel_authentication.clicked.connect(
-            self.show_employee_panel_authentication_2)
         # -------------------------------------------------------------------------------------------------------------------------------------
         # show_licence -----------------------------------------------------------------
         ###self.ui.pushButt_show_licence_employee_panel_authentication.clicked.connect()###
@@ -129,13 +122,7 @@ class MainWindow:
         # show_sopishine -----------------------------------------------------------------
         ###self.ui.pushButt_show_sopishine_employee_panel_authentication.clicked.connect()###
         # ------------------------------------------------------------------------------
-        # go to employee_panel_authentication_1 from employee_panel_authentication_2 ---------------------------------------------------
-        self.ui.pushButt_go_to_employee_panel_authentication_1_employee_panel_authentication_2.clicked.connect(
-            self.show_employee_panel_authentication_1)
-        # -------------------------------------------------------------------------------------------------------------------------------------
-        # go to employee_panel_authentication_rejected from employee_panel_authentication_2 ---------------------------------------------------
-        self.ui.pushButt_go_to_employee_panel_authentication_rejected_employee_panel_authentication_2.clicked.connect(
-            self.show_employee_panel_authentication_rejected)
+
         # -------------------------------------------------------------------------------------------------------------------------------------
         # go to employee_panel from employee_panel_authentication_successful ---------------------------------------------------
         self.ui.pushButt_go_to_employee_panel_employee_panel_authentication_successful.clicked.connect(
@@ -166,6 +153,21 @@ class MainWindow:
         # show_shaba_number -----------------------------------------------------------------
         ###self.ui.pushButt_show_shaba_number_employee_panel_authentication_1.clicked.connect()###
         # --------------------------------------------------------------------------------
+        self.ui.pushButt_text_1_employee_panel_authentication_request.clicked.connect(
+            self.show_employee_panel_authentication_1)
+
+        self.ui.pushButt_text_2_employee_panel_authentication_request.clicked.connect(
+            self.show_employee_panel_authentication_2)
+        self.ui.pushButt_text_3_employee_panel_authentication_request.clicked.connect(
+            self.show_employee_panel_authentication_3)
+        self.ui.pushButt_text_4_employee_panel_authentication_request.clicked.connect(
+            self.show_employee_panel_authentication_4)
+        self.ui.pushButt_text_5_employee_panel_authentication_request.clicked.connect(
+            self.show_employee_panel_authentication_5)
+        self.ui.pushButt_text_6_employee_panel_authentication_request.clicked.connect(
+            self.show_employee_panel_authentication_6)
+        self.ui.pushButt_text_7_employee_panel_authentication_request.clicked.connect(
+            self.show_employee_panel_authentication_7)
 
     def show(self):
         self.main_win.show()
@@ -221,6 +223,28 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel_recruitment)
 
     def show_employee_panel_authentication_request(self):
+        res = get_unverified_drivers()
+        print(res)
+        flag = 1
+        for driver in res:
+            flname = driver[7] + " " + driver[8]
+            print(flname)
+            if flag == 1:
+                self.ui.pushButt_text_1_employee_panel_authentication_request.setText(flname)
+            elif flag == 2:
+                self.ui.pushButt_text_2_employee_panel_authentication_request.setText(flname)
+            elif flag == 3:
+                self.ui.pushButt_text_3_employee_panel_authentication_request.setText(flname)
+            elif flag == 4:
+                self.ui.pushButt_text_4_employee_panel_authentication_request.setText(flname)
+            elif flag == 5:
+                self.ui.pushButt_text_5_employee_panel_authentication_request.setText(flname)
+            elif flag == 6:
+                self.ui.pushButt_text_6_employee_panel_authentication_request.setText(flname)
+            elif flag == 7:
+                self.ui.pushButt_text_7_employee_panel_authentication_request.setText(flname)
+            flag += 1
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)
 
     def show_employee_panel(self):
@@ -231,16 +255,60 @@ class MainWindow:
             self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)
 
     def show_employee_panel_authentication_1(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_1)
+        res = get_unverified_drivers()
+        print('driver', res[0])
+        driver = res[0]
+        self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
+        self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
+        self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
+        self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
+        self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
 
-    def show_employee_panel_authentication_request(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)
-
-    def show_employee_panel_authentication_successful(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_successful)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
     def show_employee_panel_authentication_2(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_2)
+        res = get_unverified_drivers()
+        print(res[1])
+
+    def show_employee_panel_authentication_3(self):
+        res = get_unverified_drivers()
+        print(res[2])
+
+    def show_employee_panel_authentication_4(self):
+        res = get_unverified_drivers()
+        print(res[3])
+
+    def show_employee_panel_authentication_5(self):
+        res = get_unverified_drivers()
+        print(res[4])
+
+    def show_employee_panel_authentication_6(self):
+        res = get_unverified_drivers()
+        print(res[5])
+
+    def show_employee_panel_authentication_7(self):
+        res = get_unverified_drivers()
+        print(res[6])
+
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
+
+    def show_employee_panel_authentication_successful(self):
+        res = IS_DRIVER(self.ui.pushButt_show_phone_number_employee_panel_authentication.text())
+        try:
+            print("1")
+            set_license_verification_date(res[0][0], datetime.now())
+            print("1")
+            set_judicial_letter_verification_date(res[0][0], datetime.now())
+            print("1")
+            set_final_verification_date(res[0][0], datetime.now())
+            print("1")
+            set_verifier_personnel_code(res[0][0], self.ui.get_id_employee_sign_in.toPlainText())
+            print("driver authentication successfully add to db ")
+        except Exception as err:
+            print(err)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_successful)
 
     def show_employee_panel_authentication_rejected(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_rejected)
