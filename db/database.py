@@ -850,6 +850,42 @@ def query19():
     cnx.close()
     return result
 
+def query20():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT		D.*
+                FROM		(drivers D NATURAL JOIN service_acceptances) DS
+                (
+                    SELECT		requests_time, client_id
+                    FROM		(service_requests NATURAL JOIN service_acceptances) NATURAL JOIN destinations
+                    WHERE		DATE(request_time) BETWEEN '2024-01-01' AND '2024-02-21' AND driver_rating > '3-star' AND
+                                ST_Distance_Sphere(	pickup_location, POINT(latitude, longitude)) > 10000
+                ) EVERY,
+                (
+                    SELECT		D2.id
+                    FROM		((service_acceptances NATURAL JOIN service_requests) JOIN clients C ON client_id = id) JOIN drivers D2 ON driver_id = D2.id
+                    WHERE		TIMESTAMPDIFF(MONTH, license_verification_date,CURDATE()) >= 2 AND TIMESTAMPDIFF(MONTH, judicial_letter_verification_date,CURDATE()) >= 2 
+                                AND C.sex = 'M' 
+                    GROUP BY	D2.id
+                    HAVING		COUNT(*) <= 3
+                ) REFERENCE
+                WHERE		D.id IN REFERENCE AND NOT EXISTS 
+                            (
+                                SELECT 		request_time, client_id
+                                FROM		EVERY
+                                
+                                EXCEPT	
+
+                                SELECT 		DS.request_time, DS.client_id
+                                FROM		DS
+                                WHERE		DS.driver_id = D.id	
+                            )'''
+    cur.execute(query)
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
 
