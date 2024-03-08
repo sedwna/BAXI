@@ -553,7 +553,7 @@ def query9():
     cur = cnx.cursor()
     query = '''SELECT		vehicle_license_plate, first_name, last_name
                 FROM		((heavy_transports NATRUAL JOIN service_acceptances) NATURAL JOIN baxi_baar) JOIN drivers ON driver_id = id
-                WHERE		cargo_value <= 50000000 AND cargo_type = 'fragile''''
+                WHERE		cargo_value <= 50000000 AND cargo_type = 'fragile'''
     cur.execute(query)
     result = cur.fetchall()
     cnx.close()
@@ -582,7 +582,7 @@ def query10():
                                     HAVING		COUNT(*) >= 2
                                 ) MULTID
                                 HAVING		MAX(BDT.no) > MAX(MULTID.no)
-                            )''''
+                            )'''
     cur.execute(query)
     result = cur.fetchall()
     cnx.close()
@@ -601,7 +601,7 @@ def query11():
                 )MONEY
                 WHERE		C.id IN MONEY AND TIMESTAMPDIFF(HOUR, request_time, A.end_time) >= 1
                 GROUP BY	C.id
-                HAVING 		COUNT(*) <= 2''''
+                HAVING 		COUNT(*) <= 2'''
     cur.execute(query)
     result = cur.fetchall()
     cnx.close()
@@ -616,7 +616,7 @@ def query12():
                     SELECT		COUTN(*) * 100
                     FROM		reports
                     WHERE		state = 'driver''s account deactivated' OR state = 'client''s account deactivated' OR state = 'dismissed'
-                ) P''''
+                ) P'''
     cur.execute(query)
     result = cur.fetchall()
     cnx.close()
@@ -628,7 +628,7 @@ def query13():
     query = '''SELECT		COUNT(*) No
                 FROM		employees
                 WHERE		positoin <> 'department manager' AND salary > 5000000 AND education >= 'bachelor''s degree'
-                            AND TIMESTAMPDIFF(YEAR, signup_time, CURDATE()) >= 1''''
+                            AND TIMESTAMPDIFF(YEAR, signup_time, CURDATE()) >= 1'''
     cur.execute(query)
     result = cur.fetchall()
     cnx.close()
@@ -650,7 +650,7 @@ def query14():
                     ORDER BY	no
                     LIMIT		3
                 ) JOIN drivers ON driver_id = id
-                GROUP BY	driver_id''''
+                GROUP BY	driver_id'''
     cur.execute(query)
     result = cur.fetchall()
     cnx.close()
