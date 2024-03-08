@@ -945,7 +945,7 @@ def get_unverified_drivers():
     cur = cnx.cursor()
     query = '''SELECT	*
 				FROM	drivers
-				WHERE	verifier_personnel_code IS NULL'''
+				WHERE	final_verification_date IS NULL'''
     cur.execute(query)
     result = cur.fetchall()
     cur.close()
@@ -1066,7 +1066,7 @@ def is_driver_account_inactive(id):
     cur = cnx.cursor()
     query = """SELECT	id
 				FROM	drivers JOIN reports ON id = driver_id
-				WHERE	id = %s AND (verifier_personnel_code IS NULL OR state = 'driver''s account deactivated)'"""
+				WHERE	id = %s AND (final_verification_date IS NULL OR state = 'driver''s account deactivated)'"""
     cur.execute(query, (id,))
     result = cur.fetchall()
     cur.close()
