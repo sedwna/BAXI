@@ -634,6 +634,28 @@ def query13():
     cnx.close()
     return result
 
+def query14():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT		SUM(cost), first_name, last_name, vehicle_name
+                FROM	
+                (
+                    SELECT      driver_id, cost, vehicle_name
+                    FROM
+                    (
+                        SELECT	    driver_id, cost, vehicle_name, COUNT(*) no
+                        FROM		(service_acceptances NATURAL JOIN baxi_trips) NATURAL  JOIN baxi
+                        WHERE		vehicle_production_date < '2009-00-00' AND method_of_payment = 'cash'
+                    )
+                    ORDER BY	no
+                    LIMIT		3
+                ) JOIN drivers ON driver_id = id
+                GROUP BY	driver_id''''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
+
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
 
