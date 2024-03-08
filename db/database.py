@@ -453,6 +453,16 @@ def query2():
     cnx.close()
     return result
 
+def query3():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT 		first_name, last_name, license_verification_date, judicial_letter_verification_date, final_verification_date
+                FROM		drivers JOIN baxi_baar ON id = driver_id
+                WHERE		vehicle_name LIKE '%vanet%' AND final_verification_date IS NOT NULL'''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
 
 def query4():
     cnx = create_connection('baxi_users')
