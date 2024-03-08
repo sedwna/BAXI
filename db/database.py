@@ -1116,7 +1116,7 @@ def requests_within_range(lat, lon):
 def get_location(id):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-	query = '''SELECT	location
+    query = '''SELECT	location
 				FROM	drivers
 				WHERE	id = %s'''
     cur.execute(query, (id,))

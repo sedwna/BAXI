@@ -57,7 +57,7 @@ CREATE TABLE	clients
 					signup_time		DATETIME		DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 					first_name		VARCHAR(50)									NOT NULL,
 					last_name		VARCHAR(50)									NOT NULL,
-					birth_date		DATE										NOT NULL			CHECK (TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) >= 15),
+					birth_date		DATE										NOT NULL,
 					sex				ENUM
 									(
 										'M',
@@ -111,7 +111,7 @@ CREATE TABLE	drivers
 														)										DEFAULT 'none'				NOT NULL,
 					first_name							VARCHAR(50)															NOT NULL,
 					last_name							VARCHAR(50)															NOT NULL,
-					birth_date							DATE																NOT NULL			CHECK (TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) >= 18),
+					birth_date							DATE																NOT NULL,
 					national_code						CHAR(10)															NOT NULL,
 					license_photo_path					VARCHAR(50)															NOT NULL,
 					national_card_photo_path			VARCHAR(50)															NOT NULL,
@@ -313,7 +313,7 @@ CREATE TABLE	service_acceptances
 											'4-star',
 											'5-star'
 										)						DEFAULT NULL,
-					tracking_code		VARCHAR(20)
+					tracking_code		VARCHAR(20),
 					client_id			INT,
 					request_time		DATETIME,
 					PRIMARY KEY(client_id, request_time),
