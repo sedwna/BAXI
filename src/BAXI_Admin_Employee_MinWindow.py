@@ -191,24 +191,32 @@ class MainWindow:
     def show_admin_panel_recruitment_successful(self):
         self.info_dict.set_first_name_insert_employee_dict(self.ui.get_first_name_admin_panel_recruitment.toPlainText())
         self.info_dict.set_last_name_insert_employee_dict(self.ui.get_last_name_admin_panel_recruitment.toPlainText())
-        print('1', self.ui.get_code_meli_admin_panel_recruitment.toPlainText())
+        print('code_meli ', self.ui.get_code_meli_admin_panel_recruitment.toPlainText())
         self.info_dict.set_birth_date_insert_employee_dict(
             datetime(int(self.ui.get_birthyear_admin_panel_recruitment.text()),
                      int(self.ui.get_birthmonth_admin_panel_recruitment.text()),
                      int(self.ui.get_birthday_admin_panel_recruitment.text())))
-        print("2", self.ui.get_sex_admin_panel_recruitment.currentText())
+        print("sex ", self.ui.get_sex_admin_panel_recruitment.currentText())
         self.info_dict.set_personnel_code_insert_employee_dict(
             self.ui.get_code_personnel_admin_panel_recruitment.toPlainText())
+        print(self.ui.get_code_personnel_admin_panel_recruitment.toPlainText())
         self.info_dict.set_department_insert_employee_dict(self.ui.get_department_admin_panel_recruitment.currentText())
+
         self.info_dict.set_position_code_insert_employee_dict(self.ui.get_semat_admin_panel_recruitment.currentText())
+
         self.info_dict.set_proficiency_insert_employee_dict(self.ui.get_skill_admin_panel_recruitment.currentText())
+
         self.info_dict.set_shaba_number_insert_employee_dict(
             self.ui.get_shaba_number_admin_panel_recruitment.toPlainText())
+
         self.info_dict.set_signup_time_insert_employee_dict()
+
         self.info_dict.set_salary_insert_employee_dict(self.ui.get_salary_admin_panel_recruitment.toPlainText())
+
         self.info_dict.set_password_insert_employee_dict(self.ui.get_code_meli_admin_panel_recruitment.toPlainText())
 
         try:
+            print(self.info_dict.insert_employee_dict)
             insert_employee(self.info_dict.insert_employee_dict)
             print("employee add successfully to db")
         except Exception as err:
@@ -281,7 +289,6 @@ class MainWindow:
         self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
-
 
     def show_employee_panel_authentication_3(self):
         res = get_unverified_drivers()

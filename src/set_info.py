@@ -129,7 +129,7 @@ class InsertInfo:
     def set_driver_id_insert_insert_box_dict(self, driver_id):
         self.insert_box_dict['driver_id'] = driver_id
 
-    insert_employee_dict = {'personnel_code': 11111111,
+    insert_employee_dict = {'personnel_code': None,
                             'shaba_number': None,
                             'signup_time': None,
                             'password': None,
@@ -144,7 +144,7 @@ class InsertInfo:
                             'profile_picture_path': None}
 
     def set_personnel_code_insert_employee_dict(self, personnel_code):
-        self.insert_employee_dict['phone_number'] = personnel_code
+        self.insert_employee_dict['personnel_code'] = personnel_code
 
     def set_shaba_number_insert_employee_dict(self, shaba_number):
         self.insert_employee_dict['shaba_number'] = shaba_number
