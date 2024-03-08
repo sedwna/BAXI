@@ -465,6 +465,23 @@ BEGIN
 	END IF;
 END//
 
+CREATE TRIGGER	company_deposit	AFTER INSERT ON comapny_deposits	FOR EACH ROW
+BEGIN
+	UPDATE drivers	SET wallet_balance = wallet_balance + NEW.amount	WHERE id = NEW.driver_id;
+END//
+
+CREATE TRIGGER	referral_bonus	AFTER INSERT ON referrals	FOR EACH ROW
+BEGIN
+	UPDATE drivers	SET wallet_balance = wallet_balance + 50000	WHERE id = NEW.reffered_id;
+END//
+
+CREATE TRIGGER	compensatory_deposit	AFTER INSERT ON compensatory_deposits	FOR EACH ROW
+BEGIN
+	DECLARE amount	INT;
+	SELECT amount INTO amount	FROM transactions	WHERE tracking_code = NEW.tracking_code;
+	UPDATE drivers	SET wallet_balance = wallet_balance + amount	WHERE id = NEW.driver_id;
+END//
+
 DELIMITER ;
 
 SET GLOBAL event_scheduler = ON;
@@ -496,3 +513,17 @@ DO
 							) AS sub0
 				GROUP BY	driver_id
 			) AS sub1;
+
+CREATE VIEW	female_drivers AS	(
+									SELECT	*
+									FROM	drivers
+									WHERE	sex = 'F'
+								);
+
+CREATE VIEW	male_drivers AS	(
+								SELECT	*
+								FROM	drivers
+								WHERE	sex = 'M'
+							);
+
+CREATE VIEW	
