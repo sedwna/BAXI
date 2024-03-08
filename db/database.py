@@ -622,6 +622,18 @@ def query12():
     cnx.close()
     return result
 
+def query13():
+    cnx = create_connection('baxi_staff')
+    cur = cnx.cursor()
+    query = '''SELECT		COUNT(*) No
+                FROM		employees
+                WHERE		positoin <> 'department manager' AND salary > 5000000 AND education >= 'bachelor''s degree'
+                            AND TIMESTAMPDIFF(YEAR, signup_time, CURDATE()) >= 1''''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
+
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
 
