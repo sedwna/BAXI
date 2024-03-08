@@ -6,6 +6,8 @@ from PyQt6 import QtCore
 
 
 class MapWindow(QMainWindow):
+    lat = 34.79236691747345
+    lon = 48.48875557706634
 
     def setupUi(self, BAXI):
         BAXI.setObjectName("BAXI")
@@ -26,11 +28,17 @@ class MapWindow(QMainWindow):
         # Create a QWebEngineView to display Google Maps
         self.webview = QWebEngineView()
         layout.addWidget(self.webview)
-
         # Load the map centered on a specific location
-        self.load_map(34.79236691747345, 48.48875557706634)
+
+        self.load_map(self.lat, self.lon)
 
     def load_map(self, lat, lon):
         # Load the URL of Google Maps centered on the specified location
         url = f"https://www.google.com/maps/@{lat},{lon},15.5z?entry=ttu"
         self.webview.setUrl(QUrl(url))
+
+    def set_lat(self, lat):
+        self.lat = lat
+
+    def set_lon(self, lon):
+        self.lon = lon

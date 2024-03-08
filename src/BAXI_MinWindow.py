@@ -10,6 +10,7 @@ from db.database import *
 from set_info import InsertInfo
 from generate_random_number import GenerateRandom4Digit
 from verify import *
+from get_lat_lon_info import get_lat_lon_info
 
 
 class MainWindow:
@@ -264,7 +265,9 @@ class MainWindow:
 
     def show_accept_code_sign_in(self):
         try:
-            if CHECK_PHONE_EXIST(self.ui.enter_number_sign_in.toPlainText()):
+            print("rrr", IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()))
+            if IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()) or IS_CLIENT(
+                    self.ui.enter_number_sign_in.toPlainText()):
                 self.gen_rand_number.gen_password_code_rand()
                 self.ui.stackedWidget.setCurrentWidget(self.ui.accept_code_sign_in)
             else:
@@ -526,6 +529,36 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_motor_baxi_box_info)
 
     def show_baxi_user_choose_vehicle_type(self):
+        lat = self.ui.get_pickup_lat_user_home.toPlainText()
+        lon = self.ui.get_pickup_lon_user_home.toPlainText()
+        res = get_lat_lon_info(lat, lon)
+        print(res)
+        id_ = ""
+        if self.ui.enter_number_sign_in.toPlainText() != "":
+            id_ = IS_CLIENT(self.ui.enter_number_sign_in.toPlainText())
+        elif self.ui.enter_number_sign_up.toPlainText() != "":
+            id_ = IS_CLIENT(self.ui.enter_number_sign_up.toPlainText())
+
+        self.info_dict.set_pickup_province_insert_request(res['state'])
+        print(res['state'])
+        self.info_dict.set_pickup_city_insert_request(res['city'])
+        print(res['city'])
+        self.info_dict.set_pickup_latitude_insert_request(float(lat))
+        self.info_dict.set_pickup_longitude_insert_request(float(lon))
+        print("1")
+        self.info_dict.set_request_time_insert_request(datetime.now())
+        print("3")
+        self.info_dict.set_client_id_insert_request(id_[0][0])
+        print("4")
+
+        try:
+            print("5")
+            print(self.info_dict.insert_request_dict)
+            insert_request(self.info_dict.insert_request_dict)
+            print("insert_request successfully")
+        except Exception as err:
+            print(err)
+
         self.ui.popup_success_baxi_user_choose_vehicle_type.setHidden(True)
         self.ui.pushButt_done_baxi_user_choose_vehicle_type.setHidden(True)
         self.ui.stackedWidget.setCurrentWidget(self.ui.baxi_user_choose_vehicle_type)
@@ -599,9 +632,19 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_reached_the_destination)
 
     def show_driver_home(self):
+        res = IS_DRIVER(self.ui.enter_number_sign_in.toPlainText())
+
+        print(x := float(self.ui.get_x_driver_home_on_off_service.toPlainText()))
+        print(y := float(self.ui.get_y_driver_home_on_off_service.toPlainText()))
+        try:
+            update_location(res[0][0], x, y)
+            print("update_location was successful")
+        except Exception as err:
+            print(err)
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home)
 
     def show_driver_home_on_off_service(self):
+        self.ui.stackedWidget.setCurrentWidget(self.mp.show())
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home_on_off_service)
 
 

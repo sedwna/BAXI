@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1391,7 +1391,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_text_2_employee_panel_authentication_request">
@@ -1404,7 +1404,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_text_3_employee_panel_authentication_request">
@@ -1417,7 +1417,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_text_4_employee_panel_authentication_request">
@@ -1430,7 +1430,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_text_5_employee_panel_authentication_request">
@@ -1443,7 +1443,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_text_6_employee_panel_authentication_request">
@@ -1456,7 +1456,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButt_text_7_employee_panel_authentication_request">
@@ -1469,7 +1469,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
     </widget>

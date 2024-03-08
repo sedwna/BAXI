@@ -39,3 +39,15 @@ insert_employee({'personnel_code': 372365825,
                  'education': 'high school diploma',
                  'position': 'department manager',
                  'profile_picture_path': None})
+# importing modules
+# from geopy.geocoders import Nominatim
+#
+# # calling the nominatim tool
+# geoLoc = Nominatim(user_agent="GetLoc")
+#
+# # passing the coordinates
+# locname = geoLoc.reverse("34.792763, 48.500777")
+#
+# # printing the address/location name
+# print(locname.address)
+# print(locname)

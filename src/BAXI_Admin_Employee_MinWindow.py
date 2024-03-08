@@ -7,6 +7,7 @@ from BAXI_Admin_Employee import Ui_BAXI_Admin_Employee
 from db.database import *
 from verify import *
 
+
 from set_info import InsertInfo
 
 
@@ -268,7 +269,7 @@ class MainWindow:
         driver = res[0]
         self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
         self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
-        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[10])
         self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
         self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
@@ -282,7 +283,7 @@ class MainWindow:
         driver = res[1]
         self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
         self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
-        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[10])
         self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
         self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
@@ -296,7 +297,7 @@ class MainWindow:
         driver = res[2]
         self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
         self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
-        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[10])
         self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
         self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
@@ -310,7 +311,7 @@ class MainWindow:
         driver = res[3]
         self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
         self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
-        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[10])
         self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
         self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
@@ -324,7 +325,7 @@ class MainWindow:
         driver = res[4]
         self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
         self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
-        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[10])
         self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
         self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
@@ -338,7 +339,7 @@ class MainWindow:
         driver = res[5]
         self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
         self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
-        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[10])
         self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
         self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
@@ -352,7 +353,7 @@ class MainWindow:
         driver = res[6]
         self.ui.pushButt_show_first_name_employee_panel_authentication.setText(driver[7])
         self.ui.pushButt_show_last_name_employee_panel_authentication.setText(driver[8])
-        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[3])
+        self.ui.pushButt_show_code_meli_employee_panel_authentication.setText(driver[10])
         self.ui.pushButt_show_birthdate_employee_panel_authentication.setText(str(driver[9]))
         self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
@@ -361,9 +362,12 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
     def show_employee_panel_authentication_successful(self):
-        res = IS_DRIVER(self.ui.pushButt_show_phone_number_employee_panel_authentication.text())
+        print("phone test", self.ui.pushButt_show_phone_number_employee_panel_authentication.text())
+        res = driver_phone_number_lookup(self.ui.pushButt_show_phone_number_employee_panel_authentication.text())
+        print('rtest', res)
         try:
-            print("1")
+            print("2")
+            print(res[0][0])
             set_license_verification_date(res[0][0], datetime.now())
             print("1")
             set_judicial_letter_verification_date(res[0][0], datetime.now())
@@ -372,12 +376,23 @@ class MainWindow:
             print("1")
             set_verifier_personnel_code(res[0][0], self.ui.get_id_employee_sign_in.toPlainText())
             print("driver authentication successfully add to db ")
+            self.rst_driver_authentication_reset()
         except Exception as err:
             print(err)
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_successful)
 
     def show_employee_panel_authentication_rejected(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_rejected)
+
+    def rst_driver_authentication_reset(self):
+        self.ui.pushButt_text_1_employee_panel_authentication_request.setText("")
+        self.ui.pushButt_text_2_employee_panel_authentication_request.setText("")
+        self.ui.pushButt_text_3_employee_panel_authentication_request.setText("")
+        self.ui.pushButt_text_4_employee_panel_authentication_request.setText("")
+        self.ui.pushButt_text_5_employee_panel_authentication_request.setText("")
+        self.ui.pushButt_text_6_employee_panel_authentication_request.setText("")
+        self.ui.pushButt_text_7_employee_panel_authentication_request.setText("")
+
 
 
 if __name__ == "__main__":

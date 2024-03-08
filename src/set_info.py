@@ -1,14 +1,15 @@
 import datetime
+from shapely.geometry import Point
 
 
 class InsertInfo:
     insert_client_dict = {'client_id': None,
                           'phone_number': None,
                           'wallet_balance': 0,
-                          'signup_time': None,
+                          'signup_time': datetime,
                           'first_name': None,
                           'last_name': None,
-                          'birth_date': None,
+                          'birth_date': datetime,
                           'sex': None,
                           'email': None}
 
@@ -17,11 +18,11 @@ class InsertInfo:
                           'phone_number': None,
                           'shaba_number': None,
                           'wallet_balance': 0,
-                          'signup_time': None,
+                          'signup_time': datetime,
                           'disability': None,
                           'first_name': None,
                           'last_name': None,
-                          'birth_date': None,
+                          'birth_date': datetime,
                           'national_code': None,
                           'license_photo_path': None,
                           'national_card_photo_path': None,
@@ -30,7 +31,8 @@ class InsertInfo:
                           'judicial_letter_path': None,
                           'judicial_letter_verification_date': None,
                           'final_verification_date': None,
-                          'location': None,
+                          'latitude': None,
+                          'longitude': None,
                           'profile_picture_path': None,
                           'verifier_personnel_code': None}
 
@@ -233,8 +235,11 @@ class InsertInfo:
     def set_final_verification_date_insert_driver_dict(self, final_verification_date):
         self.insert_driver_dict['final_verification_date'] = final_verification_date
 
-    def set_location_insert_driver_dict(self, location):
-        self.insert_driver_dict['location'] = location
+    def set_latitude_insert_driver_dict(self, latitude):
+        self.insert_driver_dict['latitude'] = latitude
+
+    def set_longitude_insert_driver_dict(self, longitude):
+        self.insert_driver_dict['longitude'] = longitude
 
     def set_profile_picture_path_insert_driver_dict(self, profile_picture_path):
         self.insert_driver_dict['profile_picture_path'] = profile_picture_path
@@ -268,3 +273,28 @@ class InsertInfo:
 
     def set_email_insert_client_dict(self, email):
         self.insert_client_dict['email'] = email
+
+    insert_request_dict = {'pickup_latitude': None,
+                           'pickup_longitude': None,
+                           'pickup_province': "none",
+                           'pickup_city': "none",
+                           'client_id': 0,
+                           'request_time': datetime}
+
+    def set_pickup_latitude_insert_request(self, pickup_latitude):
+        self.insert_request_dict['pickup_latitude'] = pickup_latitude
+
+    def set_pickup_longitude_insert_request(self, pickup_longitude):
+        self.insert_request_dict['pickup_longitude'] = pickup_longitude
+
+    def set_pickup_province_insert_request(self, pickup_province):
+        self.insert_request_dict['pickup_province'] = pickup_province
+
+    def set_pickup_city_insert_request(self, pickup_city):
+        self.insert_request_dict['pickup_city'] = pickup_city
+
+    def set_client_id_insert_request(self, client_id):
+        self.insert_request_dict['client_id'] = client_id
+
+    def set_request_time_insert_request(self, request_time):
+        self.insert_request_dict['request_time'] = request_time

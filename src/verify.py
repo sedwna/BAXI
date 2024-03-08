@@ -79,10 +79,11 @@ def PHONE_NUMBER_EMPTY(phone_number):
 def IS_DRIVER(phone_number):
     phone_number = phone_number.strip('0')
     res = driver_phone_number_lookup(phone_number)
-    print("driver ", res)
+    print("driver 2 ", res)
     try:
-        if res :#and not is_driver_account_inactive(res[0][0])
-            print("driver ", res)
+        print("test", is_driver_account_inactive(res[0][0]))
+        if res and not is_driver_account_inactive(res[0][0]):
+            print("driverr ", res)
             return res
     except Exception as err:
         print(err)
