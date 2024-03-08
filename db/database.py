@@ -471,10 +471,17 @@ def pyramid_query(id):
 def query1():
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''SELECT       D.*
-                FROM		drivers D, baxi B, baxi_baar BB
-                WHERE		(D.id = B.driver_id AND B.vehicle_color  = 'blue' AND B.vehicle_name  LIKE '%pride%') OR 
-			                (D.id = BB.driver_id AND B.vehicle_color = 'blue' AND BB.vehicle_name LIKE '%pride%'))'''
+    query = '''SELECT       *
+				FROM		
+				(
+					SELECT	*
+                	FROM	drivers D JOIN baxi B ON D.id = B.driver_id
+                	WHERE 	(D.id = B.driver_id AND B.vehicle_color  = 'blue' AND B.vehicle_name  LIKE '%pride%')
+                	UNION
+					SELECT	*
+                	FROM	drivers D jOIN baxi_baar BB ON D.id = BB.driver_id
+                	WHERE 	(D.id = BB.driver_id AND BB.vehicle_color  = 'blue' AND BB.vehicle_name  LIKE '%pride%')
+				) sub0'''
     cur.execute(query)
     result = cur.fetchall()
     cur.close()
@@ -486,7 +493,7 @@ def query2():
     cur = cnx.cursor()
     query = '''SELECT		drivers.*
                 FROM		drivers JOIN baxi ON id = driver_id
-                WHERE 		D.sex = 'F' AND vehicle_color = 'blue' AND TIMESTAMPDIFF(YEAR, birth_date,CURDATE()) > 30'''
+                WHERE 		sex = 'F' AND vehicle_color = 'blue' AND TIMESTAMPDIFF(YEAR, birth_date,CURDATE()) > 30'''
     cur.execute(query)
     result = cur.fetchall()
     cur.close()
@@ -509,10 +516,9 @@ def query4():
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''SELECT		c.*
-				FROM		clients c join addresses
-				USING		(client_id)
+				FROM		clients c join addresses ON c.id = addresses.client_id
 				WHERE		wallet_balance > 50
-				GROUP BY	c.client_id, phone_number, wallet_balance, signup_time, first_name, last_name, birth_date, sex, email
+				GROUP BY	c.id, phone_number, wallet_balance, signup_time, first_name, last_name, birth_date, sex, email
 				HAVING		COUNT(*) >= 2'''
     cur.execute(query)
     result = cur.fetchall()
@@ -526,12 +532,12 @@ def query5():
     query = '''SELECT       time
                 FROM		
                 (
-	                SELECT 		DATE(request_time) time, COUNT(*) no
+	                SELECT 		DATE(request_time) time, COUNT(*) AS no
 	                FROM		baxi_trips JOIN clients ON client_id = id
 	                WHERE		round_trip = 'yes' AND TIMESTAMPDIFF(YEAR, birth_date,CURDATE()) BETWEEN 15 AND 18
 	                GROUP BY	DATE(request_time)
-                )
-                HAVING		MIN(no) = no'''
+                ) sub0
+				HAVING		MIN(no) = no'''
     cur.execute(query)
     result = cur.fetchall()
     cur.close()
@@ -580,14 +586,14 @@ def query8():
                     FROM		drivers D, baxi_baar BB
                     WHERE		BB.vehicle_fuel_type = 'CNG' AND D.disability = 'hearing loss' AND BB.vehicle_name LIKE '%vanet%' AND D.id = BB.driver_id
                     HAVING		TIMESTAMPDIFF(YEAR, D.birth_date, CURDATE()) > (SELECT AVG(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()))      FROM drivers)
-                ) NV,
+                ) AS NV,
                 (
-                    SELECT		COUNT(*) no
-                    FROM		service_acceptances NATRUAL JOIN baxi_trips
+                    SELECT		COUNT(*) AS no
+                    FROM		service_acceptances NATRUAL JOIN baxi
                     WHERE		vehicle_capacity >= 4
-                ) Z4
-                GROUP BY	NV.first_name, NV.last_name, NV.birth_date, NV.id
-                HAVING		COUNT(*) > Z4'''
+                ) AS Z4
+                GROUP BY	NV.first_name, NV.last_name, NV.birth_date, NV.id, Z4.no
+                HAVING		COUNT(*) > Z4.no'''
     cur.execute(query)
     result = cur.fetchall()
     cur.close()
@@ -599,7 +605,7 @@ def query9():
     cur = cnx.cursor()
     query = '''SELECT		vehicle_license_plate, first_name, last_name
                 FROM		((heavy_transports NATRUAL JOIN service_acceptances) NATURAL JOIN baxi_baar) JOIN drivers ON driver_id = id
-                WHERE		cargo_value <= 50000000 AND cargo_type = 'fragile'''
+                WHERE		cargo_value <= 50000000 AND cargo_type = "fragile"'''
     cur.execute(query)
     result = cur.fetchall()
     cur.close()
@@ -610,17 +616,17 @@ def query10():
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''SELECT		C.last_name, C.phone_number, C.email
-                FROM		clients C, 
-                (
-                    SELECT		C2.id, DATE(A.request_time), COUNT(*) no
-                    FROM		clients C2 JOIN service_acceptances A ON C2.id = A.client_id
-                    WHERE		DATE(A.request_time) BETWEEN '2024-02-21' AND '2024-01-01'	
-                    GROUP BY	DATE(A.request_time)		
-                ) BETDAT
+                FROM		clients C
                 WHERE		(C.first_name LIKE '%Piotr%' OR C.last_name LIKE '%Piotr%') AND C.sex = 'M' AND C.id IN 
                             (
                                 SELECT		BDT.id
-                                FROM		BETDAT BDT,
+                                FROM		
+								(
+									SELECT		C2.id, DATE(A.request_time), COUNT(*) no
+									FROM		clients C2 JOIN service_acceptances A ON C2.id = A.client_id
+									WHERE		DATE(A.request_time) BETWEEN '2024-02-21' AND '2024-01-01'	
+									GROUP BY	DATE(A.request_time), C2.id		
+								) BDT,
                                 (
                                     SELECT 		COUNT(*) no
                                     FROM		destinations D	
@@ -628,6 +634,7 @@ def query10():
                                     GROUP BY	D.client_id, DATE(D.request_time)
                                     HAVING		COUNT(*) >= 2
                                 ) MULTID
+                                GROUP BY	BDT.no, MULTID.no, BDT.id
                                 HAVING		MAX(BDT.no) > MAX(MULTID.no)
                             )'''
     cur.execute(query)
@@ -640,14 +647,13 @@ def query11():
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''SELECT		C.*
-                FROM		clients C JOIN accepteances A on C.id = A.client_id,
-                (
-                    SELECT		client_id
-                    FROM		(clients JOIN deposits ON id = client_id) NATRUAL JOIN transactoins
-                    GROUP BY	client_id
-                    HAVING		SUM(amount) > 100000
-                )MONEY
-                WHERE		C.id IN MONEY AND TIMESTAMPDIFF(HOUR, request_time, A.end_time) >= 1
+                FROM		clients C JOIN service_acceptances A on C.id = A.client_id
+                WHERE		C.id IN (  
+										SELECT		client_id
+										FROM		(clients JOIN deposits ON id = client_id) NATURAL JOIN transactions
+										GROUP BY	client_id
+										HAVING		SUM(amount) > 100000
+									) AND TIMESTAMPDIFF(HOUR, request_time, A.end_time) >= 1
                 GROUP BY	C.id
                 HAVING 		COUNT(*) <= 2'''
     cur.execute(query)
