@@ -821,6 +821,35 @@ def query18():
     cnx.close()
     return result
 
+def query19():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT		C.*
+                FROM		(clients C JOIN baxi_trips ON id = client_id) T
+                WHERE		C.sex = 'F' AND 4 = 
+			                (
+                                SELECT 		COUNT(DISTICT DAY(request_time))
+                                FROM		client JOIN baxi_trips ON id = client_id
+                                WHERE		requeste_time >= CURDATE() - INTERVAL 1 WEEK AND client_id = C.id AND DAY(request_time) % 2 <> 0
+                            ) AND EXISTS
+			                (
+                                SELECT		driver_id
+                                FROM		T NATURAL JOIN
+                                    (
+                                        SELECT		driver_id
+                                        FROM		withdrawals NATURAL JOIN transactoins
+                                        GROUP BY	driver_id
+                                        HAVING		SUM(amount) > 100000
+                                    )
+                            
+                                WHERE		T.client_id = C.id 
+			                )'''
+    cur.execute(query)
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
 
