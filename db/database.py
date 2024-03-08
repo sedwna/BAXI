@@ -450,6 +450,24 @@ def insert_client(values):
     cur.close()
     cnx.close()
 
+def pyramid_query(id):
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''WITH RECURSIVE pyramid (referrer_id, referred_id, factor) AS	(
+																				SELECT		referrer_id, referred_id, CAST(0.1 AS FLOAT)
+																				FROM		referrals
+																				WHERE		referred_id = %s
+																				UNION ALL
+																				SELECT		r.referrer_id, r.referred_id, factor / 2
+																				FROM		referrals r JOIN pyramid ON r.referred_id = pyramid.referrer_id
+																			)
+																			select * from pyramid;'''
+    cur.execute(query, (id,))
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
 def query1():
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
@@ -1087,8 +1105,8 @@ def requests_within_range(lat, lon):
     cur = cnx.cursor()
     query = """SELECT	first_name, last_name, pickup_location, pickup_province, pickup_city, city, latitude, longitude
 				FROM	(service_requests JOIN clients ON client_id = id) JOIN destinations USING (client_id, request_time)
-				WHERE	(6371 * acos(cos(radians(%s)) * cos(radians(ST_Y(pickup_location))) * cos(radians(ST_X(pickup_location))) - radians(%s)) + sin(radians(%s)) * sin(radians(ST_Y(pickup_location)))) <= 5"""
-    cur.execute(query, (lat, lon, lat))
+				WHERE	ST_Distance_Sphere(POINT(%s, %s), pickup_location) <= 5000"""
+    cur.execute(query, (lat, lon))
     result = cur.fetchall()
     cur.close()
     cnx.close()
