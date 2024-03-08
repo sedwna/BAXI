@@ -788,13 +788,13 @@ def driver_phone_number_lookup(number):
 
 
 # call after driver sign-in
-def update_location(driver_id, location):
+def update_location(driver_id, lat, lon):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''UPDATE	drivers
-				SET		location = %s
+				SET		location = POINT(%s, %s)
 				WHERE	id = %s'''
-    cur.execute(query, (location, driver_id))
+    cur.execute(query, (lat, lon, driver_id))
     cnx.commit()
     cur.close()
     cnx.close()
@@ -1107,6 +1107,19 @@ def requests_within_range(lat, lon):
 				FROM	(service_requests JOIN clients ON client_id = id) JOIN destinations USING (client_id, request_time)
 				WHERE	ST_Distance_Sphere(POINT(%s, %s), pickup_location) <= 5000"""
     cur.execute(query, (lat, lon))
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
+
+def get_location(id):
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+	query = '''SELECT	location
+				FROM	drivers
+				WHERE	id = %s'''
+    cur.execute(query, (id,))
     result = cur.fetchall()
     cur.close()
     cnx.close()
