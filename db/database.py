@@ -525,6 +525,29 @@ def query7():
     cnx.close()
     return result
 
+def query8():
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT		NV.first_name, NV.last_name, TIMESTAMPDIFF(YEAR, NV.birth_date,CURDATE()) Age
+                FROM
+                (
+	                SELECT		D.*
+                    FROM		drivers D, baxi_baar BB
+                    WHERE		BB.vehicle_fuel_type = 'CNG' AND D.disability = 'hearing loss' AND BB.vehicle_name LIKE '%vanet%' AND D.id = BB.driver_id
+                    HAVING		TIMESTAMPDIFF(YEAR, D.birth_date, CURDATE()) > (SELECT AVG(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()))      FROM drivers)
+                ) NV,
+                (
+                    SELECT		COUNT(*) no
+                    FROM		service_acceptances NATRUAL JOIN baxi_trips
+                    WHERE		vehicle_capacity >= 4
+                ) Z4
+                GROUP BY	NV.first_name, NV.last_name, NV.birth_date, NV.id
+                HAVING		COUNT(*) > Z4'''
+    cur.execute(query)
+    result = cur.fetchall()
+    cnx.close()
+    return result
+
 '''	sign-in phone number lookup
 	return format: tuple(id, wallet_balance, first_name, last_name, profile_picture_path)'''
 
