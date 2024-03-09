@@ -377,3 +377,69 @@ class InsertInfo:
 
     def set_client_id_insert_heavy_dict(self, client_id):
         self.insert_heavy_dict['client_id'] = client_id
+
+    insert_light_dict = {'cost': int,
+                         'cargo_weight': int,
+                         'cargo_value': int,
+                         'dropoff_latitude': float,
+                         'dropoff_longitude': float,
+                         'dropoff_city': str,
+                         'insurance_cost': int,
+                         'cargo_type': str,
+                         'client_id': int,
+                         'request_time': datetime}
+
+    def set_cost_insert_light_dict(self, cost):
+        self.insert_light_dict['cost'] = cost
+
+    def set_client_id_insert_light_dict(self, client_id):
+        self.insert_light_dict['client_id'] = client_id
+
+    def set_cargo_weight_insert_light_dict(self, cargo_weight):
+        self.insert_light_dict['cargo_weight'] = cargo_weight
+
+    def set_cargo_value_insert_light_dict(self, cargo_value):
+        self.insert_light_dict['cargo_value'] = cargo_value
+
+    def set_dropoff_latitude_insert_light_dict(self, dropoff_latitude):
+        self.insert_light_dict['dropoff_latitude'] = dropoff_latitude
+
+    def set_dropoff_longitude_insert_light_dict(self, dropoff_longitude):
+        self.insert_light_dict['dropoff_longitude'] = dropoff_longitude
+
+    def set_dropoff_city_insert_light_dict(self, dropoff_city):
+        self.insert_light_dict['dropoff_city'] = dropoff_city
+
+    def set_insurance_cost_insert_light_dict(self, insurance_cost):
+        self.insert_light_dict['insurance_cost'] = insurance_cost
+
+    def set_cargo_type_insert_light_dict(self, cargo_type):
+        self.insert_light_dict['cargo_type'] = cargo_type
+
+    insert_transaction_dict = {'tracking_code': str,
+                               'time': datetime,
+                               'shaba_number': str,
+                               'amount': int,
+                               'state': str,
+                               'type': str}
+
+    def set_tracking_code_insert_transaction_dict(self, tracking_code):
+        self.insert_transaction_dict['tracking_code'] = tracking_code
+
+    def set_time_insert_transaction_dict(self, time):
+        self.insert_transaction_dict['time'] = time
+
+    def set_shaba_number_insert_transaction_dict(self, shaba_number):
+        self.insert_transaction_dict['shaba_number'] = shaba_number
+
+    def set_amount_insert_transaction_dict(self, amount):
+        self.insert_transaction_dict['amount'] = amount
+
+    def set_state_insert_transaction_dict(self, state):
+        self.insert_transaction_dict['state'] = state
+
+    def set_type_insert_transaction_dict(self, type):
+        self.insert_transaction_dict['type'] = type
+
+    def set_request_time_insert_light_dict(self, request_time):
+        self.insert_light_dict['request_time'] = request_time

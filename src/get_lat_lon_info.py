@@ -41,3 +41,10 @@ def trip_cost_heavy(pickup, dropoff):
     km = geopy.distance.geodesic(pickup[0], dropoff[0]).km
     print(km)
     return km * 20000
+
+def trip_cost_light(pickup, dropoff):
+    print("pickup ", pickup[0])
+    print("dropoff ", dropoff[0])
+    km = geopy.distance.geodesic(pickup[0], dropoff[0]).km
+    print(km)
+    return km * 80000

@@ -1,12 +1,12 @@
 class Client:
     client_id = int
-    phone_nuber = str
+    phone_number = str
     wallet_balance = int
     first_name = str
     last_name = str
     birth_date = int
     sex = str
-    email = str
+    email = "str"
     request_time = int
     pickup = []
     dropoff = []
@@ -15,10 +15,10 @@ class Client:
         self.client_id = client_id
 
     def set_phone_number(self, phone_number):
-        self.phone_nuber = phone_number
+        self.phone_number = phone_number
 
     def set_wallet_balance(self, wallet_balance):
-        self.phone_nuber = wallet_balance
+        self.wallet_balance = wallet_balance
 
     def set_first_name(self, first_name):
         self.first_name = first_name
@@ -27,13 +27,13 @@ class Client:
         self.last_name = last_name
 
     def set_birth_date(self, birth_date):
-        self.phone_nuber = birth_date
+        self.birth_date = birth_date
 
     def set_sex(self, sex):
-        self.phone_nuber = sex
+        self.sex = sex
 
     def set_email(self, email):
-        self.phone_nuber = email
+        self.email = email
 
     def set_request_time(self, request_time):
         self.request_time = request_time
@@ -47,8 +47,8 @@ class Client:
     def get_client_id(self):
         return self.client_id
 
-    def get_phone_nuber(self):
-        return self.phone_nuber
+    def get_phone_number(self):
+        return self.phone_number
 
     def get_wallet_balance(self):
         return self.wallet_balance
