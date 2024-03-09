@@ -502,6 +502,22 @@ BEGIN
 	UPDATE drivers	SET wallet_balance = wallet_balance + amount	WHERE id = NEW.driver_id;
 END//
 
+CREATE TRIGGER	client_age_check	BEFORE INSERT ON clients	FOR EACH ROW
+BEGIN
+	IF TIMESTAMPDIFF(YEAR, NEW.birth_date, CURDATE()) < 15 THEN
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Client''s age must be 15 or greater';
+	END IF;
+END//
+
+CREATE TRIGGER	driver_age_check	BEFORE INSERT ON drivers	FOR EACH ROW
+BEGIN
+	IF TIMESTAMPDIFF(YEAR, NEW.birth_date, CURDATE()) < 18 THEN
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Driver''s age must be 18 or greater';
+	END IF;
+END//
+
 DELIMITER ;
 
 SET GLOBAL event_scheduler = ON;
@@ -555,3 +571,9 @@ CREATE VIEW	box_drivers AS	(
 								SELECT	*
 								FROM	drivers JOIN baxi_box ON id = driver_id
 							);
+
+CREATE VIEW	indebt_drivers AS	(
+									SELECT	*
+									FROM	drivers
+									WHERE	wallet_balance < 0
+								);
