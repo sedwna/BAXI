@@ -187,7 +187,7 @@ def insert_driver(values):
 def insert_trip(values):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''INSERT INTO baxi_trips VALUES (%(cost)s, %(round_trip)s ,c%(client_id)s, %(request_time)s)'''
+    query = '''INSERT INTO baxi_trips VALUES (%(cost)s, %(round_trip)s, %(client_id)s, %(request_time)s)'''
     cur.execute(query, values)
     cnx.commit()
     cur.close()
