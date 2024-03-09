@@ -274,27 +274,106 @@ class InsertInfo:
     def set_email_insert_client_dict(self, email):
         self.insert_client_dict['email'] = email
 
-    insert_request_dict = {'pickup_latitude': None,
-                           'pickup_longitude': None,
-                           'pickup_province': "none",
-                           'pickup_city': "none",
-                           'client_id': 0,
+    insert_request_dict = {'pickup_latitude': float,
+                           'pickup_longitude': float,
+                           'pickup_province': str,
+                           'pickup_city': str,
+                           'client_id': int,
                            'request_time': datetime}
 
-    def set_pickup_latitude_insert_request(self, pickup_latitude):
+    def set_pickup_latitude_insert_request_dict(self, pickup_latitude):
         self.insert_request_dict['pickup_latitude'] = pickup_latitude
 
-    def set_pickup_longitude_insert_request(self, pickup_longitude):
+    def set_pickup_longitude_insert_request_dict(self, pickup_longitude):
         self.insert_request_dict['pickup_longitude'] = pickup_longitude
 
-    def set_pickup_province_insert_request(self, pickup_province):
+    def set_pickup_province_insert_request_dict(self, pickup_province):
         self.insert_request_dict['pickup_province'] = pickup_province
 
-    def set_pickup_city_insert_request(self, pickup_city):
+    def set_pickup_city_insert_request_dict(self, pickup_city):
         self.insert_request_dict['pickup_city'] = pickup_city
 
-    def set_client_id_insert_request(self, client_id):
+    def set_client_id_insert_request_dict(self, client_id):
         self.insert_request_dict['client_id'] = client_id
 
-    def set_request_time_insert_request(self, request_time):
+    def set_request_time_insert_request_dict(self, request_time):
         self.insert_request_dict['request_time'] = request_time
+
+    insert_destination_dict = {'city': str,
+                               'client_id': int,
+                               'request_time': datetime,
+                               'latitude': float,
+                               'longitude': float}
+
+    def set_latitude_insert_destination_dict(self, latitude):
+        self.insert_destination_dict['latitude'] = latitude
+
+    def set_longitude_insert_destination_dict(self, longitude):
+        self.insert_destination_dict['longitude'] = longitude
+
+    def set_city_insert_destination_dict(self, city):
+        self.insert_destination_dict['city'] = city
+
+    def set_client_id_insert_destination_dict(self, client_id):
+        self.insert_destination_dict['client_id'] = client_id
+
+    def set_request_time_insert_destination_dict(self, request_time):
+        self.insert_destination_dict['request_time'] = request_time
+
+    insert_trip_dict = {'cost': int,
+                        'round_trip': None,
+                        'client_id': int,
+                        'request_time': datetime}
+
+    def set_cost_insert_trip_dict(self, cost):
+        self.insert_trip_dict['cost'] = cost
+
+    def set_round_trip_insert_trip_dict(self, round_trip):
+        self.insert_trip_dict['round_trip'] = round_trip
+
+    def set_client_id_insert_trip_dict(self, client_id):
+        self.insert_trip_dict['client_id'] = client_id
+
+    def set_request_time_insert_trip_dict(self, request_time):
+        self.insert_trip_dict['request_time'] = request_time
+
+    insert_heavy_dict = {'cost': int,
+                         'cargo_weight': int,
+                         'cargo_value': int,
+                         'dropoff_latitude': float,
+                         'dropoff_longitude': float,
+                         'dropoff_city': str,
+                         'cargo_type': str,
+                         'client_helped': str,
+                         'client_id': int,
+                         'request_time': datetime}
+
+    def set_cost_insert_heavy_dict(self, cost):
+        self.insert_heavy_dict['cost'] = cost
+
+    def set_cargo_weight_insert_heavy_dict(self, cargo_weight):
+        self.insert_heavy_dict['cargo_weight'] = cargo_weight
+
+    def set_cargo_value_insert_heavy_dict(self, cargo_value):
+        self.insert_heavy_dict['cargo_value'] = cargo_value
+
+    def set_dropoff_latitude_insert_heavy_dict(self, dropoff_latitude):
+        self.insert_heavy_dict['dropoff_latitude'] = dropoff_latitude
+
+    def set_dropoff_longitude_insert_heavy_dict(self, dropoff_longitude):
+        self.insert_heavy_dict['dropoff_longitude'] = dropoff_longitude
+
+    def set_dropoff_city_insert_heavy_dict(self, dropoff_city):
+        self.insert_heavy_dict['dropoff_city'] = dropoff_city
+
+    def set_client_helped_insert_heavy_dict(self, client_helped):
+        self.insert_heavy_dict['client_helped'] = client_helped
+
+    def set_cargo_type_insert_heavy_dict(self, cargo_type):
+        self.insert_heavy_dict['cargo_type'] = cargo_type
+
+    def set_request_time_insert_heavy_dict(self, request_time):
+        self.insert_heavy_dict['request_time'] = request_time
+
+    def set_client_id_insert_heavy_dict(self, client_id):
+        self.insert_heavy_dict['client_id'] = client_id

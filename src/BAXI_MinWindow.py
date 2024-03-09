@@ -7,15 +7,18 @@ from BAXI import Ui_BAXI
 from show_map import MapWindow
 import datetime
 from db.database import *
+
 from set_info import InsertInfo
 from generate_random_number import GenerateRandom4Digit
 from verify import *
-from get_lat_lon_info import get_lat_lon_info
+from get_lat_lon_info import get_lat_lon_info, trip_cost_baxi, trip_cost_heavy
+from client import Client
 
 
 class MainWindow:
     info_dict = InsertInfo()
     gen_rand_number = GenerateRandom4Digit()
+    client_1 = Client()
 
     def __init__(self):
         super().__init__()
@@ -138,7 +141,7 @@ class MainWindow:
             self.show_user_home_after_sign_in)
         # -------------------------------------------------------------------------------------------------
         # go to baxi_user_choose_vehicle_type page --------------------------------------------------------
-        self.ui.pushButt_accept_user_home.clicked.connect(self.show_baxi_user_choose_vehicle_type)
+        self.ui.pushButt_accept_user_home.clicked.connect(self.set_general_info_trip)
         self.ui.pushButt_go_to_baxi_baxi_box_user_choose_vehicle_type.clicked.connect(
             self.show_baxi_user_choose_vehicle_type)
         self.ui.pushButt_go_to_baxi_baxi_bar_user_choose_vehicle_type.clicked.connect(
@@ -172,16 +175,16 @@ class MainWindow:
         # -------------------------------------------------------------------------------------------------
         # set popup success hide-------------------------------------------------------------------------
         self.ui.pushButt_request_baxi_user_choose_vehicle_type.clicked.connect(
-            self.popup_success_baxi_user_choose_vehicle_type_setHidden)
+            self.show_booking_successful_baxi)
 
         self.ui.pushButt_request_baxi_woman_baxi_woman_user_choose_vehicle_type.clicked.connect(
-            self.popup_success_baxi_woman_user_choose_vehicle_type_setHidden)
+            self.show_booking_successful_baxi_woman)
 
         self.ui.pushButt_request_baxi_box_baxi_box_user_choose_vehicle_type.clicked.connect(
-            self.popup_success_baxi_box_user_choose_vehicle_type_setHidden)
+            self.show_booking_successful_baxi_box)
 
         self.ui.pushButt_request_baxi_bar_baxi_bar_user_choose_vehicle_type.clicked.connect(
-            self.popup_success_baxi_bar_user_choose_vehicle_type_setHidden)
+            self.show_booking_successful_baxi_bar)
         # -------------------------------------------------------------------------------------------------
         # set menu bar in user home -----------------------------------------------------------------------
         self.ui.pushButt_profile_user_home.clicked.connect(self.show_menu_bar_user_home)
@@ -251,6 +254,8 @@ class MainWindow:
 
         self.ui.pushButt_on_service_driver_home_on_off_service.clicked.connect(self.show_driver_home)
 
+        self.ui.pushButt_cancel_booking_successful.clicked.connect(self.cancel_request)
+
     def show(self):
         self.main_win.show()
 
@@ -289,7 +294,7 @@ class MainWindow:
             print(err)
 
     def show_select_driver_user(self):
-        input_password = self.ui.pass_digit1_accept_code_sign_up.toPlainText() + self.ui.pass_digit2_accept_code_sign_up.toPlainText() + self.ui.pass_digit3_accept_code_sign_up.toPlainText() + self.ui.pass_digit4_accept_code_sign_up.toPlainText()
+        input_password = self.ui.pass_digit1_accept_code_sign_up.toPlainText()
         if CHECK_IN_PASS_EQ_GEN_PASS(input_password, self.gen_rand_number.password_code):
             self.ui.stackedWidget.setCurrentWidget(self.ui.select_driver_user)
 
@@ -356,13 +361,14 @@ class MainWindow:
             self.info_dict.set_vehicle_production_date_insert_baxi_dict(
                 datetime(int(self.ui.machine_generate_year_get_machine_baxi_woman_info.text()), 1, 1))
             self.info_dict.set_vehicle_name_insert_baxi_dict(
-                self.ui.machine_name_get_machine_baxi_woman_info.toPlainText())
+                self.ui.machine_name_get_machine_baxi_info.toPlainText())
             self.info_dict.set_vehicle_color_insert_baxi_dict(
                 self.ui.machine_color_get_machine_baxi_woman_info.currentText())
             self.info_dict.set_vehicle_license_plate_insert_baxi_dict(
                 self.ui.two_digit_left_pelak_get_machine_baxi_woman_info.toPlainText() +
                 self.ui.alphabet_get_machine_baxi_woman_info.currentText() +
                 self.ui.three_digit_pelak_get_machine_baxi_woman_info.toPlainText() +
+                "-" +
                 self.ui.two_digit_right_pelak_get_machine_baxi_woman_info.toPlainText())
             self.info_dict.set_vehicle_fuel_type_insert_baxi_dict(
                 self.ui.machine_fuel_get_machine_baxi_woman_info.currentText())
@@ -370,12 +376,15 @@ class MainWindow:
                 self.ui.machine_capacity_get_machine_baxi_woman_info.currentText())
             i_d = CHECK_ID_DRIVER(self.ui.enter_number_sign_up.toPlainText())
             self.info_dict.set_driver_id_insert_baxi_dict(i_d[0][0])
+            print(i_d)
+            print(self.info_dict.insert_baxi_dict)
 
             insert_baxi(self.info_dict.insert_baxi_dict)
-            print(self.info_dict.insert_baxi_dict)
+
             print("baxi women info successfully ad to db")
         except Exception as err:
             print(err)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
 
     def show_registration_successful_baxi_bar(self):
         try:
@@ -394,7 +403,7 @@ class MainWindow:
                 +
                 self.ui.three_digit_pelak_get_machine_baxi_bar_info.toPlainText()
                 +
-                self.ui.two_digit_right_pelak_get_machine_baxi_bar_info.toPlainText())
+                "-" + self.ui.two_digit_right_pelak_get_machine_baxi_bar_info.toPlainText())
             self.info_dict.set_vehicle_fuel_type_insert_baar_dict(
                 self.ui.machine_fuel_get_machine_baxi_bar_info.currentText())
             self.info_dict.set_vehicle_capacity_insert_baar_dict(
@@ -407,6 +416,7 @@ class MainWindow:
             print("baxi baar info successfully ad to db")
         except Exception as err:
             print(err)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
 
     def show_registration_successful_baxi_box(self):
         try:
@@ -419,6 +429,7 @@ class MainWindow:
 
             self.info_dict.set_vehicle_license_plate_insert_box_dict(
                 self.ui.five_digit_pelak_get_motor_baxi_box_info.toPlainText() +
+                "-" +
                 self.ui.three_digit_pelak_get_motor_baxi_box_info.toPlainText())
 
             self.info_dict.set_vehicle_capacity_insert_box_dict(
@@ -426,12 +437,13 @@ class MainWindow:
 
             i_d = CHECK_ID_DRIVER(self.ui.enter_number_sign_up.toPlainText())
             self.info_dict.set_driver_id_insert_insert_box_dict(i_d[0][0])
-
-            insert_box(self.info_dict.insert_box_dict)
             print(self.info_dict.insert_box_dict)
+            insert_box(self.info_dict.insert_box_dict)
+
             print("baxi box info successfully ad to db")
         except Exception as err:
             print(err)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.registration_successful)
 
     def show_registration_successful_baxi(self):
         try:
@@ -445,7 +457,7 @@ class MainWindow:
                 self.ui.two_digit_left_pelak_get_machine_baxi_info.toPlainText() +
                 self.ui.alphabet_get_machine_baxi_info.currentText() +
                 self.ui.three_digit_pelak_get_machine_baxi_info.toPlainText() +
-                self.ui.two_digit_right_pelak_get_machine_baxi_info.toPlainText())
+                "-" + self.ui.two_digit_right_pelak_get_machine_baxi_info.toPlainText())
             self.info_dict.set_vehicle_fuel_type_insert_baxi_dict(
                 self.ui.machine_fuel_get_machine_baxi_info.currentText())
             self.info_dict.set_vehicle_capacity_insert_baxi_dict(
@@ -453,8 +465,9 @@ class MainWindow:
             i_d = CHECK_ID_DRIVER(self.ui.enter_number_sign_up.toPlainText())
             self.info_dict.set_driver_id_insert_baxi_dict(i_d[0][0])
 
-            insert_baxi(self.info_dict.insert_baxi_dict)
             print(self.info_dict.insert_baxi_dict)
+            insert_baxi(self.info_dict.insert_baxi_dict)
+
             print("baxi info successfully ad to db")
 
         except Exception as err:
@@ -494,22 +507,6 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
 
-    def popup_success_baxi_user_choose_vehicle_type_setHidden(self):
-        self.ui.popup_success_baxi_user_choose_vehicle_type.setHidden(False)
-        self.ui.pushButt_done_baxi_user_choose_vehicle_type.setHidden(False)
-
-    def popup_success_baxi_woman_user_choose_vehicle_type_setHidden(self):
-        self.ui.popup_success_baxi_woman_user_choose_vehicle_type.setHidden(False)
-        self.ui.pushButt_done_baxi_woman_user_choose_vehicle_type.setHidden(False)
-
-    def popup_success_baxi_bar_user_choose_vehicle_type_setHidden(self):
-        self.ui.popup_success_baxi_bar_user_choose_vehicle_type.setHidden(False)
-        self.ui.pushButt_done_baxi_bar_user_choose_vehicle_type.setHidden(False)
-
-    def popup_success_baxi_box_user_choose_vehicle_type_setHidden(self):
-        self.ui.popup_success_baxi_box_user_choose_vehicle_type.setHidden(False)
-        self.ui.pushButt_done_baxi_box_user_choose_vehicle_type.setHidden(False)
-
     def send_driver_info_to_db(self):
         self.gen_rand_number.gen_referral_code_rand()
         self.info_dict.set_referral_code_insert_driver_dict(self.gen_rand_number.referral_code)
@@ -529,35 +526,6 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_motor_baxi_box_info)
 
     def show_baxi_user_choose_vehicle_type(self):
-        lat = self.ui.get_pickup_lat_user_home.toPlainText()
-        lon = self.ui.get_pickup_lon_user_home.toPlainText()
-        res = get_lat_lon_info(lat, lon)
-        print(res)
-        id_ = ""
-        if self.ui.enter_number_sign_in.toPlainText() != "":
-            id_ = IS_CLIENT(self.ui.enter_number_sign_in.toPlainText())
-        elif self.ui.enter_number_sign_up.toPlainText() != "":
-            id_ = IS_CLIENT(self.ui.enter_number_sign_up.toPlainText())
-
-        self.info_dict.set_pickup_province_insert_request(res['state'])
-        print(res['state'])
-        self.info_dict.set_pickup_city_insert_request(res['city'])
-        print(res['city'])
-        self.info_dict.set_pickup_latitude_insert_request(float(lat))
-        self.info_dict.set_pickup_longitude_insert_request(float(lon))
-        print("1")
-        self.info_dict.set_request_time_insert_request(datetime.now())
-        print("3")
-        self.info_dict.set_client_id_insert_request(id_[0][0])
-        print("4")
-
-        try:
-            print("5")
-            print(self.info_dict.insert_request_dict)
-            insert_request(self.info_dict.insert_request_dict)
-            print("insert_request successfully")
-        except Exception as err:
-            print(err)
 
         self.ui.popup_success_baxi_user_choose_vehicle_type.setHidden(True)
         self.ui.pushButt_done_baxi_user_choose_vehicle_type.setHidden(True)
@@ -613,13 +581,20 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_driver_request_accepts_info)
 
     def select_go_to_user_or_driver_home(self):
-        input_password = self.ui.pass_digit1_accept_code_sign_in.toPlainText() + self.ui.pass_digit2_accept_code_sign_in.toPlainText() + self.ui.pass_digit3_accept_code_sign_in.toPlainText() + self.ui.pass_digit4_accept_code_sign_in.toPlainText()
+        input_password = self.ui.pass_digit1_accept_code_sign_in.toPlainText()
         print(input_password)
         print(self.gen_rand_number.password_code)
         if CHECK_IN_PASS_EQ_GEN_PASS(input_password, self.gen_rand_number.password_code):
-            if IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()):
+            if driver_res := IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()):
                 self.show_driver_home_on_off_service()
-            if IS_CLIENT(self.ui.enter_number_sign_in.toPlainText()):
+            if client_res := IS_CLIENT(self.ui.enter_number_sign_in.toPlainText()):
+                print("client_res ", client_res)
+                self.client_1.set_phone_number(self.ui.enter_number_sign_in.toPlainText())
+                self.client_1.set_id(client_res[0][0])
+                self.client_1.set_wallet_balance(client_res[0][1])
+                self.client_1.set_first_name(client_res[0][2])
+                self.client_1.set_last_name(client_res[0][3])
+
                 self.show_user_home_after_sign_in()
 
     def show_driver_accept_request(self):
@@ -646,6 +621,106 @@ class MainWindow:
     def show_driver_home_on_off_service(self):
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home_on_off_service)
+
+    def set_general_info_trip(self):
+        lat_pickup = self.ui.get_pickup_lat_user_home.toPlainText()
+        lon_pickup = self.ui.get_pickup_lon_user_home.toPlainText()
+        res_pickup = get_lat_lon_info(lat_pickup, lon_pickup)
+        self.client_1.set_pickup((lat_pickup, lon_pickup))
+        self.client_1.set_request_time(datetime.now())
+        self.info_dict.set_pickup_province_insert_request_dict(res_pickup['state'])
+        self.info_dict.set_pickup_city_insert_request_dict(res_pickup['city'])
+        self.info_dict.set_pickup_latitude_insert_request_dict(float(lat_pickup))
+        self.info_dict.set_pickup_longitude_insert_request_dict(float(lon_pickup))
+        self.info_dict.set_request_time_insert_request_dict(self.client_1.get_request_time())
+        self.info_dict.set_client_id_insert_request_dict(self.client_1.get_client_id())
+
+        lat_drop_off = self.ui.get_drop_off_lat_user_home.toPlainText()
+        lon_drop_off = self.ui.get_deop_off_lon_user_home.toPlainText()
+        res_drop_off = get_lat_lon_info(lat_drop_off, lon_drop_off)
+        self.client_1.set_dropoff((lat_drop_off, lon_drop_off))
+
+        self.info_dict.set_client_id_insert_destination_dict(self.client_1.get_client_id())
+        self.info_dict.set_latitude_insert_destination_dict(float(lat_drop_off))
+        self.info_dict.set_longitude_insert_destination_dict(float(lon_drop_off))
+        self.info_dict.set_city_insert_destination_dict(res_drop_off['city'])
+
+        self.info_dict.set_request_time_insert_destination_dict(self.client_1.get_request_time())
+
+        try:
+            print(self.info_dict.insert_request_dict)
+            insert_request(self.info_dict.insert_request_dict)
+            print("insert_request successfully")
+        except Exception as err:
+            print(err)
+
+        try:
+            print(self.info_dict.insert_destination_dict)
+            insert_destination(self.info_dict.insert_destination_dict)
+            print("insert_destination_dict successfully")
+        except Exception as err:
+            print(err)
+
+        self.show_baxi_user_choose_vehicle_type()
+
+    def send_baxi_bar_request_to_db(self):
+        res = self.client_1.get_dropoff()
+
+        city = get_lat_lon_info(res[0][0], res[0][1])
+        self.set_general_info_trip()
+        self.info_dict.set_dropoff_longitude_insert_heavy_dict(res[0][0])
+        self.info_dict.set_dropoff_latitude_insert_heavy_dict(res[0][1])
+        self.info_dict.set_cargo_type_insert_heavy_dict('unfragile')
+        self.info_dict.set_client_id_insert_heavy_dict(self.client_1.get_client_id())
+        self.info_dict.set_cargo_weight_insert_heavy_dict("50")
+        self.info_dict.set_dropoff_city_insert_heavy_dict(city['city'])
+        self.info_dict.set_request_time_insert_heavy_dict(self.client_1.get_request_time())
+        self.info_dict.set_cargo_value_insert_heavy_dict("10")
+        self.info_dict.set_cost_insert_heavy_dict(int(trip_cost_heavy(self.client_1.pickup, self.client_1.dropoff)))
+        self.info_dict.set_client_helped_insert_heavy_dict('yes')
+
+        try:
+            print(self.info_dict.insert_trip_dict)
+            insert_heavy(self.info_dict.insert_heavy_dict)
+            print("insert_heavy_dict was successful")
+        except Exception as err:
+            print(err)
+
+    def send_baxi_request_to_db(self):
+        self.set_general_info_trip()
+        print(self.client_1.pickup)
+        print(self.client_1.dropoff)
+
+        print(trip_cost_baxi(self.client_1.pickup, self.client_1.dropoff))
+        self.info_dict.set_cost_insert_trip_dict(int(trip_cost_baxi(self.client_1.pickup, self.client_1.dropoff)))
+        self.info_dict.set_client_id_insert_trip_dict(self.client_1.get_client_id())
+        self.info_dict.set_round_trip_insert_trip_dict('no')
+        self.info_dict.set_request_time_insert_trip_dict(self.client_1.get_request_time())
+        try:
+            print(self.info_dict.insert_trip_dict)
+            insert_trip(self.info_dict.insert_trip_dict)
+            print("insert_trip was successful")
+        except Exception as err:
+            print(err)
+
+    def show_booking_successful_baxi(self):
+        self.send_baxi_request_to_db()
+        self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
+
+    def show_booking_successful_baxi_woman(self):
+        self.send_baxi_request_to_db()
+        self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
+
+    def show_booking_successful_baxi_bar(self):
+        self.send_baxi_bar_request_to_db()
+        self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
+
+    def show_booking_successful_baxi_box(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
+
+    def cancel_request(self):
+
+        self.show_user_home_after_sign_in()
 
 
 if __name__ == "__main__":
