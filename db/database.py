@@ -1060,7 +1060,8 @@ def is_baxi(id):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''SELECT	id
-				FROM	drivers JOIN baxi ON id = driver_id'''
+				FROM	drivers JOIN baxi ON id = driver_id
+				WHERE	id = %s'''
     cur.execute(query, (id,))
     result = cur.fetchall()
     cur.close()
@@ -1072,7 +1073,8 @@ def is_baar(id):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''SELECT	id
-				FROM	drivers JOIN baxi_baar ON id = driver_id'''
+				FROM	drivers JOIN baxi_baar ON id = driver_id
+				WHERE	id = %s'''
     cur.execute(query, (id,))
     result = cur.fetchall()
     cur.close()
@@ -1084,7 +1086,8 @@ def is_box(id):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''SELECT	id
-				FROM	drivers JOIN baxi_box ON id = driver_id'''
+				FROM	drivers JOIN baxi_box ON id = driver_id
+				WHERE	id = %s'''
     cur.execute(query, (id,))
     result = cur.fetchall()
     cur.close()
