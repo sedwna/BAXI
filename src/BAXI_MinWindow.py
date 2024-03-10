@@ -258,6 +258,8 @@ class MainWindow:
 
         self.ui.pushButt_apply_changes_user_my_account.clicked.connect(self.set_apply_changes_user_my_account)
 
+        self.ui.pushButt_cancel_booking_successful.clicked.connect(self.cancel_request)
+
     def show(self):
         self.main_win.show()
 
@@ -791,6 +793,7 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
 
     def cancel_request(self):
+        close_request(self.client_1.get_client_id(), self.client_1.get_request_time())
 
         self.show_user_home_after_sign_in()
 

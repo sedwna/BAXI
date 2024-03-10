@@ -278,6 +278,7 @@ class InsertInfo:
                            'pickup_longitude': float,
                            'pickup_province': str,
                            'pickup_city': str,
+                           'state': 'open',
                            'client_id': int,
                            'request_time': datetime}
 
@@ -292,6 +293,9 @@ class InsertInfo:
 
     def set_pickup_city_insert_request_dict(self, pickup_city):
         self.insert_request_dict['pickup_city'] = pickup_city
+
+    def set_state_insert_request_dict(self, state):
+        self.insert_request_dict['state'] = state
 
     def set_client_id_insert_request_dict(self, client_id):
         self.insert_request_dict['client_id'] = client_id

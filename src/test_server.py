@@ -26,19 +26,19 @@ date_now = datetime.datetime.now()
 #                'verifier_personnel_code': None})
 
 
-# insert_employee({'personnel_code': 372365825,
-#                  'shaba_number': '100000372365825',
-#                  'signup_time': date_now,
-#                  'password': 'sedwna',
-#                  'first_name': 'Sajad',
-#                  'last_name': 'Dehqan',
-#                  'birth_date': birth_date,
-#                  'salary': 3000,
-#                  'department': 'HR',
-#                  'proficiency': 'basic',
-#                  'education': 'high school diploma',
-#                  'position': 'department manager',
-#                  'profile_picture_path': None})
+insert_employee({'personnel_code': 372365825,
+                 'shaba_number': '100000372365825',
+                 'signup_time': date_now,
+                 'password': 'sedwna',
+                 'first_name': 'Sajad',
+                 'last_name': 'Dehqan',
+                 'birth_date': birth_date,
+                 'salary': 3000,
+                 'department': 'HR',
+                 'proficiency': 'basic',
+                 'education': 'high school diploma',
+                 'position': 'department manager',
+                 'profile_picture_path': None})
 # # importing modules
 # from geopy.geocoders import Nominatim
 #
@@ -51,13 +51,11 @@ date_now = datetime.datetime.now()
 # # printing the address/location name
 # print(locname.address)
 # print(locname)
-try:
-    print("1")
-    insert_request({'pickup_latitude': 34.793, 'pickup_longitude': 48.491, 'pickup_province': 'srhs',
-                    'pickup_city': 'adfrh', 'client_id': 1,
-                    'request_time': datetime.datetime(2024, 3, 8, 23, 8, 1, 144561)})
-    print("2")
-except Exception as err:
-    print(err)
-
-
+# try:
+#     print("1")
+#     insert_request({'pickup_latitude': 34.793, 'pickup_longitude': 48.491, 'pickup_province': 'srhs',
+#                     'pickup_city': 'adfrh', 'client_id': 1,
+#                     'request_time': datetime.datetime(2024, 3, 8, 23, 8, 1, 144561)})
+#     print("2")
+# except Exception as err:
+#     print(err)
