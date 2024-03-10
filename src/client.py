@@ -10,7 +10,6 @@ class Client:
     request_time = int
     pickup = []
     dropoff = []
-    shaba = str
 
     def set_id(self, client_id):
         self.client_id = client_id
@@ -45,8 +44,6 @@ class Client:
     def set_dropoff(self, value):
         self.dropoff.append(value)
 
-    def set_shaba(self, shaba):
-        self.shaba = shaba
 
     def get_client_id(self):
         return self.client_id
@@ -80,6 +77,3 @@ class Client:
 
     def get_dropoff(self):
         return self.dropoff
-
-    def get_shaba(self):
-        return self.shaba

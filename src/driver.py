@@ -8,7 +8,6 @@ class Driver:
     sex = str
     request_time = int
     pickup = []
-    dropoff = []
     shaba = str
 
     def set_id(self, driver_id):
@@ -37,9 +36,6 @@ class Driver:
 
     def set_pickup(self, value):
         self.pickup.append(value)
-
-    def set_dropoff(self, value):
-        self.dropoff.append(value)
 
     def set_shaba(self, shaba):
         self.shaba = shaba
@@ -70,9 +66,6 @@ class Driver:
 
     def get_pickup(self):
         return self.pickup
-
-    def get_dropoff(self):
-        return self.dropoff
 
     def get_shaba(self):
         return self.shaba

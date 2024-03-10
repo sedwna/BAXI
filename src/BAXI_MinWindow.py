@@ -9,7 +9,7 @@ import datetime
 from db.database import *
 
 from set_info import InsertInfo
-from generate_random_number import GenerateRandom4Digit
+from generate_random_number import GenerateRandom
 from verify import *
 from get_lat_lon_info import get_lat_lon_info, trip_cost_baxi, trip_cost_heavy, trip_cost_light
 from client import Client
@@ -18,7 +18,7 @@ from driver import Driver
 
 class MainWindow:
     info_dict = InsertInfo()
-    gen_rand_number = GenerateRandom4Digit()
+    gen_rand_number = GenerateRandom()
     client_1 = Client()
     driver_1 = Driver()
 
@@ -259,6 +259,8 @@ class MainWindow:
         self.ui.pushButt_cancel_booking_successful.clicked.connect(self.cancel_request)
 
         self.ui.pushButt_apply_changes_user_my_account.clicked.connect(self.set_apply_changes_user_my_account)
+
+        self.ui.pushButt_done_user_payment_method.clicked.connect(self.set_transaction_user)
 
     def show(self):
         self.main_win.show()
@@ -560,7 +562,7 @@ class MainWindow:
         self.ui.box_show_flname_user_home.setHidden(False)
         self.ui.box_show_cash_user_home.setHidden(False)
         self.ui.box_show_flname_user_home.setText(self.client_1.get_first_name() + " " + self.client_1.get_last_name())
-        self.ui.box_show_cash_user_home.setText(str(self.client_1.get_wallet_balance()))
+        self.ui.box_show_cash_user_home.setText(str(get_client_balance(self.client_1.get_client_id())[0][0]))
 
     def off_menu_bar_user_home(self):
         self.ui.pushButt_my_wallet_user_home.setHidden(True)
@@ -587,7 +589,7 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_my_account)
 
     def show_user_my_wallet(self):
-        self.ui.box_show_Balance_user_my_wallet.setText(str(self.client_1.get_wallet_balance()))
+        self.ui.box_show_Balance_user_my_wallet.setText(str(get_client_balance(self.client_1.get_client_id())[0][0]))
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_my_wallet)
 
     def show_user_payment_method(self):
@@ -605,6 +607,7 @@ class MainWindow:
         print(self.gen_rand_number.password_code)
         if CHECK_IN_PASS_EQ_GEN_PASS(input_password, self.gen_rand_number.password_code):
             if driver_res := IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()):
+                print("tesssssssssst")
                 self.driver_1.set_id(driver_res[0][0])
                 self.driver_1.set_wallet_balance(driver_res[0][1])
                 self.driver_1.set_first_name(driver_res[0][2])
@@ -612,17 +615,31 @@ class MainWindow:
 
                 self.show_driver_home_on_off_service()
             if client_res := IS_CLIENT(self.ui.enter_number_sign_in.toPlainText()):
-                print("client_res ", client_res)
+                print("client_res 3 ", client_res)
+                print("7")
                 self.client_1.set_phone_number(self.ui.enter_number_sign_in.toPlainText())
+                print("7")
                 self.client_1.set_id(client_res[0][0])
+                print("7")
                 self.client_1.set_wallet_balance(client_res[0][1])
+                print("7")
                 self.client_1.set_first_name(client_res[0][2])
+                print("7")
                 self.client_1.set_last_name(client_res[0][3])
-                res = client_panel_info(client_res[0][0])
-                self.client_1.set_email(res[0][0])
-                self.client_1.set_sex(res[0][1])
-                self.client_1.set_birth_date(str(res[0][2]))
+                print("7")
+                print(client_res[0][0])
+                try:
+                    res = client_panel_info(client_res[0][0])
+                except Exception as err:
+                    print(err)
 
+                self.client_1.set_email(res[0][0])
+                print("7")
+                self.client_1.set_sex(res[0][1])
+                print("7")
+                self.client_1.set_birth_date(str(res[0][2]))
+                print("7")
+                print("7")
                 self.show_user_home_after_sign_in()
 
     def show_driver_accept_request(self):
@@ -642,13 +659,22 @@ class MainWindow:
             print("update_location was successful")
         except Exception as err:
             print(err)
+
+        res = requests_within_range(x, y)
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home)
 
     def show_driver_home_on_off_service(self):
+        print("09")
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
-        self.ui.box_show_wallet_balance_driver_home_on_off_service.setText(str(self.driver_1.get_wallet_balance()))
+        print("09")
+        self.ui.box_show_wallet_balance_driver_home_on_off_service.setText(
+            str(get_driver_balance(self.driver_1.get_driver_id())[0][0]))
+
+        print("09")
         self.ui.box_show_flname_balance_driver_home_on_off_service.setText(
             self.driver_1.get_first_name() + " " + self.driver_1.get_last_name())
+        print("09")
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home_on_off_service)
 
     def set_general_info_trip(self):
@@ -831,6 +857,29 @@ class MainWindow:
         try:
             set_email(self.client_1.get_client_id(), self.client_1.get_email())
             print("applying successful")
+        except Exception as err:
+            print(err)
+
+    def set_transaction_user(self):
+        self.gen_rand_number.gen_tracking_code_rand()
+        self.info_dict.set_amount_insert_transaction_dict(int(self.ui.card_to_wallet_user_payment_method.toPlainText()))
+        self.info_dict.set_tracking_code_insert_transaction_dict(self.gen_rand_number.tracking_code)
+        self.info_dict.set_state_insert_transaction_dict('completed')
+        self.info_dict.set_time_insert_transaction_dict(datetime.now())
+        self.info_dict.set_type_insert_transaction_dict('card-to-wallet')
+
+        print('info_dict.insert_transaction_dict ', self.info_dict.insert_transaction_dict)
+        try:
+            insert_transaction(self.info_dict.insert_transaction_dict)
+        except Exception as err:
+            print(err)
+
+        self.info_dict.set_tracking_code_insert_deposit_dict(self.gen_rand_number.tracking_code)
+        self.info_dict.set_client_id_insert_deposit_dict(self.client_1.get_client_id())
+
+        print('info_dict.insert_deposit_dict ', self.info_dict.insert_deposit_dict)
+        try:
+            insert_deposit(self.info_dict.insert_deposit_dict)
         except Exception as err:
             print(err)
 

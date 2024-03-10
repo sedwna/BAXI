@@ -844,6 +844,17 @@ class Ui_BAXI(object):
         self.pushButt_back_user_payment_method.setText("")
         self.pushButt_back_user_payment_method.setFlat(True)
         self.pushButt_back_user_payment_method.setObjectName("pushButt_back_user_payment_method")
+        self.pushButt_done_user_payment_method = QtWidgets.QPushButton(parent=self.user_payment_method)
+        self.pushButt_done_user_payment_method.setGeometry(QtCore.QRect(292, 40, 71, 29))
+        self.pushButt_done_user_payment_method.setText("")
+        self.pushButt_done_user_payment_method.setFlat(True)
+        self.pushButt_done_user_payment_method.setObjectName("pushButt_done_user_payment_method")
+        self.card_to_wallet_user_payment_method = QtWidgets.QTextEdit(parent=self.user_payment_method)
+        self.card_to_wallet_user_payment_method.setGeometry(QtCore.QRect(150, 140, 191, 61))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.card_to_wallet_user_payment_method.setFont(font)
+        self.card_to_wallet_user_payment_method.setObjectName("card_to_wallet_user_payment_method")
         self.stackedWidget.addWidget(self.user_payment_method)
         self.user_my_account = QtWidgets.QWidget()
         self.user_my_account.setObjectName("user_my_account")
@@ -1296,7 +1307,7 @@ class Ui_BAXI(object):
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(15)
+        self.stackedWidget.setCurrentIndex(22)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):

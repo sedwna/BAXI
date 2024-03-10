@@ -420,9 +420,12 @@ class InsertInfo:
     def set_cargo_type_insert_light_dict(self, cargo_type):
         self.insert_light_dict['cargo_type'] = cargo_type
 
+    def set_request_time_insert_light_dict(self, request_time):
+        self.insert_light_dict['request_time'] = request_time
+
     insert_transaction_dict = {'tracking_code': str,
                                'time': datetime,
-                               'shaba_number': str,
+                               'shaba_number': "paypal",
                                'amount': int,
                                'state': str,
                                'type': str}
@@ -445,5 +448,11 @@ class InsertInfo:
     def set_type_insert_transaction_dict(self, type):
         self.insert_transaction_dict['type'] = type
 
-    def set_request_time_insert_light_dict(self, request_time):
-        self.insert_light_dict['request_time'] = request_time
+    insert_deposit_dict = {'tracking_code': str,
+                           'client_id': int}
+
+    def set_tracking_code_insert_deposit_dict(self, tracking_code):
+        self.insert_deposit_dict['tracking_code'] = tracking_code
+
+    def set_client_id_insert_deposit_dict(self, client_id):
+        self.insert_deposit_dict['client_id'] = client_id
