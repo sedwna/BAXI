@@ -1307,7 +1307,7 @@ class Ui_BAXI(object):
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(22)
+        self.stackedWidget.setCurrentIndex(19)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):
@@ -1333,8 +1333,9 @@ class Ui_BAXI(object):
         self.machine_color_get_machine_baxi_bar_info.setItemText(2, _translate("BAXI", "Red"))
         self.machine_color_get_machine_baxi_bar_info.setItemText(3, _translate("BAXI", "Black"))
         self.machine_color_get_machine_baxi_bar_info.setItemText(4, _translate("BAXI", "Gray"))
-        self.sex_get_flname_sex_birth_user.setItemText(0, _translate("BAXI", "F"))
-        self.sex_get_flname_sex_birth_user.setItemText(1, _translate("BAXI", "M"))
+        self.sex_get_flname_sex_birth_user.setCurrentText(_translate("BAXI", "M"))
+        self.sex_get_flname_sex_birth_user.setItemText(0, _translate("BAXI", "M"))
+        self.sex_get_flname_sex_birth_user.setItemText(1, _translate("BAXI", "F"))
         self.obviously_get_photo_meli_pcertificate_obviously.setItemText(0, _translate("BAXI", "none"))
         self.obviously_get_photo_meli_pcertificate_obviously.setItemText(1, _translate("BAXI", "alzheimer\'s disease"))
         self.obviously_get_photo_meli_pcertificate_obviously.setItemText(2, _translate("BAXI", "epilepsy"))

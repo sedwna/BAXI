@@ -262,6 +262,8 @@ class MainWindow:
 
         self.ui.pushButt_done_user_payment_method.clicked.connect(self.set_transaction_user)
 
+        self.ui.pushButt_done_booking_successful.clicked.connect(self.show_user_home_after_sign_in)
+
     def show(self):
         self.main_win.show()
 
@@ -529,10 +531,9 @@ class MainWindow:
         print(self.info_dict.insert_driver_dict)
         try:
             insert_driver(self.info_dict.insert_driver_dict)
+            print("insert_driver successfully")
         except Exception as err:
             print(err)
-        finally:
-            print("finish")
 
     def show_get_machine_baxi_bar_info(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.get_machine_baxi_bar_info)
@@ -607,7 +608,6 @@ class MainWindow:
         print(self.gen_rand_number.password_code)
         if CHECK_IN_PASS_EQ_GEN_PASS(input_password, self.gen_rand_number.password_code):
             if driver_res := IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()):
-                print("tesssssssssst")
                 self.driver_1.set_id(driver_res[0][0])
                 self.driver_1.set_wallet_balance(driver_res[0][1])
                 self.driver_1.set_first_name(driver_res[0][2])
@@ -616,17 +616,11 @@ class MainWindow:
                 self.show_driver_home_on_off_service()
             if client_res := IS_CLIENT(self.ui.enter_number_sign_in.toPlainText()):
                 print("client_res 3 ", client_res)
-                print("7")
                 self.client_1.set_phone_number(self.ui.enter_number_sign_in.toPlainText())
-                print("7")
                 self.client_1.set_id(client_res[0][0])
-                print("7")
                 self.client_1.set_wallet_balance(client_res[0][1])
-                print("7")
                 self.client_1.set_first_name(client_res[0][2])
-                print("7")
                 self.client_1.set_last_name(client_res[0][3])
-                print("7")
                 print(client_res[0][0])
                 try:
                     res = client_panel_info(client_res[0][0])
@@ -634,12 +628,8 @@ class MainWindow:
                     print(err)
 
                 self.client_1.set_email(res[0][0])
-                print("7")
                 self.client_1.set_sex(res[0][1])
-                print("7")
                 self.client_1.set_birth_date(str(res[0][2]))
-                print("7")
-                print("7")
                 self.show_user_home_after_sign_in()
 
     def show_driver_accept_request(self):
@@ -660,21 +650,20 @@ class MainWindow:
         except Exception as err:
             print(err)
 
-        res = requests_within_range(x, y)
+        try:
+            res = requests_within_range(x, y)
+        except Exception as err:
+            print(err)
+        print("requests_within_range", res)
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home)
 
     def show_driver_home_on_off_service(self):
-        print("09")
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
-        print("09")
         self.ui.box_show_wallet_balance_driver_home_on_off_service.setText(
             str(get_driver_balance(self.driver_1.get_driver_id())[0][0]))
-
-        print("09")
         self.ui.box_show_flname_balance_driver_home_on_off_service.setText(
             self.driver_1.get_first_name() + " " + self.driver_1.get_last_name())
-        print("09")
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home_on_off_service)
 
     def set_general_info_trip(self):
@@ -684,13 +673,11 @@ class MainWindow:
         self.client_1.set_pickup((lat_pickup, lon_pickup))
         date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         self.client_1.set_request_time(date)
-        print("date 1 ", date)
         self.info_dict.set_pickup_province_insert_request_dict(res_pickup['state'])
         self.info_dict.set_pickup_city_insert_request_dict(res_pickup['city'])
         self.info_dict.set_pickup_latitude_insert_request_dict(float(lat_pickup))
         self.info_dict.set_pickup_longitude_insert_request_dict(float(lon_pickup))
         self.info_dict.set_request_time_insert_request_dict(self.client_1.get_request_time())
-        print("date 2", self.client_1.get_request_time())
         self.info_dict.set_client_id_insert_request_dict(self.client_1.get_client_id())
 
         lat_drop_off = self.ui.get_drop_off_lat_user_home.toPlainText()
@@ -704,7 +691,6 @@ class MainWindow:
         self.info_dict.set_city_insert_destination_dict(res_drop_off['city'])
 
         self.info_dict.set_request_time_insert_destination_dict(self.client_1.get_request_time())
-        print("date 3", self.client_1.get_request_time())
 
         try:
             print(self.info_dict.insert_request_dict)
@@ -742,34 +728,22 @@ class MainWindow:
 
     def send_baxi_box_request_to_db(self):
         res = self.client_1.get_dropoff()
-        print("1")
         city = get_lat_lon_info(res[0][0], res[0][1])
         print(city)
-        print("1")
         self.info_dict.set_dropoff_longitude_insert_light_dict(res[0][0])
-        print("1")
         self.info_dict.set_dropoff_latitude_insert_light_dict(res[0][1])
-        print("1")
         self.info_dict.set_client_id_insert_light_dict(self.client_1.get_client_id())
-        print("1")
         self.info_dict.set_request_time_insert_light_dict(self.client_1.get_request_time())
-        print("1")
-
         self.info_dict.set_cargo_weight_insert_light_dict(
             int(self.ui.cargo_weight_baxi_box_user_choose_vehicle_type.value()))
         self.info_dict.set_dropoff_city_insert_light_dict(city['city'])
-        print("1")
         self.info_dict.set_cargo_value_insert_light_dict(
             int(self.ui.cargo_value_baxi_box_user_choose_vehicle_type.value()))
-        print("1")
         self.info_dict.set_cost_insert_light_dict(int(trip_cost_light(self.client_1.pickup, self.client_1.dropoff)))
-        print("1")
         self.info_dict.set_insurance_cost_insert_light_dict(
             int(self.ui.cargo_value_baxi_box_user_choose_vehicle_type.text()) * 2)
-        print("1")
         self.info_dict.set_cargo_type_insert_light_dict(
             self.ui.cargo_type_baxi_box_user_choose_vehicle_type.currentText())
-        print("1")
         try:
             print(self.info_dict.insert_light_dict)
             insert_light(self.info_dict.insert_light_dict)

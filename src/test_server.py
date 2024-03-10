@@ -26,10 +26,10 @@ date_now = datetime.datetime.now()
 #                'verifier_personnel_code': None})
 
 
-insert_employee({'personnel_code': 25205073,
+insert_employee({'personnel_code': 372365825,
                  'shaba_number': '100000365825',
                  'signup_time': date_now,
-                 'password': '0025205073',
+                 'password': 'sedwna',
                  'first_name': 'Sajad',
                  'last_name': 'Dehqan',
                  'birth_date': birth_date,
