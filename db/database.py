@@ -1301,7 +1301,7 @@ def baar_requests_within_range(lat, lon):
     query = """SELECT	first_name, last_name, pickup_latitude, pickup_longitude, pickup_province, pickup_city, cost, cargo_weight,
 						cargo_value, dropoff_latitude, dropoff_longitude, dropoff_city, cargo_type, client_helped
 				FROM	(service_requests JOIN clients ON client_id = id) JOIN heavy_transports USING (client_id, request_time)
-				WHERE	ST_Distance_Sphere(POINT(%s, %s), POINT(pickup_latitude, pickup_longitude)) <= 5000 AND state = 'open' AND sex = 'F'"""
+				WHERE	ST_Distance_Sphere(POINT(%s, %s), POINT(pickup_latitude, pickup_longitude)) <= 5000 AND state = 'open'"""
     cur.execute(query, (lat, lon))
     result = cur.fetchall()
     cur.close()
@@ -1315,7 +1315,7 @@ def box_requests_within_range(lat, lon):
     query = """SELECT	first_name, last_name, pickup_latitude, pickup_longitude, pickup_province, pickup_city, cost,
 						cargo_weight, cargo_value, dropoff_latitude, dropoff_longitude, dropoff_city, cargo_type
 				FROM	(service_requests JOIN clients ON client_id = id) JOIN light_transports USING (client_id, request_time)
-				WHERE	ST_Distance_Sphere(POINT(%s, %s), POINT(pickup_latitude, pickup_longitude)) <= 5000 AND state = 'open' AND sex = 'F'"""
+				WHERE	ST_Distance_Sphere(POINT(%s, %s), POINT(pickup_latitude, pickup_longitude)) <= 5000 AND state = 'open'"""
     cur.execute(query, (lat, lon))
     result = cur.fetchall()
     cur.close()
