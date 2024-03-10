@@ -1359,3 +1359,15 @@ def get_driver_balance(id):
     cur.close()
     cnx.close()
     return result
+
+
+def set_client_rating(client_id, request_time, rating):
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''UPDATE	service_acceptances
+				SET		client_rating = %s
+				WHERE	client_id = %s AND request_time = %s'''
+    cur.execute(query, (rating, client_id, request_time))
+    cnx.commit()
+    cur.close()
+    cnx.close()
