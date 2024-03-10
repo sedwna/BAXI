@@ -981,7 +981,7 @@ def client_favorites(id):
 def client_panel_info(id):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''SELECT	email, sex, birth_date
+    query = '''SELECT	email, sex, birth_date, shaba_number
 				FROM	clients
 				WHERE	id = %s'''
     cur.execute(query, (id,))
@@ -1244,6 +1244,7 @@ def requests_within_range(lat, lon):
     cnx.close()
     return result
 
+
 def close_request(client_id, request_time):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
@@ -1254,6 +1255,7 @@ def close_request(client_id, request_time):
     cnx.commit()
     cur.close()
     cnx.close()
+
 
 def get_client_balance(id):
     cnx = create_connection('baxi_users')
@@ -1266,6 +1268,7 @@ def get_client_balance(id):
     cur.close()
     cnx.close()
     return result
+
 
 def get_driver_balance(id):
     cnx = create_connection('baxi_users')
