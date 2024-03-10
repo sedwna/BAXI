@@ -727,14 +727,14 @@ def query15():
 				FROM		(
 								SELECT		COUNT(*) AS successful
 								FROM		service_requests JOIN service_acceptances USING (client_id, request_time)
-								WHERE		pickup_province = 'tehran' AND pickup_city = 'rey'
+								WHERE		pickup_province = 'تهران' AND pickup_city = 'ری'
 							) AS sub0,
 							(
 								SELECT		COUNT(*) AS cancelled
 								FROM		(
 													SELECT		client_id, request_time
                                                     FROM		service_requests LEFT JOIN service_acceptances AS a USING (client_id, request_time)
-                                                    WHERE		pickup_province = 'tehran' AND pickup_city = 'rey' AND a.client_id IS NULL
+                                                    WHERE		pickup_province = 'تهران' AND pickup_city = 'ری' AND a.client_id IS NULL
 											) AS s0
 							) AS sub1"""
     cur.execute(query)
