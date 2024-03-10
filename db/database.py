@@ -101,6 +101,7 @@ def insert_box(values):
 	'pickup_longitude':	FLOAT,
 	'pickup_province':	VARCHAR(50),
 	'pickup_city':		VARCHAR(50),
+	'state':			None/'open'/'closed'
 	'client_id':		INT,
  	'request_time':		DATETIME}'''
 
@@ -109,7 +110,7 @@ def insert_request(values):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
     query = '''INSERT INTO service_requests VALUES (%(pickup_latitude)s, %(pickup_longitude)s, %(pickup_province)s,
-													%(pickup_city)s, %(client_id)s, %(request_time)s)'''
+													%(pickup_city)s, %(state)s, %(client_id)s, %(request_time)s)'''
     cur.execute(query, values)
     cnx.commit()
     cur.close()
@@ -981,7 +982,7 @@ def client_favorites(id):
 def client_panel_info(id):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''SELECT	email, sex, birth_date, phone_number
+    query = '''SELECT	email, sex, birth_date
 				FROM	clients
 				WHERE	id = %s'''
     cur.execute(query, (id,))
@@ -1239,6 +1240,41 @@ def requests_within_range(lat, lon):
 				FROM	(service_requests JOIN clients ON client_id = id) JOIN destinations USING (client_id, request_time)
 				WHERE	ST_Distance_Sphere(POINT(%s, %s), POINT(latitude, longitude) <= 5000"""
     cur.execute(query, (lat, lon))
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
+def close_request(client_id, request_time):
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''UPDATE	service_requests
+				SET		state = 'closed'
+				WHERE	client_id = %s AND request_time = %s'''
+    cur.execute(query, (client_id, request_time))
+    cnx.commit()
+    cur.close()
+    cnx.close()
+
+def get_client_balance(id):
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT	wallet_balance
+				FROM	clients
+				WHERE	id = %s'''
+    cur.execute(query, (id,))
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
+def get_driver_balance(id):
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT	wallet_balance
+				FROM	drivers
+				WHERE	id = %s'''
+    cur.execute(query, (id,))
     result = cur.fetchall()
     cur.close()
     cnx.close()

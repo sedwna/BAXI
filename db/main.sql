@@ -189,10 +189,15 @@ CREATE TABLE	baxi_box
 
 CREATE TABLE	service_requests
 				(
-					pickup_latitude		FLOAT(8, 6)		NOT NULL,
-					pickup_longitude	FLOAT(8, 6)		NOT NULL,
-					pickup_province		VARCHAR(50)		NOT NULL,	
-					pickup_city			VARCHAR(50)		NOT NULL,
+					pickup_latitude		FLOAT(8, 6)						NOT NULL,
+					pickup_longitude	FLOAT(8, 6)						NOT NULL,
+					pickup_province		VARCHAR(50)						NOT NULL,	
+					pickup_city			VARCHAR(50)						NOT NULL,
+					state				ENUM
+										(
+											'open',
+											'closed'
+										)				DEFAULT 'open'	NOT NULL
 					client_id			INT,
 					request_time		DATETIME,
 					PRIMARY KEY(client_id, request_time),
