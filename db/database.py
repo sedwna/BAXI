@@ -33,6 +33,7 @@ def insert_employee(values):
     cur.close()
     cnx.close()
 
+
 '''{'vehicle_license_plate':	CHAR(9),
 	'vehicle_capacity':			INT,
  	'vehicle_color':			VARCHAR(50),
@@ -1049,6 +1050,42 @@ def is_manager(pcode):
 				FROM	employees
 				WHERE	personnel_code = %s AND department = 'HR' AND position = 'department manager'"""
     cur.execute(query, (pcode,))
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
+
+def is_baxi(id):
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT	id
+				FROM	drivers JOIN baxi ON id = driver_id'''
+    cur.execute(query, (id,))
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
+
+def is_baar(id):
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT	id
+				FROM	drivers JOIN baxi_baar ON id = driver_id'''
+    cur.execute(query, (id,))
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
+
+def is_box(id):
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = '''SELECT	id
+				FROM	drivers JOIN baxi_box ON id = driver_id'''
+    cur.execute(query, (id,))
     result = cur.fetchall()
     cur.close()
     cnx.close()
