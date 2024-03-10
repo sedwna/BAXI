@@ -765,7 +765,6 @@ def query16():
 
 def query17():
     cnx = create_connection('baxi_users')
-    cnx = create_connection('baxi_staff')
     cur = cnx.cursor()
     query = '''SELECT       MOST - FIRST
                 FROM	
@@ -1238,7 +1237,7 @@ def requests_within_range(lat, lon):
     cur = cnx.cursor()
     query = """SELECT	first_name, last_name, latitude, longitude, pickup_province, pickup_city, city, latitude, longitude
 				FROM	(service_requests JOIN clients ON client_id = id) JOIN destinations USING (client_id, request_time)
-				WHERE	ST_Distance_Sphere(POINT(%s, %s), POINT(latitude, longitude) <= 5000"""
+				WHERE	ST_Distance_Sphere(POINT(%s, %s), POINT(latitude, longitude) <= 5000 AND state = 'open'"""
     cur.execute(query, (lat, lon))
     result = cur.fetchall()
     cur.close()

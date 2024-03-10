@@ -197,7 +197,7 @@ CREATE TABLE	service_requests
 										(
 											'open',
 											'closed'
-										)				DEFAULT 'open'	NOT NULL
+										)				DEFAULT 'open'	NOT NULL,
 					client_id			INT,
 					request_time		DATETIME,
 					PRIMARY KEY(client_id, request_time),
