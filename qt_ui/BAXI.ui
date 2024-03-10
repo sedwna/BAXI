@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>27</number>
+     <number>23</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -2711,6 +2711,27 @@
        <string/>
       </property>
       <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="box_show_flname_user_setting">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>130</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="readOnly">
        <bool>true</bool>
       </property>
      </widget>

@@ -1,19 +1,18 @@
-class Client:
-    client_id = int
+class Driver:
+    driver_id = int
     phone_number = str
     wallet_balance = int
     first_name = str
     last_name = str
     birth_date = int
     sex = str
-    email = "str"
     request_time = int
     pickup = []
     dropoff = []
     shaba = str
 
-    def set_id(self, client_id):
-        self.client_id = client_id
+    def set_id(self, driver_id):
+        self.driver_id = driver_id
 
     def set_phone_number(self, phone_number):
         self.phone_number = phone_number
@@ -33,9 +32,6 @@ class Client:
     def set_sex(self, sex):
         self.sex = sex
 
-    def set_email(self, email):
-        self.email = email
-
     def set_request_time(self, request_time):
         self.request_time = request_time
 
@@ -48,8 +44,8 @@ class Client:
     def set_shaba(self, shaba):
         self.shaba = shaba
 
-    def get_client_id(self):
-        return self.client_id
+    def get_driver_id(self):
+        return self.driver_id
 
     def get_phone_number(self):
         return self.phone_number
@@ -68,9 +64,6 @@ class Client:
 
     def get_sex(self):
         return self.sex
-
-    def get_email(self):
-        return self.email
 
     def get_request_time(self):
         return self.request_time

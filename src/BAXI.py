@@ -883,6 +883,14 @@ class Ui_BAXI(object):
         self.pushButt_back_user_setting.setText("")
         self.pushButt_back_user_setting.setFlat(True)
         self.pushButt_back_user_setting.setObjectName("pushButt_back_user_setting")
+        self.box_show_flname_user_setting = QtWidgets.QTextEdit(parent=self.user_setting)
+        self.box_show_flname_user_setting.setGeometry(QtCore.QRect(100, 130, 181, 41))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.box_show_flname_user_setting.setFont(font)
+        self.box_show_flname_user_setting.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
+        self.box_show_flname_user_setting.setReadOnly(True)
+        self.box_show_flname_user_setting.setObjectName("box_show_flname_user_setting")
         self.stackedWidget.addWidget(self.user_setting)
         self.baxi_user_choose_vehicle_type = QtWidgets.QWidget()
         self.baxi_user_choose_vehicle_type.setObjectName("baxi_user_choose_vehicle_type")
@@ -1257,7 +1265,7 @@ class Ui_BAXI(object):
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(27)
+        self.stackedWidget.setCurrentIndex(23)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):

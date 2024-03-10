@@ -13,12 +13,14 @@ from generate_random_number import GenerateRandom4Digit
 from verify import *
 from get_lat_lon_info import get_lat_lon_info, trip_cost_baxi, trip_cost_heavy, trip_cost_light
 from client import Client
+from driver import Driver
 
 
 class MainWindow:
     info_dict = InsertInfo()
     gen_rand_number = GenerateRandom4Digit()
     client_1 = Client()
+    driver_1 = Driver()
 
     def __init__(self):
         super().__init__()
@@ -509,6 +511,10 @@ class MainWindow:
         self.client_1.set_wallet_balance(res[0][1])
         self.client_1.set_first_name(res[0][2])
         self.client_1.set_last_name(res[0][3])
+        res = client_panel_info(res[0][0])
+        self.client_1.set_email(res[0][0])
+        self.client_1.set_sex(res[0][1])
+        self.client_1.set_birth_date(str(res[0][2]))
 
         self.off_menu_bar_user_home()
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
@@ -567,6 +573,8 @@ class MainWindow:
         self.ui.box_show_cash_user_home.setHidden(True)
 
     def show_user_setting(self):
+        self.ui.box_show_flname_user_setting.setText(
+            self.client_1.get_first_name() + " " + self.client_1.get_last_name())
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_setting)
 
     def show_user_my_account(self):
@@ -574,8 +582,8 @@ class MainWindow:
             self.client_1.get_first_name() + " " + self.client_1.get_last_name())
         self.ui.box_show_phone_numbe_user_my_account.setText(self.client_1.get_phone_number())
         self.ui.show_box_email_user_my_account.setText(self.client_1.get_email())
-        # self.ui.show_box_gender_user_my_account.setText(self.client_1.get_sex())
-        # self.ui.box_show_birthday_user_my_account.setText(str(self.client_1.get_birth_date()))
+        self.ui.show_box_gender_user_my_account.setText(self.client_1.get_sex())
+        self.ui.box_show_birthday_user_my_account.setText(str(self.client_1.get_birth_date()))
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_my_account)
 
     def show_user_my_wallet(self):
@@ -597,6 +605,11 @@ class MainWindow:
         print(self.gen_rand_number.password_code)
         if CHECK_IN_PASS_EQ_GEN_PASS(input_password, self.gen_rand_number.password_code):
             if driver_res := IS_DRIVER(self.ui.enter_number_sign_in.toPlainText()):
+                self.driver_1.set_id(driver_res[0][0])
+                self.driver_1.set_wallet_balance(driver_res[0][1])
+                self.driver_1.set_first_name(driver_res[0][2])
+                self.driver_1.set_last_name(driver_res[0][3])
+
                 self.show_driver_home_on_off_service()
             if client_res := IS_CLIENT(self.ui.enter_number_sign_in.toPlainText()):
                 print("client_res ", client_res)
@@ -605,6 +618,10 @@ class MainWindow:
                 self.client_1.set_wallet_balance(client_res[0][1])
                 self.client_1.set_first_name(client_res[0][2])
                 self.client_1.set_last_name(client_res[0][3])
+                res = client_panel_info(client_res[0][0])
+                self.client_1.set_email(res[0][0])
+                self.client_1.set_sex(res[0][1])
+                self.client_1.set_birth_date(str(res[0][2]))
 
                 self.show_user_home_after_sign_in()
 
@@ -618,12 +635,10 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_reached_the_destination)
 
     def show_driver_home(self):
-        res = IS_DRIVER(self.ui.enter_number_sign_in.toPlainText())
-
         x = float(self.ui.get_x_driver_home_on_off_service.toPlainText())
         y = float(self.ui.get_y_driver_home_on_off_service.toPlainText())
         try:
-            update_location(res[0][0], x, y)
+            update_location(self.driver_1.get_driver_id(), x, y)
             print("update_location was successful")
         except Exception as err:
             print(err)
@@ -809,7 +824,12 @@ class MainWindow:
         self.show_user_home_after_sign_in()
 
     def set_apply_changes_user_my_account(self):
-        pass
+        self.client_1.set_email(self.ui.show_box_email_user_my_account.toPlainText())
+        try:
+            set_email(self.client_1.get_client_id(), self.client_1.get_email())
+            print("applying successful")
+        except Exception as err:
+            print(err)
 
 
 if __name__ == "__main__":
