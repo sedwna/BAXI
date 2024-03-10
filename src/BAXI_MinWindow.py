@@ -258,8 +258,6 @@ class MainWindow:
 
         self.ui.pushButt_apply_changes_user_my_account.clicked.connect(self.set_apply_changes_user_my_account)
 
-        self.ui.pushButt_cancel_booking_successful.clicked.connect(self.cancel_request)
-
     def show(self):
         self.main_win.show()
 
@@ -505,6 +503,13 @@ class MainWindow:
         except Exception as err:
             print(err)
 
+        res = IS_CLIENT(self.ui.enter_number_sign_up.toPlainText().strip('0'))
+        self.client_1.set_phone_number(self.ui.enter_number_sign_in.toPlainText())
+        self.client_1.set_id(res[0][0])
+        self.client_1.set_wallet_balance(res[0][1])
+        self.client_1.set_first_name(res[0][2])
+        self.client_1.set_last_name(res[0][3])
+
         self.off_menu_bar_user_home()
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
@@ -633,12 +638,15 @@ class MainWindow:
         lon_pickup = self.ui.get_pickup_lon_user_home.toPlainText()
         res_pickup = get_lat_lon_info(lat_pickup, lon_pickup)
         self.client_1.set_pickup((lat_pickup, lon_pickup))
-        self.client_1.set_request_time(datetime.now())
+        date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        self.client_1.set_request_time(date)
+        print("date 1 ", date)
         self.info_dict.set_pickup_province_insert_request_dict(res_pickup['state'])
         self.info_dict.set_pickup_city_insert_request_dict(res_pickup['city'])
         self.info_dict.set_pickup_latitude_insert_request_dict(float(lat_pickup))
         self.info_dict.set_pickup_longitude_insert_request_dict(float(lon_pickup))
         self.info_dict.set_request_time_insert_request_dict(self.client_1.get_request_time())
+        print("date 2", self.client_1.get_request_time())
         self.info_dict.set_client_id_insert_request_dict(self.client_1.get_client_id())
 
         lat_drop_off = self.ui.get_drop_off_lat_user_home.toPlainText()
@@ -652,6 +660,7 @@ class MainWindow:
         self.info_dict.set_city_insert_destination_dict(res_drop_off['city'])
 
         self.info_dict.set_request_time_insert_destination_dict(self.client_1.get_request_time())
+        print("date 3", self.client_1.get_request_time())
 
         try:
             print(self.info_dict.insert_request_dict)
@@ -731,6 +740,7 @@ class MainWindow:
         self.info_dict.set_client_id_insert_trip_dict(self.client_1.get_client_id())
         self.info_dict.set_round_trip_insert_trip_dict(self.ui.round_trip_baxi_user_choose_vehicle_type.currentText())
         self.info_dict.set_request_time_insert_trip_dict(self.client_1.get_request_time())
+        print("date 4", self.client_1.get_request_time())
 
         try:
             print(self.info_dict.insert_destination_dict)
@@ -793,8 +803,9 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
 
     def cancel_request(self):
+        print(self.client_1.get_client_id())
+        print(self.client_1.get_request_time())
         close_request(self.client_1.get_client_id(), self.client_1.get_request_time())
-
         self.show_user_home_after_sign_in()
 
     def set_apply_changes_user_my_account(self):
