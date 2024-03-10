@@ -669,7 +669,7 @@ class MainWindow:
             self.ui.cargo_type_baxi_bar_user_choose_vehicle_type.currentText())
         self.info_dict.set_client_id_insert_heavy_dict(self.client_1.get_client_id())
         self.info_dict.set_cargo_weight_insert_heavy_dict(
-            int(self.ui.cargo_weight_baxi_bar_user_choose_vehicle_type.text()))
+            int(self.ui.cargo_weight_baxi_bar_user_choose_vehicle_type.value()))
         self.info_dict.set_dropoff_city_insert_heavy_dict(city['city'])
         self.info_dict.set_request_time_insert_heavy_dict(self.client_1.get_request_time())
         self.info_dict.set_cargo_value_insert_heavy_dict(
@@ -687,25 +687,36 @@ class MainWindow:
 
     def send_baxi_box_request_to_db(self):
         res = self.client_1.get_dropoff()
+        print("1")
         city = get_lat_lon_info(res[0][0], res[0][1])
+        print(city)
+        print("1")
         self.info_dict.set_dropoff_longitude_insert_light_dict(res[0][0])
+        print("1")
         self.info_dict.set_dropoff_latitude_insert_light_dict(res[0][1])
+        print("1")
         self.info_dict.set_client_id_insert_light_dict(self.client_1.get_client_id())
+        print("1")
         self.info_dict.set_request_time_insert_light_dict(self.client_1.get_request_time())
+        print("1")
+
         self.info_dict.set_cargo_weight_insert_light_dict(
-            int(self.ui.cargo_weight_baxi_box_user_choose_vehicle_type.text()))
+            int(self.ui.cargo_weight_baxi_box_user_choose_vehicle_type.value()))
         self.info_dict.set_dropoff_city_insert_light_dict(city['city'])
+        print("1")
         self.info_dict.set_cargo_value_insert_light_dict(
-            int(self.ui.cargo_value_baxi_box_user_choose_vehicle_type.text()))
+            int(self.ui.cargo_value_baxi_box_user_choose_vehicle_type.value()))
+        print("1")
         self.info_dict.set_cost_insert_light_dict(int(trip_cost_light(self.client_1.pickup, self.client_1.dropoff)))
+        print("1")
         self.info_dict.set_insurance_cost_insert_light_dict(
             int(self.ui.cargo_value_baxi_box_user_choose_vehicle_type.text()) * 2)
-
+        print("1")
         self.info_dict.set_cargo_type_insert_light_dict(
             self.ui.cargo_type_baxi_box_user_choose_vehicle_type.currentText())
-
+        print("1")
         try:
-            print(self.info_dict.insert_trip_dict)
+            print(self.info_dict.insert_light_dict)
             insert_light(self.info_dict.insert_light_dict)
             print("insert_light_dict was successful")
         except Exception as err:
@@ -772,8 +783,11 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
 
     def show_booking_successful_baxi_box(self):
+        print("sllllm")
         self.set_general_info_trip()
+        print("sllllm")
         self.send_baxi_box_request_to_db()
+        print("sllllm")
         self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
 
     def cancel_request(self):
