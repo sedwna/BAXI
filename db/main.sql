@@ -130,8 +130,8 @@ CREATE TABLE	drivers
 					judicial_letter_path				VARCHAR(50),
 					judicial_letter_verification_date	DATE,
 					final_verification_date				DATE,
-					latitude							FLOAT(8, 6),
-					longitude							FLOAT(8, 6),
+					latitude							FLOAT,
+					longitude							FLOAT,
 					profile_picture_path				VARCHAR(50),
 					verifier_personnel_code				INT,
 					FOREIGN KEY(verifier_personnel_code)	REFERENCES baxi_staff.employees(personnel_code)	ON UPDATE CASCADE	ON DELETE RESTRICT
@@ -189,8 +189,8 @@ CREATE TABLE	baxi_box
 
 CREATE TABLE	service_requests
 				(
-					pickup_latitude		FLOAT(8, 6)						NOT NULL,
-					pickup_longitude	FLOAT(8, 6)						NOT NULL,
+					pickup_latitude		FLOAT							NOT NULL,
+					pickup_longitude	FLOAT							NOT NULL,
 					pickup_province		VARCHAR(50)						NOT NULL,	
 					pickup_city			VARCHAR(50)						NOT NULL,
 					state				ENUM
@@ -223,8 +223,8 @@ CREATE TABLE	heavy_transports
 					cost				INT											NOT NULL,
 					cargo_weight		INT											NOT NULL,
 					cargo_value			INT											NOT NULL,
-					dropoff_latitude	FLOAT(8, 6)									NOT NULL,
-					dropoff_longitude	FLOAT(8, 6)									NOT NULL,
+					dropoff_latitude	FLOAT										NOT NULL,
+					dropoff_longitude	FLOAT										NOT NULL,
 					dropoff_city		VARCHAR(50)									NOT NULL,
 					cargo_type			ENUM
 										(
@@ -247,8 +247,8 @@ CREATE TABLE	light_transports
 					cost				INT											NOT NULL,
 					cargo_weight		INT											NOT NULL,
 					cargo_value			INT											NOT NULL,
-					dropoff_latitude	FLOAT(8, 6)									NOT NULL,
-					dropoff_longitude	FLOAT(8, 6)									NOT NULL,
+					dropoff_latitude	FLOAT										NOT NULL,
+					dropoff_longitude	FLOAT										NOT NULL,
 					dropoff_city		VARCHAR(50)									NOT NULL,
 					insurance_cost		INT											NOT NULL,
 					cargo_type			ENUM
@@ -356,8 +356,8 @@ CREATE TABLE	reports
 
 CREATE TABLE	addresses
 				(
-					latitude		FLOAT(8, 6)		NOT NULL,
-					longitude		FLOAT(8, 6)		NOT NULL,
+					latitude		FLOAT		NOT NULL,
+					longitude		FLOAT		NOT NULL,
 					client_id		INT,
 					address_name	VARCHAR(50),
 					PRIMARY KEY(client_id, address_name),
@@ -369,8 +369,8 @@ CREATE TABLE	destinations
 					city			VARCHAR(50)		NOT NULL,
 					client_id		INT				NOT NULL,
 					request_time	DATETIME		NOT NULL,
-					latitude		FLOAT(8, 6)		NOT NULL,
-					longitude		FLOAT(8, 6)		NOT NULL,
+					latitude		FLOAT			NOT NULL,
+					longitude		FLOAT			NOT NULL,
 					PRIMARY KEY(client_id, request_time, latitude, longitude),
 					FOREIGN KEY(client_id, request_time)	REFERENCES service_requests(client_id, request_time)	ON UPDATE CASCADE	ON DELETE CASCADE
 				);
