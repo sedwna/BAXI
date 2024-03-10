@@ -458,35 +458,35 @@ DELIMITER //
 
 CREATE TRIGGER	update_wallets	AFTER INSERT ON service_acceptances	FOR EACH ROW
 BEGIN
-	DECLARE cost	INT;
-	DECLARE state	ENUM ('failed', 'declined', 'pending', 'cancelled', 'completed', 'returned');
-	SELECT state INTO state	FROM service_acceptances JOIN transactions USING (tracking_code);
-	IF ((NEW.method_of_payment = 'direct' AND state = 'completed') OR NEW.method_of_payment = 'wallet_to_wallet') THEN
-		SELECT cost INTO cost	FROM baxi_trips b	WHERE NEW.client_id = b.client_id AND NEW.request_time = b.request_time;
-		UPDATE clients	SET wallet_balance = wallet_balance - cost	WHERE id = NEW.client_id;
-		UPDATE drivers	SET wallet_balance = wallet_balance + cost * 0.8	WHERE id = NEW.driver_id;
+	DECLARE trip_cost	INT;
+	DECLARE tran_state	ENUM ('failed', 'declined', 'pending', 'cancelled', 'completed', 'returned');
+	SELECT state INTO tran_state	FROM service_acceptances JOIN transactions USING (tracking_code);
+	IF ((NEW.method_of_payment = 'direct' AND tran_state = 'completed') OR NEW.method_of_payment = 'wallet_to_wallet') THEN
+		SELECT cost INTO trip_cost	FROM baxi_trips b	WHERE NEW.client_id = b.client_id AND NEW.request_time = b.request_time;
+		UPDATE clients	SET wallet_balance = wallet_balance - trip_cost	WHERE id = NEW.client_id;
+		UPDATE drivers	SET wallet_balance = wallet_balance + trip_cost * 0.8	WHERE id = NEW.driver_id;
 	ELSEIF (NEW.method_of_payment = 'cash')	THEN
-		UPDATE drivers	SET wallet_balance = wallet_balance - cost * 0.2	WHERE id = NEW.driver_id;
+		UPDATE drivers	SET wallet_balance = wallet_balance - trip_cost * 0.2	WHERE id = NEW.driver_id;
 	END IF;
 END//
 
 CREATE TRIGGER	commit_withdrawal	AFTER INSERT ON withdrawals	FOR EACH ROW
 BEGIN
-	DECLARE amount	INT;
-	DECLARE state	ENUM ('failed', 'declined', 'pending', 'cancelled', 'completed', 'returned');
-	SELECT state, amount INTO state, amount	FROM transactions	WHERE tracking_code = NEW.tracking_code;
-	IF (state = 'completed') THEN
-		UPDATE clients	SET wallet_balance = wallet_balance - amount	WHERE id = NEW.driver_id;
+	DECLARE with_amount	INT;
+	DECLARE tran_state	ENUM ('failed', 'declined', 'pending', 'cancelled', 'completed', 'returned');
+	SELECT state, amount INTO tran_state, with_amount	FROM transactions	WHERE tracking_code = NEW.tracking_code;
+	IF (tran_state = 'completed') THEN
+		UPDATE clients	SET wallet_balance = wallet_balance - with_amount	WHERE id = NEW.driver_id;
 	END IF;
 END//
 
 CREATE TRIGGER	commit_deposit	AFTER INSERT ON deposits	FOR EACH ROW
 BEGIN
-	DECLARE amount	INT;
-	DECLARE state	ENUM ('failed', 'declined', 'pending', 'cancelled', 'completed', 'returned');
-	SELECT state, amount INTO state, amount	FROM transactions	WHERE tracking_code = NEW.tracking_code;
-	IF (state = 'completed') THEN
-		UPDATE clients	SET wallet_balance = wallet_balance + amount	WHERE id = NEW.client_id;
+	DECLARE depo_amount	INT;
+	DECLARE tran_state	ENUM ('failed', 'declined', 'pending', 'cancelled', 'completed', 'returned');
+	SELECT state, amount INTO tran_state, depo_amount	FROM transactions	WHERE tracking_code = NEW.tracking_code;
+	IF (tran_state = 'completed') THEN
+		UPDATE clients	SET wallet_balance = wallet_balance + depo_amount	WHERE id = NEW.client_id;
 	END IF;
 END//
 
@@ -502,9 +502,9 @@ END//
 
 CREATE TRIGGER	commit_compensatory_deposit	AFTER INSERT ON compensatory_deposits	FOR EACH ROW
 BEGIN
-	DECLARE amount	INT;
-	SELECT amount INTO amount	FROM transactions	WHERE tracking_code = NEW.tracking_code;
-	UPDATE drivers	SET wallet_balance = wallet_balance + amount	WHERE id = NEW.driver_id;
+	DECLARE depo_amount	INT;
+	SELECT amount INTO depo_amount	FROM transactions	WHERE tracking_code = NEW.tracking_code;
+	UPDATE drivers	SET wallet_balance = wallet_balance + depo_amount	WHERE id = NEW.driver_id;
 END//
 
 CREATE TRIGGER	client_age_check	BEFORE INSERT ON clients	FOR EACH ROW
