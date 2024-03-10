@@ -981,7 +981,7 @@ def client_favorites(id):
 def client_panel_info(id):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''SELECT	email, sex, birth_date, shaba_number
+    query = '''SELECT	email, sex, birth_date
 				FROM	clients
 				WHERE	id = %s'''
     cur.execute(query, (id,))
