@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>23</number>
+     <number>15</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1650,7 +1650,7 @@
       <property name="geometry">
        <rect>
         <x>80</x>
-        <y>185</y>
+        <y>295</y>
         <width>191</width>
         <height>31</height>
        </rect>
@@ -1660,7 +1660,7 @@
       <property name="geometry">
        <rect>
         <x>80</x>
-        <y>240</y>
+        <y>351</y>
         <width>191</width>
         <height>31</height>
        </rect>
@@ -1669,11 +1669,34 @@
      <widget class="QTextEdit" name="box_show_wallet_balance_driver_home_on_off_service">
       <property name="geometry">
        <rect>
+        <x>80</x>
+        <y>150</y>
+        <width>191</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="box_show_flname_balance_driver_home_on_off_service">
+      <property name="geometry">
+       <rect>
         <x>83</x>
-        <y>60</y>
+        <y>45</y>
         <width>191</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
@@ -2404,8 +2427,38 @@
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhMultiLine</set>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="autoFormatting">
+       <set>QTextEdit::AutoNone</set>
+      </property>
+      <property name="tabChangesFocus">
+       <bool>false</bool>
+      </property>
       <property name="readOnly">
        <bool>true</bool>
+      </property>
+      <property name="overwriteMode">
+       <bool>false</bool>
+      </property>
+      <property name="placeholderText">
+       <string/>
       </property>
      </widget>
      <widget class="QTextEdit" name="box_show_cash_user_home">
@@ -2413,9 +2466,12 @@
        <rect>
         <x>80</x>
         <y>170</y>
-        <width>91</width>
-        <height>31</height>
+        <width>88</width>
+        <height>29</height>
        </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -2563,11 +2619,14 @@
      <widget class="QTextEdit" name="show_box_level_user_my_account">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>140</x>
         <y>270</y>
         <width>151</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -2576,11 +2635,14 @@
      <widget class="QTextEdit" name="show_box_flname_user_my_account">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>140</x>
         <y>330</y>
-        <width>151</width>
+        <width>201</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -2589,21 +2651,27 @@
      <widget class="QTextEdit" name="show_box_email_user_my_account">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>140</x>
         <y>380</y>
-        <width>271</width>
+        <width>221</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
      </widget>
      <widget class="QTextEdit" name="show_box_gender_user_my_account">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>420</y>
+        <x>140</x>
+        <y>430</y>
         <width>191</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -2612,11 +2680,14 @@
      <widget class="QTextEdit" name="box_show_birthday_user_my_account">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>470</y>
+        <x>140</x>
+        <y>480</y>
         <width>191</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -2625,11 +2696,14 @@
      <widget class="QTextEdit" name="box_show_phone_numbe_user_my_account">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>510</y>
+        <x>140</x>
+        <y>530</y>
         <width>191</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -2638,14 +2712,17 @@
      <widget class="QPushButton" name="pushButt_apply_changes_user_my_account">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>90</x>
         <y>580</y>
-        <width>121</width>
+        <width>171</width>
         <height>29</height>
        </rect>
       </property>
       <property name="text">
-       <string>apply changes</string>
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>

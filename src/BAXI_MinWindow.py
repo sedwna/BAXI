@@ -646,6 +646,9 @@ class MainWindow:
 
     def show_driver_home_on_off_service(self):
         self.ui.stackedWidget.setCurrentWidget(self.mp.show())
+        self.ui.box_show_wallet_balance_driver_home_on_off_service.setText(str(self.driver_1.get_wallet_balance()))
+        self.ui.box_show_flname_balance_driver_home_on_off_service.setText(
+            self.driver_1.get_first_name() + " " + self.driver_1.get_last_name())
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home_on_off_service)
 
     def set_general_info_trip(self):
