@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>19</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1307,13 +1307,114 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButt_profile_driver_home">
+     <widget class="QPushButton" name="pushButt_profile_driver_home_driver_home">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>40</y>
         <width>41</width>
         <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_exit_driver_home">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>40</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="box_show_cost_driver_home">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>310</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="box_show_distance_driver_home">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>510</y>
+        <width>61</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="box_show_time_driver_home">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>510</y>
+        <width>61</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="box_show_pickup_driver_home">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>380</y>
+        <width>281</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="box_show_dropoff_driver_home">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>430</y>
+        <width>281</width>
+        <height>29</height>
        </rect>
       </property>
       <property name="text">
@@ -1616,6 +1717,93 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="driver_rate_trip">
+     <widget class="QLabel" name="label_35">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>360</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/driver-rate_trip/driver-rate_trip.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_submit_review_driver_rate_trip">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>540</y>
+        <width>281</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="rate_driver_rate_trip">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>350</y>
+        <width>82</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="currentText">
+       <string>5-star</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>0-star</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1-star</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2-star</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>3-star</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>4-star</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>5-star</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QTextEdit" name="comment_driver_rate_trip">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>404</y>
+        <width>281</width>
+        <height>111</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="driver_home_on_off_service">
      <widget class="QLabel" name="label_33">
       <property name="geometry">
@@ -1686,6 +1874,9 @@
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QTextEdit" name="box_show_flname_balance_driver_home_on_off_service">
       <property name="geometry">
@@ -1703,6 +1894,25 @@
       </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButt_exit_driver_home_on_off_service">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>40</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -2245,7 +2455,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>105</y>
+        <y>107</y>
         <width>141</width>
         <height>41</height>
        </rect>
@@ -2258,7 +2468,7 @@
       <property name="geometry">
        <rect>
         <x>180</x>
-        <y>105</y>
+        <y>107</y>
         <width>141</width>
         <height>41</height>
        </rect>
@@ -2271,7 +2481,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>160</y>
+        <y>164</y>
         <width>141</width>
         <height>41</height>
        </rect>
@@ -2284,7 +2494,7 @@
       <property name="geometry">
        <rect>
         <x>180</x>
-        <y>160</y>
+        <y>164</y>
         <width>141</width>
         <height>41</height>
        </rect>

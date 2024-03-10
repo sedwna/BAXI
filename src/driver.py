@@ -10,6 +10,7 @@ class Driver:
     pickup = []
     shaba = str
 
+
     def set_id(self, driver_id):
         self.driver_id = driver_id
 

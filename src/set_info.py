@@ -456,3 +456,44 @@ class InsertInfo:
 
     def set_client_id_insert_deposit_dict(self, client_id):
         self.insert_deposit_dict['client_id'] = client_id
+
+    insert_acceptance_dict = {'estimated_end_time': datetime,
+                              'end_time': datetime,
+                              'driver_id': int,
+                              'method_of_payment': 'wallet-to-wallet',
+                              'wait_time': '0-to-5 minutes',
+                              'driver_rating': None,
+                              'client_rating': None,
+                              'client_id': int,
+                              'request_time': datetime,
+                              'tracking_code': None}
+
+    def set_client_id_insert_acceptance_dict(self, client_id):
+        self.insert_acceptance_dict['client_id'] = client_id
+
+    def set_estimated_end_time_insert_acceptance_dict(self, estimated_end_time):
+        self.insert_acceptance_dict['estimated_end_time'] = estimated_end_time
+
+    def set_end_time_insert_acceptance_dict(self, end_time):
+        self.insert_acceptance_dict['end_time'] = end_time
+
+    def set_driver_id_insert_acceptance_dict(self, driver_id):
+        self.insert_acceptance_dict['driver_id'] = driver_id
+
+    def set_method_of_payment_insert_acceptance_dict(self, method_of_payment):
+        self.insert_acceptance_dict['method_of_payment'] = method_of_payment
+
+    def set_wait_time_insert_acceptance_dict(self, wait_time):
+        self.insert_acceptance_dict['wait_time'] = wait_time
+
+    def set_driver_rating_insert_acceptance_dict(self, driver_rating):
+        self.insert_acceptance_dict['driver_rating'] = driver_rating
+
+    def set_request_time_insert_acceptance_dict(self, request_time):
+        self.insert_acceptance_dict['request_time'] = request_time
+
+    def set_tracking_code_insert_acceptance_dict(self, tracking_code):
+        self.insert_acceptance_dict['tracking_code'] = tracking_code
+
+    def set_client_rating_insert_acceptance_dict(self, client_rating):
+        self.insert_acceptance_dict['client_rating'] = client_rating

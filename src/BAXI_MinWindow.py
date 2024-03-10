@@ -7,11 +7,12 @@ from BAXI import Ui_BAXI
 from show_map import MapWindow
 import datetime
 from db.database import *
+import time
 
 from set_info import InsertInfo
 from generate_random_number import GenerateRandom
 from verify import *
-from get_lat_lon_info import get_lat_lon_info, trip_cost_baxi, trip_cost_heavy, trip_cost_light
+from get_lat_lon_info import get_lat_lon_info, trip_cost_baxi, trip_cost_heavy, trip_cost_light, trip_km
 from client import Client
 from driver import Driver
 
@@ -250,7 +251,7 @@ class MainWindow:
         # -----------------------------------------------------------------------------------------------------------
         # go back from driver_reached_the_destination page-----------------------------------------------------------
         self.ui.pushButt_reached_destination_driver_reached_the_destination.clicked.connect(
-            self.show_driver_home_on_off_service)
+            self.show_driver_rate_trip)
         # -----------------------------------------------------------------------------------------------------------
         self.ui.meli_get_photo_meli_certificate_obviously.clicked.connect(self.brows_select_meli_card)
 
@@ -263,6 +264,12 @@ class MainWindow:
         self.ui.pushButt_done_user_payment_method.clicked.connect(self.set_transaction_user)
 
         self.ui.pushButt_done_booking_successful.clicked.connect(self.show_user_home_after_sign_in)
+
+        self.ui.pushButt_exit_driver_home_on_off_service.clicked.connect(self.show_sign_in)
+
+        self.ui.pushButt_exit_driver_home.clicked.connect(self.show_sign_in)
+
+        self.ui.pushButt_submit_review_driver_rate_trip.clicked.connect(self.send_insert_acceptance_dict)
 
     def show(self):
         self.main_win.show()
@@ -526,6 +533,9 @@ class MainWindow:
 
     def send_driver_info_to_db(self):
         self.gen_rand_number.gen_referral_code_rand()
+        if ref_code_exists(str(self.gen_rand_number.referral_code)):
+            self.gen_rand_number.gen_referral_code_rand()
+
         self.info_dict.set_referral_code_insert_driver_dict(self.gen_rand_number.referral_code)
         self.info_dict.set_signup_time_insert_driver_dict()
         print(self.info_dict.insert_driver_dict)
@@ -645,16 +655,55 @@ class MainWindow:
         x = float(self.ui.get_x_driver_home_on_off_service.toPlainText())
         y = float(self.ui.get_y_driver_home_on_off_service.toPlainText())
         try:
+
             update_location(self.driver_1.get_driver_id(), x, y)
             print("update_location was successful")
         except Exception as err:
             print(err)
 
         try:
-            res = requests_within_range(x, y)
+            print(self.driver_1.get_driver_id())
+            if is_baxi(self.driver_1.get_driver_id()):
+                res = baxi_requests_within_range(x, y)
+                print(res[0][1])
+                print(res[0][2])
+                print(res[0][3])
+                print(res[0][4])
+                print(res[0][5])
+                print(res[0][6])
+                print(res[0][7])
+                print(res[0][8])
+                print(res[0][9])
+                self.client_1.set_first_name(res[0][0])
+                self.client_1.set_last_name(res[0][1])
+                address_origin = get_lat_lon_info(res[0][2], res[0][3])
+                address_destination = get_lat_lon_info(res[0][7], res[0][8])
+                self.ui.box_show_cost_driver_home.setText(str(res[0][9]))
+                self.ui.box_show_pickup_driver_home.setText(address_origin['formatted_address'])
+                self.ui.box_show_dropoff_driver_home.setText(address_destination['formatted_address'])
+                k = trip_km((res[0][2], res[0][3]), (res[0][7], res[0][8]))
+                self.ui.box_show_distance_driver_home.setText(str(k) + " km")
+
+                self.ui.box_show_time_driver_home.setText(str(k * 1.5) + " min")
+
+                print("baxi requests_within_range", res)
+
+            elif is_box(self.driver_1.get_driver_id()):
+                res = box_requests_within_range(x, y)
+                print("box requests_within_range", res)
+
+            elif is_baar(self.driver_1.get_driver_id()):
+                res = baar_requests_within_range(x, y)
+                print("baar requests_within_range", res)
+
+            elif is_baxi(self.driver_1.get_driver_id()) and self.driver_1.get_sex() == "F":
+                res_female = female_baxi_requests_within_range(x, y)
+                res = baxi_requests_within_range(x, y)
+                print("baxi requests_within_range", res)
+                print("female requests_within_range", res_female)
+
         except Exception as err:
             print(err)
-        print("requests_within_range", res)
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home)
 
@@ -774,6 +823,18 @@ class MainWindow:
         except Exception as err:
             print(err)
 
+    def send_insert_acceptance_dict(self):
+        # self.info_dict.set_client_id_insert_acceptance_dict()
+        # self.info_dict.set_end_time_insert_acceptance_dict()
+        # self.info_dict.set_estimated_end_time_insert_acceptance_dict()
+        # self.info_dict.set_driver_id_insert_acceptance_dict(self.driver_1.get_driver_id())
+        # self.info_dict.set_driver_rating_insert_acceptance_dict(self.ui.rate_driver_rate_trip.currentText())
+        # try:
+        #     insert_acceptance(self.info_dict.insert_acceptance_dict)
+        # except Exception as err:
+        #     print(err)
+        self.show_driver_home_on_off_service()
+
     def send_baxi_woman_request_to_db(self):
 
         print(trip_cost_baxi(self.client_1.pickup, self.client_1.dropoff))
@@ -813,11 +874,8 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
 
     def show_booking_successful_baxi_box(self):
-        print("sllllm")
         self.set_general_info_trip()
-        print("sllllm")
         self.send_baxi_box_request_to_db()
-        print("sllllm")
         self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
 
     def cancel_request(self):
@@ -856,6 +914,9 @@ class MainWindow:
             insert_deposit(self.info_dict.insert_deposit_dict)
         except Exception as err:
             print(err)
+
+    def show_driver_rate_trip(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.driver_rate_trip)
 
 
 if __name__ == "__main__":
