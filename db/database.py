@@ -1232,12 +1232,53 @@ def ref_code_exists(code):
     return result
 
 
-def requests_within_range(lat, lon):
+def baxi_requests_within_range(lat, lon):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = """SELECT	first_name, last_name, pickup_latitude, pickup_longitude, pickup_province, pickup_city, city, latitude, longitude
-				FROM	(service_requests JOIN clients ON client_id = id) JOIN destinations USING (client_id, request_time)
+    query = """SELECT	first_name, last_name, pickup_latitude, pickup_longitude, pickup_province, pickup_city, city, latitude, longitude, cost, round_trip
+				FROM	((service_requests JOIN clients ON client_id = id) JOIN destinations USING (client_id, request_time)) JOIN baxi_trips USING (client_id, request_time)
 				WHERE	ST_Distance_Sphere(POINT(%s, %s), POINT(pickup_latitude, pickup_longitude)) <= 5000 AND state = 'open'"""
+    cur.execute(query, (lat, lon))
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
+
+def female_baxi_requests_within_range(lat, lon):
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = """SELECT	first_name, last_name, pickup_latitude, pickup_longitude, pickup_province, pickup_city, city, latitude, longitude, cost, round_trip
+				FROM	((service_requests JOIN clients ON client_id = id) JOIN destinations USING (client_id, request_time)) JOIN baxi_trips USING (client_id, request_time)
+				WHERE	ST_Distance_Sphere(POINT(%s, %s), POINT(pickup_latitude, pickup_longitude)) <= 5000 AND state = 'open' AND sex = 'F'"""
+    cur.execute(query, (lat, lon))
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
+
+def baar_requests_within_range(lat, lon):
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = """SELECT	first_name, last_name, pickup_latitude, pickup_longitude, pickup_province, pickup_city, cost, cargo_weight,
+						cargo_value, dropoff_latitude, dropoff_longitude, dropoff_city, cargo_type, client_helped
+				FROM	(service_requests JOIN clients ON client_id = id) JOIN heavy_transports USING (client_id, request_time)
+				WHERE	ST_Distance_Sphere(POINT(%s, %s), POINT(pickup_latitude, pickup_longitude)) <= 5000 AND state = 'open' AND sex = 'F'"""
+    cur.execute(query, (lat, lon))
+    result = cur.fetchall()
+    cur.close()
+    cnx.close()
+    return result
+
+
+def box_requests_within_range(lat, lon):
+    cnx = create_connection('baxi_users')
+    cur = cnx.cursor()
+    query = """SELECT	first_name, last_name, pickup_latitude, pickup_longitude, pickup_province, pickup_city, cost,
+						cargo_weight, cargo_value, dropoff_latitude, dropoff_longitude, dropoff_city, cargo_type
+				FROM	(service_requests JOIN clients ON client_id = id) JOIN light_transports USING (client_id, request_time)
+				WHERE	ST_Distance_Sphere(POINT(%s, %s), POINT(pickup_latitude, pickup_longitude)) <= 5000 AND state = 'open' AND sex = 'F'"""
     cur.execute(query, (lat, lon))
     result = cur.fetchall()
     cur.close()
