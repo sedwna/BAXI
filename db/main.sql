@@ -301,7 +301,7 @@ CREATE TABLE	service_acceptances
 											'direct',
 											'cash',
 											'wallet-to-wallet'
-										)													NOT NULL,
+										)						DEFAULT 'wallet-to-wallet'	NOT NULL,
 					wait_time			ENUM
 										(
 											'0-to-5 minutes',
@@ -460,16 +460,16 @@ CREATE TRIGGER	update_wallets	AFTER INSERT ON service_acceptances	FOR EACH ROW
 BEGIN
 	DECLARE trip_cost	INT;
 	DECLARE tran_state	ENUM ('failed', 'declined', 'pending', 'cancelled', 'completed', 'returned');
-	SELECT state INTO tran_state	FROM service_acceptances JOIN transactions USING (tracking_code);
-	IF ((NEW.method_of_payment = 'direct' AND tran_state = 'completed') OR NEW.method_of_payment = 'wallet_to_wallet') THEN
-		SELECT cost INTO trip_cost	FROM baxi_trips b	WHERE NEW.client_id = b.client_id AND NEW.request_time = b.request_time;
-		IF (trip_cost IS NULL) THEN
-			SELECT cost INTO trip_cost	FROM heavy_transports h	WHERE NEW.client_id = h.client_id AND NEW.request_time = h.request_time;
-		END IF;
-		IF (trip_cost IS NULL) THEN
-			SELECT cost INTO trip_cost	FROM light_transports l	WHERE NEW.client_id = l.client_id AND NEW.request_time = l.request_time;
-		END IF;
-		UPDATE clients	SET wallet_balance = wallet_balance - trip_cost	WHERE id = NEW.client_id;
+	SELECT state INTO tran_state	FROM transactions WHERE tracking_code = NEW.tracking_code;
+    SELECT cost INTO trip_cost	FROM baxi_trips b	WHERE NEW.client_id = b.client_id AND NEW.request_time = b.request_time;
+	IF (trip_cost IS NULL) THEN
+		SELECT cost INTO trip_cost	FROM heavy_transports h	WHERE NEW.client_id = h.client_id AND NEW.request_time = h.request_time;
+	END IF;
+	IF (trip_cost IS NULL) THEN
+		SELECT cost INTO trip_cost	FROM light_transports l	WHERE NEW.client_id = l.client_id AND NEW.request_time = l.request_time;
+	END IF;
+	IF (NEW.method_of_payment = 'wallet-to-wallet' OR (NEW.method_of_payment = 'direct' AND tran_state = 'completed')) THEN
+		UPDATE clients SET wallet_balance = wallet_balance - trip_cost	WHERE id = NEW.client_id;
 		UPDATE drivers	SET wallet_balance = wallet_balance + trip_cost * 0.8	WHERE id = NEW.driver_id;
 	ELSEIF (NEW.method_of_payment = 'cash')	THEN
 		UPDATE drivers	SET wallet_balance = wallet_balance - trip_cost * 0.2	WHERE id = NEW.driver_id;
