@@ -647,7 +647,7 @@ class MainWindow:
     def show_driver_accept_request(self):
         self.ui.box_show_flname_client_driver_accept_request.setText(
             str(self.trip_1.client_fname) + " " + str(self.trip_1.client_lname))
-        self.ui.box_show_pickup_driver_hom.setText(self.trip_1.address_origin['formatted_address'])
+        self.ui.box_show_pickup_driver_accept_request.setText(self.trip_1.address_origin['formatted_address'])
         self.ui.box_show_dropoff_driver_accept_request.setText(self.trip_1.address_destination['formatted_address'])
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_accept_request)
@@ -694,8 +694,9 @@ class MainWindow:
                 self.trip_1.time = self.trip_1.km * 1.5
 
                 self.ui.box_show_cost_driver_home.setText(self.trip_1.cost)
-                self.ui.box_show_pickup_driver_home.setText(self.trip_1.address_origin['formatted_address'])
-                self.ui.box_show_dropoff_driver_home.setText(self.trip_1.address_destination['formatted_address'])
+
+                self.ui.box_show_pickup_driver_home.setPlainText(self.trip_1.address_origin['formatted_address'])
+                self.ui.box_show_dropoff_driver_home.setPlainText(self.trip_1.address_destination['formatted_address'])
 
                 self.ui.box_show_distance_driver_home.setText(str(self.trip_1.km) + " km")
                 self.ui.box_show_time_driver_home.setText(str(self.trip_1.time) + " min")
@@ -919,6 +920,23 @@ class MainWindow:
             print("insert_acceptance successfully")
         except Exception as err:
             print(err)
+
+        self.ui.comment_driver_rate_trip.setText("")
+        self.ui.box_show_cost_driver_home.setText("")
+        self.ui.box_show_pickup_driver_home.setPlainText("")
+        self.ui.box_show_dropoff_driver_home.setPlainText("")
+        self.ui.box_show_distance_driver_home.setText("")
+        self.ui.box_show_time_driver_home.setText("")
+        self.ui.box_show_flname_client_driver_accept_request.setText("")
+        self.ui.box_show_pickup_driver_home.setPlainText("")
+        self.ui.box_show_pickup_driver_accept_request.setText("")
+        self.ui.box_show_flname_driver_passenger_boarded.setText("")
+        self.ui.box_show_pickup_driver_passenger_boarded.setText("")
+        self.ui.box_show_dropoff_driver_passenger_boarded.setText("")
+        self.ui.box_show_cost_driver_reached_the_destination.setText("")
+        self.ui.box_show_pickup_driver_reached_the_destination.setText("")
+        self.ui.box_show_dropoff_driver_reached_the_destination.setText("")
+
         self.show_driver_home_on_off_service()
 
     def send_baxi_woman_request_to_db(self):

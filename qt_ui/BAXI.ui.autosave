@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>16</number>
+     <number>10</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -1392,36 +1392,30 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="box_show_pickup_driver_home">
+     <widget class="QPlainTextEdit" name="box_show_pickup_driver_home">
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>380</y>
-        <width>281</width>
-        <height>29</height>
+        <y>350</y>
+        <width>291</width>
+        <height>61</height>
        </rect>
       </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
      </widget>
-     <widget class="QPushButton" name="box_show_dropoff_driver_home">
+     <widget class="QPlainTextEdit" name="box_show_dropoff_driver_home">
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>430</y>
-        <width>281</width>
-        <height>29</height>
+        <y>420</y>
+        <width>291</width>
+        <height>51</height>
        </rect>
       </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
      </widget>
     </widget>
@@ -1493,13 +1487,13 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="box_show_pickup_driver_hom">
+     <widget class="QPushButton" name="box_show_pickup_driver_accept_request">
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>450</y>
+        <y>440</y>
         <width>271</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -1515,7 +1509,7 @@
         <x>60</x>
         <y>500</y>
         <width>271</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -1581,7 +1575,7 @@
         <x>50</x>
         <y>500</y>
         <width>271</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -1595,9 +1589,9 @@
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>450</y>
+        <y>440</y>
         <width>271</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -1703,7 +1697,7 @@
         <x>50</x>
         <y>500</y>
         <width>271</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -1717,9 +1711,9 @@
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>450</y>
+        <y>440</y>
         <width>271</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
