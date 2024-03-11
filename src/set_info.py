@@ -462,11 +462,11 @@ class InsertInfo:
                               'driver_id': int,
                               'method_of_payment': 'wallet-to-wallet',
                               'wait_time': '0-to-5 minutes',
-                              'driver_rating': None,
+                              'driver_rating': str,
                               'client_rating': None,
+                              'tracking_code': None,
                               'client_id': int,
-                              'request_time': datetime,
-                              'tracking_code': None}
+                              'request_time': datetime}
 
     def set_client_id_insert_acceptance_dict(self, client_id):
         self.insert_acceptance_dict['client_id'] = client_id

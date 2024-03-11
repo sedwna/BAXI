@@ -15,6 +15,7 @@ from verify import *
 from get_lat_lon_info import get_lat_lon_info, trip_cost_baxi, trip_cost_heavy, trip_cost_light, trip_km
 from client import Client
 from driver import Driver
+from trip import Trip
 
 
 class MainWindow:
@@ -22,6 +23,7 @@ class MainWindow:
     gen_rand_number = GenerateRandom()
     client_1 = Client()
     driver_1 = Driver()
+    trip_1 = Trip()
 
     def __init__(self):
         super().__init__()
@@ -643,12 +645,27 @@ class MainWindow:
                 self.show_user_home_after_sign_in()
 
     def show_driver_accept_request(self):
+        self.ui.box_show_flname_client_driver_accept_request.setText(
+            str(self.trip_1.client_fname) + " " + str(self.trip_1.client_lname))
+        self.ui.box_show_pickup_driver_hom.setText(self.trip_1.address_origin['formatted_address'])
+        self.ui.box_show_dropoff_driver_accept_request.setText(self.trip_1.address_destination['formatted_address'])
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_accept_request)
 
     def show_driver_passenger_boarded(self):
+        self.ui.box_show_flname_driver_passenger_boarded.setText(
+            str(self.trip_1.client_fname) + " " + str(self.trip_1.client_lname))
+        self.ui.box_show_pickup_driver_passenger_boarded.setText(self.trip_1.address_origin['formatted_address'])
+        self.ui.box_show_dropoff_driver_passenger_boarded.setText(self.trip_1.address_destination['formatted_address'])
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_passenger_boarded)
 
     def show_driver_reached_the_destination(self):
+        self.ui.box_show_cost_driver_reached_the_destination.setText(self.trip_1.cost)
+        self.ui.box_show_pickup_driver_reached_the_destination.setText(self.trip_1.address_origin['formatted_address'])
+        self.ui.box_show_dropoff_driver_reached_the_destination.setText(
+            self.trip_1.address_destination['formatted_address'])
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_reached_the_destination)
 
     def show_driver_home(self):
@@ -665,40 +682,90 @@ class MainWindow:
             print(self.driver_1.get_driver_id())
             if is_baxi(self.driver_1.get_driver_id()):
                 res = baxi_requests_within_range(x, y)
-                print(res[0][1])
-                print(res[0][2])
-                print(res[0][3])
-                print(res[0][4])
-                print(res[0][5])
-                print(res[0][6])
-                print(res[0][7])
-                print(res[0][8])
-                print(res[0][9])
-                self.client_1.set_first_name(res[0][0])
-                self.client_1.set_last_name(res[0][1])
-                address_origin = get_lat_lon_info(res[0][2], res[0][3])
-                address_destination = get_lat_lon_info(res[0][7], res[0][8])
-                self.ui.box_show_cost_driver_home.setText(str(res[0][9]))
-                self.ui.box_show_pickup_driver_home.setText(address_origin['formatted_address'])
-                self.ui.box_show_dropoff_driver_home.setText(address_destination['formatted_address'])
-                k = trip_km((res[0][2], res[0][3]), (res[0][7], res[0][8]))
-                self.ui.box_show_distance_driver_home.setText(str(k) + " km")
+                self.trip_1.client_id = res[0][0]
+                self.trip_1.request_time = res[0][1]
+                print("rrrrr", self.client_1.get_request_time())
+                self.trip_1.client_fname = res[0][2]
+                self.trip_1.client_lname = res[0][3]
+                self.trip_1.address_origin = get_lat_lon_info(res[0][4], res[0][5])
+                self.trip_1.address_destination = get_lat_lon_info(res[0][9], res[0][10])
+                self.trip_1.cost = str(res[0][11])
+                self.trip_1.km = trip_km((res[0][4], res[0][5]), (res[0][9], res[0][10]))
+                self.trip_1.time = self.trip_1.km * 1.5
 
-                self.ui.box_show_time_driver_home.setText(str(k * 1.5) + " min")
+                self.ui.box_show_cost_driver_home.setText(self.trip_1.cost)
+                self.ui.box_show_pickup_driver_home.setText(self.trip_1.address_origin['formatted_address'])
+                self.ui.box_show_dropoff_driver_home.setText(self.trip_1.address_destination['formatted_address'])
+
+                self.ui.box_show_distance_driver_home.setText(str(self.trip_1.km) + " km")
+                self.ui.box_show_time_driver_home.setText(str(self.trip_1.time) + " min")
 
                 print("baxi requests_within_range", res)
 
             elif is_box(self.driver_1.get_driver_id()):
                 res = box_requests_within_range(x, y)
+
+                self.trip_1.client_id = res[0][0]
+                self.trip_1.request_time = res[0][1]
+                print("rrrrr", self.client_1.get_request_time())
+                self.trip_1.client_fname = res[0][2]
+                self.trip_1.client_lname = res[0][3]
+                self.trip_1.address_origin = get_lat_lon_info(res[0][4], res[0][5])
+                self.trip_1.address_destination = get_lat_lon_info(res[0][11], res[0][12])
+                self.trip_1.cost = str(res[0][8])
+                self.trip_1.km = trip_km((res[0][4], res[0][5]), (res[0][11], res[0][12]))
+                self.trip_1.time = self.trip_1.km * 1.5
+
+                self.ui.box_show_cost_driver_home.setText(self.trip_1.cost)
+                self.ui.box_show_pickup_driver_home.setText(self.trip_1.address_origin['formatted_address'])
+                self.ui.box_show_dropoff_driver_home.setText(self.trip_1.address_destination['formatted_address'])
+
+                self.ui.box_show_distance_driver_home.setText(str(self.trip_1.km) + " km")
+                self.ui.box_show_time_driver_home.setText(str(self.trip_1.time) + " min")
                 print("box requests_within_range", res)
 
             elif is_baar(self.driver_1.get_driver_id()):
                 res = baar_requests_within_range(x, y)
+                self.trip_1.client_id = res[0][0]
+                self.trip_1.request_time = res[0][1]
+                print("rrrrr", self.client_1.get_request_time())
+                self.trip_1.client_fname = res[0][2]
+                self.trip_1.client_lname = res[0][3]
+                self.trip_1.address_origin = get_lat_lon_info(res[0][4], res[0][5])
+                self.trip_1.address_destination = get_lat_lon_info(res[0][10], res[0][11])
+                self.trip_1.cost = str(res[0][7])
+                self.trip_1.km = trip_km((res[0][4], res[0][5]), (res[0][10], res[0][11]))
+                self.trip_1.time = self.trip_1.km * 1.5
+
+                self.ui.box_show_cost_driver_home.setText(self.trip_1.cost)
+                self.ui.box_show_pickup_driver_home.setText(self.trip_1.address_origin['formatted_address'])
+                self.ui.box_show_dropoff_driver_home.setText(self.trip_1.address_destination['formatted_address'])
+
+                self.ui.box_show_distance_driver_home.setText(str(self.trip_1.km) + " km")
+                self.ui.box_show_time_driver_home.setText(str(self.trip_1.time) + " min")
                 print("baar requests_within_range", res)
 
             elif is_baxi(self.driver_1.get_driver_id()) and self.driver_1.get_sex() == "F":
                 res_female = female_baxi_requests_within_range(x, y)
                 res = baxi_requests_within_range(x, y)
+                self.trip_1.client_id = res_female[0][0]
+                self.trip_1.request_time = res_female[0][1]
+                print("rrrrr", self.client_1.get_request_time())
+                self.trip_1.client_fname = res_female[0][2]
+                self.trip_1.client_lname = res_female[0][3]
+                self.trip_1.address_origin = get_lat_lon_info(res_female[0][4], res_female[0][5])
+                self.trip_1.address_destination = get_lat_lon_info(res_female[0][9], res_female[0][10])
+                self.trip_1.cost = str(res_female[0][11])
+                self.trip_1.km = trip_km((res_female[0][4], res_female[0][5]), (res_female[0][9], res_female[0][10]))
+                self.trip_1.time = self.trip_1.km * 1.5
+
+                self.ui.box_show_cost_driver_home.setText(self.trip_1.cost)
+                self.ui.box_show_pickup_driver_home.setText(self.trip_1.address_origin['formatted_address'])
+                self.ui.box_show_dropoff_driver_home.setText(self.trip_1.address_destination['formatted_address'])
+
+                self.ui.box_show_distance_driver_home.setText(str(self.trip_1.km) + " km")
+                self.ui.box_show_time_driver_home.setText(str(self.trip_1.time) + " min")
+
                 print("baxi requests_within_range", res)
                 print("female requests_within_range", res_female)
 
@@ -824,15 +891,34 @@ class MainWindow:
             print(err)
 
     def send_insert_acceptance_dict(self):
-        # self.info_dict.set_client_id_insert_acceptance_dict()
-        # self.info_dict.set_end_time_insert_acceptance_dict()
-        # self.info_dict.set_estimated_end_time_insert_acceptance_dict()
-        # self.info_dict.set_driver_id_insert_acceptance_dict(self.driver_1.get_driver_id())
-        # self.info_dict.set_driver_rating_insert_acceptance_dict(self.ui.rate_driver_rate_trip.currentText())
-        # try:
-        #     insert_acceptance(self.info_dict.insert_acceptance_dict)
-        # except Exception as err:
-        #     print(err)
+        try:
+            close_request(self.trip_1.client_id, self.trip_1.request_time)
+            print("close_request successful")
+        except Exception as err:
+            print(err)
+
+        print("t1")
+        self.trip_1.estimated_time()
+        print("type: ", type(self.trip_1.client_id))
+        self.info_dict.set_client_id_insert_acceptance_dict(self.trip_1.client_id)
+        print("t1")
+        self.info_dict.set_end_time_insert_acceptance_dict(
+            datetime.now())
+        print("t1")
+        self.info_dict.set_estimated_end_time_insert_acceptance_dict(
+            datetime.now())
+        print("t1")
+        self.info_dict.set_driver_id_insert_acceptance_dict(self.driver_1.get_driver_id())
+        print("t1")
+        self.info_dict.set_driver_rating_insert_acceptance_dict(self.ui.rate_driver_rate_trip.currentText())
+        print("t1")
+        self.info_dict.set_request_time_insert_acceptance_dict(self.trip_1.request_time)
+        try:
+            print(self.info_dict.insert_acceptance_dict)
+            insert_acceptance(self.info_dict.insert_acceptance_dict)
+            print("insert_acceptance successfully")
+        except Exception as err:
+            print(err)
         self.show_driver_home_on_off_service()
 
     def send_baxi_woman_request_to_db(self):
@@ -864,11 +950,13 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
 
     def show_booking_successful_baxi_woman(self):
-        self.set_general_info_trip()
-        self.send_baxi_woman_request_to_db()
-        self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
+        if self.client_1.get_sex() == "F":
+            self.set_general_info_trip()
+            self.send_baxi_woman_request_to_db()
+            self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)
 
     def show_booking_successful_baxi_bar(self):
+
         self.set_general_info_trip()
         self.send_baxi_bar_request_to_db()
         self.ui.stackedWidget.setCurrentWidget(self.ui.booking_successful)

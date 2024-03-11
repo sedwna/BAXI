@@ -63,3 +63,21 @@ class GenerateRandom:
 
         self.tracking_code = tracking_code
         print('tracking_code: ', tracking_code)
+
+
+def gen_2digit_rand():
+    # letters = string.ascii_letters
+
+    digits = string.digits
+
+    # special_chars = string.punctuation
+
+    selection_list = digits
+
+    _2digit_len = 2
+
+    _2digit = ''
+    for i in range(_2digit_len):
+        _2digit += ''.join(secrets.choice(selection_list))
+    print('3')
+    return _2digit

@@ -292,17 +292,17 @@ def insert_deposit(values):
 	'wait_time':			'0-to-5 minutes'/'5-to-10 minutes'/'10-to-30 minutes'/'30-to-60 minutes',
 	'driver_rating':		None/'0-star'/'1-star'/'2-star'/'3-star'/'4-star'/'5-star',
 	'client_rating':		None/'0-star'/'1-star'/'2-star'/'3-star'/'4-star'/'5-star',
+	'tracking_code':		VARCHAR(20)
 	'client_id':			INT,
-	'request_time':			None/DATETIME,
-	'tracking_code':		VARCHAR(20)}'''
+	'request_time':			None/DATETIME,}'''
 
 
 def insert_acceptance(values):
     cnx = create_connection('baxi_users')
     cur = cnx.cursor()
-    query = '''INSERT INTO service_acceptances VALUES (%(estimated_end_time)s, %(end_time)s,%(driver_id)s, %(method_of_payment)s,
+    query = '''INSERT INTO service_acceptances VALUES (%(estimated_end_time)s, %(end_time)s, %(driver_id)s, %(method_of_payment)s,
 														%(wait_time)s, %(driver_rating)s, %(client_rating)s,
-														%(client_id)s, %(request_time)s, %(tracking_code)s)'''
+														%(tracking_code)s, %(client_id)s, %(request_time)s)'''
     cur.execute(query, values)
     cnx.commit()
     cur.close()

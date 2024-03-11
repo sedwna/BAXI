@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>26</number>
+     <number>16</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
