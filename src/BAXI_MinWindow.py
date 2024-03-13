@@ -498,7 +498,7 @@ class MainWindow:
     def show_user_home_after_sign_in(self):
         self.off_menu_bar_user_home()
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
-        self.ui.stackedWidget.setCurrentWidget(self.mp.show())
+        # self.ui.stackedWidget.setCurrentWidget(self.mp.show())
 
     def show_user_home_after_sign_up(self):
         self.info_dict.set_sign_up_time_insert_client_dict()
@@ -529,7 +529,7 @@ class MainWindow:
 
         self.off_menu_bar_user_home()
         self.ui.stackedWidget.setCurrentWidget(self.ui.user_home)
-        self.ui.stackedWidget.setCurrentWidget(self.mp.show())
+        # self.ui.stackedWidget.setCurrentWidget(self.mp.show())
 
     def send_driver_info_to_db(self):
         self.gen_rand_number.gen_referral_code_rand()
@@ -774,7 +774,7 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.driver_home)
 
     def show_driver_home_on_off_service(self):
-        self.ui.stackedWidget.setCurrentWidget(self.mp.show())
+        # self.ui.stackedWidget.setCurrentWidget(self.mp.show())
         self.ui.box_show_wallet_balance_driver_home_on_off_service.setText(
             str(get_driver_balance(self.driver_1.get_driver_id())[0][0]))
         self.ui.box_show_flname_balance_driver_home_on_off_service.setText(
