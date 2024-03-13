@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import QMainWindow
 from PyQt6.QtWidgets import QFileDialog
 
 from BAXI import Ui_BAXI
-from show_map import MapWindow
+# from show_map import MapWindow
 import datetime
 
 from set_info import InsertInfo
@@ -30,8 +30,8 @@ class MainWindow:
         self.ui = Ui_BAXI()
         self.ui.setupUi(self.main_win)
 
-        self.mp = MapWindow()
-        self.mp.setupUi(self.main_win)
+        # self.mp = MapWindow()
+        # self.mp.setupUi(self.main_win)
 
         # waiting page -------------------------------------------------------------------
         self.show_loading()
@@ -1027,6 +1027,6 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     main_win = MainWindow()
     ui = Ui_BAXI()
-    mp = MapWindow()
+    # mp = MapWindow()
     main_win.show()
     sys.exit(app.exec())
