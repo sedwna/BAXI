@@ -2,7 +2,6 @@ pyqt6
 pyqt6-tools
 mysql.connector
 PyQtWebEngine
-QtCore
 requests
 geopy.distance
 string
