@@ -1410,15 +1410,15 @@ class Ui_BAXI(object):
         self.machine_color_get_machine_baxi_info.addItem("")
         self.machine_generate_year_get_machine_baxi_info = QtWidgets.QSpinBox(parent=self.get_machine_baxi_info)
         self.machine_generate_year_get_machine_baxi_info.setGeometry(QtCore.QRect(40, 110, 81, 29))
-        self.machine_generate_year_get_machine_baxi_info.setMinimum(1900)
-        self.machine_generate_year_get_machine_baxi_info.setMaximum(2000)
+        self.machine_generate_year_get_machine_baxi_info.setMinimum(2000)
+        self.machine_generate_year_get_machine_baxi_info.setMaximum(2024)
         self.machine_generate_year_get_machine_baxi_info.setSingleStep(1)
         self.machine_generate_year_get_machine_baxi_info.setObjectName("machine_generate_year_get_machine_baxi_info")
         self.stackedWidget.addWidget(self.get_machine_baxi_info)
         BAXI.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI)
-        self.stackedWidget.setCurrentIndex(10)
+        self.stackedWidget.setCurrentIndex(6)
         QtCore.QMetaObject.connectSlotsByName(BAXI)
 
     def retranslateUi(self, BAXI):

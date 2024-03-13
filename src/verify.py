@@ -10,7 +10,7 @@ def IS_MANAGER(id, password):
                 if flname:
 
                     print(flname)
-                    return True
+                    return flname
                 else:
                     print("you are not manager ")
             except Exception as err:

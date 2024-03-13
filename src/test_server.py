@@ -26,19 +26,19 @@ date_now = datetime.datetime.now()
 #                'verifier_personnel_code': None})
 
 
-# insert_employee({'personnel_code': 372365825,
-#                  'shaba_number': '100000365825',
-#                  'signup_time': date_now,
-#                  'password': 'sedwna',
-#                  'first_name': 'Sajad',
-#                  'last_name': 'Dehqan',
-#                  'birth_date': birth_date,
-#                  'salary': 3000,
-#                  'department': 'HR',
-#                  'proficiency': 'basic',
-#                  'education': 'high school diploma',
-#                  'position': 'department manager',
-#                  'profile_picture_path': None})
+insert_employee({'personnel_code': 372365825,
+                 'shaba_number': '100000365825',
+                 'signup_time': date_now,
+                 'password': 'sedwna',
+                 'first_name': 'Sajad',
+                 'last_name': 'Dehqan',
+                 'birth_date': birth_date,
+                 'salary': 3000,
+                 'department': 'HR',
+                 'proficiency': 'basic',
+                 'education': 'high school diploma',
+                 'position': 'department manager',
+                 'profile_picture_path': None})
 # # importing modules
 # from geopy.geocoders import Nominatim
 #
@@ -59,7 +59,7 @@ date_now = datetime.datetime.now()
 #     print("2")
 # except Exception as err:
 #     print(err)
-try:
-    insert_acceptance({'estimated_end_time': datetime.datetime(2024, 3, 11, 12, 41, 59, 931439), 'end_time': datetime.datetime(2024, 3, 11, 12, 41, 59, 931439), 'driver_id': 1, 'method_of_payment': 'wallet-to-wallet', 'wait_time': '0-to-5 minutes', 'driver_rating': '0-star', 'client_rating': None, 'client_id': 1, 'request_time': datetime.datetime(2024, 3, 10, 17, 38, 11), 'tracking_code': None})
-except Exception as err:
-    print(err)
+# try:
+#     insert_acceptance({'estimated_end_time': datetime.datetime(2024, 3, 11, 12, 41, 59, 931439), 'end_time': datetime.datetime(2024, 3, 11, 12, 41, 59, 931439), 'driver_id': 1, 'method_of_payment': 'wallet-to-wallet', 'wait_time': '0-to-5 minutes', 'driver_rating': '0-star', 'client_rating': None, 'client_id': 1, 'request_time': datetime.datetime(2024, 3, 10, 17, 38, 11), 'tracking_code': None})
+# except Exception as err:
+#     print(err)

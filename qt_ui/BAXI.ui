@@ -48,7 +48,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>10</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="loading">
      <widget class="QLabel" name="label">
@@ -4366,10 +4366,10 @@
        </rect>
       </property>
       <property name="minimum">
-       <number>1900</number>
+       <number>2000</number>
       </property>
       <property name="maximum">
-       <number>2000</number>
+       <number>2024</number>
       </property>
       <property name="singleStep">
        <number>1</number>
