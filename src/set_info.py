@@ -1,6 +1,4 @@
 import datetime
-from shapely.geometry import Point
-
 
 class InsertInfo:
     insert_client_dict = {'client_id': None,

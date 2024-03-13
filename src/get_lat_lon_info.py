@@ -1,4 +1,3 @@
-from geopy.geocoders import Nominatim
 import requests
 import geopy.distance
 
