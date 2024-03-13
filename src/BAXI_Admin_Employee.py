@@ -660,7 +660,7 @@ class Ui_BAXI_Admin_Employee(object):
         BAXI_Admin_Employee.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BAXI_Admin_Employee)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(BAXI_Admin_Employee)
 
     def retranslateUi(self, BAXI_Admin_Employee):
