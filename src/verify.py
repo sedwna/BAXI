@@ -1,5 +1,4 @@
-from db.database import *
-import string
+from database import *
 
 
 def IS_MANAGER(id, password):

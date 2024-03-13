@@ -1,4 +1,4 @@
-from db.database import *
+from database import *
 import datetime
 
 birth_date = datetime.datetime(1381, 8, 22)

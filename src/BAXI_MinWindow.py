@@ -6,8 +6,6 @@ from PyQt6.QtWidgets import QFileDialog
 from BAXI import Ui_BAXI
 from show_map import MapWindow
 import datetime
-from db.database import *
-import time
 
 from set_info import InsertInfo
 from generate_random_number import GenerateRandom

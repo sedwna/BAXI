@@ -2,17 +2,16 @@ import datetime
 import sys
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtWidgets import QMainWindow
-from PyQt6.QtWidgets import QFileDialog
 from BAXI_Admin_Employee import Ui_BAXI_Admin_Employee
-from db.database import *
 from verify import *
 
-
 from set_info import InsertInfo
+from employee import Employee
 
 
 class MainWindow:
     info_dict = InsertInfo()
+    employee_1 = Employee()
 
     def __init__(self):
 
@@ -183,13 +182,20 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_sign_in)
 
     def show_admin_panel(self):
-        if IS_MANAGER(self.ui.get_id_admin_sign_in.toPlainText(), self.ui.get_password_admin_sign_in.toPlainText()):
+        if flname := IS_MANAGER(self.ui.get_id_admin_sign_in.toPlainText(),
+                                self.ui.get_password_admin_sign_in.toPlainText()):
+            self.employee_1.set_first_name(flname[0][0])
+            self.employee_1.set_last_name(flname[0][1])
+            self.ui.box_show_fname_admin_panel.setText(self.employee_1.get_first_name())
+            self.ui.box_show_lname_admin_panel.setText(self.employee_1.get_last_name())
             self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel)
 
     def exit_app(self):
         sys.exit()
 
     def show_admin_panel_recruitment_successful(self):
+        self.ui.box_show_fname_admin_panel_recruitment_successful.setText(self.employee_1.get_first_name())
+        self.ui.box_show_lname_admin_panel_recruitment_successful.setText(self.employee_1.get_last_name())
         self.info_dict.set_first_name_insert_employee_dict(self.ui.get_first_name_admin_panel_recruitment.toPlainText())
         self.info_dict.set_last_name_insert_employee_dict(self.ui.get_last_name_admin_panel_recruitment.toPlainText())
         print('code_meli ', self.ui.get_code_meli_admin_panel_recruitment.toPlainText())
@@ -226,9 +232,13 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel_recruitment_successful)
 
     def show_admin_panel_query(self):
+        self.ui.box_show_fname_admin_panel_query.setText(self.employee_1.get_first_name())
+        self.ui.box_show_lname_admin_panel_query.setText(self.employee_1.get_last_name())
         self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel_query)
 
     def show_admin_panel_recruitment(self):
+        self.ui.box_show_fname_admin_panel_recruitment.setText(self.employee_1.get_first_name())
+        self.ui.box_show_lname_admin_panel_recruitment.setText(self.employee_1.get_last_name())
         self.ui.stackedWidget.setCurrentWidget(self.ui.admin_panel_recruitment)
 
     def show_employee_panel_authentication_request(self):
@@ -254,13 +264,18 @@ class MainWindow:
                 self.ui.pushButt_text_7_employee_panel_authentication_request.setText(flname)
             flag += 1
 
+            self.ui.box_fname_employee_panel_authentication_request.setPlainText(self.employee_1.get_first_name())
+            self.ui.box_lname_employee_panel_authentication_request.setPlainText(self.employee_1.get_last_name())
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_request)
 
     def show_employee_panel(self):
         if flname := IS_EMPLOYEE(self.ui.get_id_employee_sign_in.toPlainText(),
                                  self.ui.get_password_employee_sign_in.toPlainText()):
-            self.ui.box_fname_employee_panel.setPlainText(flname[0][0])
-            self.ui.box_lname_employee_panel.setPlainText(flname[0][1])
+            self.employee_1.set_first_name(flname[0][0])
+            self.employee_1.set_last_name(flname[0][1])
+            self.ui.box_fname_employee_panel.setPlainText(self.employee_1.get_first_name())
+            self.ui.box_lname_employee_panel.setPlainText(self.employee_1.get_last_name())
             self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel)
 
     def show_employee_panel_authentication_1(self):
@@ -274,6 +289,9 @@ class MainWindow:
         self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
         self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
+
+        self.ui.box_fname_employee_panel_authentication.setPlainText(self.employee_1.get_first_name())
+        self.ui.box_lname_employee_panel_authentication.setPlainText(self.employee_1.get_last_name())
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
@@ -289,6 +307,9 @@ class MainWindow:
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
         self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
 
+        self.ui.box_fname_employee_panel_authentication.setPlainText(self.employee_1.get_first_name())
+        self.ui.box_lname_employee_panel_authentication.setPlainText(self.employee_1.get_last_name())
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
     def show_employee_panel_authentication_3(self):
@@ -302,6 +323,9 @@ class MainWindow:
         self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
         self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
+
+        self.ui.box_fname_employee_panel_authentication.setPlainText(self.employee_1.get_first_name())
+        self.ui.box_lname_employee_panel_authentication.setPlainText(self.employee_1.get_last_name())
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
@@ -317,6 +341,9 @@ class MainWindow:
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
         self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
 
+        self.ui.box_fname_employee_panel_authentication.setPlainText(self.employee_1.get_first_name())
+        self.ui.box_lname_employee_panel_authentication.setPlainText(self.employee_1.get_last_name())
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
     def show_employee_panel_authentication_5(self):
@@ -330,6 +357,9 @@ class MainWindow:
         self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
         self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
+
+        self.ui.box_fname_employee_panel_authentication.setPlainText(self.employee_1.get_first_name())
+        self.ui.box_lname_employee_panel_authentication.setPlainText(self.employee_1.get_last_name())
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
@@ -345,6 +375,9 @@ class MainWindow:
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
         self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
 
+        self.ui.box_fname_employee_panel_authentication.setPlainText(self.employee_1.get_first_name())
+        self.ui.box_lname_employee_panel_authentication.setPlainText(self.employee_1.get_last_name())
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
     def show_employee_panel_authentication_7(self):
@@ -358,6 +391,9 @@ class MainWindow:
         self.ui.pushButt_show_sex_employee_panel_authentication.setText(driver[13])
         self.ui.pushButt_show_phone_number_employee_panel_authentication.setText(driver[1])
         self.ui.pushButt_show_shaba_number_employee_panel_authentication.setText(driver[2])
+
+        self.ui.box_fname_employee_panel_authentication.setPlainText(self.employee_1.get_first_name())
+        self.ui.box_lname_employee_panel_authentication.setPlainText(self.employee_1.get_last_name())
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication)
 
@@ -379,9 +415,16 @@ class MainWindow:
             self.rst_driver_authentication_reset()
         except Exception as err:
             print(err)
+
+        self.ui.box_fname_employee_panel_authentication_successful.setPlainText(self.employee_1.get_first_name())
+        self.ui.box_lname_employee_panel_authentication_successful.setPlainText(self.employee_1.get_last_name())
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_successful)
 
     def show_employee_panel_authentication_rejected(self):
+        self.ui.box_fname_employee_panel_authentication_rejected.setPlainText(self.employee_1.get_first_name())
+        self.ui.box_lname_employee_panel_authentication_rejected.setPlainText(self.employee_1.get_last_name())
+
         self.ui.stackedWidget.setCurrentWidget(self.ui.employee_panel_authentication_rejected)
 
     def rst_driver_authentication_reset(self):
@@ -392,7 +435,6 @@ class MainWindow:
         self.ui.pushButt_text_5_employee_panel_authentication_request.setText("")
         self.ui.pushButt_text_6_employee_panel_authentication_request.setText("")
         self.ui.pushButt_text_7_employee_panel_authentication_request.setText("")
-
 
 
 if __name__ == "__main__":
