@@ -16,7 +16,7 @@ pip install -r requirements.txt
 	```bash
 	python3 src/BAXI_MinWindow.py
 	```
-	- Admin panel
+	- Admin panel:
 	```bash
 	python3 src/BAXI_Admin_Employee_MinWindow.py
 	```
