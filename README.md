@@ -14,11 +14,11 @@ pip install -r requirements.txt
 5. There are two panels (applications) that you can run.
 	- User panel:
 	```bash
-	python3 src/BAXI_MinWindow.py
+	python3 BAXI_MinWindow.py
 	```
 	- Admin panel:
 	```bash
-	python3 src/BAXI_Admin_Employee_MinWindow.py
+	python3 BAXI_Admin_Employee_MinWindow.py
 	```
 
 ## Links
